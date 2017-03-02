@@ -6,3 +6,11 @@ C:\Users\supportcplug\Desktop\Project\ClassLibrary\WebApplication\obj\Debug\WebA
 C:\Users\supportcplug\Desktop\Project\ClassLibrary\WebApplication\obj\Debug\WebApplication.pdb
 C:\Users\supportcplug\Desktop\Project\ClassLibrary\WebApplication\bin\ClassLibrary.dll
 C:\Users\supportcplug\Desktop\Project\ClassLibrary\WebApplication\bin\ClassLibrary.pdb
+C:\Users\supportcplug\Source\Repos\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\bin\WebApplication.dll.config
+C:\Users\supportcplug\Source\Repos\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\bin\WebApplication.dll
+C:\Users\supportcplug\Source\Repos\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\bin\WebApplication.pdb
+C:\Users\supportcplug\Source\Repos\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\bin\ClassLibrary.dll
+C:\Users\supportcplug\Source\Repos\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\bin\ClassLibrary.pdb
+C:\Users\supportcplug\Source\Repos\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\obj\Debug\WebApplication.csprojResolveAssemblyReference.cache
+C:\Users\supportcplug\Source\Repos\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\obj\Debug\WebApplication.dll
+C:\Users\supportcplug\Source\Repos\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\obj\Debug\WebApplication.pdb
