@@ -1,0 +1,75 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="WebApplication.Site" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <!--Styles-->
+    <link href="Content/bootstrap.cosmo.css" rel="stylesheet" />
+    <link href="Content/bootstrap.cosmo.min.css" rel="stylesheet" />
+    <!--Script-->
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Unimarket Brasil</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="Sistema.aspx">Início <span class="sr-only">(current)</span></a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categorias <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="SistemaConcluirCadastro.aspx">Mapinha do Google</a></li>
+                            <li><a href="SistemaHomeVendedor.aspx">Home Vendedor</a></li>
+                            <li><a href="SistemaListaPedidos.aspx">Lista de Pedidos</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Novo Item</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">E só</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Pesquisar">
+                    </div>
+                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="SistemaCadastrar.aspx">Cadastre-se</a></li>
+                    <li><a href="SistemaLogin.aspx">Entrar</a></li>
+                </ul>
+            </div>
+        </div>
+        <!--Script-->
+        <script src="Scripts/jquery-1.9.1.min.js"></script>
+        <script src="Scripts/bootstrap.min.js"></script>
+        <script>
+            $(function () {
+                $('.dropdown-toggle').dropdown();
+            });
+        </script>
+    </nav>
+    <div class="container-fluid">
+        <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+    </div>
+    <div class="container-fluid body-content">
+        <hr />
+        <footer>
+            <p><%: DateTime.Now.Year %> - Unimarket Brasil</p>
+        </footer>
+    </div>
+</body>
+</html>

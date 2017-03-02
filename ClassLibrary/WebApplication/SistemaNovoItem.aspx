@@ -1,0 +1,83 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="SistemaNovoItem.aspx.cs" Inherits="WebApplication.SistemaNovoItem" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4>Novo Produto</h4>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9 form-group">
+                    <label for="iputnome">Nome do Produto</label>
+                    <input type="text" id="inputnome" class="form-control" maxlength="120" />
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 form-group">
+                    <label for="inputcodigo">Código</label>
+                    <input type="text" id="inputcodigo" class="form-control" maxlength="20" />
+                </div>
+            </div>
+            <div class="col-md-12">
+                <h4 class="form-group">Informações do Produto</h4>
+                <hr />
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 form-group">
+                    <label for="selectcategoria">Categoria</label>
+                    <select class="form-control" id="select">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 form-group">
+                    <label for="inputquantidade">Quantidade</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="inputquantidade" maxlength="14" />
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 form-group">
+                    <label for="inputvalorunitario">Valor Unitário</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="inputvalorunitario" maxlength="14" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 form-group">
+                    <label for="selectcategoria">Descrição</label>
+                    <div class="input-group">
+                        <textarea id="inputdescricao" cols="127" rows="3" maxlength="800" style="resize: none; width: 100%"></textarea>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 form-group">
+                    <label for="inputvalortotal">Valor Total</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="inputvalortotal" maxlength="14" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group">
+            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 form-group">
+                <button type="reset" class="btn btn-danger">
+                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                </button>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1 form-group">
+                <button type="reset" class="btn btn-default">Cancelar</button>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1 form-group">
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </div>
+        </div>
+        <div>
+
+        </div>
+    </div>
+</asp:Content>

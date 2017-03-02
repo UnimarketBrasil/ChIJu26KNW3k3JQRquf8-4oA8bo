@@ -1,0 +1,8 @@
+C:\Users\supportcplug\Desktop\Project\ClassLibrary\WebApplication\bin\WebApplication.dll.config
+C:\Users\supportcplug\Desktop\Project\ClassLibrary\WebApplication\bin\WebApplication.dll
+C:\Users\supportcplug\Desktop\Project\ClassLibrary\WebApplication\bin\WebApplication.pdb
+C:\Users\supportcplug\Desktop\Project\ClassLibrary\WebApplication\obj\Debug\WebApplication.csprojResolveAssemblyReference.cache
+C:\Users\supportcplug\Desktop\Project\ClassLibrary\WebApplication\obj\Debug\WebApplication.dll
+C:\Users\supportcplug\Desktop\Project\ClassLibrary\WebApplication\obj\Debug\WebApplication.pdb
+C:\Users\supportcplug\Desktop\Project\ClassLibrary\WebApplication\bin\ClassLibrary.dll
+C:\Users\supportcplug\Desktop\Project\ClassLibrary\WebApplication\bin\ClassLibrary.pdb
