@@ -9,18 +9,29 @@
         </div>
         <div class="panel-body">
             <div class="row">
-                <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9 form-group">
-                    <label for="iputnome">Nome do Produto</label>
+                <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2 form-group">
+                    <label for="iputnome">Imagem do Item</label>
+                    <a href="#" class="thumbnail">
+                        <img src="Style/images/work-img1.jpg" />
+                    </a>
+                    <a href="#">
+                        <input type="file" id="inputimagem" class="form-group" />
+                    </a>
+                </div>
+                <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7 form-group">
+                    <label for="iputnome">Nome do Item</label>
                     <input type="text" id="inputnome" class="form-control" maxlength="120" />
                 </div>
-                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 form-group">
-                    <label for="inputcodigo">Código</label>
+                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 form-group">
+                    <label for="inputcodigo">Código do Item</label>
                     <input type="text" id="inputcodigo" class="form-control" maxlength="20" />
                 </div>
             </div>
-            <div class="col-md-12">
-                <h4 class="form-group">Informações do Produto</h4>
-                <hr />
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="form-group">Informações do Item</h4>
+                    <hr />
+                </div>
             </div>
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 form-group">
@@ -75,9 +86,6 @@
             <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1 form-group">
                 <button type="submit" class="btn btn-primary">Salvar</button>
             </div>
-        </div>
-        <div>
-
         </div>
     </div>
 </asp:Content>

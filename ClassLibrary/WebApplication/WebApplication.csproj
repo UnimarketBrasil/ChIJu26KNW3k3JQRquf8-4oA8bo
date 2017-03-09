@@ -118,6 +118,7 @@
     <Content Include="Style\images\ltst-img-1.jpg" />
     <Content Include="Sistema.aspx" />
     <Content Include="SistemaNovoItem.aspx" />
+    <Content Include="Style\images\work-img1.jpg" />
     <Content Include="WebTest.aspx" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
