@@ -3,141 +3,156 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <!--Sessão Cadastar-->
-    <section id="cadastrar" class="bg-blue roomy-70">
-        <div class="row">
-            <div>
-                <div class="col-md-6" style="margin-top:75px">
-                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="height: 368px; width: 550px">
-                        <!-- Indicators -->
-                        <ol class="carousel-indicators">
-                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                        </ol>
-
-                        <!-- Wrapper for slides -->
-                        <div class="carousel-inner" role="listbox">
-                            <div class="item active">
-                                <img src="Style/images/about-img1.jpg" />
-                            </div>
-                            <div class="item">
-                                <img src="Style/images/about-img1.jpg" />
-                            </div>
-                            <div class="item">
-                                <img src="Style/images/about-img1.jpg" />
+    <h2 class="text-uppercase"><strong>Cadastre-se</strong></h2>
+    <!--1° Etapa - Validar email-->
+    <div id="dvPrimeiraEtapa" class="row" runat="server">
+        <div class="col-md-6">
+            <div class="sm-m-top-50">
+                <form class="form-horizontal" runat="server">
+                    <fieldset>
+                        <div class="form-group">
+                            <label for="txtEmailEtapa1" class="col-lg-2 control-label">Email</label>
+                            <div class="col-lg-10">
+                                <asp:TextBox ID="txtEmailEtapa1" CssClass="form-control" runat="server" AutoPostBack="True" AutoCompleteType="Email" placeholder="Email"></asp:TextBox>
                             </div>
                         </div>
-
-                        <!-- Controls -->
-                        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="col-md-6">
-                    <div class="sm-m-top-50">
-                        <h2 class="text-uppercase"><strong>Cadastre-se</strong></h2>
-                        <form class="form-horizontal">
-                            <fieldset>
+                        <div class="form-group">
+                            <div class="col-lg-10 col-lg-offset-2">
+                                <div>
+                                    <asp:Button ID="myButtonEtapa1" runat="server" Text="Cadastrar!" CssClass="btn btn-primary" OnClick="myButtonEtapa1_Click" />
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--2° Etapa - Dados da pessoa-->
+    <div id="dvSegundaEtapa" class="row" runat="server">
+        <div>
+            <div class="col-md-6">
+                <div class="sm-m-top-50">
+                    <form class="form-horizontal" runat="server">
+                        <fieldset>
+                            <!--Selecionar Tipo Pessoa-->
+                            <fieldset class="form-group">
+                                <label for="select" class="col-lg-2 control-label">Tipo Pessoa</label>
+                                <div class="col-lg-10">
+                                    <asp:DropDownList CssClass="form-control" ID="dpTipoPessoa" onchange="tipoPessoaSel();" runat="server">
+                                        <asp:ListItem Text="Física" Value="1" />
+                                        <asp:ListItem Text="Jurídica" Value="2" />
+                                    </asp:DropDownList>
+                                </div>
+                            </fieldset>
+                            <!--Pessoa Jurídica-->
+                            <fieldset id="pessoaJuridica" runat="server">
                                 <div class="form-group">
-                                    <label class="col-lg-2 control-label"></label>
+                                    <label for="txtCnpj" class="col-lg-2 control-label">CNPJ</label>
                                     <div class="col-lg-10">
-                                        <div class="radio">
-                                            <label>
-                                                <input type="radio" name="optionsRadios" id="optionsRadiosComprar" value="option1" checked="">
-                                                Comprar
-                                            </label>
-                                            <label>
-                                                <input type="radio" name="optionsRadios" id="optionsRadiosVender" value="option2">
-                                                Vender
-                                            </label>
-                                        </div>
+                                        <asp:TextBox ID="txtCnpj" runat="server" CssClass="form-control" placeholder="CNPJ"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputCpfCnpj" class="col-lg-2 control-label">CPF/CNPJ</label>
+                                    <label for="txtRazaoSocial" class="col-lg-2 control-label">Razão Social</label>
                                     <div class="col-lg-10">
-                                        <input type="text" class="form-control" id="inputCpfCnpj" placeholder="CPF/CNPJ" />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputNome" class="col-lg-2 control-label">Nome</label>
-                                    <div class="col-lg-10">
-                                        <input type="text" class="form-control" id="inputNome" placeholder="Nome" />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputDataNasc" class="col-lg-2 control-label">Data de Nasc.</label>
-                                    <div class="col-lg-10">
-                                        <input type="text" class="form-control" id="inputDataNasc" placeholder="dd/mm/aaaa" />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputEmail" class="col-lg-2 control-label">Email</label>
-                                    <div class="col-lg-10">
-                                        <input type="text" class="form-control" id="inputEmail" placeholder="Email">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputEmailConf" class="col-lg-2 control-label">Confirmar Email</label>
-                                    <div class="col-lg-10">
-                                        <input type="text" class="form-control" id="inputEmailConf" placeholder="Confirmar Email">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputTel" class="col-lg-2 control-label">Telefone</label>
-                                    <div class="col-lg-10">
-                                        <input type="text" class="form-control" id="inputTel" placeholder="Telefone" />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputSenha" class="col-lg-2 control-label">Senha</label>
-                                    <div class="col-lg-10">
-                                        <input type="password" class="form-control" id="inputSenha" placeholder="Senha">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputSenhaConf" class="col-lg-2 control-label">Confirmar Senha</label>
-                                    <div class="col-lg-10">
-                                        <input type="password" class="form-control" id="inputSenhaConf" placeholder="Confirmar Senha">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-lg-10 col-lg-offset-2">
-                                        <div class="checkbox">
-                                            <script src='https://www.google.com/recaptcha/api.js'></script>
-                                            <div class="g-recaptcha" data-sitekey="6Lc-HRcUAAAAAG-oWXYAcgOnqXQ7TEHGEESB_PiZ"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-lg-10 col-lg-offset-2">
-                                        <div>
-                                            <button type="button" id="myButton" data-loading-text="Loading..." class="btn btn-primary">
-                                                Cadastrar!
-                                            </button>
-                                            <script>
-                                                $('#myButton').on('click', function () {
-                                                    var $btn = $(this).button('loading')
-                                                    //$btn.button('reset')
-                                                })
-                                            </script>
-                                        </div>
+                                        <asp:TextBox ID="txtRazaoSocial" runat="server" CssClass="form-control" placeholder="Razão Social"></asp:TextBox>
                                     </div>
                                 </div>
                             </fieldset>
-                        </form>
-
-                    </div>
+                            <!--Pessoa Fisica-->
+                            <div id="pessoaFisica" runat="server">
+                                <div class="form-group">
+                                    <label for="txtCpf" class="col-lg-2 control-label">CNPJ</label>
+                                    <div class="col-lg-10">
+                                        <asp:TextBox ID="txtCpf" runat="server" CssClass="form-control" placeholder="CPF"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtNome" class="col-lg-2 control-label">Nome</label>
+                                    <div class="col-lg-10">
+                                        <asp:TextBox ID="txtNome" runat="server" CssClass="form-control" placeholder="Nome"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtDtNasc" class="col-lg-2 control-label">Data de Nasc.</label>
+                                    <div class="col-lg-10">
+                                        <asp:TextBox ID="txtDtNasc" runat="server" CssClass="form-control" placeholder="dd/mm/aaaa"></asp:TextBox>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Email / Tel / Senha / Robô / Botão -->
+                            <div class="form-group">
+                                <label for="txtEmailEtapa2" class="col-lg-2 control-label">Email</label>
+                                <div class="col-lg-10">
+                                    <asp:TextBox ID="txtEmailEtapa2" runat="server" CssClass="form-control" placeholder="Email"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="txtTel" class="col-lg-2 control-label">Telefone</label>
+                                <div class="col-lg-10">
+                                    <asp:TextBox ID="txtTel" runat="server" CssClass="form-control" placeholder="Telefone"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="txtSenha" class="col-lg-2 control-label">Senha</label>
+                                <div class="col-lg-10">
+                                    <asp:TextBox ID="txtSenha" runat="server" CssClass="form-control" TextMode="Password" placeholder="Senha"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="txtSenhaConf" class="col-lg-2 control-label">Confirmar Senha</label>
+                                <div class="col-lg-10">
+                                    <asp:TextBox ID="txtSenhaConf" runat="server" CssClass="form-control" TextMode="Password" placeholder="Confirmar Senha"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-10 col-lg-offset-2">
+                                    <div class="checkbox">
+                                        <script src='https://www.google.com/recaptcha/api.js'></script>
+                                        <div class="g-recaptcha" data-sitekey="6Lc-HRcUAAAAAG-oWXYAcgOnqXQ7TEHGEESB_PiZ"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-10 col-lg-offset-2">
+                                    <div>
+                                        <asp:Button runat="server" id="myButtonEtapa2" Text="Cadastrar!" CssClass="btn btn-primary" OnClick="myButtonEtapa2_Click"></asp:Button>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+    <!--Scripts-->
+    <script>
+        //Ocultar Fieldset Pessoa Jutídica
+        window.onload = function ocultarPessoaJuridica() {
+            document.getElementById('<% =pessoaJuridica.ClientID %>').style.display = "none";
+        }
+        //Animação do Botão Cadastrar
+        $('#myButton').on('click', function () {
+            var $btn = $(this).button('loading')
+            //$btn.button('reset')
+        })
+
+        //
+        function tipoPessoaSel() {
+            var dropdown = document.getElementById('<% =dpTipoPessoa.ClientID %>');
+            var valorSelecioando = dropdown.options[dropdown.selectedIndex].value;
+
+            if (valorSelecioando == 1) {
+                document.getElementById('<% =pessoaFisica.ClientID  %>').style.display = "block";
+                document.getElementById('<% =pessoaJuridica.ClientID %>').style.display = "none";
+            } else {
+                document.getElementById('<% =pessoaFisica.ClientID  %>').style.display = "none";
+                document.getElementById('<% =pessoaJuridica.ClientID %>').style.display = "block";
+            }
+        }
+    </script>
 </asp:Content>
+
+

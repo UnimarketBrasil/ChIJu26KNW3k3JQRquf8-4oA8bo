@@ -3,3 +3,8 @@ C:\Users\supportcplug\Desktop\Project\ClassLibrary\ClassLibrary\bin\Debug\ClassL
 C:\Users\supportcplug\Desktop\Project\ClassLibrary\ClassLibrary\obj\Debug\ClassLibrary.csprojResolveAssemblyReference.cache
 C:\Users\supportcplug\Desktop\Project\ClassLibrary\ClassLibrary\obj\Debug\ClassLibrary.dll
 C:\Users\supportcplug\Desktop\Project\ClassLibrary\ClassLibrary\obj\Debug\ClassLibrary.pdb
+C:\Users\supportcplug\Source\Repos\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassLibrary\bin\Debug\ClassLibrary.dll
+C:\Users\supportcplug\Source\Repos\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassLibrary\bin\Debug\ClassLibrary.pdb
+C:\Users\supportcplug\Source\Repos\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassLibrary\obj\Debug\ClassLibrary.csprojResolveAssemblyReference.cache
+C:\Users\supportcplug\Source\Repos\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassLibrary\obj\Debug\ClassLibrary.dll
+C:\Users\supportcplug\Source\Repos\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassLibrary\obj\Debug\ClassLibrary.pdb
