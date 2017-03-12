@@ -57,12 +57,12 @@ namespace ClassLibrary
                     Cmd.Parameters.AddWithValue("@Nascimentp", user.Nascimento);
                     Cmd.Parameters.AddWithValue("@Genero", user.Genero);
                     Cmd.Parameters.AddWithValue("@Telefone", user.Telefone);
-                    Cmd.Parameters.AddWithValue("@Latitude", user.Latitude);
-                    Cmd.Parameters.AddWithValue("@Longitude", user.Longitude);
-                    Cmd.Parameters.AddWithValue("@Complemento", user.Complemento);
-                    Cmd.Parameters.AddWithValue("@AreaAtuacao", user.AreaAtuacao);
-                    Cmd.Parameters.AddWithValue("@IdTipoUsuario", user.Tipousuario.Id);
-                    Cmd.Parameters.AddWithValue("@IdStatusUsuario", user.Tipousuario.Id);
+                    Cmd.Parameters.AddWithValue("@Latitude", "0");
+                    Cmd.Parameters.AddWithValue("@Longitude", "0");
+                    Cmd.Parameters.AddWithValue("@Complemento", "");
+                    Cmd.Parameters.AddWithValue("@AreaAtuacao", "0");
+                    Cmd.Parameters.AddWithValue("@IdTipoUsuario", "1");
+                    Cmd.Parameters.AddWithValue("@IdStatusUsuario", "1");
                 }
                 catch (Exception ex)
                 {

@@ -63,7 +63,7 @@
                             <!--Pessoa Fisica-->
                             <div id="pessoaFisica" runat="server">
                                 <div class="form-group">
-                                    <label for="txtCpf" class="col-lg-2 control-label">CNPJ</label>
+                                    <label for="txtCpf" class="col-lg-2 control-label">CPF</label>
                                     <div class="col-lg-10">
                                         <asp:TextBox ID="txtCpf" runat="server" CssClass="form-control" placeholder="CPF"></asp:TextBox>
                                     </div>
@@ -72,6 +72,12 @@
                                     <label for="txtNome" class="col-lg-2 control-label">Nome</label>
                                     <div class="col-lg-10">
                                         <asp:TextBox ID="txtNome" runat="server" CssClass="form-control" placeholder="Nome"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="txtSobrenome" class="col-lg-2 control-label">Sobrenome</label>
+                                    <div class="col-lg-10">
+                                        <asp:TextBox ID="txtSobrenome" runat="server" CssClass="form-control" placeholder="Nome"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -117,7 +123,7 @@
                             <div class="form-group">
                                 <div class="col-lg-10 col-lg-offset-2">
                                     <div>
-                                        <asp:Button runat="server" id="myButtonEtapa2" Text="Cadastrar!" CssClass="btn btn-primary" OnClick="myButtonEtapa2_Click"></asp:Button>
+                                        <asp:Button runat="server" ID="myButtonEtapa2" Text="Cadastrar!" CssClass="btn btn-primary" OnClick="myButtonEtapa2_Click"></asp:Button>
                                     </div>
                                 </div>
                             </div>
