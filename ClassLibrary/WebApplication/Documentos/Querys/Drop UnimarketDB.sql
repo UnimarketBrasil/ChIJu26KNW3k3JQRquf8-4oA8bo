@@ -12,7 +12,7 @@ drop table SubUsuario
 go
 drop table Usuario
 go
-drop table FuncaoPrincipal
+drop table TipoUsuario
 go
 drop table StatusUsuario
 go

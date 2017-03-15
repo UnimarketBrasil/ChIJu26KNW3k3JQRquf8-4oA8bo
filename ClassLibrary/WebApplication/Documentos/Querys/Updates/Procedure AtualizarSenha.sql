@@ -3,12 +3,12 @@ go
 Excluir AtualizarSenha
 go
 create procedure AtualizarSenha(
-	@IdAdminstrador int,
+	@IdUsuario int,
 	@Senha varchar(50)
 	)
 as
 begin
-	update Administrador set 
+	update Usuario set 
 	senha = @Senha
-	where (Administrador.Id = @IdAdminstrador)
+	where (Usuario.Id = @IdUsuario)
 end

@@ -2,6 +2,7 @@ use UnimarketDB
 go
 Excluir RealizarPedido
 go
+--Falta incluir a funcionalidade de baixa na quantidade ao realizar pedido.
 create procedure RealizarPedido(
 	@CodigoPedido varchar(50),
 	@IdVendedor int,
@@ -21,6 +22,7 @@ as begin
 		@IdStatusPedido
 		);return
 end
+
 go
 Excluir CadastrarItemPedido
 go
@@ -31,6 +33,7 @@ Create procedure CadastrarItemPedido(
 	)
 as
 begin
+--Validar se existe quantidade disponível
 	insert into ItemPedido( 
 	Quantidade, 
 	IdItem,	
@@ -38,6 +41,6 @@ begin
 	) values (
 	@Quantidade, 
 	@IdItem, 
-	@Quantidade
+	@IdPedido
 	)		
 end

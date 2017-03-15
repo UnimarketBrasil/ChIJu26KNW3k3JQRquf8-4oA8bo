@@ -7,7 +7,7 @@ create procedure Recuperarsenha(
 	)
 as
 begin
-	if exists ( select Admisntrador.Id from Admisntrador where Admisntrador.Email = @Email)	
+	if exists ( select Usuario.Id from Usuario where Usuario.Email = @Email)	
 		print 'true'
 	else
 		print 'false'

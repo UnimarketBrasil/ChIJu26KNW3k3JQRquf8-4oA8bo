@@ -5,7 +5,7 @@ create table StatusUsuario(
 	Nome varchar(50) not null
 )
 go
-create table FuncaoPrincipal(
+create table TipoUsuario(
 	Id int Not null primary key identity(1,1),
 	Nome varchar(50) not null
 )
@@ -14,17 +14,17 @@ create table Usuario(
 	Id int Not null primary key identity(1,1),
 	Email varchar(50) not null unique,
 	Nome varchar(50) not null,
-	Sobrenome varchar(50) not null,
+	Sobrenome varchar (50) not null,
 	Senha varchar(50) Not null,
 	CpfCnpj varchar(20) null unique,
 	Nascimento Date null,
 	Genero smallint null,
-	Telefone varchar(15),
-	Longitude bigint not null,
-	Latitude bigint not null,
-	Complemento varchar(255) null,
-	AreaAtuacao real check (AreaAtuacao > 0),
-	IdFuncaoPrincipal int foreign key references FuncaoPrincipal(Id),
+	Telefone varchar(15) not null,
+	Longitude bigint null,
+	Latitude bigint null,
+	Complemento varchar(50) null,
+	AreaAtuacao real check ((AreaAtuacao > -1) or (AreaAtuacao = null)),
+	IdTipoUsuario int foreign key references TipoUsuario(Id),
 	IdStatusUsuario int foreign key references StatusUsuario(Id) default 2,
 	DataCadastro dateTime default getdate()
 )
@@ -32,7 +32,6 @@ go
 create table SubUsuario(
 	Id int not null primary key identity(1,1),
 	Nome varchar(50) not null,
-	Sobrenome varchar (50) not null,
 	Email varchar(50) not null,
 	Senha varchar(50) not null,
 	IdUsuario int foreign key references Usuario(Id),
@@ -74,7 +73,7 @@ create table Item(
 go
 create table ItemPedido(
 	Id int not null primary key identity(1,1),
-	Quantidade varchar(20) null,
+	Quantidade int null, --Alterar nas procedures
 	IdItem int not null foreign key references Item(Id),
 	IdPedido int not null foreign key references Pedido(Id),
 	Desabilitado bit not null default 'false'
@@ -88,9 +87,9 @@ insert into StatusUsuario values ('Ativo')
 insert into StatusUsuario values ('Pendênte')
 insert into StatusUsuario values ('Bloqueado')
 go
-insert into FuncaoPrincipal values ('Admin')
-insert into FuncaoPrincipal values ('Vendedor')
-insert into FuncaoPrincipal values ('Comprador')
+insert into TipoUsuario values ('Admin')
+insert into TipoUsuario values ('Vendedor')
+insert into TipoUsuario values ('Comprador')
 go
 insert into Categoria values ('Eletro')
 insert into Categoria values ('Bebidas')
