@@ -9,7 +9,7 @@ create procedure CadastrarUsuario(
 	@Senha varchar(50),
 	@CpfCnpj varchar(20),
 	@Nascimento datetime,
-	@Genero smallint,
+	--@Genero smallint, *GENERO NÃO É OBRIGATORIO NO CADASTRO DE PESSOA JURÍDICA
 	@Telefone varchar(15),
 	@IdTipoUsuario int
 	)
