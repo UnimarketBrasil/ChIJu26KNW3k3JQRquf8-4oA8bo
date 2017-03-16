@@ -130,6 +130,15 @@ namespace WebApplication {
         protected global::System.Web.UI.WebControls.TextBox txtDtNasc;
         
         /// <summary>
+        /// dpGenero control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dpGenero;
+        
+        /// <summary>
         /// txtEmailEtapa2 control.
         /// </summary>
         /// <remarks>
@@ -164,6 +173,15 @@ namespace WebApplication {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSenhaConf;
+        
+        /// <summary>
+        /// rdOperacao control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList rdOperacao;
         
         /// <summary>
         /// myButtonEtapa2 control.

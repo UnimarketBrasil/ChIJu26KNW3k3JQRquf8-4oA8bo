@@ -86,6 +86,15 @@
                                         <asp:TextBox ID="txtDtNasc" runat="server" CssClass="form-control" placeholder="dd/mm/aaaa"></asp:TextBox>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label for="dpGenero" class="col-lg-2 control-label">Genero</label>
+                                    <div class="col-lg-10">
+                                        <asp:DropDownList CssClass="form-control" ID="dpGenero" runat="server">
+                                            <asp:ListItem Text="Masculino" Value="1" />
+                                            <asp:ListItem Text="Feminino" Value="2" />
+                                        </asp:DropDownList>
+                                    </div>
+                                </div>
                             </div>
                             <!--Email / Tel / Senha / Robô / Botão -->
                             <div class="form-group">
@@ -110,6 +119,15 @@
                                 <label for="txtSenhaConf" class="col-lg-2 control-label">Confirmar Senha</label>
                                 <div class="col-lg-10">
                                     <asp:TextBox ID="txtSenhaConf" runat="server" CssClass="form-control" TextMode="Password" placeholder="Confirmar Senha"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="rdCompra" class="col-lg-2 control-label">Cê quer o que?</label>
+                                <div class="col-lg-10">
+                                    <asp:RadioButtonList ID="rdOperacao" runat="server" RepeatLayout="Flow">
+                                        <asp:ListItem Value="1">Comprar</asp:ListItem>
+                                        <asp:ListItem Value="2">Vender</asp:ListItem>
+                                    </asp:RadioButtonList>
                                 </div>
                             </div>
                             <div class="form-group">

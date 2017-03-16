@@ -29,18 +29,25 @@ namespace WebApplication
         protected void myButtonEtapa2_Click(object sender, EventArgs e)
         {
             Usuario u = new Usuario();
+
             u.Email = txtEmailEtapa2.Text;
-            if (dpTipoPessoa.SelectedIndex == 1)
+            if (dpTipoPessoa.SelectedValue == "1")
             {
                 u.Nome = txtNome.Text;
+                u.Sobrenome = txtSobrenome.Text;
                 u.CpfCnpj = txtCpf.Text;
                 u.Nascimento = DateTime.Today;
-                u.Senha = txtSenha.Text;
-                u.Genero = 1;
-                u.Telefone = txtTel.Text;
-
+                u.Genero = int.Parse(dpGenero.SelectedValue);
             }
-
+            else
+            {
+                u.Nome = txtRazaoSocial.Text;
+                u.CpfCnpj = txtCnpj.Text;
+                u.Nascimento = DateTime.Today;//Falta arrumar
+            }
+            u.Senha = txtSenha.Text;
+            u.Telefone = txtTel.Text;
+            //u.Tipousuario = 1;
             u.CadastrarUsuario(u);
         }
     }

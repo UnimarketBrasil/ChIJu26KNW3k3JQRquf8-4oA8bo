@@ -14,7 +14,7 @@ create table Usuario(
 	Id int Not null primary key identity(1,1),
 	Email varchar(50) not null unique,
 	Nome varchar(50) not null,
-	Sobrenome varchar (50) not null,
+	Sobrenome varchar (50) null,--SOBRENOME DO USUÁRIO PODE SER NÚLO
 	Senha varchar(50) Not null,
 	CpfCnpj varchar(20) null unique,
 	Nascimento Date null,

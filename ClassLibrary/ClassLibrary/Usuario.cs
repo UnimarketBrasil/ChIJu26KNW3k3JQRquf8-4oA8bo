@@ -54,15 +54,10 @@ namespace ClassLibrary
                     Cmd.Parameters.AddWithValue("@Sobrenome", user.Sobrenome);
                     Cmd.Parameters.AddWithValue("@Senha", user.Senha);
                     Cmd.Parameters.AddWithValue("@CpfCnpj", user.CpfCnpj);
-                    Cmd.Parameters.AddWithValue("@Nascimentp", user.Nascimento);
-                    Cmd.Parameters.AddWithValue("@Genero", user.Genero);
+                    Cmd.Parameters.AddWithValue("@Nascimento", user.Nascimento);
                     Cmd.Parameters.AddWithValue("@Telefone", user.Telefone);
-                    Cmd.Parameters.AddWithValue("@Latitude", "0");
-                    Cmd.Parameters.AddWithValue("@Longitude", "0");
-                    Cmd.Parameters.AddWithValue("@Complemento", "");
-                    Cmd.Parameters.AddWithValue("@AreaAtuacao", "0");
                     Cmd.Parameters.AddWithValue("@IdTipoUsuario", "1");
-                    Cmd.Parameters.AddWithValue("@IdStatusUsuario", "1");
+                    Cmd.ExecuteNonQuery();
                 }
                 catch (Exception ex)
                 {
