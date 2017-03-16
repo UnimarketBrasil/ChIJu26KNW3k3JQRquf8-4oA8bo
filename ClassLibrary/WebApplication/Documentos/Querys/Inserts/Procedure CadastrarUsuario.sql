@@ -23,7 +23,7 @@ begin
 	 @Senha,
 	 @CpfCnpj,
 	 @Nascimento,
-	 @Genero,
+	 --@Genero, *GENERO NÃO É OBRIGATORIO NO CADASTRO DE PESSOA JURÍDICA
 	 @Telefone,
 	 @IdTipoUsuario
 	 )
