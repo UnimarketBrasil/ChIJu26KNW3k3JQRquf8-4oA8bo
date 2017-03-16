@@ -15,7 +15,7 @@ create procedure CadastrarUsuario(
 	)
 as 
 begin
-	 insert into Usuario( Email, Nome, Sobrenome, Senha, CpfCnpj, Nascimento, Genero, Telefone, IdTipoUsuario) 
+	 insert into Usuario( Email, Nome, Sobrenome, Senha, CpfCnpj, Nascimento, Telefone, IdTipoUsuario) 
 	 values(
 	 @Email,
 	 @Nome,
