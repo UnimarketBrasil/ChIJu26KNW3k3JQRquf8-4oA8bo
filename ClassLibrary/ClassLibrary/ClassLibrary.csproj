@@ -43,7 +43,7 @@
   <ItemGroup>
     <Compile Include="Categoria.cs" />
     <Compile Include="Conexao.cs" />
-    <Compile Include="Utilidade.cs" />
+    <Compile Include="Utilitario.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="Pedido.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

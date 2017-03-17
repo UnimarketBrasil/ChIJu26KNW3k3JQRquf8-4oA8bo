@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary
 {
-    public class Utilidade
+    public class Utilitario
     {
         public bool IsEmail(string email)
         {

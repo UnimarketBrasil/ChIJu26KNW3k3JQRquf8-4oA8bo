@@ -17,8 +17,8 @@ namespace WebApplication
 
         protected void myButtonEtapa1_Click(object sender, EventArgs e)
         {
-            Utilidade u = new Utilidade();
-            if (u.validarEmail(txtEmailEtapa1.Text))
+            Utilitario u = new Utilitario();
+            if (u.IsEmail(txtEmailEtapa1.Text))
             {
                 dvSegundaEtapa.Visible = true;
                 dvPrimeiraEtapa.Visible = false;
