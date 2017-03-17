@@ -92,6 +92,7 @@
                                         <asp:DropDownList CssClass="form-control" ID="dpGenero" runat="server">
                                             <asp:ListItem Text="Masculino" Value="1" />
                                             <asp:ListItem Text="Feminino" Value="2" />
+                                            <asp:ListItem Text="Outros" Value="3" />
                                         </asp:DropDownList>
                                     </div>
                                 </div>

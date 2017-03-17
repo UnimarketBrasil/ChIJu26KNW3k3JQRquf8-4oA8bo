@@ -16,7 +16,7 @@ create table Usuario(
 	Nome varchar(50) not null,
 	Sobrenome varchar (50) null,--SOBRENOME DO USUÁRIO PODE SER NÚLO
 	Senha varchar(50) Not null,
-	CpfCnpj varchar(20) null unique,
+	CpfCnpj varchar(20) Not null unique,
 	Nascimento Date null,
 	Genero smallint null,
 	Telefone varchar(15) not null,
