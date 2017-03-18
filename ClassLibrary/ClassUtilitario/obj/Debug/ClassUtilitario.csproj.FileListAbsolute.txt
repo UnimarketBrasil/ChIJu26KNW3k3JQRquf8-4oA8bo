@@ -3,3 +3,8 @@ C:\Users\supportcplug\Source\Repos\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\Clas
 C:\Users\supportcplug\Source\Repos\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\obj\Debug\ClassUtilitario.csprojResolveAssemblyReference.cache
 C:\Users\supportcplug\Source\Repos\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\obj\Debug\ClassUtilitario.dll
 C:\Users\supportcplug\Source\Repos\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\obj\Debug\ClassUtilitario.pdb
+C:\Users\Cleiton\Source\Repos\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\bin\Debug\ClassUtilitario.dll
+C:\Users\Cleiton\Source\Repos\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\bin\Debug\ClassUtilitario.pdb
+C:\Users\Cleiton\Source\Repos\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\obj\Debug\ClassUtilitario.csprojResolveAssemblyReference.cache
+C:\Users\Cleiton\Source\Repos\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\obj\Debug\ClassUtilitario.dll
+C:\Users\Cleiton\Source\Repos\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\obj\Debug\ClassUtilitario.pdb
