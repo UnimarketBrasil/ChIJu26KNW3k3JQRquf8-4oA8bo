@@ -11,12 +11,19 @@ create procedure IncluirEndereco(
 	)
 as
 begin
-	update Usuario
-	set
-	Usuario.Longitude = @Longitude,
-	Usuario.Latitude = @Latitude,
-	Usuario.AreaAtuacao = @AreaAtuacao,
-	Usuario.Complemento = @Complemento,
-	Usuario.IdStatusUsuario = 1
-	where (Usuario.Id = @IdUsuario)
+	begin try
+		begin tran
+			update Usuario
+			set
+			Usuario.Longitude = @Longitude,
+			Usuario.Latitude = @Latitude,
+			Usuario.AreaAtuacao = @AreaAtuacao,
+			Usuario.Complemento = @Complemento,
+			Usuario.IdStatusUsuario = 1
+			where (Usuario.Id = @IdUsuario)
+		commit tran
+	end try
+	begin catch
+		rollback tran
+	end catch 
 end

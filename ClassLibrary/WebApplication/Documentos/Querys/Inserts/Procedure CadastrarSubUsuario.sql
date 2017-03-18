@@ -10,16 +10,23 @@ create procedure CadastrarSubUsuario(
 	)
 as
 begin
-	insert into SubUsuario (
-	Nome,
-	Email,
-	Senha,
-	IdUsuario
-	) 
-	values(
-	@Nome,
-	@Email,
-	@Senha,
-	@IdUsuario
-	)
+	begin try
+		begin tran
+			insert into SubUsuario (
+			Nome,
+			Email,
+			Senha,
+			IdUsuario
+			) 
+			values(
+			@Nome,
+			@Email,
+			@Senha,
+			@IdUsuario
+			)
+		commit tran
+	end try
+	begin catch
+		rollback tran
+	end catch 
 end

@@ -7,6 +7,14 @@ create procedure FinalizarPedido(
 	)
 as
 begin
-	update Item set 
-	Item.Quantidade = (select ItemPedido.Quantidade from ItemPedido where (ItemPedido.IdPedido = @IdPedido)or(ItemPedido.IdItem = Item.Id))
+	begin try
+		begin tran
+			update Item set 
+			Item.Quantidade = (select ItemPedido.Quantidade from ItemPedido 
+			where (ItemPedido.IdPedido = @IdPedido)or(ItemPedido.IdItem = Item.Id))
+		commit tran
+	end try
+	begin catch
+		rollback tran
+	end catch 
 end

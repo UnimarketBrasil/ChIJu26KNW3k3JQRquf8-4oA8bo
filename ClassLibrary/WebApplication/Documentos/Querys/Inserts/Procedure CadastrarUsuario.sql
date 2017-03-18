@@ -9,24 +9,31 @@ create procedure CadastrarUsuario(
 	@Senha varchar(50),
 	@CpfCnpj varchar(20),
 	@Nascimento datetime,
-	--@Genero smallint, *GENERO NÃO É OBRIGATORIO NO CADASTRO DE PESSOA JURÍDICA
+	@Genero smallint,
 	@Telefone varchar(15),
 	@IdTipoUsuario int
 	)
 as 
 begin
-	 insert into Usuario( Email, Nome, Sobrenome, Senha, CpfCnpj, Nascimento, Telefone, IdTipoUsuario) 
-	 values(
-	 @Email,
-	 @Nome,
-	 @Sobrenome,
-	 @Senha,
-	 @CpfCnpj,
-	 @Nascimento,
-	 --@Genero, *GENERO NÃO É OBRIGATORIO NO CADASTRO DE PESSOA JURÍDICA
-	 @Telefone,
-	 @IdTipoUsuario
-	 )
+	begin try
+		begin tran
+			insert into Usuario( Email, Nome, Sobrenome, Senha, CpfCnpj, Nascimento, Genero, Telefone, IdTipoUsuario) 
+			 values(
+			 @Email,
+			 @Nome,
+			 @Sobrenome,
+			 @Senha,
+			 @CpfCnpj,
+			 @Nascimento,
+			 @Genero,
+			 @Telefone,
+			 @IdTipoUsuario
+			 )
+		commit tran
+	end try
+	begin catch
+		rollback tran
+	end catch 
 end
  
 

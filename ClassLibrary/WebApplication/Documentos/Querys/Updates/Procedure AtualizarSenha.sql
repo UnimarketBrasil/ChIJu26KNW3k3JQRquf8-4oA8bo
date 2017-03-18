@@ -8,7 +8,14 @@ create procedure AtualizarSenha(
 	)
 as
 begin
-	update Usuario set 
-	senha = @Senha
-	where (Usuario.Id = @IdUsuario)
+	begin try
+		begin tran
+			update Usuario set 
+			senha = @Senha
+			where (Usuario.Id = @IdUsuario)
+		commit tran
+	end try
+	begin catch
+		rollback tran
+	end catch 
 end

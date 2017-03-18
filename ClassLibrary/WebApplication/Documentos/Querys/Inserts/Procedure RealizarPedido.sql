@@ -10,17 +10,24 @@ create procedure RealizarPedido(
 	@IdStatusPedido int
 	)
 as begin
-	insert into Pedido(
-		Codigo,
-		IdVendedor,
-		IdComprador,
-		IdStatusPedido
-		)  output inserted.Id values (
-		@CodigoPedido,
-		@IdVendedor,
-		@IdComprador,
-		@IdStatusPedido
-		);return
+	begin try
+		begin tran
+			insert into Pedido(
+			Codigo,
+			IdVendedor,
+			IdComprador,
+			IdStatusPedido
+			)  output inserted.Id values (
+			@CodigoPedido,
+			@IdVendedor,
+			@IdComprador,
+			@IdStatusPedido
+			);return
+		commit tran
+	end try
+	begin catch
+		rollback tran
+	end catch 
 end
 
 go
@@ -33,14 +40,20 @@ Create procedure CadastrarItemPedido(
 	)
 as
 begin
---Validar se existe quantidade disponível
-	insert into ItemPedido( 
-	Quantidade, 
-	IdItem,	
-	IdPedido
-	) values (
-	@Quantidade, 
-	@IdItem, 
-	@IdPedido
-	)		
+	begin try
+		begin tran		
+			insert into ItemPedido( 
+			Quantidade, 
+			IdItem,	
+			IdPedido
+			) values (
+			@Quantidade, 
+			@IdItem, 
+			@IdPedido
+			)		
+		commit tran
+	end try
+	begin catch
+		rollback tran
+	end catch 
 end

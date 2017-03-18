@@ -12,12 +12,19 @@ create procedure AtualizarItem(
 	@IdCategoria int
 	)
 as begin
-	update Item set
-	Codigo = @Codigo,
-    Nome = @Nome,
-	Descricao = @Descricao,
-	ValorUnitario = @ValorUnitario,
-	Quantidade = @Quantidade,
-	Idcategoria = @IdCategoria
-	where (Item.Id = @IdItem)
+	begin try
+		begin tran		
+			update Item set
+			Codigo = @Codigo,
+			Nome = @Nome,
+			Descricao = @Descricao,
+			ValorUnitario = @ValorUnitario,
+			Quantidade = @Quantidade,
+			Idcategoria = @IdCategoria
+			where (Item.Id = @IdItem)
+		commit tran
+	end try
+	begin catch
+		rollback tran
+	end catch 
 end

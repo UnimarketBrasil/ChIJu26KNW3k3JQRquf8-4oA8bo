@@ -7,7 +7,14 @@ create procedure DesabilitarItemPorId(
 	)
 as
 begin
-	update Item
-	set Desabilitado = 'true'
-	where Item.Id = @IdItem
+	begin try
+		begin tran
+			update Item
+			set Desabilitado = 'true'
+			where Item.Id = @IdItem
+		commit tran
+	end try
+	begin catch
+		rollback tran
+	end catch 
 end

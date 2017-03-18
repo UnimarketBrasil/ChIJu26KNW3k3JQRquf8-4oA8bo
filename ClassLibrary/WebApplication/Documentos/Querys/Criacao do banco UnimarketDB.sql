@@ -14,19 +14,19 @@ create table Usuario(
 	Id int Not null primary key identity(1,1),
 	Email varchar(50) not null unique,
 	Nome varchar(50) not null,
-	Sobrenome varchar (50) null,--SOBRENOME DO USUÁRIO PODE SER NÚLO
+	Sobrenome varchar (50) null,
 	Senha varchar(50) Not null,
-	CpfCnpj varchar(20) Not null unique,
+	CpfCnpj varchar(20) not null unique,
 	Nascimento Date null,
 	Genero smallint null,
 	Telefone varchar(15) not null,
 	Longitude bigint null,
 	Latitude bigint null,
 	Complemento varchar(50) null,
-	AreaAtuacao real check ((AreaAtuacao > -1) or (AreaAtuacao = null)),
+	AreaAtuacao real null check (AreaAtuacao > 0),
 	IdTipoUsuario int foreign key references TipoUsuario(Id),
 	IdStatusUsuario int foreign key references StatusUsuario(Id) default 2,
-	DataCadastro dateTime default getdate()
+	DataCadastro dateTime not null default getdate()
 )
 go
 create table SubUsuario(
@@ -35,7 +35,7 @@ create table SubUsuario(
 	Email varchar(50) not null,
 	Senha varchar(50) not null,
 	IdUsuario int foreign key references Usuario(Id),
-	DataCadastro dateTime default getdate(),
+	DataCadastro dateTime not null default getdate(),
 	Desabilitado bit not null default 'false'
 )
 go
@@ -64,7 +64,7 @@ create table Item(
 	Nome varchar(50) not null,
 	Descricao varchar(255) not null,
 	ValorUnitario real not null,
-	Quantidade varchar(20) null,
+	Quantidade varchar(20) null check (Quantidade > -1),
 	IdCategoria int foreign key references Categoria(Id),
 	IdUsuario int not null foreign key references Usuario(Id),
 	DataCadastro DateTime not null default getdate(),

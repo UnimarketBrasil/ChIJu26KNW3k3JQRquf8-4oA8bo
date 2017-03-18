@@ -12,22 +12,29 @@ create procedure CadastrarItem(
 	@IdUsuario int
 	)
 as begin
-	insert into Item (
-	Codigo,
-    Nome,
-	Descricao,
-	ValorUnitario,
-	Quantidade,
-	IdCategoria,
-	IdUsuario
-	) 
-	values (
-	@Codigo,
-    @Nome,
-	@Descricao,
-	@ValorUnitario,
-	@Quantidade,
-	@IdCategoria,
-	@IdUsuario
-	)
+	begin try
+		begin tran
+			insert into Item (
+			Codigo,
+			Nome,
+			Descricao,
+			ValorUnitario,
+			Quantidade,
+			IdCategoria,
+			IdUsuario
+			) 
+			values (
+			@Codigo,
+			@Nome,
+			@Descricao,
+			@ValorUnitario,
+			@Quantidade,
+			@IdCategoria,
+			@IdUsuario
+			)
+		commit tran
+	end try
+	begin catch
+		rollback tran
+	end catch 
 end

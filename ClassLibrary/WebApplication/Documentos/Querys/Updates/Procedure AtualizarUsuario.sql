@@ -14,14 +14,21 @@ create  procedure AtualizarUsuario(
 	)
 as
 begin
-	update administrador set
-	Email = @Email,
-	Nome = @Nome,
-	Telefone = @Telefone,
-	Latitude = @Latitude,
-	Longitude = @Longitude,
-	Complemento = @Complemento,
-	AreaAtuacao = @AreaAtuacao
-	where ( Id = @IdUsuario )
+	begin try
+		begin tran
+			update administrador set
+			Email = @Email,
+			Nome = @Nome,
+			Telefone = @Telefone,
+			Latitude = @Latitude,
+			Longitude = @Longitude,
+			Complemento = @Complemento,
+			AreaAtuacao = @AreaAtuacao
+			where ( Id = @IdUsuario )
+		commit tran
+	end try
+	begin catch
+		rollback tran
+	end catch 
 end
 	
