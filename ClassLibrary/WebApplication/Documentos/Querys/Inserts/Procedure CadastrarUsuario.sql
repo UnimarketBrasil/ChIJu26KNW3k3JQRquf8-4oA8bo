@@ -17,7 +17,8 @@ as
 begin
 	begin try
 		begin tran
-			insert into Usuario( Email,
+			insert into Usuario( 
+			 Email,
 			 Nome,
 			 Sobrenome,
 			 Senha, 
