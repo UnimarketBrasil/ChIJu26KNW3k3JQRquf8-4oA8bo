@@ -15,7 +15,7 @@ create table Usuario(
 	Email varchar(50) not null unique,
 	Nome varchar(50) not null,
 	Sobrenome varchar (50) null,
-	Senha varchar(50) Not null,
+	Senha varchar(50) not null,
 	CpfCnpj varchar(20) not null unique,
 	Nascimento Date null,
 	Genero smallint null,
@@ -54,7 +54,7 @@ create table Pedido(
 	Codigo varchar(50) not null,
 	IdVendedor int not null foreign key references Usuario(Id),
 	IdComprador int not null foreign key references Usuario(Id),
-	IdStatusPedido int not null foreign key references StatusPedido(Id),
+	IdStatusPedido int not null foreign key references StatusPedido(Id) default 1,
 	Data DateTime not null default getdate()
 )
 go

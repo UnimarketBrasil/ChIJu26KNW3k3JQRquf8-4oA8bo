@@ -17,7 +17,16 @@ as
 begin
 	begin try
 		begin tran
-			insert into Usuario( Email, Nome, Sobrenome, Senha, CpfCnpj, Nascimento, Genero, Telefone, IdTipoUsuario) 
+			insert into Usuario( Email,
+			 Nome,
+			 Sobrenome,
+			 Senha, 
+			 CpfCnpj,
+			 Nascimento, 
+			 Genero, 
+			 Telefone, 
+			 IdTipoUsuario
+			 ) 
 			 values(
 			 @Email,
 			 @Nome,

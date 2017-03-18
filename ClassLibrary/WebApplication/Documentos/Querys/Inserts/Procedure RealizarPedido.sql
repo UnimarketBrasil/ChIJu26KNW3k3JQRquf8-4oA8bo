@@ -2,7 +2,6 @@ use UnimarketDB
 go
 Excluir RealizarPedido
 go
---Falta incluir a funcionalidade de baixa na quantidade ao realizar pedido.
 create procedure RealizarPedido(
 	@CodigoPedido varchar(50),
 	@IdVendedor int,

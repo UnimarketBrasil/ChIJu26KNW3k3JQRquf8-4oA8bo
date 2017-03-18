@@ -127,6 +127,7 @@
     <Content Include="Documentos\Querys\Updates\Procedure AtualizarSenha.sql" />
     <Content Include="Documentos\Querys\Updates\Procedure AtualizarSenhaSubUsuario.sql" />
     <Content Include="Documentos\Querys\Updates\Procedure AtualizarUsuario.sql" />
+    <Content Include="Documentos\Querys\Deletes\Procedure CancelarPedido.sql" />
     <Content Include="Documentos\Querys\Updates\Procedure FinalizarPedido.sql" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
