@@ -55,6 +55,7 @@ namespace ClassLibrary
                     Cmd.Parameters.AddWithValue("@Senha", user.Senha);
                     Cmd.Parameters.AddWithValue("@CpfCnpj", user.CpfCnpj);
                     Cmd.Parameters.AddWithValue("@Nascimento", user.Nascimento);
+                    Cmd.Parameters.AddWithValue("@Genero", user.Genero);
                     Cmd.Parameters.AddWithValue("@Telefone", user.Telefone);
                     Cmd.Parameters.AddWithValue("@IdTipoUsuario", "1");
                     Cmd.ExecuteNonQuery();
