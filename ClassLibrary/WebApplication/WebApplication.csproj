@@ -254,6 +254,10 @@
       <Project>{7b02c314-1de0-4f1f-8ef5-a5ddcc698bd8}</Project>
       <Name>ClassLibrary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ClassUtilitario\ClassUtilitario.csproj">
+      <Project>{cb45b2ec-5075-4629-bbef-4b58766650dd}</Project>
+      <Name>ClassUtilitario</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
