@@ -41,15 +41,19 @@ as
 begin
 	begin try
 		begin tran		
-			insert into ItemPedido( 
-			Quantidade, 
-			IdItem,	
-			IdPedido
-			) values (
-			@Quantidade, 
-			@IdItem, 
-			@IdPedido
-			)		
+			if ((select Quantidade from Item where (Item.Id = @IdItem)) >= (@Quantidade))
+				begin
+					insert into ItemPedido( 
+					Quantidade, 
+					IdItem,	
+					IdPedido
+					)
+					values (
+					@Quantidade, 
+					@IdItem, 
+					@IdPedido
+					)		
+			  end
 		commit tran
 	end try
 	begin catch
