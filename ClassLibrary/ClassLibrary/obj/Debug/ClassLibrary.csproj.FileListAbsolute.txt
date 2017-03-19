@@ -18,3 +18,8 @@ C:\Users\numero\Desktop\NovaPasta\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\Class
 C:\Users\numero\Desktop\NovaPasta\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassLibrary\obj\Debug\ClassLibrary.csprojResolveAssemblyReference.cache
 C:\Users\numero\Desktop\NovaPasta\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassLibrary\obj\Debug\ClassLibrary.dll
 C:\Users\numero\Desktop\NovaPasta\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassLibrary\obj\Debug\ClassLibrary.pdb
+C:\Users\José\Documents\TCC\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassLibrary\bin\Debug\ClassLibrary.dll
+C:\Users\José\Documents\TCC\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassLibrary\bin\Debug\ClassLibrary.pdb
+C:\Users\José\Documents\TCC\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassLibrary\obj\Debug\ClassLibrary.csprojResolveAssemblyReference.cache
+C:\Users\José\Documents\TCC\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassLibrary\obj\Debug\ClassLibrary.dll
+C:\Users\José\Documents\TCC\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassLibrary\obj\Debug\ClassLibrary.pdb
