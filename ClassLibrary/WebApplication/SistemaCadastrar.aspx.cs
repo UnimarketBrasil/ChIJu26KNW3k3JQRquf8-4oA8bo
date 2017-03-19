@@ -49,7 +49,7 @@ namespace WebApplication
             }
             u.Senha = txtSenha.Text;
             u.Telefone = txtTel.Text;
-            //u.Tipousuario = 1;
+            u.Tipousuario = new TipoUsuario(int.Parse(rdOperacao.SelectedValue));
             u.CadastrarUsuario(u);
         }
     }

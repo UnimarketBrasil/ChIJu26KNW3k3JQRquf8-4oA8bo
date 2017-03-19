@@ -126,8 +126,8 @@
                                 <label for="rdCompra" class="col-lg-2 control-label">Cê quer o que?</label>
                                 <div class="col-lg-10">
                                     <asp:RadioButtonList ID="rdOperacao" runat="server" RepeatLayout="Flow">
-                                        <asp:ListItem Value="1">Comprar</asp:ListItem>
-                                        <asp:ListItem Value="2">Vender</asp:ListItem>
+                                        <asp:ListItem Value="2">Comprar</asp:ListItem>
+                                        <asp:ListItem Value="3">Vender</asp:ListItem>
                                     </asp:RadioButtonList>
                                 </div>
                             </div>

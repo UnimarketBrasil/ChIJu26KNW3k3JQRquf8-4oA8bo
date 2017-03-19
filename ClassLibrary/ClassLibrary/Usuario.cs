@@ -57,12 +57,48 @@ namespace ClassLibrary
                     Cmd.Parameters.AddWithValue("@Nascimento", user.Nascimento);
                     Cmd.Parameters.AddWithValue("@Genero", user.Genero);
                     Cmd.Parameters.AddWithValue("@Telefone", user.Telefone);
-                    Cmd.Parameters.AddWithValue("@IdTipoUsuario", "1");
+                    Cmd.Parameters.AddWithValue("@IdTipoUsuario", user.Tipousuario.Id);
                     Cmd.ExecuteNonQuery();
                 }
                 catch (Exception ex)
                 {
                     throw new Exception("Erro ao cadastrar usuario: " + ex.Message.ToString());
+                }
+                finally
+                {
+                    FecharConexao();
+                }
+            }
+        }
+
+        public bool ValidarEmailCpfCnpj(Usuario user)
+        {
+            bool valido=true;
+            DataTable dt = new DataTable();
+            Abrirconexao();
+
+            using (Cmd = new SqlCommand("CadastrarUsuario", Con))
+            {
+                try
+                {
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@Email", user.Email);
+                    Cmd.Parameters.AddWithValue("@CpfCnpj", user.CpfCnpj);
+                    Cmd.ExecuteNonQuery();
+
+                    SqlDataAdapter sda = new SqlDataAdapter(Cmd);
+                    sda.Fill(dt);
+
+                    if (dt.Rows.Count <=0)
+                    {
+                        return true;
+                    }
+
+                }
+                catch
+                {
+                    //throw new Exception("Erro ao cadastrar usuario: " + ex.Message.ToString());
+                    valido = false;
                 }
                 finally
                 {
