@@ -43,6 +43,7 @@ namespace WebApplication
             else
             {
                 u.Nome = txtRazaoSocial.Text;
+                u.Sobrenome = null;
                 u.CpfCnpj = txtCnpj.Text;
                 u.Nascimento = DateTime.Today;//Falta arrumar
             }
