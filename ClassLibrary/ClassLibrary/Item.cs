@@ -18,7 +18,7 @@ namespace ClassLibrary
 
         public Categoria Categoria { get; set; }
 
-        public Usuario Usario { get; set; }
+        public Usuario Usuario { get; set; }
 
         public DateTime DataCadastro { get; set; }
 

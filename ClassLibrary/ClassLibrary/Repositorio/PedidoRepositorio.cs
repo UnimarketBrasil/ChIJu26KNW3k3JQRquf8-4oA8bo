@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,5 +9,151 @@ namespace ClassLibrary.Repositorio
 {
     class PedidoRepositorio : Conexao
     {
+
+        //Insert Pedido
+        public void RealizarPedido(Pedido pedido)
+        {
+            Abrirconexao();
+
+            using (Cmd = new SqlCommand("RealizarPedido", Con))
+            {
+                try
+                {
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@Codigo", pedido.Codigo);
+                    Cmd.Parameters.AddWithValue("@IdVendedor", pedido.Vendedor.Id);
+                    Cmd.Parameters.AddWithValue("@Idcomprador", pedido.Vendedor.Id);
+                    Cmd.Parameters.AddWithValue("@IdStatusPedido", pedido.StatusPedido.Id);
+
+                    if (Dr.Read())
+                        pedido.Id = Convert.ToInt32(Dr["Inserted.Id"]);
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Erro ao reaizar pedido : " + ex.Message);
+                }
+            }
+
+            using (Cmd = new SqlCommand("CadastrarItemPedido", Con))
+            {
+                try
+                {
+                    Cmd.CommandType = CommandType.StoredProcedure;
+
+                    foreach (var i in pedido.Item)
+                    {
+                        Cmd.Parameters.AddWithValue("@IdItemPedido", pedido.Id);
+                        Cmd.Parameters.AddWithValue("@IdItem", i.Id);
+                        Cmd.Parameters.AddWithValue("@Quantidade", i.Quantidade);
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Erro ao cadastrar item pedido : " + ex.Message);
+                }
+            }
+        }
+
+        //List Pedido
+        public List<Pedido> ListarPedido(int idUsuario)
+        {
+            Abrirconexao();
+
+            using (Cmd = new SqlCommand("ListarPedido", Con))
+            {
+                try
+                {
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@IdUsuario", idUsuario);
+
+                    List<Pedido> pedidoList = new List<Pedido>();
+
+                    while (Dr.Read())
+                    {
+                        Pedido pedido = new Pedido();
+                        pedido.Id = Convert.ToInt32(Dr["Pedido.Id"]);
+                        pedido.Codigo = Convert.ToString(Dr["Pedido.Codigo"]);
+                        pedido.Comprador.Nome = Convert.ToString(Dr["Usuario.Nome"]);
+
+                        pedidoList.Add(pedido);
+                    }
+
+                    return pedidoList;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Ao Listar pedido: " + ex.Message);
+                }
+                finally
+                {
+                    FecharConexao();
+                }
+            }
+
+        }
+
+        //List Pedidos pelo Status
+        public List<Pedido> ListarpedidosPeloStatus(int idUsuario, int idStatusPedido)
+        {
+            Abrirconexao();
+
+            using (Cmd = new SqlCommand("ListarPedidoPeloStatus", Con))
+            {
+                try
+                {
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@IdUsuario", idUsuario);
+                    Cmd.Parameters.AddWithValue("@IdStatusPedido", idStatusPedido);
+
+                    List<Pedido> pedidoList = new List<Pedido>();
+
+                    while (Dr.Read())
+                    {
+                        Pedido pedido = new Pedido();
+                        pedido.Id = Convert.ToInt32(Dr["Pedido.Id"]);
+                        pedido.Codigo = Convert.ToString(Dr["Pedido.Codigo"]);
+                        pedido.Comprador.Nome = Convert.ToString(Dr["Usuario.Nome"]);
+
+                        pedidoList.Add(pedido);
+                    }
+
+                    return pedidoList;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Ao Listar pedido: " + ex.Message);
+                }
+                finally
+                {
+                    FecharConexao();
+                }
+            }
+        }
+
+        //Alter Satatus Pedido
+        public void AlterarStatusPedido(int idPedido, int idStatusPedido)
+        {
+            Abrirconexao();
+
+            using (Cmd = new SqlCommand("AlterarStatusPedido", Con))
+            {
+                try
+                {
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@IdPedido", idPedido);
+                    Cmd.Parameters.AddWithValue("@IdStatusPedido", idStatusPedido);
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Erro ao alterar pedido: " + ex.Message);
+                }
+                finally
+                {
+                    FecharConexao();
+                }
+            }
+
+        }
     }
 }
