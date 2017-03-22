@@ -42,10 +42,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Categoria.cs" />
-    <Compile Include="Conexao.cs" />
+    <Compile Include="Repositorio\Conexao.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="Pedido.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorio\ItemRepositorio.cs" />
+    <Compile Include="Repositorio\PedidoRepositorio.cs" />
+    <Compile Include="Repositorio\SubUsuarioRepositorio.cs" />
+    <Compile Include="Repositorio\UsuarioRepositorio.cs" />
     <Compile Include="StatusPedido.cs" />
     <Compile Include="StatusUsuario.cs" />
     <Compile Include="TipoUsuario.cs" />
