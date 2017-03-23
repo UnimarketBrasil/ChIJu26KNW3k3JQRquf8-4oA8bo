@@ -67,7 +67,7 @@ namespace ClassLibrary.Repositorio
                     FecharConexao();
                 }
             }
-        }
+        }//
 
         //List Item
         public List<Item> ListarItem(int idUsuario)
@@ -108,6 +108,84 @@ namespace ClassLibrary.Repositorio
             }
         }
 
+        public List<Item> ListarItemPorCategoria(Usuario user, int idCategoria)
+        {
+            Abrirconexao();
+
+            using (Cmd = new SqlCommand("ListarItemPorCategoria", Con))
+            {
+                try
+                {
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@IdCategoria", idCategoria);
+                    Cmd.Parameters.AddWithValue("@LatitudeComprador", user.Latitude);
+                    Cmd.Parameters.AddWithValue("@Longitudeomprador", user.Longitude);
+
+                    List<Item> itemList = new List<Item>();
+
+                    while (Dr.Read())
+                    {
+                        Item item = new Item();
+                        item.Id = Convert.ToInt32(Dr["Item.Id"]);
+                        item.Codigo = Convert.ToString(Dr["Item.Codigo"]);
+                        item.Nome = Convert.ToString(Dr["Item.Nome"]);
+                        item.ValorUnitario = Convert.ToDouble(Dr["Item.Valorunitario"]);
+                        item.Quantidade = Convert.ToString(Dr["Item.Quantidade"]);
+
+                        itemList.Add(item);
+                    }
+
+                    return itemList;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Ao Listar Item: " + ex.Message);
+                }
+                finally
+                {
+                    FecharConexao();
+                }
+            }
+        }
+
+        public List<Item> ListarItemPorNomeOuCodigo(Usuario user, string codigo)
+        {
+            Abrirconexao();
+
+            using (Cmd = new SqlCommand("ListarItemPorNoMeOuCodigo", Con))
+            {
+                try
+                {
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@IdUsuario", user.Id);
+                    Cmd.Parameters.AddWithValue("@Codigo", codigo);
+
+                    List<Item> itemList = new List<Item>();
+
+                    while (Dr.Read())
+                    {
+                        Item item = new Item();
+                        item.Id = Convert.ToInt32(Dr["Item.Id"]);
+                        item.Codigo = Convert.ToString(Dr["Item.Codigo"]);
+                        item.Nome = Convert.ToString(Dr["Item.Nome"]);
+                        item.ValorUnitario = Convert.ToDouble(Dr["Item.Valorunitario"]);
+                        item.Quantidade = Convert.ToString(Dr["Item.Quantidade"]);
+
+                        itemList.Add(item);
+                    }
+
+                    return itemList;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Ao Listar Item: " + ex.Message);
+                }
+                finally
+                {
+                    FecharConexao();
+                }
+            }
+        }
         //Detalhe do item
         public Item DetalheItem(int idItem)
         {
@@ -144,7 +222,7 @@ namespace ClassLibrary.Repositorio
                     FecharConexao();
                 }
             }
-        }
+        }//
 
         //BuscarItem
         public Item PesquisarItemPorCodigo(int idUsuario, int codigo)
@@ -181,7 +259,7 @@ namespace ClassLibrary.Repositorio
                     FecharConexao();
                 }
             }
-        }
+        }//
 
         //Desable Item por Id
         public void DesebilitarItemPorId(int idItem)
@@ -242,7 +320,7 @@ namespace ClassLibrary.Repositorio
                     FecharConexao();
                 }
             }
-        }
+        }//
     }
 }
 

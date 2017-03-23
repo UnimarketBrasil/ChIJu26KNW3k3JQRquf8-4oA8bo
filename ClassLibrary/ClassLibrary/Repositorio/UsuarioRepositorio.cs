@@ -28,12 +28,7 @@ namespace ClassLibrary.Repositorio
                     Cmd.Parameters.AddWithValue("@Nascimentp", user.Nascimento);
                     Cmd.Parameters.AddWithValue("@Genero", user.Genero);
                     Cmd.Parameters.AddWithValue("@Telefone", user.Telefone);
-                    Cmd.Parameters.AddWithValue("@Latitude", user.Latitude);
-                    Cmd.Parameters.AddWithValue("@Longitude", user.Longitude);
-                    Cmd.Parameters.AddWithValue("@Complemento", user.Complemento);
-                    Cmd.Parameters.AddWithValue("@AreaAtuacao", user.AreaAtuacao);
                     Cmd.Parameters.AddWithValue("@IdTipoUsuario", user.Tipousuario.Id);
-                    Cmd.Parameters.AddWithValue("@IdStatusUsuario", user.Tipousuario.Id);
                 }
                 catch (Exception ex)
                 {
@@ -44,6 +39,44 @@ namespace ClassLibrary.Repositorio
                     FecharConexao();
                 }
             }
+        }
+
+        public Usuario CarregarUsuario(int idUsuario)
+        {
+            Abrirconexao();
+
+            using (Cmd = new SqlCommand("CarregarUsuario", Con))
+            {
+                try
+                {
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@IdUsuario", idUsuario);
+                    Usuario user = null;
+                    if (Dr.Read())
+                    {
+                        user = new Usuario();
+                        user.Id = Convert.ToInt32(Dr["Usuario.Id"]);
+                        user.Nome = Convert.ToString(Dr["Usuario.Nome"]);
+                        user.Email = Convert.ToString(Dr["Usuario.Email"]);
+                        user.Telefone = Convert.ToString(Dr["Usuario.Telefone"]);
+                        user.Latitude = Convert.ToInt64(Dr["Usuario.Latitude"]);
+                        user.Longitude = Convert.ToInt64(Dr["Usuario.Longitude"]);
+                        user.Complemento = Convert.ToString(Dr["Usuario.Complemento"]);
+                        user.AreaAtuacao = Convert.ToInt32(Dr["Usuario.AreaAtuacao"]);
+                    }
+
+                    return user;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Ao Carregar usuario: " + ex.Message);
+                }
+                finally
+                {
+                    FecharConexao();
+                }
+            }
+
         }
 
         //Update Usuario
@@ -75,7 +108,7 @@ namespace ClassLibrary.Repositorio
                     FecharConexao();
                 }
             }
-        }
+        }//
 
         //List Usuario
         public List<Usuario> ListarUsuario()
@@ -116,17 +149,16 @@ namespace ClassLibrary.Repositorio
         }
 
         //Desable Usuario
-        public void AlterarStatusUsuario(int idUsuario, int idStatusUsuario)
+        public void BloquearUsuario(int idUsuario)
         {
             Abrirconexao();
 
-            using (Cmd = new SqlCommand("AlterarStatusUsuario", Con))
+            using (Cmd = new SqlCommand("BloquearUsuario", Con))
             {
                 try
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.AddWithValue("@IdUsuario", idUsuario);
-                    Cmd.Parameters.AddWithValue("@IdStatuUsuario", idStatusUsuario);
                 }
                 catch (Exception ex)
                 {
@@ -137,6 +169,34 @@ namespace ClassLibrary.Repositorio
                     FecharConexao();
                 }
             }
+        }
+
+        public void IncluirEndereco(Usuario user)
+        {
+            Abrirconexao();
+
+            using (Cmd = new SqlCommand("IncluirEndereco", Con))
+            {
+                try
+                {
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@IdUsuario", user.Id);
+                    Cmd.Parameters.AddWithValue("@Latitude", user.Latitude);
+                    Cmd.Parameters.AddWithValue("@Longitude", user.Longitude);
+                    Cmd.Parameters.AddWithValue("@Complemento", user.Complemento);
+                    Cmd.Parameters.AddWithValue("@AreaAtuacao", user.AreaAtuacao);
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Erro ao cadastrar usuario: " + ex.Message);
+                }
+                finally
+                {
+                    FecharConexao();
+                }
+            }
+
         }
 
         // public Usuario DetalheUsuario(int id)

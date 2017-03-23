@@ -52,6 +52,7 @@
     <Compile Include="Repositorio\UsuarioRepositorio.cs" />
     <Compile Include="StatusPedido.cs" />
     <Compile Include="StatusUsuario.cs" />
+    <Compile Include="SubUsuario.cs" />
     <Compile Include="TipoUsuario.cs" />
     <Compile Include="Usuario.cs" />
   </ItemGroup>
