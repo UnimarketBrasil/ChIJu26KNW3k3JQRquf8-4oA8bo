@@ -10,7 +10,6 @@ namespace ClassLibrary.Repositorio
 {
     class ItemRepositorio : Conexao
     {
-        //Insert Item
         public void CadastrarItem(Item item)
         {
             Abrirconexao();
@@ -41,7 +40,6 @@ namespace ClassLibrary.Repositorio
             }
         }
 
-        //Update Item
         public void AtualizarItem(Item item)
         {
             Abrirconexao();
@@ -67,9 +65,8 @@ namespace ClassLibrary.Repositorio
                     FecharConexao();
                 }
             }
-        }//
+        }
 
-        //List Item
         public List<Item> ListarItem(int idUsuario)
         {
             Abrirconexao();
@@ -186,12 +183,12 @@ namespace ClassLibrary.Repositorio
                 }
             }
         }
-        //Detalhe do item
-        public Item DetalheItem(int idItem)
+
+        public Item DetalheItemCompradador(int idItem)
         {
             Abrirconexao();
 
-            using (Cmd = new SqlCommand("DetalheItem", Con))
+            using (Cmd = new SqlCommand("DetalheItemCompradador", Con))
             {
                 try
                 {
@@ -222,20 +219,18 @@ namespace ClassLibrary.Repositorio
                     FecharConexao();
                 }
             }
-        }//
+        }
 
-        //BuscarItem
-        public Item PesquisarItemPorCodigo(int idUsuario, int codigo)
+        public Item DetalheItemVendedor(int idItem)
         {
             Abrirconexao();
 
-            using (Cmd = new SqlCommand("DetalheItem", Con))
+            using (Cmd = new SqlCommand("DetalheItemVendedor", Con))
             {
                 try
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
-                    Cmd.Parameters.AddWithValue("@IdUsuario", idUsuario);
-                    Cmd.Parameters.AddWithValue("@Codigo", codigo);
+                    Cmd.Parameters.AddWithValue("@IdItem", idItem);
 
                     Item item = null;
 
@@ -244,24 +239,25 @@ namespace ClassLibrary.Repositorio
                         item = new Item();
                         item.Codigo = Convert.ToString(Dr["Item.Codigo"]);
                         item.Nome = Convert.ToString(Dr["Item.Nome"]);
+                        item.Descricao = Convert.ToString(Dr["Item.Descricao"]);
                         item.ValorUnitario = Convert.ToDouble(Dr["Item.Valorunitario"]);
                         item.Quantidade = Convert.ToString(Dr["Item.Quantidade"]);
+                        item.Categoria.Descricao = Convert.ToString(Dr["Categoria.Nome"]);
                     }
 
                     return item;
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("Ao buscar Item: " + ex.Message);
+                    throw new Exception("Ao detalhar Item: " + ex.Message);
                 }
                 finally
                 {
                     FecharConexao();
                 }
             }
-        }//
+        }
 
-        //Desable Item por Id
         public void DesebilitarItemPorId(int idItem)
         {
             Abrirconexao();
@@ -284,7 +280,6 @@ namespace ClassLibrary.Repositorio
             }
         }
 
-        //Select Produtos
         public List<Item> MecanismoDeBusca(string produto, Usuario comprador)
         {
             Abrirconexao();
@@ -320,7 +315,7 @@ namespace ClassLibrary.Repositorio
                     FecharConexao();
                 }
             }
-        }//
+        }
     }
 }
 

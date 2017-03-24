@@ -10,7 +10,6 @@ namespace ClassLibrary.Repositorio
 {
     class UsuarioRepositorio : Conexao
     {
-        //Insert Usuario
         public void CadastrarUsuario(Usuario user)
         {
             Abrirconexao();
@@ -79,7 +78,6 @@ namespace ClassLibrary.Repositorio
 
         }
 
-        //Update Usuario
         public void AtualizarUsuario(Usuario user)
         {
             Abrirconexao();
@@ -92,7 +90,6 @@ namespace ClassLibrary.Repositorio
                     Cmd.Parameters.AddWithValue("@Email", user.Email);
                     Cmd.Parameters.AddWithValue("@Nome", user.Nome);
                     Cmd.Parameters.AddWithValue("@Sobrenome", user.Sobrenome);
-                    Cmd.Parameters.AddWithValue("@Senha", user.Senha);
                     Cmd.Parameters.AddWithValue("@Telefone", user.Telefone);
                     Cmd.Parameters.AddWithValue("@Latitude", user.Latitude);
                     Cmd.Parameters.AddWithValue("@Longitude", user.Longitude);
@@ -108,9 +105,32 @@ namespace ClassLibrary.Repositorio
                     FecharConexao();
                 }
             }
-        }//
+        }
 
-        //List Usuario
+        public void AtualizarSenha(int idUsuario, string senha)
+        {
+            Abrirconexao();
+
+            using (Cmd = new SqlCommand("AtualizarSenha", Con))
+            {
+                try
+                {
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@IdUsuario", senha);
+                    Cmd.Parameters.AddWithValue("@Senha", senha);
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Erro ao atualizar usuario: " + ex.Message);
+                }
+                finally
+                {
+                    FecharConexao();
+                }
+            }
+        }
+
         public List<Usuario> ListarUsuario()
         {
             Abrirconexao();
@@ -148,7 +168,6 @@ namespace ClassLibrary.Repositorio
             }
         }
 
-        //Desable Usuario
         public void BloquearUsuario(int idUsuario)
         {
             Abrirconexao();
@@ -199,9 +218,99 @@ namespace ClassLibrary.Repositorio
 
         }
 
-        // public Usuario DetalheUsuario(int id)
+        public Usuario DetalheUsuario(int idUsuario)
+        {
+            Abrirconexao();
 
-        // public Usuario CarregarUsuario(int idUsuario)
+            using (Cmd = new SqlCommand("DetalheUsuario", Con))
+            {
+                try
+                {
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@IdUsuario", idUsuario);
+                    Usuario user = null;
+                    if (Dr.Read())
+                    {
+                        user = new Usuario();
+                        user.Id = Convert.ToInt32(Dr["Usuario.Id"]);
+                        user.Nome = Convert.ToString(Dr["Usuario.Nome"]);
+                        user.Email = Convert.ToString(Dr["Usuario.Email"]);
+                        user.Telefone = Convert.ToString(Dr["Usuario.Telefone"]);
+                        user.Latitude = Convert.ToInt64(Dr["Usuario.Latitude"]);
+                        user.Longitude = Convert.ToInt64(Dr["Usuario.Longitude"]);
+                        user.Complemento = Convert.ToString(Dr["Usuario.Complemento"]);
+                        user.AreaAtuacao = Convert.ToInt32(Dr["Usuario.AreaAtuacao"]);
+                        user.Tipousuario.Nome = Convert.ToString(Dr["TipoUsuario.Nome"]);
+                        user.StatusUsuario.Nome = Convert.ToString(Dr["StatusUsuario.Nome"]);
+                    }
 
+                    return user;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Ao Carregar usuario: " + ex.Message);
+                }
+                finally
+                {
+                    FecharConexao();
+                }
+            }
+
+        }
+
+        public bool LoginUsuario(string email, string senha)
+        {
+            Abrirconexao();
+
+            using (Cmd = new SqlCommand("CadastrarUsuario", Con))
+            {
+                try
+                {
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@Email", email);
+                    Cmd.Parameters.AddWithValue("@Senha", senha);
+
+                    bool retorno = Convert.ToBoolean(Dr["@Retorno"]);
+
+                    return retorno;
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Erro ao cadastrar usuario: " + ex.Message);
+                }
+                finally
+                {
+                    FecharConexao();
+                }
+            }
+        }
+
+        public bool RecuperarSenha(string email)
+        {
+            Abrirconexao();
+
+            using (Cmd = new SqlCommand("RecuperarSenha", Con))
+            {
+                try
+                {
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@Email", email);
+
+                    bool retorno = Convert.ToBoolean(Dr["@Retorno"]);
+
+                    return retorno;
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Erro ao atualizar usuario: " + ex.Message);
+                }
+                finally
+                {
+                    FecharConexao();
+                }
+            }
+        }
     }
 }
