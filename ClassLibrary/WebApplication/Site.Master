@@ -24,7 +24,6 @@
                 </button>
                 <a class="navbar-brand" href="#">Unimarket Brasil</a>
             </div>
-
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="Sistema.aspx">Início <span class="sr-only">(current)</span></a></li>
@@ -47,14 +46,37 @@
                     </div>
                     <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                 </form>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="SistemaCadastrar.aspx">Cadastre-se</a></li>
-                    <li><a href="SistemaLogin.aspx">Entrar</a></li>
-                </ul>
-                <ul class="dropdown-menu" role="menu">
-                    <li>A</li>
-                    <li></li>
-                </ul>
+                <!--
+                <div>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="SistemaCadastrar.aspx">Cadastre-se</a></li>
+                        <li><a href="SistemaLogin.aspx">Entrar</a></li>
+                    </ul>
+                </div>
+                    -->
+                <form runat="server">
+                    <div>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <asp:LinkButton ID="LinkButton3" runat="server" CssClass="btn btn-primary glyphicon glyphicon-shopping-cart"></asp:LinkButton>
+                            </li>
+                            <li>
+                                <asp:Label ID="lbNomeUsuario" CssClass="navbar-brand" runat="server" Text="Meu nome aqui"></asp:Label>
+                            </li>
+                            <li>
+                                <asp:LinkButton ID="LinkButton4" runat="server" CssClass="btn btn-primary glyphicon glyphicon-user"></asp:LinkButton>
+                            </li>
+                            <li>
+                                <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-primary glyphicon glyphicon-cog"></asp:LinkButton>
+                            </li>
+                            <li>
+                                <asp:LinkButton ID="LinkButton2" runat="server" CssClass="btn btn-primary glyphicon glyphicon-log-out"></asp:LinkButton>
+                            </li>
+                        </ul>
+                    </div>
+                </form>
+
+
             </div>
         </div>
         <!--Script-->

@@ -64,7 +64,7 @@ namespace ClassLibrary.Repositorio
                 try
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
-                    Cmd.Parameters.AddWithValue("@IdePedido", idPedido;
+                    Cmd.Parameters.AddWithValue("@IdePedido", idPedido);
                     Pedido pedido = null;
                     if (Dr.Read())
                     { 
