@@ -91,5 +91,30 @@ namespace ClassLibrary.Repositorio
                 }
             }
         }
+
+        public void AtualizarSubUsuario(SubUsuario user)
+        {
+            Abrirconexao();
+
+            using (Cmd = new SqlCommand("AtualizarSenhaSubUsuario", Con))
+            {
+                try
+                {
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@IdUsuario", user.Id);
+                    Cmd.Parameters.AddWithValue("@Nome", user.Nome);
+                    Cmd.Parameters.AddWithValue("@Email", user.Email);
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Erro ao atualizar usuario: " + ex.Message);
+                }
+                finally
+                {
+                    FecharConexao();
+                }
+            }
+        }
     }
 }
