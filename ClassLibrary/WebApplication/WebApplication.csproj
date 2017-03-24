@@ -99,7 +99,7 @@
     <Content Include="Content\bootswatch\yeti\bootstrap.css" />
     <Content Include="Content\bootswatch\yeti\bootstrap.min.css" />
     <Content Include="Documentos\Querys\Criacao do banco UnimarketDB.sql" />
-    <Content Include="Documentos\Querys\Deletes\Procedure BloquearAdministrador.sql" />
+    <Content Include="Documentos\Querys\Deletes\Procedure BloquearUsuario.sql" />
     <Content Include="Documentos\Querys\Deletes\Procedure DesabilitarItemPorId.sql" />
     <Content Include="Documentos\Querys\Drop UnimarketDB.sql" />
     <Content Include="Documentos\Querys\Funcao CalculoDistancia.sql" />
@@ -128,6 +128,7 @@
     <Content Include="Documentos\Querys\Updates\Procedure AtualizarSenhaSubUsuario.sql" />
     <Content Include="Documentos\Querys\Updates\Procedure AtualizarUsuario.sql" />
     <Content Include="Documentos\Querys\Deletes\Procedure CancelarPedido.sql" />
+    <Content Include="Documentos\Querys\Updates\Procedure AtualizarSubUsuario.sql" />
     <Content Include="Documentos\Querys\Updates\Procedure FinalizarPedido.sql" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

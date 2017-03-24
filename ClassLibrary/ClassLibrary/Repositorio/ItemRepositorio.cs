@@ -10,7 +10,6 @@ namespace ClassLibrary.Repositorio
 {
     class ItemRepositorio : Conexao
     {
-        //Insert Item
         public void CadastrarItem(Item item)
         {
             Abrirconexao();
@@ -41,7 +40,6 @@ namespace ClassLibrary.Repositorio
             }
         }
 
-        //Update Item
         public void AtualizarItem(Item item)
         {
             Abrirconexao();
@@ -69,7 +67,6 @@ namespace ClassLibrary.Repositorio
             }
         }
 
-        //List Item
         public List<Item> ListarItem(int idUsuario)
         {
             Abrirconexao();
@@ -108,12 +105,90 @@ namespace ClassLibrary.Repositorio
             }
         }
 
-        //Detalhe do item
-        public Item DetalheItem(int idItem)
+        public List<Item> ListarItemPorCategoria(Usuario user, int idCategoria)
         {
             Abrirconexao();
 
-            using (Cmd = new SqlCommand("DetalheItem", Con))
+            using (Cmd = new SqlCommand("ListarItemPorCategoria", Con))
+            {
+                try
+                {
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@IdCategoria", idCategoria);
+                    Cmd.Parameters.AddWithValue("@LatitudeComprador", user.Latitude);
+                    Cmd.Parameters.AddWithValue("@Longitudeomprador", user.Longitude);
+
+                    List<Item> itemList = new List<Item>();
+
+                    while (Dr.Read())
+                    {
+                        Item item = new Item();
+                        item.Id = Convert.ToInt32(Dr["Item.Id"]);
+                        item.Codigo = Convert.ToString(Dr["Item.Codigo"]);
+                        item.Nome = Convert.ToString(Dr["Item.Nome"]);
+                        item.ValorUnitario = Convert.ToDouble(Dr["Item.Valorunitario"]);
+                        item.Quantidade = Convert.ToString(Dr["Item.Quantidade"]);
+
+                        itemList.Add(item);
+                    }
+
+                    return itemList;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Ao Listar Item: " + ex.Message);
+                }
+                finally
+                {
+                    FecharConexao();
+                }
+            }
+        }
+
+        public List<Item> ListarItemPorNomeOuCodigo(Usuario user, string codigo)
+        {
+            Abrirconexao();
+
+            using (Cmd = new SqlCommand("ListarItemPorNoMeOuCodigo", Con))
+            {
+                try
+                {
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@IdUsuario", user.Id);
+                    Cmd.Parameters.AddWithValue("@Codigo", codigo);
+
+                    List<Item> itemList = new List<Item>();
+
+                    while (Dr.Read())
+                    {
+                        Item item = new Item();
+                        item.Id = Convert.ToInt32(Dr["Item.Id"]);
+                        item.Codigo = Convert.ToString(Dr["Item.Codigo"]);
+                        item.Nome = Convert.ToString(Dr["Item.Nome"]);
+                        item.ValorUnitario = Convert.ToDouble(Dr["Item.Valorunitario"]);
+                        item.Quantidade = Convert.ToString(Dr["Item.Quantidade"]);
+
+                        itemList.Add(item);
+                    }
+
+                    return itemList;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Ao Listar Item: " + ex.Message);
+                }
+                finally
+                {
+                    FecharConexao();
+                }
+            }
+        }
+
+        public Item DetalheItemCompradador(int idItem)
+        {
+            Abrirconexao();
+
+            using (Cmd = new SqlCommand("DetalheItemCompradador", Con))
             {
                 try
                 {
@@ -146,18 +221,16 @@ namespace ClassLibrary.Repositorio
             }
         }
 
-        //BuscarItem
-        public Item PesquisarItemPorCodigo(int idUsuario, int codigo)
+        public Item DetalheItemVendedor(int idItem)
         {
             Abrirconexao();
 
-            using (Cmd = new SqlCommand("DetalheItem", Con))
+            using (Cmd = new SqlCommand("DetalheItemVendedor", Con))
             {
                 try
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
-                    Cmd.Parameters.AddWithValue("@IdUsuario", idUsuario);
-                    Cmd.Parameters.AddWithValue("@Codigo", codigo);
+                    Cmd.Parameters.AddWithValue("@IdItem", idItem);
 
                     Item item = null;
 
@@ -166,15 +239,17 @@ namespace ClassLibrary.Repositorio
                         item = new Item();
                         item.Codigo = Convert.ToString(Dr["Item.Codigo"]);
                         item.Nome = Convert.ToString(Dr["Item.Nome"]);
+                        item.Descricao = Convert.ToString(Dr["Item.Descricao"]);
                         item.ValorUnitario = Convert.ToDouble(Dr["Item.Valorunitario"]);
                         item.Quantidade = Convert.ToString(Dr["Item.Quantidade"]);
+                        item.Categoria.Descricao = Convert.ToString(Dr["Categoria.Nome"]);
                     }
 
                     return item;
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("Ao buscar Item: " + ex.Message);
+                    throw new Exception("Ao detalhar Item: " + ex.Message);
                 }
                 finally
                 {
@@ -183,7 +258,6 @@ namespace ClassLibrary.Repositorio
             }
         }
 
-        //Desable Item por Id
         public void DesebilitarItemPorId(int idItem)
         {
             Abrirconexao();
@@ -206,7 +280,6 @@ namespace ClassLibrary.Repositorio
             }
         }
 
-        //Select Produtos
         public List<Item> MecanismoDeBusca(string produto, Usuario comprador)
         {
             Abrirconexao();
