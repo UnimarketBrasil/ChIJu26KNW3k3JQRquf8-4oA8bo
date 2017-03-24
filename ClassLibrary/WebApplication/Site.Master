@@ -66,9 +66,11 @@
             });
         </script>
     </nav>
+
     <div class="container-fluid">
         <asp:ContentPlaceHolder ID="MainContent" runat="server" />
     </div>
+
     <div class="container-fluid body-content">
         <hr />
         <footer>
