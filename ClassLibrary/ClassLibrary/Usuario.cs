@@ -70,10 +70,10 @@ namespace ClassLibrary
                 }
             }
         }
-
-        public bool ValidarEmailCpfCnpj(Usuario user)
+        //Depois alterar para bool
+        public void ValidarEmailCpfCnpj(Usuario user)
         {
-            bool valido=true;
+            bool valido = true;
             DataTable dt = new DataTable();
             Abrirconexao();
 
@@ -89,9 +89,9 @@ namespace ClassLibrary
                     SqlDataAdapter sda = new SqlDataAdapter(Cmd);
                     sda.Fill(dt);
 
-                    if (dt.Rows.Count <=0)
+                    if (dt.Rows.Count <= 0)
                     {
-                        return true;
+                        
                     }
 
                 }

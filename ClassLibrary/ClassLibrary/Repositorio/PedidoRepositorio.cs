@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,7 +22,7 @@ namespace ClassLibrary.Repositorio
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.AddWithValue("@Codigo", pedido.Codigo);
                     Cmd.Parameters.AddWithValue("@IdVendedor", pedido.Vendedor.Id);
-                    Cmd.Parameters.AddWithValue("@Idcomprador", pedido.Vendedor.Id);
+                    Cmd.Parameters.AddWithValue("@Idcomprador", pedido.Comprador.Id);
                     Cmd.Parameters.AddWithValue("@IdStatusPedido", pedido.StatusPedido.Id);
 
                     if (Dr.Read())
@@ -108,7 +109,7 @@ namespace ClassLibrary.Repositorio
                 try
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
-                    Cmd.Parameters.AddWithValue("@IdePedido", idPedido;
+                    Cmd.Parameters.AddWithValue("@IdePedido", idPedido);
                     Pedido pedido = null;
                     if (Dr.Read())
                     { 

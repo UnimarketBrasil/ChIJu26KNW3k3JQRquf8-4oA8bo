@@ -16,5 +16,7 @@ namespace ClassLibrary
 
         public StatusPedido StatusPedido { get; set; }
 
+
+
     }
 }
