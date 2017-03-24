@@ -40,44 +40,6 @@ namespace ClassLibrary.Repositorio
             }
         }
 
-        public Usuario CarregarUsuario(int idUsuario)
-        {
-            Abrirconexao();
-
-            using (Cmd = new SqlCommand("CarregarUsuario", Con))
-            {
-                try
-                {
-                    Cmd.CommandType = CommandType.StoredProcedure;
-                    Cmd.Parameters.AddWithValue("@IdUsuario", idUsuario);
-                    Usuario user = null;
-                    if (Dr.Read())
-                    {
-                        user = new Usuario();
-                        user.Id = Convert.ToInt32(Dr["Usuario.Id"]);
-                        user.Nome = Convert.ToString(Dr["Usuario.Nome"]);
-                        user.Email = Convert.ToString(Dr["Usuario.Email"]);
-                        user.Telefone = Convert.ToString(Dr["Usuario.Telefone"]);
-                        user.Latitude = Convert.ToInt64(Dr["Usuario.Latitude"]);
-                        user.Longitude = Convert.ToInt64(Dr["Usuario.Longitude"]);
-                        user.Complemento = Convert.ToString(Dr["Usuario.Complemento"]);
-                        user.AreaAtuacao = Convert.ToInt32(Dr["Usuario.AreaAtuacao"]);
-                    }
-
-                    return user;
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("Ao Carregar usuario: " + ex.Message);
-                }
-                finally
-                {
-                    FecharConexao();
-                }
-            }
-
-        }
-
         public void AtualizarUsuario(Usuario user)
         {
             Abrirconexao();
@@ -99,6 +61,56 @@ namespace ClassLibrary.Repositorio
                 catch (Exception ex)
                 {
                     throw new Exception("Erro ao atualizar usuario: " + ex.Message);
+                }
+                finally
+                {
+                    FecharConexao();
+                }
+            }
+        }
+
+        public void IncluirEndereco(Usuario user)
+        {
+            Abrirconexao();
+
+            using (Cmd = new SqlCommand("IncluirEndereco", Con))
+            {
+                try
+                {
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@IdUsuario", user.Id);
+                    Cmd.Parameters.AddWithValue("@Latitude", user.Latitude);
+                    Cmd.Parameters.AddWithValue("@Longitude", user.Longitude);
+                    Cmd.Parameters.AddWithValue("@Complemento", user.Complemento);
+                    Cmd.Parameters.AddWithValue("@AreaAtuacao", user.AreaAtuacao);
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Erro ao cadastrar usuario: " + ex.Message);
+                }
+                finally
+                {
+                    FecharConexao();
+                }
+            }
+
+        }
+
+        public void BloquearUsuario(int idUsuario)
+        {
+            Abrirconexao();
+
+            using (Cmd = new SqlCommand("BloquearUsuario", Con))
+            {
+                try
+                {
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@IdUsuario", idUsuario);
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Erro ao alterar usuario: " + ex.Message);
                 }
                 finally
                 {
@@ -131,35 +143,25 @@ namespace ClassLibrary.Repositorio
             }
         }
 
-        public List<Usuario> ListarUsuario()
+        public bool RecuperarSenha(string email)
         {
             Abrirconexao();
 
-            List<Usuario> usuarioList = new List<Usuario>();
-
-            using (Cmd = new SqlCommand("ListarUsuario", Con))
+            using (Cmd = new SqlCommand("RecuperarSenha", Con))
             {
                 try
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@Email", email);
 
-                    while (Dr.Read())
-                    {
-                        Usuario user = new Usuario();
-                        user.Id = Convert.ToInt32(Dr["Usuario.Id"]);
-                        user.Email = Convert.ToString(Dr["Usuario.Email"]);
-                        user.Nome = Convert.ToString(Dr["Usuario.Nome"]);
-                        user.Tipousuario.Nome = Convert.ToString(Dr["TipoUsuario.Nome"]);
-                        user.StatusUsuario.Nome = Convert.ToString(Dr["StatusUsuario.Nome"]);
+                    bool retorno = Convert.ToBoolean(Dr["@Retorno"]);
 
-                        usuarioList.Add(user);
-                    }
+                    return retorno;
 
-                    return usuarioList;
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("Ao Listar Usuario: " + ex.Message);
+                    throw new Exception("Erro ao atualizar usuario: " + ex.Message);
                 }
                 finally
                 {
@@ -168,47 +170,63 @@ namespace ClassLibrary.Repositorio
             }
         }
 
-        public void BloquearUsuario(int idUsuario)
+        public bool LoginUsuario(string email, string senha)
         {
             Abrirconexao();
 
-            using (Cmd = new SqlCommand("BloquearUsuario", Con))
+            using (Cmd = new SqlCommand("CadastrarUsuario", Con))
             {
                 try
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
-                    Cmd.Parameters.AddWithValue("@IdUsuario", idUsuario);
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("Erro ao alterar usuario: " + ex.Message);
-                }
-                finally
-                {
-                    FecharConexao();
-                }
-            }
-        }
+                    Cmd.Parameters.AddWithValue("@Email", email);
+                    Cmd.Parameters.AddWithValue("@Senha", senha);
 
-        public void IncluirEndereco(Usuario user)
-        {
-            Abrirconexao();
+                    bool retorno = Convert.ToBoolean(Dr["@Retorno"]);
 
-            using (Cmd = new SqlCommand("IncluirEndereco", Con))
-            {
-                try
-                {
-                    Cmd.CommandType = CommandType.StoredProcedure;
-                    Cmd.Parameters.AddWithValue("@IdUsuario", user.Id);
-                    Cmd.Parameters.AddWithValue("@Latitude", user.Latitude);
-                    Cmd.Parameters.AddWithValue("@Longitude", user.Longitude);
-                    Cmd.Parameters.AddWithValue("@Complemento", user.Complemento);
-                    Cmd.Parameters.AddWithValue("@AreaAtuacao", user.AreaAtuacao);
+                    return retorno;
 
                 }
                 catch (Exception ex)
                 {
                     throw new Exception("Erro ao cadastrar usuario: " + ex.Message);
+                }
+                finally
+                {
+                    FecharConexao();
+                }
+            }
+        }
+
+        public Usuario CarregarUsuario(int idUsuario)
+        {
+            Abrirconexao();
+
+            using (Cmd = new SqlCommand("CarregarUsuario", Con))
+            {
+                try
+                {
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@IdUsuario", idUsuario);
+                    Usuario user = null;
+                    if (Dr.Read())
+                    {
+                        user = new Usuario();
+                        user.Id = Convert.ToInt32(Dr["Usuario.Id"]);
+                        user.Nome = Convert.ToString(Dr["Usuario.Nome"]);
+                        user.Email = Convert.ToString(Dr["Usuario.Email"]);
+                        user.Telefone = Convert.ToString(Dr["Usuario.Telefone"]);
+                        user.Latitude = Convert.ToInt64(Dr["Usuario.Latitude"]);
+                        user.Longitude = Convert.ToInt64(Dr["Usuario.Longitude"]);
+                        user.Complemento = Convert.ToString(Dr["Usuario.Complemento"]);
+                        user.AreaAtuacao = Convert.ToInt32(Dr["Usuario.AreaAtuacao"]);
+                    }
+
+                    return user;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Ao Carregar usuario: " + ex.Message);
                 }
                 finally
                 {
@@ -258,53 +276,35 @@ namespace ClassLibrary.Repositorio
 
         }
 
-        public bool LoginUsuario(string email, string senha)
+        public List<Usuario> ListarUsuario()
         {
             Abrirconexao();
 
-            using (Cmd = new SqlCommand("CadastrarUsuario", Con))
+            List<Usuario> usuarioList = new List<Usuario>();
+
+            using (Cmd = new SqlCommand("ListarUsuario", Con))
             {
                 try
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
-                    Cmd.Parameters.AddWithValue("@Email", email);
-                    Cmd.Parameters.AddWithValue("@Senha", senha);
 
-                    bool retorno = Convert.ToBoolean(Dr["@Retorno"]);
+                    while (Dr.Read())
+                    {
+                        Usuario user = new Usuario();
+                        user.Id = Convert.ToInt32(Dr["Usuario.Id"]);
+                        user.Email = Convert.ToString(Dr["Usuario.Email"]);
+                        user.Nome = Convert.ToString(Dr["Usuario.Nome"]);
+                        user.Tipousuario.Nome = Convert.ToString(Dr["TipoUsuario.Nome"]);
+                        user.StatusUsuario.Nome = Convert.ToString(Dr["StatusUsuario.Nome"]);
 
-                    return retorno;
+                        usuarioList.Add(user);
+                    }
 
+                    return usuarioList;
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("Erro ao cadastrar usuario: " + ex.Message);
-                }
-                finally
-                {
-                    FecharConexao();
-                }
-            }
-        }
-
-        public bool RecuperarSenha(string email)
-        {
-            Abrirconexao();
-
-            using (Cmd = new SqlCommand("RecuperarSenha", Con))
-            {
-                try
-                {
-                    Cmd.CommandType = CommandType.StoredProcedure;
-                    Cmd.Parameters.AddWithValue("@Email", email);
-
-                    bool retorno = Convert.ToBoolean(Dr["@Retorno"]);
-
-                    return retorno;
-
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("Erro ao atualizar usuario: " + ex.Message);
+                    throw new Exception("Ao Listar Usuario: " + ex.Message);
                 }
                 finally
                 {

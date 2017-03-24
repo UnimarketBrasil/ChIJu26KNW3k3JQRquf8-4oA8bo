@@ -67,6 +67,102 @@ namespace ClassLibrary.Repositorio
             }
         }
 
+        public void DesebilitarItemPorId(int idItem)
+        {
+            Abrirconexao();
+
+            using (Cmd = new SqlCommand("DesabilitarItemPorId", Con))
+            {
+                try
+                {
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@Id", idItem);
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Erro ao desabilitar item: " + ex.Message);
+                }
+                finally
+                {
+                    FecharConexao();
+                }
+            }
+        }
+
+        public Item DetalheItemVendedor(int idItem)
+        {
+            Abrirconexao();
+
+            using (Cmd = new SqlCommand("DetalheItemVendedor", Con))
+            {
+                try
+                {
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@IdItem", idItem);
+
+                    Item item = null;
+
+                    if (Dr.Read())
+                    {
+                        item = new Item();
+                        item.Codigo = Convert.ToString(Dr["Item.Codigo"]);
+                        item.Nome = Convert.ToString(Dr["Item.Nome"]);
+                        item.Descricao = Convert.ToString(Dr["Item.Descricao"]);
+                        item.ValorUnitario = Convert.ToDouble(Dr["Item.Valorunitario"]);
+                        item.Quantidade = Convert.ToString(Dr["Item.Quantidade"]);
+                        item.Categoria.Descricao = Convert.ToString(Dr["Categoria.Nome"]);
+                    }
+
+                    return item;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Ao detalhar Item: " + ex.Message);
+                }
+                finally
+                {
+                    FecharConexao();
+                }
+            }
+        }
+
+        public Item DetalheItemComprador(int idItem)
+        {
+            Abrirconexao();
+
+            using (Cmd = new SqlCommand("DetalheItemCompradador", Con))
+            {
+                try
+                {
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@IdItem", idItem);
+
+                    Item item = null;
+
+                    if (Dr.Read())
+                    {
+                        item = new Item();
+                        item.Codigo = Convert.ToString(Dr["Item.Codigo"]);
+                        item.Nome = Convert.ToString(Dr["Item.Nome"]);
+                        item.Descricao = Convert.ToString(Dr["Item.Descricao"]);
+                        item.ValorUnitario = Convert.ToDouble(Dr["Item.Valorunitario"]);
+                        item.Quantidade = Convert.ToString(Dr["Item.Quantidade"]);
+                        item.Categoria.Descricao = Convert.ToString(Dr["Categoria.Nome"]);
+                    }
+
+                    return item;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Ao detalhar Item: " + ex.Message);
+                }
+                finally
+                {
+                    FecharConexao();
+                }
+            }
+        }
+
         public List<Item> ListarItem(int idUsuario)
         {
             Abrirconexao();
@@ -176,102 +272,6 @@ namespace ClassLibrary.Repositorio
                 catch (Exception ex)
                 {
                     throw new Exception("Ao Listar Item: " + ex.Message);
-                }
-                finally
-                {
-                    FecharConexao();
-                }
-            }
-        }
-
-        public Item DetalheItemCompradador(int idItem)
-        {
-            Abrirconexao();
-
-            using (Cmd = new SqlCommand("DetalheItemCompradador", Con))
-            {
-                try
-                {
-                    Cmd.CommandType = CommandType.StoredProcedure;
-                    Cmd.Parameters.AddWithValue("@IdItem", idItem);
-
-                    Item item = null;
-
-                    if (Dr.Read())
-                    {
-                        item = new Item();
-                        item.Codigo = Convert.ToString(Dr["Item.Codigo"]);
-                        item.Nome = Convert.ToString(Dr["Item.Nome"]);
-                        item.Descricao = Convert.ToString(Dr["Item.Descricao"]);
-                        item.ValorUnitario = Convert.ToDouble(Dr["Item.Valorunitario"]);
-                        item.Quantidade = Convert.ToString(Dr["Item.Quantidade"]);
-                        item.Categoria.Descricao = Convert.ToString(Dr["Categoria.Nome"]);
-                    }
-
-                    return item;
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("Ao detalhar Item: " + ex.Message);
-                }
-                finally
-                {
-                    FecharConexao();
-                }
-            }
-        }
-
-        public Item DetalheItemVendedor(int idItem)
-        {
-            Abrirconexao();
-
-            using (Cmd = new SqlCommand("DetalheItemVendedor", Con))
-            {
-                try
-                {
-                    Cmd.CommandType = CommandType.StoredProcedure;
-                    Cmd.Parameters.AddWithValue("@IdItem", idItem);
-
-                    Item item = null;
-
-                    if (Dr.Read())
-                    {
-                        item = new Item();
-                        item.Codigo = Convert.ToString(Dr["Item.Codigo"]);
-                        item.Nome = Convert.ToString(Dr["Item.Nome"]);
-                        item.Descricao = Convert.ToString(Dr["Item.Descricao"]);
-                        item.ValorUnitario = Convert.ToDouble(Dr["Item.Valorunitario"]);
-                        item.Quantidade = Convert.ToString(Dr["Item.Quantidade"]);
-                        item.Categoria.Descricao = Convert.ToString(Dr["Categoria.Nome"]);
-                    }
-
-                    return item;
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("Ao detalhar Item: " + ex.Message);
-                }
-                finally
-                {
-                    FecharConexao();
-                }
-            }
-        }
-
-        public void DesebilitarItemPorId(int idItem)
-        {
-            Abrirconexao();
-
-            using (Cmd = new SqlCommand("DesabilitarItemPorId", Con))
-            {
-                try
-                {
-                    Cmd.CommandType = CommandType.StoredProcedure;
-                    Cmd.Parameters.AddWithValue("@Id", idItem);
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("Erro ao desabilitar item: " + ex.Message);
                 }
                 finally
                 {

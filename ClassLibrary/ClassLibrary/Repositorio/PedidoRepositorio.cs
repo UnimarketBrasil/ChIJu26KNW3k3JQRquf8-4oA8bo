@@ -54,6 +54,51 @@ namespace ClassLibrary.Repositorio
             }
         }
 
+        public void FinalizarPedido(int idPedido)
+        {
+            Abrirconexao();
+
+            using (Cmd = new SqlCommand("FinalizarPedido", Con))
+            {
+                try
+                {
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@IdPedido", idPedido);
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Erro ao alterar pedido: " + ex.Message);
+                }
+                finally
+                {
+                    FecharConexao();
+                }
+            }
+
+        }
+
+        public void CancelarPedido(int idPedido)
+        {
+            Abrirconexao();
+
+            using (Cmd = new SqlCommand("CancelarPedido", Con))
+            {
+                try
+                {
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@IdPedido", idPedido);
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Erro ao alterar pedido: " + ex.Message);
+                }
+                finally
+                {
+                    FecharConexao();
+                }
+            }
+        }
+
         public Pedido CarregarPedido(int idPedido)
         {
             Abrirconexao();
@@ -233,51 +278,6 @@ namespace ClassLibrary.Repositorio
                 }
             }
 
-        }
-
-        public void FinalizarPedido(int idPedido)
-        {
-            Abrirconexao();
-
-            using (Cmd = new SqlCommand("FinalizarPedido", Con))
-            {
-                try
-                {
-                    Cmd.CommandType = CommandType.StoredProcedure;
-                    Cmd.Parameters.AddWithValue("@IdPedido", idPedido);
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("Erro ao alterar pedido: " + ex.Message);
-                }
-                finally
-                {
-                    FecharConexao();
-                }
-            }
-
-        }
-
-        public void CancelarPedido(int idPedido)
-        {
-            Abrirconexao();
-
-            using (Cmd = new SqlCommand("CancelarPedido", Con))
-            {
-                try
-                {
-                    Cmd.CommandType = CommandType.StoredProcedure;
-                    Cmd.Parameters.AddWithValue("@IdPedido", idPedido);
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("Erro ao alterar pedido: " + ex.Message);
-                }
-                finally
-                {
-                    FecharConexao();
-                }
-            }
         }
 
     }
