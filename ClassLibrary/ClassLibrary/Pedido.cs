@@ -15,8 +15,5 @@ namespace ClassLibrary
         public List<Item> Item { get; set; }
 
         public StatusPedido StatusPedido { get; set; }
-
-
-
     }
 }

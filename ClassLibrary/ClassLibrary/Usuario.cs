@@ -1,11 +1,8 @@
 ﻿using System;
 
-using System.Data;
-using System.Data.SqlClient;
-
 namespace ClassLibrary
 {
-    public class Usuario : Conexao
+    public class Usuario
     {
         public int Id { get; set; }
 
@@ -37,74 +34,7 @@ namespace ClassLibrary
 
         public StatusUsuario StatusUsuario { get; set; }
 
-        public DateTime DateCadastro { get; set; }
+        public DateTime DataCadastro { get; set; }
 
-        //Insert Usuario
-        public void CadastrarUsuario(Usuario user)
-        {
-            Abrirconexao();
-
-            using (Cmd = new SqlCommand("CadastrarUsuario", Con))
-            {
-                try
-                {
-                    Cmd.CommandType = CommandType.StoredProcedure;
-                    Cmd.Parameters.AddWithValue("@Email", user.Email);
-                    Cmd.Parameters.AddWithValue("@Nome", user.Nome);
-                    Cmd.Parameters.AddWithValue("@Sobrenome", user.Sobrenome);
-                    Cmd.Parameters.AddWithValue("@Senha", user.Senha);
-                    Cmd.Parameters.AddWithValue("@CpfCnpj", user.CpfCnpj);
-                    Cmd.Parameters.AddWithValue("@Nascimento", user.Nascimento);
-                    Cmd.Parameters.AddWithValue("@Genero", user.Genero);
-                    Cmd.Parameters.AddWithValue("@Telefone", user.Telefone);
-                    Cmd.Parameters.AddWithValue("@IdTipoUsuario", user.Tipousuario.Id);
-                    Cmd.ExecuteNonQuery();
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("Erro ao cadastrar usuario: " + ex.Message.ToString());
-                }
-                finally
-                {
-                    FecharConexao();
-                }
-            }
-        }
-        //Depois alterar para bool
-        public void ValidarEmailCpfCnpj(Usuario user)
-        {
-            bool valido = true;
-            DataTable dt = new DataTable();
-            Abrirconexao();
-
-            using (Cmd = new SqlCommand("CadastrarUsuario", Con))
-            {
-                try
-                {
-                    Cmd.CommandType = CommandType.StoredProcedure;
-                    Cmd.Parameters.AddWithValue("@Email", user.Email);
-                    Cmd.Parameters.AddWithValue("@CpfCnpj", user.CpfCnpj);
-                    Cmd.ExecuteNonQuery();
-
-                    SqlDataAdapter sda = new SqlDataAdapter(Cmd);
-                    sda.Fill(dt);
-
-                    if (dt.Rows.Count <= 0)
-                    {
-                        
-                    }
-
-                }
-                catch
-                {
-                    //throw new Exception("Erro ao cadastrar usuario: " + ex.Message.ToString());
-                    valido = false;
-                }
-                finally
-                {
-                    FecharConexao();
-                }
-            }
-        }
     }
 }

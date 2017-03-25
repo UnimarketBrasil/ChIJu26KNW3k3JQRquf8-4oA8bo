@@ -6,10 +6,5 @@
 
         public string Nome { get; set; }
 
-        public TipoUsuario(int id)
-        {
-            this.Id = id;
-        }
-
     }
 }

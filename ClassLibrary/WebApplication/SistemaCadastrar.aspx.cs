@@ -48,9 +48,13 @@ namespace WebApplication
                 u.Nascimento = DateTime.Today;//Falta arrumar
             }
             u.Senha = txtSenha.Text;
+
+            CriptografarSenha(u.Senha);
+
             u.Telefone = txtTel.Text;
             u.Tipousuario = new TipoUsuario(int.Parse(rdOperacao.SelectedValue));
-            u.CadastrarUsuario(u);
+
+            CadastrarUsuario(u);
         }
     }
 }
