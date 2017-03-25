@@ -9,7 +9,7 @@ create procedure CadastrarUsuario(
 	@Senha varchar(50),
 	@CpfCnpj varchar(20),
 	@Nascimento datetime,
-	@Genero smallint,
+	@Genero smallint = null,
 	@Telefone varchar(15),
 	@IdTipoUsuario int
 	)

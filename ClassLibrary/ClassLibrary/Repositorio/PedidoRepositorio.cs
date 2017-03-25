@@ -20,17 +20,19 @@ namespace ClassLibrary.Repositorio
                 try
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
-                    Cmd.Parameters.AddWithValue("@Codigo", pedido.Codigo);
+                    Cmd.Parameters.AddWithValue("@CodigoPedido", pedido.Codigo);
                     Cmd.Parameters.AddWithValue("@IdVendedor", pedido.Vendedor.Id);
-                    Cmd.Parameters.AddWithValue("@Idcomprador", pedido.Comprador.Id);
+                    Cmd.Parameters.AddWithValue("@IdComprador", pedido.Comprador.Id);
                     Cmd.Parameters.AddWithValue("@IdStatusPedido", pedido.StatusPedido.Id);
 
                     if (Dr.Read())
                         pedido.Id = Convert.ToInt32(Dr["Inserted.Id"]);
+
+                    Dr.Close();
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("Erro ao reaizar pedido : " + ex.Message);
+                    throw new Exception("Erro ao realizar pedido : " + ex.Message);
                 }
             }
 
@@ -42,7 +44,7 @@ namespace ClassLibrary.Repositorio
 
                     foreach (var i in pedido.Item)
                     {
-                        Cmd.Parameters.AddWithValue("@IdItemPedido", i.Id);
+                        Cmd.Parameters.AddWithValue("@IdPedido", pedido.Id);
                         Cmd.Parameters.AddWithValue("@IdItem", i.Id);
                         Cmd.Parameters.AddWithValue("@Quantidade", i.Quantidade);
                     }
@@ -51,6 +53,10 @@ namespace ClassLibrary.Repositorio
                 catch (Exception ex)
                 {
                     throw new Exception("Erro ao cadastrar item pedido : " + ex.Message);
+                }
+                finally
+                {
+                    FecharConexao();
                 }
             }
         }
@@ -91,7 +97,7 @@ namespace ClassLibrary.Repositorio
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("Erro ao alterar pedido: " + ex.Message);
+                    throw new Exception("Erro ao cancelar pedido: " + ex.Message);
                 }
                 finally
                 {
@@ -109,21 +115,23 @@ namespace ClassLibrary.Repositorio
                 try
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
-                    Cmd.Parameters.AddWithValue("@IdePedido", idPedido);
+                    Cmd.Parameters.AddWithValue("@IdPedido", idPedido);
                     Pedido pedido = null;
-                    if (Dr.Read())
+                    while (Dr.Read())
                     { 
                         pedido = new Pedido();
-                        pedido.Id = Convert.ToInt32(Dr["Pedido.Id"]);
-                        pedido.Codigo = Convert.ToString(Dr["Pedido.Codigo"]);
-                        pedido.Comprador.Nome = Convert.ToString(Dr["Usuario.Nome"]);
+                        pedido.Id = Convert.ToInt32(Dr["Item.Nome"]);
+                        pedido.Codigo = Convert.ToString(Dr["Item.Quantidade"]);
+                        pedido.Comprador.Nome = Convert.ToString(Dr["Item.Valorunitario"]);
                     }
+
+                    Dr.Close();
 
                     return pedido;
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("Ao Listar pedido: " + ex.Message);
+                    throw new Exception("Ao carregar pedido: " + ex.Message);
                 }
                 finally
                 {
@@ -188,10 +196,12 @@ namespace ClassLibrary.Repositorio
                         Pedido pedido = new Pedido();
                         pedido.Id = Convert.ToInt32(Dr["Pedido.Id"]);
                         pedido.Codigo = Convert.ToString(Dr["Pedido.Codigo"]);
-                        pedido.Comprador.Nome = Convert.ToString(Dr["Usuario.Nome"]);
+                        pedido.Vendedor.Nome = Convert.ToString(Dr["Usuario.Nome"]);
 
                         pedidoList.Add(pedido);
                     }
+
+                    Dr.Close();
 
                     return pedidoList;
                 }
@@ -211,7 +221,7 @@ namespace ClassLibrary.Repositorio
         {
             Abrirconexao();
 
-            using (Cmd = new SqlCommand("ListarPedidoPeloStatusVendador", Con))
+            using (Cmd = new SqlCommand("ListarPedidoPeloStatusVendedor", Con))
             {
                 try
                 {
@@ -229,6 +239,8 @@ namespace ClassLibrary.Repositorio
 
                         pedidoList.Add(pedido);
                     }
+
+                    Dr.Close();
 
                     return pedidoList;
                 }
@@ -262,10 +274,12 @@ namespace ClassLibrary.Repositorio
                         Pedido pedido = new Pedido();
                         pedido.Id = Convert.ToInt32(Dr["Pedido.Id"]);
                         pedido.Codigo = Convert.ToString(Dr["Pedido.Codigo"]);
-                        pedido.Comprador.Nome = Convert.ToString(Dr["Usuario.Nome"]);
+                        pedido.Vendedor.Nome = Convert.ToString(Dr["Usuario.Nome"]);
 
                         pedidoList.Add(pedido);
                     }
+
+                    Dr.Close();
 
                     return pedidoList;
                 }

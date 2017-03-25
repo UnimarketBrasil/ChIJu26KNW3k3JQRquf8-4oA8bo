@@ -2,8 +2,11 @@ use UnimarketDB
 go
 Excluir CarregarSubUsuario
 go
-create procedure CarregarSubUsuario
+create procedure CarregarSubUsuario (
+	@IdUsuario int
+	)
 as
 begin
-	select Usuario.Id, Usuario.Nome, Usuario.Email from Usuario
+	select SubUsuario.Id, SubUsuario.Nome, SubUsuario.Email from SubUsuario
+	where (SubUsuario.Id = @IdUsuario)
 end

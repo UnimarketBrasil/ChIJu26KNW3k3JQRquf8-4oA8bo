@@ -7,8 +7,8 @@ create procedure DetalheItemComprador(
 	)
 as
 begin
-	select Item.Nome, Item.Descricao, Item.ValorUnitario, Item.Quantidade, Categoria.Nome, Administrador.Nome from Item
+	select Item.Nome, Item.Descricao, Item.ValorUnitario, Item.Quantidade, Categoria.Nome, Usuario.Nome from Item
 	inner join Categoria on Categoria.Id = Item.IdCategoria
-	inner join Adminstrador on Administrador.Id = Item.IdUsuario
+	inner join Usuario on Usuario.Id = Item.IdUsuario
 	where (Item.Id = @IdItem)
 end

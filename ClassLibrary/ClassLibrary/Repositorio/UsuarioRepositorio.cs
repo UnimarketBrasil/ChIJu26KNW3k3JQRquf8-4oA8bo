@@ -2,10 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClassLibrary.Repositorio
 {
@@ -25,7 +21,7 @@ namespace ClassLibrary.Repositorio
                     Cmd.Parameters.AddWithValue("@Sobrenome", user.Sobrenome);
                     Cmd.Parameters.AddWithValue("@Senha", user.Senha);
                     Cmd.Parameters.AddWithValue("@CpfCnpj", user.CpfCnpj);
-                    Cmd.Parameters.AddWithValue("@Nascimentp", user.Nascimento);
+                    Cmd.Parameters.AddWithValue("@Nascimento", user.Nascimento);
                     Cmd.Parameters.AddWithValue("@Genero", user.Genero);
                     Cmd.Parameters.AddWithValue("@Telefone", user.Telefone);
                     Cmd.Parameters.AddWithValue("@IdTipoUsuario", user.Tipousuario.Id);
@@ -50,6 +46,7 @@ namespace ClassLibrary.Repositorio
                 try
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@IdUsuario", user.Id);
                     Cmd.Parameters.AddWithValue("@Email", user.Email);
                     Cmd.Parameters.AddWithValue("@Nome", user.Nome);
                     Cmd.Parameters.AddWithValue("@Sobrenome", user.Sobrenome);
@@ -88,7 +85,7 @@ namespace ClassLibrary.Repositorio
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("Erro ao cadastrar usuario: " + ex.Message);
+                    throw new Exception("Erro ao incluir endereco: " + ex.Message);
                 }
                 finally
                 {
@@ -111,7 +108,7 @@ namespace ClassLibrary.Repositorio
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("Erro ao alterar usuario: " + ex.Message);
+                    throw new Exception("Erro ao bloquear usuario: " + ex.Message);
                 }
                 finally
                 {
@@ -155,7 +152,14 @@ namespace ClassLibrary.Repositorio
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.AddWithValue("@Email", email);
 
-                    bool retorno = Convert.ToBoolean(Dr["@Retorno"]);
+                    bool retorno = false;
+
+                    if (Dr.Read())
+                    {
+                       retorno  = Convert.ToBoolean(Dr["@Retorno"]);
+                    }
+
+                    Dr.Close();
 
                     return retorno;
 
@@ -171,7 +175,7 @@ namespace ClassLibrary.Repositorio
             }
         }
 
-        public bool LoginUsuario(string email, string senha)
+        public int LoginUsuario(string email, string senha)
         {
             Abrirconexao();
 
@@ -183,9 +187,16 @@ namespace ClassLibrary.Repositorio
                     Cmd.Parameters.AddWithValue("@Email", email);
                     Cmd.Parameters.AddWithValue("@Senha", senha);
 
-                    bool retorno = Convert.ToBoolean(Dr["@Retorno"]);
+                    int idUsuario = 0;
 
-                    return retorno;
+                    if (Dr.Read())
+                    {
+                        idUsuario = Convert.ToInt32(Dr["@IdUsuario"]);
+                    }
+
+                    Dr.Close();
+
+                    return idUsuario;
 
                 }
                 catch (Exception ex)
@@ -209,7 +220,9 @@ namespace ClassLibrary.Repositorio
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.AddWithValue("@IdUsuario", idUsuario);
+
                     Usuario user = null;
+
                     if (Dr.Read())
                     {
                         user = new Usuario();
@@ -223,11 +236,13 @@ namespace ClassLibrary.Repositorio
                         user.AreaAtuacao = Convert.ToInt32(Dr["Usuario.AreaAtuacao"]);
                     }
 
+                    Dr.Close();
+
                     return user;
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("Ao Carregar usuario: " + ex.Message);
+                    throw new Exception("Erro ao Carregar usuario: " + ex.Message);
                 }
                 finally
                 {
@@ -247,11 +262,12 @@ namespace ClassLibrary.Repositorio
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.AddWithValue("@IdUsuario", idUsuario);
+
                     Usuario user = null;
+
                     if (Dr.Read())
                     {
                         user = new Usuario();
-                        user.Id = Convert.ToInt32(Dr["Usuario.Id"]);
                         user.Nome = Convert.ToString(Dr["Usuario.Nome"]);
                         user.Email = Convert.ToString(Dr["Usuario.Email"]);
                         user.Telefone = Convert.ToString(Dr["Usuario.Telefone"]);
@@ -263,11 +279,13 @@ namespace ClassLibrary.Repositorio
                         user.StatusUsuario.Nome = Convert.ToString(Dr["StatusUsuario.Nome"]);
                     }
 
+                    Dr.Close();
+
                     return user;
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("Ao Carregar usuario: " + ex.Message);
+                    throw new Exception("Erro ao carregar usuario: " + ex.Message);
                 }
                 finally
                 {
@@ -300,6 +318,8 @@ namespace ClassLibrary.Repositorio
 
                         usuarioList.Add(user);
                     }
+
+                    Dr.Close();
 
                     return usuarioList;
                 }

@@ -7,6 +7,6 @@ create procedure CarragarUsuario(
 	)
 as	
 begin
-	select Email, Nome, Telefone, Latitude, Longitude, Complemento, AreaAtuacao from Usuario
+	select Usuario.Email, Usuario.Nome, Usuario.Telefone, Usuario.Latitude, Longitude, Usuario.Complemento, Usuario.AreaAtuacao from Usuario
 	where (Usuario.Id = @IdUsuario)
 end
