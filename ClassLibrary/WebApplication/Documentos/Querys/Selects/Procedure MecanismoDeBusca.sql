@@ -1,6 +1,6 @@
 --VERIFICAR POSTERIORMENTE COMO SERÁ FEITA A PESQUISA QUANDO O USUARIO NÃO ESTIVER LOGADO
 
-use UnimarketDB
+use unimarket
 go
 Excluir MecanismoDeBusca
 go

@@ -1,4 +1,4 @@
-use UnimarketDB
+use unimarket
 go
 if exists ( select name FROM sys.objects where (type in ('FN')) and (name = 'CalculoDistancia')) drop function CalculoDistancia
 go

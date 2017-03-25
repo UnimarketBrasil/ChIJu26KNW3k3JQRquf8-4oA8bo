@@ -1,4 +1,4 @@
-use UnimarketDB
+use unimarket
 go
 create table StatusUsuario(
 	Id int Not null primary key identity(1,1),

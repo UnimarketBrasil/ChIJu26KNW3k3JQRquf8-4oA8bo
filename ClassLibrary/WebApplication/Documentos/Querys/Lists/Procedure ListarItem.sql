@@ -1,4 +1,4 @@
-use Unimarketdb
+use unimarket
 go
 Excluir ListarItem
 go

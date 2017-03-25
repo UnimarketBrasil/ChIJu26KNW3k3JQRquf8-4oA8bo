@@ -1,0 +1,5 @@
+C:\Users\José\Documents\TCC\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\bin\Release\ClassUtilitario.dll
+C:\Users\José\Documents\TCC\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\bin\Release\ClassUtilitario.pdb
+C:\Users\José\Documents\TCC\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\obj\Release\ClassUtilitario.csprojResolveAssemblyReference.cache
+C:\Users\José\Documents\TCC\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\obj\Release\ClassUtilitario.dll
+C:\Users\José\Documents\TCC\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\obj\Release\ClassUtilitario.pdb

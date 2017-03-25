@@ -1,4 +1,4 @@
-use UnimarketDB
+use unimarket
 go
 Excluir LoginUsuario
 go

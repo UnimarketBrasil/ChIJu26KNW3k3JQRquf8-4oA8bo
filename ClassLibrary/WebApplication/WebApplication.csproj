@@ -152,6 +152,7 @@
     <Content Include="SistemaNovoItem.aspx" />
     <Content Include="Style\images\work-img1.jpg" />
     <Content Include="WebTest.aspx" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
