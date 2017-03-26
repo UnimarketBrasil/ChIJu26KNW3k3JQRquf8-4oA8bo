@@ -25,6 +25,7 @@ namespace ClassLibrary.Repositorio
                     Cmd.Parameters.AddWithValue("@Genero", user.Genero);
                     Cmd.Parameters.AddWithValue("@Telefone", user.Telefone);
                     Cmd.Parameters.AddWithValue("@IdTipoUsuario", user.Tipousuario.Id);
+                    Cmd.ExecuteNonQuery();
                 }
                 catch (Exception ex)
                 {
@@ -55,6 +56,7 @@ namespace ClassLibrary.Repositorio
                     Cmd.Parameters.AddWithValue("@Longitude", user.Longitude);
                     Cmd.Parameters.AddWithValue("@Complemento", user.Complemento);
                     Cmd.Parameters.AddWithValue("@AreaAtuacao", user.AreaAtuacao);
+                    Cmd.ExecuteNonQuery();
                 }
                 catch (Exception ex)
                 {
@@ -81,6 +83,7 @@ namespace ClassLibrary.Repositorio
                     Cmd.Parameters.AddWithValue("@Longitude", user.Longitude);
                     Cmd.Parameters.AddWithValue("@Complemento", user.Complemento);
                     Cmd.Parameters.AddWithValue("@AreaAtuacao", user.AreaAtuacao);
+                    Cmd.ExecuteNonQuery();
 
                 }
                 catch (Exception ex)
@@ -105,6 +108,7 @@ namespace ClassLibrary.Repositorio
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.AddWithValue("@IdUsuario", idUsuario);
+                    Cmd.ExecuteNonQuery();
                 }
                 catch (Exception ex)
                 {
@@ -128,6 +132,7 @@ namespace ClassLibrary.Repositorio
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.AddWithValue("@IdUsuario", senha);
                     Cmd.Parameters.AddWithValue("@Senha", senha);
+                    Cmd.ExecuteNonQuery();
 
                 }
                 catch (Exception ex)
@@ -186,6 +191,7 @@ namespace ClassLibrary.Repositorio
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.AddWithValue("@Email", email);
                     Cmd.Parameters.AddWithValue("@Senha", senha);
+                    Cmd.ExecuteNonQuery();
 
                     int idUsuario = 0;
 
@@ -234,6 +240,7 @@ namespace ClassLibrary.Repositorio
                         user.Longitude = Convert.ToInt64(Dr["Usuario.Longitude"]);
                         user.Complemento = Convert.ToString(Dr["Usuario.Complemento"]);
                         user.AreaAtuacao = Convert.ToInt32(Dr["Usuario.AreaAtuacao"]);
+                        Cmd.ExecuteNonQuery();
                     }
 
                     Dr.Close();
@@ -277,6 +284,7 @@ namespace ClassLibrary.Repositorio
                         user.AreaAtuacao = Convert.ToInt32(Dr["Usuario.AreaAtuacao"]);
                         user.Tipousuario.Nome = Convert.ToString(Dr["TipoUsuario.Nome"]);
                         user.StatusUsuario.Nome = Convert.ToString(Dr["StatusUsuario.Nome"]);
+                        Cmd.ExecuteNonQuery();
                     }
 
                     Dr.Close();
