@@ -11,7 +11,7 @@ begin
 		begin tran
 			update Item set 
 			Item.Quantidade = (select ItemPedido.Quantidade from ItemPedido 
-			where (ItemPedido.IdPedido = @IdPedido)or(ItemPedido.IdItem = Item.Id))
+			where (ItemPedido.IdPedido = @IdPedido)and(ItemPedido.IdItem = Item.Id))
 			update Pedido set
 			Pedido.IdStatusPedido = 2
 			where (Pedido.Id = @IdPedido)

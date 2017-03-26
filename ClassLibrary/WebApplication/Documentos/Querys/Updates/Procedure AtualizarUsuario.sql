@@ -6,6 +6,7 @@ create  procedure AtualizarUsuario(
 	@IdUsuario int,
 	@Email varchar(50),
 	@Nome varchar(50),
+	@Sobrenome varchar(50),
 	@Telefone varchar(15),
 	@Latitude int,
 	@Longitude int,
@@ -19,6 +20,7 @@ begin
 			update administrador set
 			Email = @Email,
 			Nome = @Nome,
+			Sobrenome = @Sobrenome,
 			Telefone = @Telefone,
 			Latitude = @Latitude,
 			Longitude = @Longitude,

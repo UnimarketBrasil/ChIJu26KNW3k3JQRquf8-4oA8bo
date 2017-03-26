@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClassLibrary.Repositorio
 {
-    class SubUsuarioRepositorio : Conexao
+    public class SubUsuarioRepositorio : Conexao
     {
         public void CadastrarUsuario(SubUsuario user)
         {
@@ -39,12 +35,12 @@ namespace ClassLibrary.Repositorio
         {
             Abrirconexao();
 
-            using (Cmd = new SqlCommand("AtualizarSenhaSubUsuario", Con))
+            using (Cmd = new SqlCommand("AtualizarSubUsuario", Con))
             {
                 try
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
-                    Cmd.Parameters.AddWithValue("@IdUsuario", user.Id);
+                    Cmd.Parameters.AddWithValue("@IdSubUsuario", user.Id);
                     Cmd.Parameters.AddWithValue("@Nome", user.Nome);
                     Cmd.Parameters.AddWithValue("@Email", user.Email);
 
@@ -94,7 +90,9 @@ namespace ClassLibrary.Repositorio
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.AddWithValue("@IdUsuario", idUsuario);
+
                     SubUsuario user = null;
+
                     if (Dr.Read())
                     {
                         user = new SubUsuario();
@@ -103,11 +101,13 @@ namespace ClassLibrary.Repositorio
                         user.Email = Convert.ToString(Dr["SubUsuario.Nome"]);
                     }
 
+                    Dr.Close();
+
                     return user;
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("Ao Carregar usuario: " + ex.Message);
+                    throw new Exception("Erro oa carregar usuario: " + ex.Message);
                 }
                 finally
                 {

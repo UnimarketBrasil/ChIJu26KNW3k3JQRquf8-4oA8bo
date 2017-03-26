@@ -8,7 +8,7 @@ create procedure ListarPedidoComprador(
 as
 begin
 	select Pedido.Id, Pedido.Codigo, Usuario.Nome from Pedido
-	inner join Usuario on Pedido.IdComprador = v.Id
+	inner join Usuario on Pedido.IdVendedor = Usuario.Id
 	where (Usuario.Id = @IdUsuario)
 	order by Pedido.Id desc
 end

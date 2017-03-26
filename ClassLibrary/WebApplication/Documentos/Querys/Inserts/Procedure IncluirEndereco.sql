@@ -6,7 +6,7 @@ create procedure IncluirEndereco(
 	@IdUsuario int,
 	@Longitude bigint,
 	@Latitude bigint,
-	@AreaAtuacao real,
+	@AreaAtuacao real = null,
 	@Complemento varchar(255)
 	)
 as

@@ -2,13 +2,10 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClassLibrary.Repositorio
 {
-    class ItemRepositorio : Conexao
+    public class ItemRepositorio : Conexao
     {
         public void CadastrarItem(Item item)
         {
@@ -25,8 +22,8 @@ namespace ClassLibrary.Repositorio
                     Cmd.Parameters.AddWithValue("@Descricao", item.Descricao);
                     Cmd.Parameters.AddWithValue("@ValorUnitario", item.ValorUnitario);
                     Cmd.Parameters.AddWithValue("@Quantidade", item.Quantidade);
-                    Cmd.Parameters.AddWithValue("@Categoria", item.Categoria.Id);
-                    Cmd.Parameters.AddWithValue("@Usuario", item.Usuario.Id);
+                    Cmd.Parameters.AddWithValue("@IdCategoria", item.Categoria.Id);
+                    Cmd.Parameters.AddWithValue("@IdUsuario", item.Usuario.Id);
 
                 }
                 catch (Exception ex)
@@ -44,11 +41,12 @@ namespace ClassLibrary.Repositorio
         {
             Abrirconexao();
 
-            using (Cmd = new SqlCommand("Atualizar", Con))
+            using (Cmd = new SqlCommand("AtualizarItem", Con))
             {
                 try
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@IdItem", item.Id);
                     Cmd.Parameters.AddWithValue("@Codigo", item.Codigo);
                     Cmd.Parameters.AddWithValue("@Nome", item.Nome);
                     Cmd.Parameters.AddWithValue("@Descricao", item.Descricao);
@@ -67,7 +65,7 @@ namespace ClassLibrary.Repositorio
             }
         }
 
-        public void DesebilitarItemPorId(int idItem)
+        public void DesabilitarItemPorId(int idItem)
         {
             Abrirconexao();
 
@@ -76,7 +74,7 @@ namespace ClassLibrary.Repositorio
                 try
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
-                    Cmd.Parameters.AddWithValue("@Id", idItem);
+                    Cmd.Parameters.AddWithValue("@IdItem", idItem);
                 }
                 catch (Exception ex)
                 {
@@ -113,11 +111,13 @@ namespace ClassLibrary.Repositorio
                         item.Categoria.Descricao = Convert.ToString(Dr["Categoria.Nome"]);
                     }
 
+                    Dr.Close();
+
                     return item;
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("Ao detalhar Item: " + ex.Message);
+                    throw new Exception("Erro o carregar Item: " + ex.Message);
                 }
                 finally
                 {
@@ -148,13 +148,16 @@ namespace ClassLibrary.Repositorio
                         item.ValorUnitario = Convert.ToDouble(Dr["Item.Valorunitario"]);
                         item.Quantidade = Convert.ToString(Dr["Item.Quantidade"]);
                         item.Categoria.Descricao = Convert.ToString(Dr["Categoria.Nome"]);
+                        item.Usuario.Nome = Convert.ToString(Dr["Usuario.Nome"]);
                     }
+
+                    Dr.Close();
 
                     return item;
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("Ao detalhar Item: " + ex.Message);
+                    throw new Exception("Erro ao carregar Item: " + ex.Message);
                 }
                 finally
                 {
@@ -187,6 +190,8 @@ namespace ClassLibrary.Repositorio
 
                         itemList.Add(item);
                     }
+
+                    Dr.Close();
 
                     return itemList;
                 }
@@ -280,7 +285,7 @@ namespace ClassLibrary.Repositorio
             }
         }
 
-        public List<Item> MecanismoDeBusca(string produto, Usuario comprador)
+        public List<Item> MecanismoDeBusca(string pesquisa, Usuario comprador)
         {
             Abrirconexao();
 
@@ -289,26 +294,30 @@ namespace ClassLibrary.Repositorio
                 try
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
-                    Cmd.Parameters.AddWithValue("@Pesquisa", produto);
+                    Cmd.Parameters.AddWithValue("@Pesquisa", pesquisa);
                     Cmd.Parameters.AddWithValue("@LatitudeComprador", comprador.Latitude);
                     Cmd.Parameters.AddWithValue("@LongitudeComprador", comprador.Longitude);
+
                     List<Item> itemList = new List<Item>();
 
                     while (Dr.Read())
                     {
                         Item item = new Item();
                         item.Id = Convert.ToInt32(Dr["Item.Id"]);
-                        item.Codigo = Convert.ToString(Dr["Item.Nome"]);
-                        item.Nome = Convert.ToString(Dr["Item.ValorUnitario"]);
+                        item.Nome = Convert.ToString(Dr["Item.Nome"]);
+                        item.ValorUnitario = Convert.ToDouble(Dr["Item.ValorUnitario"]);
+                        item.Usuario.Nome = Convert.ToString(Dr["Usuario.Nome"]);
 
                         itemList.Add(item);
                     }
+
+                    Dr.Close();
 
                     return itemList;
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("Ao buscar Item: " + ex.Message);
+                    throw new Exception("Erro ao buscar Item: " + ex.Message);
                 }
                 finally
                 {

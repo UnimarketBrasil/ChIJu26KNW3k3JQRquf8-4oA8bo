@@ -6,9 +6,10 @@ create procedure Recuperarsenha(
 	@Email int
 	)
 as
+	declare @Retorno bit
 begin
 	if exists ( select Usuario.Id from Usuario where Usuario.Email = @Email)	
-		print 'true'
+		set @Retorno = 'true'
 	else
-		print 'false'
+		set @Retorno = 'false'
 end

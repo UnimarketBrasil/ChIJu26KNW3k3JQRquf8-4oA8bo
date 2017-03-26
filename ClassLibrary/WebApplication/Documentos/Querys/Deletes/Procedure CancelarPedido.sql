@@ -1,8 +1,8 @@
 use unimarket
 go
-Excluir FinalizarPedido
+Excluir CancelarPedido
 go
-create procedure FinalizarPedido(
+create procedure CancelarPedido(
 	@IdPedido int
 	)
 as
