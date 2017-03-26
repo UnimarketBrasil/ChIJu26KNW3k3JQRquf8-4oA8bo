@@ -1,12 +1,5 @@
 ﻿using ClassLibrary;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace ClassUtilitario
 {
@@ -23,43 +16,6 @@ namespace ClassUtilitario
             else
             {
                 return false;
-            }
-        }
-
-        //Depois alterar para bool
-        public void ValidarEmailCpfCnpj(Usuario user)
-        {
-            bool valido = true;
-            DataTable dt = new DataTable();
-            Abrirconexao();
-
-            using (Cmd = new SqlCommand("CadastrarUsuario", Con))
-            {
-                try
-                {
-                    Cmd.CommandType = CommandType.StoredProcedure;
-                    Cmd.Parameters.AddWithValue("@Email", user.Email);
-                    Cmd.Parameters.AddWithValue("@CpfCnpj", user.CpfCnpj);
-                    Cmd.ExecuteNonQuery();
-
-                    SqlDataAdapter sda = new SqlDataAdapter(Cmd);
-                    sda.Fill(dt);
-
-                    if (dt.Rows.Count <= 0)
-                    {
-
-                    }
-
-                }
-                catch
-                {
-                    //throw new Exception("Erro ao cadastrar usuario: " + ex.Message.ToString());
-                    valido = false;
-                }
-                finally
-                {
-                    FecharConexao();
-                }
             }
         }
     }
