@@ -37,26 +37,31 @@ namespace WebApplication
             Usuario u = new Usuario();
 
             u.Email = txtEmailEtapa2.Text;
+
             if (dpTipoPessoa.SelectedValue == "1")
             {
                 u.Nome = txtNome.Text;
                 u.Sobrenome = txtSobrenome.Text;
-                u.CpfCnpj = txtCpf.Text;
                 u.Nascimento = DateTime.Today;
                 u.Genero = int.Parse(dpGenero.SelectedValue);
             }
             else
             {
                 u.Nome = txtRazaoSocial.Text;
-                u.Sobrenome = null;
-                u.CpfCnpj = txtCnpj.Text;
                 u.Nascimento = DateTime.Today;//Falta arrumar
             }
-        
+
+            CpfCnpj cpfCnpj = new CpfCnpj();
+            if (cpfCnpj.ValidarCpfCnpj(txtCpf.Text))
+            {
+                u.CpfCnpj = txtCpf.Text;
+            }   
+                 
             Criptografia criptografia = new Criptografia();
             u.Senha = criptografia.CriptografarSenha(txtSenha.Text);
 
             u.Telefone = txtTel.Text;
+
             u.Tipousuario = new TipoUsuario(int.Parse(rdOperacao.SelectedValue));
 
             UsuarioRepositorio cadastrar = new UsuarioRepositorio();
