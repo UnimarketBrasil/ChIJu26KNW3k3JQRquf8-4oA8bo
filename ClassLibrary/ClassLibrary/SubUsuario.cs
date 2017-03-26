@@ -2,7 +2,7 @@
 
 namespace ClassLibrary
 {
-    class SubUsuario
+    public class SubUsuario
     {
         public int Id { get; set; }
 

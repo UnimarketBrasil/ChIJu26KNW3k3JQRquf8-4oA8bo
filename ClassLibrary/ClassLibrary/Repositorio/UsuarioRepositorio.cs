@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 
 namespace ClassLibrary.Repositorio
 {
-    class UsuarioRepositorio : Conexao
+    public class UsuarioRepositorio : Conexao
     {
         public void CadastrarUsuario(Usuario user)
         {

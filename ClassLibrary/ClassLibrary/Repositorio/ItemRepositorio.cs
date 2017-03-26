@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 
 namespace ClassLibrary.Repositorio
 {
-    class ItemRepositorio : Conexao
+    public class ItemRepositorio : Conexao
     {
         public void CadastrarItem(Item item)
         {

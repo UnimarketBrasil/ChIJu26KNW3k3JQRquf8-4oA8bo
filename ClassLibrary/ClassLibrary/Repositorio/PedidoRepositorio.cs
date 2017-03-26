@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 
 namespace ClassLibrary.Repositorio
 {
-    class PedidoRepositorio : Conexao
+    public class PedidoRepositorio : Conexao
     {
         public void RealizarPedido(Pedido pedido)
         {

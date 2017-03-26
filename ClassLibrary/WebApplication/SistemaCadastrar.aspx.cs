@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using ClassLibrary;
 using ClassUtilitario;
+using ClassLibrary.Repositorio;
 
 namespace WebApplication
 {
@@ -47,14 +48,16 @@ namespace WebApplication
                 u.CpfCnpj = txtCnpj.Text;
                 u.Nascimento = DateTime.Today;//Falta arrumar
             }
-            u.Senha = txtSenha.Text;
-
-            CriptografarSenha(u.Senha);
+        
+            Criptografia criptografia = new Criptografia();
+            u.Senha = criptografia.CriptografarSenha(txtSenha.Text);
 
             u.Telefone = txtTel.Text;
             u.Tipousuario = new TipoUsuario(int.Parse(rdOperacao.SelectedValue));
 
-            CadastrarUsuario(u);
+            UsuarioRepositorio cadastrar = new UsuarioRepositorio();
+            cadastrar.CadastrarUsuario(u);
+
         }
     }
 }

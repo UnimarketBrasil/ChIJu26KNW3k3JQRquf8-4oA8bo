@@ -6,7 +6,7 @@ namespace ClassUtilitario
 {
     public class Criptografia
     {     
-        static string CriptografarSenha(string senha)
+        public string CriptografarSenha(string senha)
         {
             MD5CryptoServiceProvider md5Hasher = new MD5CryptoServiceProvider();
 
@@ -21,5 +21,6 @@ namespace ClassUtilitario
          
             return sBuilder.ToString();
         }
+
     }
 }
