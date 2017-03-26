@@ -13,10 +13,13 @@ namespace WebApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            dvSegundaEtapa.Visible = false;
+            if (!IsPostBack)
+            {
+                dvSegundaEtapa.Visible = false;
+            }
         }
 
-        protected void myButtonEtapa1_Click(object sender, EventArgs e)
+        protected void Validar_Click(object sender, EventArgs e)
         {
             IsEmail u = new IsEmail();
             if (u.ValidarEmail(txtEmailEtapa1.Text))
@@ -24,6 +27,7 @@ namespace WebApplication
                 dvSegundaEtapa.Visible = true;
                 dvPrimeiraEtapa.Visible = false;
                 txtEmailEtapa2.Text = txtEmailEtapa1.Text;
+                //dvPessoaJuridica.Visible = false;
             }
         }
 

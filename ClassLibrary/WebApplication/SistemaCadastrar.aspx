@@ -18,7 +18,7 @@
                     <div class="form-group">
                         <div class="col-lg-10 col-lg-offset-2">
                             <div>
-                                <asp:Button ID="myButtonEtapa1" runat="server" Text="Cadastrar!" CssClass="btn btn-primary" OnClick="myButtonEtapa1_Click" />
+                                <asp:Button ID="btValidar" runat="server" Text="Criar uma conta" CssClass="btn btn-primary" OnClick="Validar_Click" />
                             </div>
                         </div>
                     </div>
@@ -43,7 +43,7 @@
                                     </div>
                                 </fieldset>
                                 <!--Pessoa Jurídica-->
-                                <fieldset id="pessoaJuridica" runat="server">
+                                <div id="dvPessoaJuridica" runat="server">
                                     <div class="form-group">
                                         <label for="txtCnpj" class="col-lg-2 control-label">CNPJ</label>
                                         <div class="col-lg-10">
@@ -56,9 +56,9 @@
                                             <asp:TextBox ID="txtRazaoSocial" runat="server" CssClass="form-control" placeholder="Razão Social"></asp:TextBox>
                                         </div>
                                     </div>
-                                </fieldset>
+                                </div>
                                 <!--Pessoa Fisica-->
-                                <div id="pessoaFisica" runat="server">
+                                <div id="dvPessoaFisica" runat="server">
                                     <div class="form-group">
                                         <label for="txtCpf" class="col-lg-2 control-label">CPF</label>
                                         <div class="col-lg-10">
@@ -80,7 +80,7 @@
                                     <div class="form-group">
                                         <label for="txtDtNasc" class="col-lg-2 control-label">Data de Nasc.</label>
                                         <div class="col-lg-10">
-                                            <asp:TextBox ID="txtDtNasc" runat="server" CssClass="form-control" placeholder="dd/mm/aaaa"></asp:TextBox>
+                                            <asp:TextBox ID="txtDtNasc" TextMode="Date" runat="server" CssClass="form-control" placeholder="dd/mm/aaaa"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -123,7 +123,7 @@
                                     <label for="rdCompra" class="col-lg-2 control-label">Cê quer o que?</label>
                                     <div class="col-lg-10">
                                         <asp:RadioButtonList ID="rdOperacao" runat="server" RepeatLayout="Flow">
-                                            <asp:ListItem Value="2">Comprar</asp:ListItem>
+                                            <asp:ListItem Value="2" Selected="True">Comprar</asp:ListItem>
                                             <asp:ListItem Value="3">Vender</asp:ListItem>
                                         </asp:RadioButtonList>
                                     </div>
@@ -151,32 +151,20 @@
         </div>
         <!--Scripts-->
         <script>
-            //Ocultar Fieldset Pessoa Jutídica
-            window.onload = function ocultarPessoaJuridica() {
-                document.getElementById('<% =pessoaJuridica.ClientID %>').style.display = "none";
-            }
-            //Animação do Botão Cadastrar
-            $('#myButton').on('click', function () {
-                var $btn = $(this).button('loading')
-                //$btn.button('reset')
-            })
-
-            //
             function tipoPessoaSel() {
                 var dropdown = document.getElementById('<% =dpTipoPessoa.ClientID %>');
                 var valorSelecioando = dropdown.options[dropdown.selectedIndex].value;
 
                 if (valorSelecioando == 1) {
-                    document.getElementById('<% =pessoaFisica.ClientID  %>').style.display = "block";
-                    document.getElementById('<% =pessoaJuridica.ClientID %>').style.display = "none";
+                    document.getElementById('<% =dvPessoaFisica.ClientID  %>').style.display = "block";
+                    document.getElementById('<% =dvPessoaJuridica.ClientID %>').style.display = "none";
                 } else {
-                    document.getElementById('<% =pessoaFisica.ClientID  %>').style.display = "none";
-                    document.getElementById('<% =pessoaJuridica.ClientID %>').style.display = "block";
+                    document.getElementById('<% =dvPessoaFisica.ClientID  %>').style.display = "none";
+                    document.getElementById('<% =dvPessoaJuridica.ClientID %>').style.display = "block";
                 }
             }
         </script>
     </div>
-
 </asp:Content>
 
 

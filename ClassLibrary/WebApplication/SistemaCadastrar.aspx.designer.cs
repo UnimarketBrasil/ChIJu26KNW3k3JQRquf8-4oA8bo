@@ -31,13 +31,13 @@ namespace WebApplication {
         protected global::System.Web.UI.WebControls.TextBox txtEmailEtapa1;
         
         /// <summary>
-        /// Controle myButtonEtapa1.
+        /// Controle btValidar.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button myButtonEtapa1;
+        protected global::System.Web.UI.WebControls.Button btValidar;
         
         /// <summary>
         /// Controle dvSegundaEtapa.
@@ -58,13 +58,13 @@ namespace WebApplication {
         protected global::System.Web.UI.WebControls.DropDownList dpTipoPessoa;
         
         /// <summary>
-        /// Controle pessoaJuridica.
+        /// Controle dvPessoaJuridica.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pessoaJuridica;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvPessoaJuridica;
         
         /// <summary>
         /// Controle txtCnpj.
@@ -85,13 +85,13 @@ namespace WebApplication {
         protected global::System.Web.UI.WebControls.TextBox txtRazaoSocial;
         
         /// <summary>
-        /// Controle pessoaFisica.
+        /// Controle dvPessoaFisica.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pessoaFisica;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvPessoaFisica;
         
         /// <summary>
         /// Controle txtCpf.
