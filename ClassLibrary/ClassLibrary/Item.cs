@@ -14,7 +14,7 @@ namespace ClassLibrary
 
         public double ValorUnitario { get; set; }
 
-        public string Quantidade { get; set; }
+        public double Quantidade { get; set; }
 
         public Categoria Categoria { get; set; }
 
