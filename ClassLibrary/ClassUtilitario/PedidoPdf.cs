@@ -107,15 +107,9 @@ namespace ClassUtilitario
         }
 
 
-        public FileStream getPedido(Pedido pedido)
-        {
-            PedidoPdf p = new PedidoPdf();
+       // public FileStream getPedido(Pedido pedido)    
+        //FileStream arquivo = new FileStream; ("Pedido.pdf",FileMode.Truncate(p.GetOutput(pedido).GetBuffer()) );
 
-            FileStream arquivo = new FileStream.
-            arquivo.CopyTo(p.GetOutput(pedido).GetBuffer());
-
-            return arquivo;
-        }
 
     }
 }
