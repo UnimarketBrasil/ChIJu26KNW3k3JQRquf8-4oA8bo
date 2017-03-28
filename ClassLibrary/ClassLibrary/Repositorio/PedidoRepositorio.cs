@@ -20,11 +20,10 @@ namespace ClassLibrary.Repositorio
                     Cmd.Parameters.AddWithValue("@IdVendedor", pedido.Vendedor.Id);
                     Cmd.Parameters.AddWithValue("@IdComprador", pedido.Comprador.Id);
                     Cmd.Parameters.AddWithValue("@IdStatusPedido", pedido.StatusPedido.Id);
+                    Cmd.ExecuteNonQuery();
 
-                    if (Dr.Read())
-                        pedido.Id = Convert.ToInt32(Dr["Inserted.Id"]);
+                    pedido.Id = int.Parse(Cmd.ExecuteScalar().ToString());
 
-                    Dr.Close();
                 }
                 catch (Exception ex)
                 {
