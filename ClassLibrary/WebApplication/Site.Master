@@ -9,6 +9,7 @@
     <link href="Content/bootstrap.cosmo.css" rel="stylesheet" />
     <link href="Content/bootstrap.cosmo.min.css" rel="stylesheet" />
     <!--Script-->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>

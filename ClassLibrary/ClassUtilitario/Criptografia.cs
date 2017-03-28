@@ -16,7 +16,7 @@ namespace ClassUtilitario
 
             for (int i = 0; i < data.Length; i++)
             {
-                sBuilder.Append(data[i].ToString());
+                sBuilder.Append(data[i].ToString("ChIJu26KNW3k3JQRquf8-4oA8bo"));
             }
          
             return sBuilder.ToString();
