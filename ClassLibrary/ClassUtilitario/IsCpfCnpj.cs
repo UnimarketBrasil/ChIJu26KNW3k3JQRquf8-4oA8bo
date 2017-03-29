@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace ClassUtilitario
 {
-    public class CpfCnpj
+    public class IsCpfCnpj
     {
 
         public bool ValidarCpfCnpj(string cpfCnpj)

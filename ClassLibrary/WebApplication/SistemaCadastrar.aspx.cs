@@ -38,25 +38,33 @@ namespace WebApplication
 
             u.Email = txtEmailEtapa2.Text;
 
-            if (dpTipoPessoa.SelectedValue == "1")
+            if (dpTipoPessoa.SelectedValue == "1")//SE 1 ENTÃO PESSOA FÍSICA, SE 2 ENTÃO PESSOA JURÍDICA.
             {
                 u.Nome = txtNome.Text;
                 u.Sobrenome = txtSobrenome.Text;
                 u.Nascimento = DateTime.Today;
                 u.Genero = int.Parse(dpGenero.SelectedValue);
+
+                IsCpfCnpj cpf = new IsCpfCnpj();
+                if (cpf.ValidarCpfCnpj(txtCpf.Text))
+                {
+                    u.CpfCnpj = txtCpf.Text;
+                }
             }
             else
             {
+
                 u.Nome = txtRazaoSocial.Text;
-                u.Nascimento = DateTime.Today;//Falta arrumar
+                u.Nascimento = DateTime.Today;//Falta arrumar PERMITIR NULL
+
+                IsCpfCnpj cnpj = new IsCpfCnpj();
+                if (cnpj.ValidarCpfCnpj(txtCnpj.Text))
+                {
+                    u.CpfCnpj = txtCnpj.Text;
+                }
             }
 
-            CpfCnpj cpfCnpj = new CpfCnpj();
-            if (cpfCnpj.ValidarCpfCnpj(txtCpf.Text))
-            {
-                u.CpfCnpj = txtCpf.Text;
-            }   
-                 
+            u.CpfCnpj = txtCpf.Text;
             Criptografia criptografia = new Criptografia();
             u.Senha = criptografia.CriptografarSenha(txtSenha.Text);
 

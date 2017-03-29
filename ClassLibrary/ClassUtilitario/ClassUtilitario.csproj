@@ -44,7 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CpfCnpj.cs" />
+    <Compile Include="IsCpfCnpj.cs" />
     <Compile Include="Criptografia.cs" />
     <Compile Include="IsEmail.cs" />
     <Compile Include="PedidoPdf.cs" />
