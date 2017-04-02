@@ -54,7 +54,7 @@ namespace ClassUtilitario
 
             foreach (var dados in pedido.Item)
             {
- 
+
                 tabela.AddCell(Formataco(dados.Codigo, fonteCorpo));
                 tabela.AddCell(Formataco(dados.Nome, fonteCorpo));
                 tabela.AddCell(Formataco(dados.Quantidade.ToString(), fonteCorpo));
@@ -107,7 +107,7 @@ namespace ClassUtilitario
         }
 
 
-       // public FileStream getPedido(Pedido pedido)    
+        // public FileStream getPedido(Pedido pedido)    
         //FileStream arquivo = new FileStream; ("Pedido.pdf",FileMode.Truncate(p.GetOutput(pedido).GetBuffer()) );
 
 

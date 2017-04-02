@@ -47,7 +47,9 @@
     <Compile Include="IsCpfCnpj.cs" />
     <Compile Include="Criptografia.cs" />
     <Compile Include="IsEmail.cs" />
-    <Compile Include="PedidoPdf.cs" />
+    <Compile Include="Pdf\Pdf.cs" />
+    <Compile Include="Pdf\PedidoPdf.cs" />
+    <Compile Include="Pdf\UsuarioPdf.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -57,7 +59,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="Pdf\packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
