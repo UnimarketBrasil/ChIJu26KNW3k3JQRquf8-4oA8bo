@@ -1,4 +1,5 @@
 ﻿using ClassLibrary;
+using ClassLibrary.Repositorio;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using Org.BouncyCastle.Crypto.Tls;
@@ -9,107 +10,54 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClassUtilitario
+namespace ClassUtilitario.Pdf
 {
-    public class PedidoPdf
+    public class PedidoPdf : Pdf
     {
-        Document doc;
-        PdfWriter writer;
-        MemoryStream output;
-
-        protected virtual void MontarCorpoDados(Pedido pedido)
+        public override void MontaCorpoDados<T> (T p)
         {
-            doc = new Document(PageSize.A4, 20, 10, 80, 40);
-            output = new MemoryStream();
-            writer = PdfWriter.GetInstance(doc, output);
-            doc.AddAuthor("UNIMARKET Brasil");
-            doc.AddTitle("PEDIDO");
-            doc.AddSubject("PEDIDO");
+            base.MontaCorpoDados<T>(p);
 
-            doc.Open();
+            Pedido pedido = new Pedido();
+            Type Pedido = typeof(T);
 
-            PdfPTable tabela = new PdfPTable(5);
+            pedido = new Pedido();
+
+            #region Cabeçalho do Relatório
+            PdfPTable table = new PdfPTable(5);
             BaseColor preto = new BaseColor(0, 0, 0);
             BaseColor fundo = new BaseColor(200, 200, 200);
-            Font fonteCorpo = FontFactory.GetFont("Verdana", 8, Font.NORMAL, preto);
-            Font fonteTitulo = FontFactory.GetFont("Verdana", 8, Font.BOLD, preto);
+            Font font = FontFactory.GetFont("Verdana", 8, Font.NORMAL, preto);
+            Font titulo = FontFactory.GetFont("Verdana", 8, Font.BOLD, preto);
 
             float[] colsW = { 10, 10, 10, 10, 10 };
-            tabela.SetWidths(colsW);
-            tabela.HeaderRows = 1;
-            tabela.WidthPercentage = 100f;
+            table.SetWidths(colsW);
+            table.HeaderRows = 1;
+            table.WidthPercentage = 100f;
 
-            tabela.DefaultCell.BorderColorBottom = new BaseColor(255, 255, 255);
-            tabela.DefaultCell.HorizontalAlignment = Element.ALIGN_JUSTIFIED_ALL;
-            tabela.DefaultCell.Border = PdfPCell.BOTTOM_BORDER;
-            tabela.DefaultCell.BackgroundColor = fundo;
-            tabela.DefaultCell.BorderColor = preto;
-            tabela.DefaultCell.Padding = 10;
+            table.DefaultCell.Border = PdfPCell.BOTTOM_BORDER;
+            table.DefaultCell.BorderColor = preto;
+            table.DefaultCell.BorderColorBottom = new BaseColor(255, 255, 255);
+            table.DefaultCell.Padding = 10;
 
-            tabela.AddCell(Formataco("Codigo", fonteTitulo));
-            tabela.AddCell(Formataco("Item", fonteTitulo));
-            tabela.AddCell(Formataco("Quantidade", fonteTitulo));
-            tabela.AddCell(Formataco("Valor Unitario", fonteTitulo));
-            tabela.AddCell(Formataco("Total Item", fonteTitulo));
+            table.AddCell(getNewCell("CÓDIGO", titulo, Element.ALIGN_LEFT, 10, PdfPCell.BOTTOM_BORDER, preto, fundo));
+            table.AddCell(getNewCell("ITEM", titulo, Element.ALIGN_LEFT, 10, PdfPCell.BOTTOM_BORDER, preto, fundo));
+            table.AddCell(getNewCell("VALOR (UN)", titulo, Element.ALIGN_LEFT, 10, PdfPCell.BOTTOM_BORDER, preto, fundo));
+            table.AddCell(getNewCell("QUANTIDADE", titulo, Element.ALIGN_RIGHT, 10, PdfPCell.BOTTOM_BORDER, preto, fundo));
+            table.AddCell(getNewCell("TOTAL", titulo, Element.ALIGN_RIGHT, 10, PdfPCell.BOTTOM_BORDER, preto, fundo));
+            #endregion
 
-            foreach (var dados in pedido.Item)
+            foreach (var i in pedido.Item)
             {
-
-                tabela.AddCell(Formataco(dados.Codigo, fonteCorpo));
-                tabela.AddCell(Formataco(dados.Nome, fonteCorpo));
-                tabela.AddCell(Formataco(dados.Quantidade.ToString(), fonteCorpo));
-                tabela.AddCell(Formataco(dados.ValorUnitario.ToString(), fonteCorpo));
-                tabela.AddCell(Formataco((dados.ValorUnitario * dados.Quantidade).ToString(), fonteCorpo));
+                table.AddCell(getNewCell(i.Codigo, font, Element.ALIGN_LEFT, 5, PdfPCell.BOTTOM_BORDER));
+                table.AddCell(getNewCell(i.Nome, font, Element.ALIGN_LEFT, 5, PdfPCell.BOTTOM_BORDER));
+                table.AddCell(getNewCell(string.Format("{0:0.00}", i.ValorUnitario), font, Element.ALIGN_LEFT, 5, PdfPCell.BOTTOM_BORDER));
+                table.AddCell(getNewCell(i.Quantidade.ToString(), font, Element.ALIGN_LEFT, 5, PdfPCell.BOTTOM_BORDER));
+                table.AddCell(getNewCell(string.Format("{0:0.00}", (i.ValorUnitario*i.Quantidade)), font, Element.ALIGN_LEFT, 5, PdfPCell.BOTTOM_BORDER));
             }
 
-            doc.Add(tabela);
-
-            return;
+            doc.Add(table);
         }
-
-        protected PdfPCell Formataco(string Texto, Font fonte)
-        {
-            var coluna = new PdfPCell(new Phrase(Texto, fonte));
-
-            return coluna;
-        }
-
-        protected MemoryStream GetOutput(Pedido pedido)
-        {
-            MontarCorpoDados(pedido);
-
-            if (output == null || output.Length == 0)
-            {
-                throw new Exception("Sem dados para exibir.");
-            }
-
-            try
-            {
-                writer.Flush();
-
-                doc.AddHeader("content-disposition", "attachment; filename=Pedido.pdf");
-
-                if (writer.PageEmpty)
-                {
-                    doc.Add(new Paragraph("Nenhum registro para listar."));
-                }
-
-                doc.Close();
-            }
-            catch { }
-            finally
-            {
-                doc = null;
-                writer = null;
-            }
-
-            return output;
-        }
-
-
-        // public FileStream getPedido(Pedido pedido)    
-        //FileStream arquivo = new FileStream; ("Pedido.pdf",FileMode.Truncate(p.GetOutput(pedido).GetBuffer()) );
-
 
     }
 }
