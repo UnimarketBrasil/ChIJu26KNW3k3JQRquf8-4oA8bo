@@ -47,23 +47,26 @@
                     </div>
                     <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                 </form>
-                <!--
-                <div>
+                
+                <div id="dvSemLogin" runat="server">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="SistemaCadastrar.aspx">Cadastre-se</a></li>
                         <li><a href="SistemaLogin.aspx">Entrar</a></li>
                     </ul>
                 </div>
-                -->
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a id="LinkButton3" class="btn btn-primary glyphicon glyphicon-shopping-cart"></a></li>
-                    <li>
-                        <asp:Label ID="lbNomeUsuario" CssClass="navbar-brand" runat="server" Text="Meu nome aqui"></asp:Label>
-                    </li>
-                    <li><a id="LinkButton4" class="btn btn-primary glyphicon glyphicon-user"></a></li>
-                    <li><a id="LinkButton1" class="btn btn-primary glyphicon glyphicon-cog"></a></li>
-                    <li><a id="LinkButton2" class="btn btn-primary glyphicon glyphicon-log-out"></a></li>
-                </ul>
+                
+                <div id="dvLogin" runat="server">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a id="LinkButton3" class="btn btn-primary glyphicon glyphicon-shopping-cart"></a></li>
+                        <li>
+                            <asp:Label ID="lbNomeUsuario" CssClass="navbar-brand" runat="server" Text="Meu nome aqui"></asp:Label>
+                        </li>
+                        <li><a id="LinkButton4" class="btn btn-primary glyphicon glyphicon-user"></a></li>
+                        <li><a id="LinkButton1" class="btn btn-primary glyphicon glyphicon-cog"></a></li>
+                        <li><a id="LinkButton2" class="btn btn-primary glyphicon glyphicon-log-out"></a></li>
+                    </ul>
+                </div>
+
             </div>
         </div>
         <!--Script-->

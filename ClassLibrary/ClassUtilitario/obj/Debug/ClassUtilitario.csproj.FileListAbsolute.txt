@@ -31,3 +31,12 @@ C:\Users\José\Documents\TCC\ChIJu26KNW3k3JQRquf8-4oA8bo\ChIJu26KNW3k3JQRquf8-4o
 C:\Users\José\Documents\TCC\ChIJu26KNW3k3JQRquf8-4oA8bo\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\obj\Debug\ClassUtilitario.csprojResolveAssemblyReference.cache
 C:\Users\José\Documents\TCC\ChIJu26KNW3k3JQRquf8-4oA8bo\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\obj\Debug\ClassUtilitario.dll
 C:\Users\José\Documents\TCC\ChIJu26KNW3k3JQRquf8-4oA8bo\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\obj\Debug\ClassUtilitario.pdb
+C:\Users\José\Documents\TCC\TCC2\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\obj\Debug\ClassUtilitario.csprojResolveAssemblyReference.cache
+C:\Users\José\Documents\TCC\TCC2\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\obj\Debug\ClassUtilitario.dll
+C:\Users\José\Documents\TCC\TCC2\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\obj\Debug\ClassUtilitario.pdb
+C:\Users\José\Documents\TCC\TCC2\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\bin\Debug\ClassUtilitario.dll
+C:\Users\José\Documents\TCC\TCC2\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\bin\Debug\ClassUtilitario.pdb
+C:\Users\José\Documents\TCC\TCC2\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\bin\Debug\ClassLibrary.dll
+C:\Users\José\Documents\TCC\TCC2\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\bin\Debug\itextsharp.dll
+C:\Users\José\Documents\TCC\TCC2\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\bin\Debug\ClassLibrary.pdb
+C:\Users\José\Documents\TCC\TCC2\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\bin\Debug\itextsharp.xml

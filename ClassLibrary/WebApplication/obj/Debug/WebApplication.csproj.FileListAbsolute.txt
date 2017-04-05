@@ -58,3 +58,15 @@ C:\Users\José\Documents\TCC\ChIJu26KNW3k3JQRquf8-4oA8bo\ChIJu26KNW3k3JQRquf8-4o
 C:\Users\José\Documents\TCC\ChIJu26KNW3k3JQRquf8-4oA8bo\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\obj\Debug\WebApplication.csprojResolveAssemblyReference.cache
 C:\Users\José\Documents\TCC\ChIJu26KNW3k3JQRquf8-4oA8bo\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\obj\Debug\WebApplication.dll
 C:\Users\José\Documents\TCC\ChIJu26KNW3k3JQRquf8-4oA8bo\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\obj\Debug\WebApplication.pdb
+C:\Users\José\Documents\TCC\TCC2\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\obj\Debug\WebApplication.csprojResolveAssemblyReference.cache
+C:\Users\José\Documents\TCC\TCC2\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\obj\Debug\WebApplication.dll
+C:\Users\José\Documents\TCC\TCC2\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\obj\Debug\WebApplication.pdb
+C:\Users\José\Documents\TCC\TCC2\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\bin\WebApplication.dll.config
+C:\Users\José\Documents\TCC\TCC2\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\bin\WebApplication.dll
+C:\Users\José\Documents\TCC\TCC2\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\bin\WebApplication.pdb
+C:\Users\José\Documents\TCC\TCC2\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\bin\ClassLibrary.dll
+C:\Users\José\Documents\TCC\TCC2\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\bin\ClassUtilitario.dll
+C:\Users\José\Documents\TCC\TCC2\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\bin\itextsharp.dll
+C:\Users\José\Documents\TCC\TCC2\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\bin\ClassLibrary.pdb
+C:\Users\José\Documents\TCC\TCC2\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\bin\ClassUtilitario.pdb
+C:\Users\José\Documents\TCC\TCC2\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\bin\itextsharp.xml

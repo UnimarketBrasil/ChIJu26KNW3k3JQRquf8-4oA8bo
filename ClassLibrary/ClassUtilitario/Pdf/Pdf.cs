@@ -21,7 +21,7 @@ namespace ClassUtilitario.Pdf
 
         public MemoryStream GetOutput()
         {
-            MontaCorpoDados();
+            //MontaCorpoDados();
 
             if (output == null || output.Length == 0)
             {
