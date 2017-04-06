@@ -10,7 +10,12 @@ create table TipoUsuario(
 	Nome varchar(50) not null
 )
 go
-create table Usuario(
+/*
+
+É necessário incluir a coluna ultimo acesso.
+
+*/
+create table Usuario( 
 	Id int Not null primary key identity(1,1),
 	Email varchar(50) not null unique,
 	Nome varchar(50) not null,

@@ -103,6 +103,7 @@
     <Content Include="Documentos\Querys\Deletes\Procedure DesabilitarItemPorId.sql" />
     <Content Include="Documentos\Querys\Drop UnimarketDB.sql" />
     <Content Include="Documentos\Querys\Funcao CalculoDistancia.sql" />
+    <Content Include="Documentos\Querys\Inserts\Procedure LoginUsuario.sql" />
     <Content Include="Documentos\Querys\Inserts\Procedure CadastrarItem.sql" />
     <Content Include="Documentos\Querys\Inserts\Procedure CadastrarSubUsuario.sql" />
     <Content Include="Documentos\Querys\Inserts\Procedure CadastrarUsuario.sql" />

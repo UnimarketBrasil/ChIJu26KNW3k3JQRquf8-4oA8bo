@@ -7,6 +7,33 @@ namespace ClassLibrary.Repositorio
 {
     public class UsuarioRepositorio : Conexao
     {
+        public bool Login(Usuario user)
+        {
+            
+            DataTable dt = new DataTable();
+
+            Abrirconexao();
+
+            using (Cmd = new SqlCommand("Login", Con))
+            {
+                try
+                {
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@Email", user.Email);
+                    Cmd.Parameters.AddWithValue("@Senha", user.Senha);
+                    Cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Erro ao cadastrar usuario: " + ex.Message);
+                }
+                finally
+                {
+                    FecharConexao();
+                }
+            }
+
+        }
         public void CadastrarUsuario(Usuario user)
         {
             Abrirconexao();
@@ -180,11 +207,11 @@ namespace ClassLibrary.Repositorio
             }
         }
 
-        public int LoginUsuario(string email, string senha)
+        public bool LoginUsuario(string email, string senha)
         {
             Abrirconexao();
 
-            using (Cmd = new SqlCommand("CadastrarUsuario", Con))
+            using (Cmd = new SqlCommand("LoginUsuario", Con))
             {
                 try
                 {
@@ -193,21 +220,34 @@ namespace ClassLibrary.Repositorio
                     Cmd.Parameters.AddWithValue("@Senha", senha);
                     Cmd.ExecuteNonQuery();
 
-                    int idUsuario = 0;
+                    Usuario user = null;
 
                     if (Dr.Read())
                     {
-                        idUsuario = Convert.ToInt32(Dr["@IdUsuario"]);
+                        user = new Usuario();
+                        user.Id = Convert.ToInt32(Dr["Usuario.Id"]);
+                        user.Nome = Convert.ToString(Dr["Usuario.Nome"]);
+                        user.Sobrenome = Convert.ToString(Dr["Usuario.Sobrenome"]);
+                        user.Email = Convert.ToString(Dr["Usuario.Email"]);
+                        user.CpfCnpj = Convert.ToString(Dr["Usuario.CpfCnpj"]);
+                        user.Telefone = Convert.ToString(Dr["Usuario.Telefone"]);
+                        user.Latitude = Convert.ToInt64(Dr["Usuario.Latitude"]);
+                        user.Longitude = Convert.ToInt64(Dr["Usuario.Longitude"]);
+                        user.Complemento = Convert.ToString(Dr["Usuario.Complemento"]);
+                        user.AreaAtuacao = Convert.ToInt32(Dr["Usuario.AreaAtuacao"]);
+                        //user.StatusUsuario = Convert.ToString(Dr["Usuario.StatusUsuario"]);
+                        //user.Tipousuario = Convert.ToInt32(Dr["Usuario.Tipousuario"]);
                     }
 
                     Dr.Close();
 
-                    return idUsuario;
+                    return true;
 
                 }
                 catch (Exception ex)
                 {
                     throw new Exception("Erro ao cadastrar usuario: " + ex.Message);
+                    return false;
                 }
                 finally
                 {
