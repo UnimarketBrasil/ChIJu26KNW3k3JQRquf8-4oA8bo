@@ -114,7 +114,7 @@ namespace ClassLibrary.Repositorio
                         item.Descricao = Convert.ToString(Dr["Item.Descricao"]);
                         item.ValorUnitario = Convert.ToDouble(Dr["Item.Valorunitario"]);
                         item.Quantidade = Convert.ToDouble(Dr["Item.Quantidade"]);
-                        item.Categoria.Descricao = Convert.ToString(Dr["Categoria.Nome"]);
+                        item.Categoria = new Categoria(Convert.ToString(Dr["Categoria.Nome"]));
                     }
 
                     Dr.Close();
@@ -157,8 +157,10 @@ namespace ClassLibrary.Repositorio
                         item.Descricao = Convert.ToString(Dr["Item.Descricao"]);
                         item.ValorUnitario = Convert.ToDouble(Dr["Item.Valorunitario"]);
                         item.Quantidade = Convert.ToDouble(Dr["Item.Quantidade"]);
-                        item.Categoria.Descricao = Convert.ToString(Dr["Categoria.Nome"]);
+                        item.Categoria = new Categoria(Convert.ToString(Dr["Categoria.Nome"]));
+                        item.Usuario = new Usuario();
                         item.Usuario.Nome = Convert.ToString(Dr["Usuario.Nome"]);
+
                     }
 
                     Dr.Close();

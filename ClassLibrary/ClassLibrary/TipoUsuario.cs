@@ -8,7 +8,7 @@
 
         public TipoUsuario(int id)
         {
-            this.Id = id;
+            Id = id;
         }
     }
 

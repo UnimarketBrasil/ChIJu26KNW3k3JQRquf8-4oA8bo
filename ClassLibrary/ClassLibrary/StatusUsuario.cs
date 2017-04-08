@@ -6,9 +6,9 @@
 
         public string Nome { get; set; }
 
-        public StatusUsuario(int valor)
+        public StatusUsuario(int id)
         {
-            this.Id = valor;
+            Id = id;
         }
     }
 }

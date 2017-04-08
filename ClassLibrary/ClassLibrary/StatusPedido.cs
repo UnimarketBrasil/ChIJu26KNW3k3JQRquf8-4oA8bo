@@ -8,6 +8,9 @@ namespace ClassLibrary
 
         public string Nome { get; set; }
 
-        public DateTime Data { get; set; }
+        public StatusPedido(int id)
+        {
+            Id = id;
+        }
     }
 }

@@ -25,9 +25,5 @@ namespace ClassLibrary
 
         public bool Desabilitado { get; set; }
 
-        public static implicit operator List<object>(Item v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
