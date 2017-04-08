@@ -121,7 +121,7 @@ namespace ClassLibrary.Repositorio
             }
         }
 
-        public void AtualizarSenha(int idUsuario, string senha)
+        public void AtualizarSenha(Usuario user, string novaSenha)
         {
             Abrirconexao();
 
@@ -130,8 +130,9 @@ namespace ClassLibrary.Repositorio
                 try
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
-                    Cmd.Parameters.AddWithValue("@IdUsuario", senha);
-                    Cmd.Parameters.AddWithValue("@Senha", senha);
+                    Cmd.Parameters.AddWithValue("@IdUsuario", user.Id);
+                    Cmd.Parameters.AddWithValue("@SenhaAtual", user.Senha);
+                    Cmd.Parameters.AddWithValue("@NovaSenha", novaSenha);
                     Cmd.ExecuteNonQuery();
 
                 }
@@ -156,12 +157,16 @@ namespace ClassLibrary.Repositorio
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.AddWithValue("@Email", email);
+                    Cmd.ExecuteNonQuery();
+
+                    Dr = Cmd.ExecuteReader();
 
                     bool retorno = false;
 
-                    if (Dr.Read())
+                    if (Dr.HasRows)
                     {
-                       retorno  = Convert.ToBoolean(Dr["@Retorno"]);
+                        Dr.Read();
+                        retorno  = Convert.ToBoolean(Dr["@Retorno"]);
                     }
 
                     Dr.Close();
@@ -192,21 +197,19 @@ namespace ClassLibrary.Repositorio
                     Cmd.Parameters.AddWithValue("@Email", user.Email);
                     Cmd.Parameters.AddWithValue("@Senha", user.Senha);
                     Cmd.ExecuteNonQuery();
+
                     Dr = Cmd.ExecuteReader();
                     
 
                     if (Dr.HasRows)
                     {
-                        Dr.Read();
-                        //user = new Usuario();
+                        Dr.Read();          
                         user.Id = Convert.ToInt32(Dr["Id"]);
                         user.Nome = Convert.ToString(Dr["Nome"]);
                         user.Email = Convert.ToString(Dr["Email"]);
                         user.StatusUsuario = new StatusUsuario(Convert.ToInt32(Dr["IdStatusUsuario"]));
+                        user.Tipousuario = new TipoUsuario(Convert.ToInt32(Dr["IdTipoUsuario"]));                 
 
-
-                        //user.StatusUsuario.Id = Convert.ToInt32(Dr["IdStatusUsuario"]);
-                        //user.Tipousuario.Id = Convert.ToInt32(Dr["IdTipoUsuario"]);
                     }
 
                     Dr.Close();
@@ -217,6 +220,7 @@ namespace ClassLibrary.Repositorio
                 catch (Exception ex)
                 {
                     throw new Exception("Erro ao cadastrar usuario: " + ex.Message);
+
                 }
                 finally
                 {
@@ -225,7 +229,7 @@ namespace ClassLibrary.Repositorio
             }
         }
 
-        public Usuario CarregarUsuario(int idUsuario)
+        public Usuario CarregarUsuario(Usuario user)
         {
             Abrirconexao();
 
@@ -234,15 +238,17 @@ namespace ClassLibrary.Repositorio
                 try
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
-                    Cmd.Parameters.AddWithValue("@IdUsuario", idUsuario);
+                    Cmd.Parameters.AddWithValue("@IdUsuario", user.Id);
+                    Cmd.ExecuteNonQuery();
 
-                    Usuario user = null;
+                    Dr = Cmd.ExecuteReader();
 
-                    if (Dr.Read())
+                    if (Dr.HasRows)
                     {
-                        user = new Usuario();
+                        Dr.Read();
                         user.Id = Convert.ToInt32(Dr["Usuario.Id"]);
                         user.Nome = Convert.ToString(Dr["Usuario.Nome"]);
+                        user.Sobrenome = Convert.ToString(Dr["Usuario.Sobrenome"]);
                         user.Email = Convert.ToString(Dr["Usuario.Email"]);
                         user.Telefone = Convert.ToString(Dr["Usuario.Telefone"]);
                         user.Latitude = Convert.ToInt64(Dr["Usuario.Latitude"]);
@@ -278,13 +284,18 @@ namespace ClassLibrary.Repositorio
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.AddWithValue("@IdUsuario", idUsuario);
+                    Cmd.ExecuteNonQuery();
+
+                    Dr = Cmd.ExecuteReader();
 
                     Usuario user = null;
 
-                    if (Dr.Read())
+                    if (Dr.HasRows)
                     {
+                        Dr.Read();
                         user = new Usuario();
                         user.Nome = Convert.ToString(Dr["Usuario.Nome"]);
+                        user.Sobrenome = Convert.ToString(Dr["Usuario.Sobrenome"]);
                         user.Email = Convert.ToString(Dr["Usuario.Email"]);
                         user.Telefone = Convert.ToString(Dr["Usuario.Telefone"]);
                         user.Latitude = Convert.ToInt64(Dr["Usuario.Latitude"]);
@@ -323,17 +334,23 @@ namespace ClassLibrary.Repositorio
                 try
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.ExecuteNonQuery();
 
-                    while (Dr.Read())
+                    Dr = Cmd.ExecuteReader();
+
+                    if (Dr.HasRows) 
                     {
-                        Usuario user = new Usuario();
-                        user.Id = Convert.ToInt32(Dr["Usuario.Id"]);
-                        user.Email = Convert.ToString(Dr["Usuario.Email"]);
-                        user.Nome = Convert.ToString(Dr["Usuario.Nome"]);
-                        user.Tipousuario.Nome = Convert.ToString(Dr["TipoUsuario.Nome"]);
-                        user.StatusUsuario.Nome = Convert.ToString(Dr["StatusUsuario.Nome"]);
+                        while (Dr.Read())
+                        {
+                            Usuario user = new Usuario();
+                            user.Id = Convert.ToInt32(Dr["Usuario.Id"]);
+                            user.Email = Convert.ToString(Dr["Usuario.Email"]);
+                            user.Nome = Convert.ToString(Dr["Usuario.Nome"]);
+                            user.Tipousuario.Nome = Convert.ToString(Dr["TipoUsuario.Nome"]);
+                            user.StatusUsuario.Nome = Convert.ToString(Dr["StatusUsuario.Nome"]);
 
-                        usuarioList.Add(user);
+                            usuarioList.Add(user);
+                        }
                     }
 
                     Dr.Close();

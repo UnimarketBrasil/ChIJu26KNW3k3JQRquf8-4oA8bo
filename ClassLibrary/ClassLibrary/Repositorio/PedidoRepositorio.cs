@@ -42,6 +42,7 @@ namespace ClassLibrary.Repositorio
                         Cmd.Parameters.AddWithValue("@IdPedido", pedido.Id);
                         Cmd.Parameters.AddWithValue("@IdItem", i.Id);
                         Cmd.Parameters.AddWithValue("@Quantidade", i.Quantidade);
+                        Cmd.ExecuteNonQuery();
                     }
 
                 }
@@ -66,6 +67,7 @@ namespace ClassLibrary.Repositorio
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.AddWithValue("@IdPedido", idPedido);
+                    Cmd.ExecuteNonQuery();
                 }
                 catch (Exception ex)
                 {
@@ -89,6 +91,7 @@ namespace ClassLibrary.Repositorio
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.AddWithValue("@IdPedido", idPedido);
+                    Cmd.ExecuteNonQuery();
                 }
                 catch (Exception ex)
                 {
@@ -101,7 +104,7 @@ namespace ClassLibrary.Repositorio
             }
         }
 
-        public Pedido CarregarPedido(int idPedido)
+        public Pedido CarregarPedido(Pedido pedido)
         {
             Abrirconexao();
 
@@ -110,14 +113,25 @@ namespace ClassLibrary.Repositorio
                 try
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
-                    Cmd.Parameters.AddWithValue("@IdPedido", idPedido);
-                    Pedido pedido = null;
-                    while (Dr.Read())
-                    { 
-                        pedido = new Pedido();
-                        pedido.Id = Convert.ToInt32(Dr["Item.Nome"]);
-                        pedido.Codigo = Convert.ToString(Dr["Item.Quantidade"]);
-                        pedido.Comprador.Nome = Convert.ToString(Dr["Item.Valorunitario"]);
+                    Cmd.Parameters.AddWithValue("@IdPedido", pedido.Id);
+                    Cmd.ExecuteNonQuery();
+
+                    Dr = Cmd.ExecuteReader();
+
+                    pedido.Item = new List<Item>();
+
+                    if (Dr.HasRows)
+                    {
+                        while (Dr.Read())
+                        {
+                            Item item = new Item();
+
+                            item.Nome = Convert.ToString(Dr["Item.Nome"]);
+                            item.Quantidade = Convert.ToDouble(Dr["ItemPedido.Quantidade"]);
+                            item.ValorUnitario = Convert.ToDouble(Dr["Item.Valorunitario"]);
+
+                            pedido.Item.Add(item);
+                        }
                     }
 
                     Dr.Close();
@@ -146,17 +160,24 @@ namespace ClassLibrary.Repositorio
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.AddWithValue("@IdUsuario", idUsuario);
+                    Cmd.ExecuteNonQuery();
+
+                    Dr = Cmd.ExecuteReader();
 
                     List<Pedido> pedidoList = new List<Pedido>();
 
-                    while (Dr.Read())
+                    if (Dr.HasRows)
                     {
-                        Pedido pedido = new Pedido();
-                        pedido.Id = Convert.ToInt32(Dr["Pedido.Id"]);
-                        pedido.Codigo = Convert.ToString(Dr["Pedido.Codigo"]);
-                        pedido.Comprador.Nome = Convert.ToString(Dr["Usuario.Nome"]);
+                        while (Dr.Read())
+                        {
+                            Pedido pedido = new Pedido();
 
-                        pedidoList.Add(pedido);
+                            pedido.Id = Convert.ToInt32(Dr["Pedido.Id"]);
+                            pedido.Codigo = Convert.ToString(Dr["Pedido.Codigo"]);
+                            pedido.Comprador.Nome = Convert.ToString(Dr["Usuario.Nome"]);
+
+                            pedidoList.Add(pedido);
+                        }
                     }
 
                     return pedidoList;
@@ -183,17 +204,23 @@ namespace ClassLibrary.Repositorio
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.AddWithValue("@IdUsuario", idUsuario);
+                    Cmd.ExecuteNonQuery();
+
+                    Dr = Cmd.ExecuteReader();
 
                     List<Pedido> pedidoList = new List<Pedido>();
 
-                    while (Dr.Read())
+                    if (Dr.HasRows)
                     {
-                        Pedido pedido = new Pedido();
-                        pedido.Id = Convert.ToInt32(Dr["Pedido.Id"]);
-                        pedido.Codigo = Convert.ToString(Dr["Pedido.Codigo"]);
-                        pedido.Vendedor.Nome = Convert.ToString(Dr["Usuario.Nome"]);
+                        while (Dr.Read())
+                        {
+                            Pedido pedido = new Pedido();
+                            pedido.Id = Convert.ToInt32(Dr["Pedido.Id"]);
+                            pedido.Codigo = Convert.ToString(Dr["Pedido.Codigo"]);
+                            pedido.Vendedor.Nome = Convert.ToString(Dr["Usuario.Nome"]);
 
-                        pedidoList.Add(pedido);
+                            pedidoList.Add(pedido);
+                        }
                     }
 
                     Dr.Close();
@@ -223,16 +250,24 @@ namespace ClassLibrary.Repositorio
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.AddWithValue("@IdUsuario", idUsuario);
                     Cmd.Parameters.AddWithValue("@IdStatus", idStatus);
+                    Cmd.ExecuteNonQuery();
+
+                    Dr = Cmd.ExecuteReader();
+
                     List<Pedido> pedidoList = new List<Pedido>();
 
-                    while (Dr.Read())
+                    if (Dr.HasRows)
                     {
-                        Pedido pedido = new Pedido();
-                        pedido.Id = Convert.ToInt32(Dr["Pedido.Id"]);
-                        pedido.Codigo = Convert.ToString(Dr["Pedido.Codigo"]);
-                        pedido.Comprador.Nome = Convert.ToString(Dr["Usuario.Nome"]);
+                        while (Dr.Read())
+                        {
+                            Pedido pedido = new Pedido();
+                            pedido.Id = Convert.ToInt32(Dr["Pedido.Id"]);
+                            pedido.Codigo = Convert.ToString(Dr["Pedido.Codigo"]);
+                            pedido.Comprador.Nome = Convert.ToString(Dr["Usuario.Nome"]);
 
-                        pedidoList.Add(pedido);
+                            pedidoList.Add(pedido);
+                        }
+
                     }
 
                     Dr.Close();
@@ -262,16 +297,23 @@ namespace ClassLibrary.Repositorio
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.AddWithValue("@IdUsuario", idUsuario);
                     Cmd.Parameters.AddWithValue("@IdStatus", idStatus);
+                    Cmd.ExecuteNonQuery();
+
+                    Dr = Cmd.ExecuteReader();
+
                     List<Pedido> pedidoList = new List<Pedido>();
 
-                    while (Dr.Read())
+                    if (Dr.HasRows)
                     {
-                        Pedido pedido = new Pedido();
-                        pedido.Id = Convert.ToInt32(Dr["Pedido.Id"]);
-                        pedido.Codigo = Convert.ToString(Dr["Pedido.Codigo"]);
-                        pedido.Vendedor.Nome = Convert.ToString(Dr["Usuario.Nome"]);
+                        while (Dr.Read())
+                        {
+                            Pedido pedido = new Pedido();
+                            pedido.Id = Convert.ToInt32(Dr["Pedido.Id"]);
+                            pedido.Codigo = Convert.ToString(Dr["Pedido.Codigo"]);
+                            pedido.Vendedor.Nome = Convert.ToString(Dr["Usuario.Nome"]);
 
-                        pedidoList.Add(pedido);
+                            pedidoList.Add(pedido);
+                        }
                     }
 
                     Dr.Close();

@@ -16,7 +16,6 @@ namespace ClassLibrary.Repositorio
                 try
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
-
                     Cmd.Parameters.AddWithValue("@Codigo", item.Codigo);
                     Cmd.Parameters.AddWithValue("@Nome", item.Nome);
                     Cmd.Parameters.AddWithValue("@Descricao", item.Descricao);
@@ -24,6 +23,7 @@ namespace ClassLibrary.Repositorio
                     Cmd.Parameters.AddWithValue("@Quantidade", item.Quantidade);
                     Cmd.Parameters.AddWithValue("@IdCategoria", item.Categoria.Id);
                     Cmd.Parameters.AddWithValue("@IdUsuario", item.Usuario.Id);
+                    Cmd.ExecuteNonQuery();
 
                 }
                 catch (Exception ex)
@@ -53,6 +53,7 @@ namespace ClassLibrary.Repositorio
                     Cmd.Parameters.AddWithValue("@ValorUnitario", item.ValorUnitario);
                     Cmd.Parameters.AddWithValue("@Quantidade", item.Quantidade);
                     Cmd.Parameters.AddWithValue("@IdCategoria", item.Categoria.Id);
+                    Cmd.ExecuteNonQuery();
                 }
                 catch (Exception ex)
                 {
@@ -75,6 +76,7 @@ namespace ClassLibrary.Repositorio
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.AddWithValue("@IdItem", idItem);
+                    Cmd.ExecuteNonQuery();
                 }
                 catch (Exception ex)
                 {
@@ -97,12 +99,16 @@ namespace ClassLibrary.Repositorio
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.AddWithValue("@IdItem", idItem);
+                    Cmd.ExecuteNonQuery();
+
+                    Dr = Cmd.ExecuteReader();
 
                     Item item = null;
 
-                    if (Dr.Read())
+                    if (Dr.HasRows)
                     {
                         item = new Item();
+                        Dr.Read();                        
                         item.Codigo = Convert.ToString(Dr["Item.Codigo"]);
                         item.Nome = Convert.ToString(Dr["Item.Nome"]);
                         item.Descricao = Convert.ToString(Dr["Item.Descricao"]);
@@ -136,12 +142,16 @@ namespace ClassLibrary.Repositorio
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.AddWithValue("@IdItem", idItem);
+                    Cmd.ExecuteNonQuery();
+
+                    Dr = Cmd.ExecuteReader();
 
                     Item item = null;
 
-                    if (Dr.Read())
+                    if (Dr.HasRows)
                     {
                         item = new Item();
+                        Dr.Read();
                         item.Codigo = Convert.ToString(Dr["Item.Codigo"]);
                         item.Nome = Convert.ToString(Dr["Item.Nome"]);
                         item.Descricao = Convert.ToString(Dr["Item.Descricao"]);
@@ -176,12 +186,16 @@ namespace ClassLibrary.Repositorio
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.AddWithValue("@IdUsuario", idUsuario);
+                    Cmd.ExecuteNonQuery();
+
+                    Dr = Cmd.ExecuteReader();
 
                     List<Item> itemList = new List<Item>();
 
-                    while (Dr.Read())
+                    while (Dr.HasRows)
                     {
                         Item item = new Item();
+                        Dr.Read();
                         item.Id = Convert.ToInt32(Dr["Item.Id"]);
                         item.Codigo = Convert.ToString(Dr["Item.Codigo"]);
                         item.Nome = Convert.ToString(Dr["Item.Nome"]);
@@ -218,12 +232,16 @@ namespace ClassLibrary.Repositorio
                     Cmd.Parameters.AddWithValue("@IdCategoria", idCategoria);
                     Cmd.Parameters.AddWithValue("@LatitudeComprador", user.Latitude);
                     Cmd.Parameters.AddWithValue("@Longitudeomprador", user.Longitude);
+                    Cmd.ExecuteNonQuery();
+
+                    Dr = Cmd.ExecuteReader();
 
                     List<Item> itemList = new List<Item>();
 
-                    while (Dr.Read())
+                    while (Dr.HasRows)
                     {
                         Item item = new Item();
+                        Dr.Read();
                         item.Id = Convert.ToInt32(Dr["Item.Id"]);
                         item.Codigo = Convert.ToString(Dr["Item.Codigo"]);
                         item.Nome = Convert.ToString(Dr["Item.Nome"]);
@@ -257,19 +275,25 @@ namespace ClassLibrary.Repositorio
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.AddWithValue("@IdUsuario", user.Id);
                     Cmd.Parameters.AddWithValue("@Codigo", codigo);
+                    Cmd.ExecuteNonQuery();
+
+                    Dr = Cmd.ExecuteReader();
 
                     List<Item> itemList = new List<Item>();
 
-                    while (Dr.Read())
+                    if (Dr.HasRows)
                     {
-                        Item item = new Item();
-                        item.Id = Convert.ToInt32(Dr["Item.Id"]);
-                        item.Codigo = Convert.ToString(Dr["Item.Codigo"]);
-                        item.Nome = Convert.ToString(Dr["Item.Nome"]);
-                        item.ValorUnitario = Convert.ToDouble(Dr["Item.Valorunitario"]);
-                        item.Quantidade = Convert.ToDouble(Dr["Item.Quantidade"]);
+                        while (Dr.Read())
+                        {
+                            Item item = new Item();
+                            item.Id = Convert.ToInt32(Dr["Item.Id"]);
+                            item.Codigo = Convert.ToString(Dr["Item.Codigo"]);
+                            item.Nome = Convert.ToString(Dr["Item.Nome"]);
+                            item.ValorUnitario = Convert.ToDouble(Dr["Item.Valorunitario"]);
+                            item.Quantidade = Convert.ToDouble(Dr["Item.Quantidade"]);
 
-                        itemList.Add(item);
+                            itemList.Add(item);
+                        }
                     }
 
                     return itemList;
@@ -297,18 +321,24 @@ namespace ClassLibrary.Repositorio
                     Cmd.Parameters.AddWithValue("@Pesquisa", pesquisa);
                     Cmd.Parameters.AddWithValue("@LatitudeComprador", comprador.Latitude);
                     Cmd.Parameters.AddWithValue("@LongitudeComprador", comprador.Longitude);
+                    Cmd.ExecuteNonQuery();
+
+                    Dr = Cmd.ExecuteReader();
 
                     List<Item> itemList = new List<Item>();
 
-                    while (Dr.Read())
+                    if (Dr.HasRows)
                     {
-                        Item item = new Item();
-                        item.Id = Convert.ToInt32(Dr["Item.Id"]);
-                        item.Nome = Convert.ToString(Dr["Item.Nome"]);
-                        item.ValorUnitario = Convert.ToDouble(Dr["Item.ValorUnitario"]);
-                        item.Usuario.Nome = Convert.ToString(Dr["Usuario.Nome"]);
+                        while (Dr.Read())
+                        {
+                            Item item = new Item();
+                            item.Id = Convert.ToInt32(Dr["Item.Id"]);
+                            item.Nome = Convert.ToString(Dr["Item.Nome"]);
+                            item.ValorUnitario = Convert.ToDouble(Dr["Item.ValorUnitario"]);
+                            item.Usuario.Nome = Convert.ToString(Dr["Usuario.Nome"]);
 
-                        itemList.Add(item);
+                            itemList.Add(item);
+                        }
                     }
 
                     Dr.Close();

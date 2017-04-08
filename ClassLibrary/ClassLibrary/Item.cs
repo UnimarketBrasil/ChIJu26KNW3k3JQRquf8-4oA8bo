@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ClassLibrary
 {
@@ -23,5 +24,10 @@ namespace ClassLibrary
         public DateTime DataCadastro { get; set; }
 
         public bool Desabilitado { get; set; }
+
+        public static implicit operator List<object>(Item v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -19,6 +19,7 @@ namespace ClassLibrary.Repositorio
                     Cmd.Parameters.AddWithValue("@Nome", user.Nome);
                     Cmd.Parameters.AddWithValue("@Senha", user.Senha);
                     Cmd.Parameters.AddWithValue("@IdUsuario", user.Usuario.Id);
+                    Cmd.ExecuteNonQuery();
                 }
                 catch (Exception ex)
                 {
@@ -43,6 +44,7 @@ namespace ClassLibrary.Repositorio
                     Cmd.Parameters.AddWithValue("@IdSubUsuario", user.Id);
                     Cmd.Parameters.AddWithValue("@Nome", user.Nome);
                     Cmd.Parameters.AddWithValue("@Email", user.Email);
+                    Cmd.ExecuteNonQuery();
 
                 }
                 catch (Exception ex)
@@ -67,6 +69,7 @@ namespace ClassLibrary.Repositorio
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.AddWithValue("@IdUsuario", senha);
                     Cmd.Parameters.AddWithValue("@Senha", senha);
+                    Cmd.ExecuteNonQuery();
 
                 }
                 catch (Exception ex)
@@ -90,11 +93,15 @@ namespace ClassLibrary.Repositorio
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.AddWithValue("@IdUsuario", idUsuario);
+                    Cmd.ExecuteNonQuery();
+
+                    Dr = Cmd.ExecuteReader();
 
                     SubUsuario user = null;
 
-                    if (Dr.Read())
+                    if (Dr.HasRows)
                     {
+                        Dr.Read();
                         user = new SubUsuario();
                         user.Id = Convert.ToInt32(Dr["SubUsuario.Id"]);
                         user.Nome = Convert.ToString(Dr["SubUsuario.Email"]);
