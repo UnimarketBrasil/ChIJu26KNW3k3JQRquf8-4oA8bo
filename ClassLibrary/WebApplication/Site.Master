@@ -47,17 +47,20 @@
                     </div>
                     <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                 </form>
-                
+
                 <div id="dvSemLogin" runat="server">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="SistemaCadastrar.aspx">Cadastre-se</a></li>
                         <li><a href="SistemaLogin.aspx">Entrar</a></li>
                     </ul>
                 </div>
-                
-                <div id="dvLogin" runat="server">
+                <div id="dvCarrinho" runat="server">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a id="LinkButton3" class="btn btn-primary glyphicon glyphicon-shopping-cart"></a></li>
+                    </ul>
+                </div>
+                <div id="dvLogin" runat="server">
+                    <ul class="nav navbar-nav navbar-right">
                         <li>
                             <asp:Label ID="lbNomeUsuario" CssClass="navbar-brand" runat="server" Text="Meu nome aqui"></asp:Label>
                         </li>

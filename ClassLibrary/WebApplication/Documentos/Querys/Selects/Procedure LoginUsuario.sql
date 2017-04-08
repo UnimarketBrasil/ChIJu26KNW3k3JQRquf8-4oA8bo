@@ -4,13 +4,19 @@ Excluir LoginUsuario
 go
 create procedure LoginUsuario (
 	@Email varchar(50),
-	@senha varchar(50)
+	@Senha varchar(50)
 	)
 as
-	declare @IdUsuario int = 0
+	declare @IdUsuario int
 begin
-	if exists (select Usuario.Id as IdUsuario from Usuario where (Usuario.Email = @Email))
-		select @IdUsuario = Usuario.Id from Usuario where (Usuario.Email = @Email)
-	else if exists (select SubUsuario.Id as IdUsuario from SubUsuario where (SubUsuario.Email = @Email) and (SubUsuario.Senha = @Senha))
-		select  @IdUsuario = SubUsuario.Id from SubUsuario where (SubUsuario.Email = @Email) and (SubUsuario.Senha = @Senha)
-end
+	if exists (select Usuario.Id from Usuario where (Usuario.Email = @Email))
+	begin
+		select Usuario.Id as Id, Usuario.Nome, Usuario.Email, Usuario.IdStatusUsuario, Usuario.IdTipoUsuario
+		from Usuario where (Usuario.Email = @Email) and (Usuario.Senha = @Senha)
+	end
+	else if exists (select SubUsuario.Id as IdUsuario from SubUsuario where (SubUsuario.Email = @Email))
+		select SubUsuario.IdUsuario as Id, SubUsuario.Nome, SubUsuario.Email, Usuario.IdStatusUsuario, Usuario.IdTipoUsuario 
+		from SubUsuario 
+		inner join Usuario on (Usuario.ID = SubUsuario.IdUsuario)
+		where (SubUsuario.Email = @Email) and (SubUsuario.Senha = @Senha)
+	end
