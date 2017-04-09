@@ -70,7 +70,7 @@ namespace WebApplication
 
             u.Telefone = txtTel.Text;
 
-            u.Tipousuario = new TipoUsuario(int.Parse(rdOperacao.SelectedValue));
+            //u.Tipousuario = new TipoUsuario(int.Parse(rdOperacao.SelectedValue));
 
             UsuarioRepositorio cadastrar = new UsuarioRepositorio();
             cadastrar.CadastrarUsuario(u);

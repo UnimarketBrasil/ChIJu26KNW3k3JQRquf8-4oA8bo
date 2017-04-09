@@ -166,22 +166,31 @@ namespace WebApplication {
         protected global::System.Web.UI.WebControls.TextBox txtSenha;
         
         /// <summary>
-        /// Controle txtSenhaConf.
+        /// Controle txtEndereco.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSenhaConf;
+        protected global::System.Web.UI.WebControls.TextBox txtEndereco;
         
         /// <summary>
-        /// Controle rdOperacao.
+        /// Controle txtComplemento.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rdOperacao;
+        protected global::System.Web.UI.WebControls.TextBox txtComplemento;
+        
+        /// <summary>
+        /// Controle txtArea.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtArea;
         
         /// <summary>
         /// Controle myButtonEtapa2.
