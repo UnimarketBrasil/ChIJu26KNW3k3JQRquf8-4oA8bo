@@ -1,5 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="WebApplication.Site" %>
-
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajax" %>
 <!DOCTYPE html>
 
 <html>
@@ -93,3 +93,7 @@
     </div>
 </body>
 </html>
+
+<style type="text/css" media="screen">
+
+</style> 

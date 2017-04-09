@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="SistemaCadastrar.aspx.cs" Inherits="WebApplication.SistemaCadastrar" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajax" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script src="Scripts/GoogleMapsAPI.js"></script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
@@ -12,7 +13,7 @@
                     <div class="form-group">
                         <label for="<%=txtEmailEtapa1.ClientID%>"" class="col-lg-2 control-label">Email</label>
                         <div class="col-lg-10">
-                            <asp:TextBox ID="txtEmailEtapa1" CssClass="form-control" runat="server" AutoPostBack="True" AutoCompleteType="Email" placeholder="Email" required="true"></asp:TextBox>
+                            <asp:TextBox ID="txtEmailEtapa1" CssClass="form-control" runat="server" AutoPostBack="True" AutoCompleteType="Email" TextMode="Email" placeholder="Email" required="true"></asp:TextBox>
                         </div>
                     </div>
                     <div class="form-group">
@@ -38,15 +39,17 @@
                                     <asp:DropDownList CssClass="form-control" ID="dpTipoPessoa" onchange="tipoPessoaSel();" runat="server">
                                         <asp:ListItem Text="Física" Value="1" />
                                         <asp:ListItem Text="Jurídica" Value="2" />
-                                    </asp:DropDownList>
+                                    </asp:DropDownList> 
                                 </div>
                             </fieldset>
                             <!--Pessoa Jurídica-->
                             <div id="dvPessoaJuridica" runat="server">
+                                <asp:ScriptManager ID="ScriptManager" runat="server"></asp:ScriptManager>
                                 <div class="form-group">
                                     <label for="<% =txtCnpj.ClientID%>"" class="col-lg-2 control-label">CNPJ</label>
                                     <div class="col-lg-10">
                                         <asp:TextBox ID="txtCnpj" runat="server" CssClass="form-control" placeholder="CNPJ" required="true"></asp:TextBox>
+                                        <ajax:MaskedEditExtender runat="server" ID="maskCnpj" TargetControlID="txtCnpj" Mask="99,999,999/9999-99" MaskType="Number" ClearMaskOnLostFocus="false"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -62,6 +65,7 @@
                                     <label for="<% =txtCpf.ClientID %>"" class="col-lg-2 control-label">CPF</label>
                                     <div class="col-lg-10">
                                         <asp:TextBox ID="txtCpf" runat="server" CssClass="form-control" placeholder="CPF" required="true"></asp:TextBox>
+                                        <ajax:MaskedEditExtender runat="server" ID="maskCpf" TargetControlID="txtCpf" Mask="999,999,999-99" MaskType="Number" ClearMaskOnLostFocus="false"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -104,6 +108,7 @@
                                 <label for="<% =txtTel.ClientID %>"" class="col-lg-2 control-label">Telefone</label>
                                 <div class="col-lg-10">
                                     <asp:TextBox ID="txtTel" runat="server" CssClass="form-control" placeholder="Telefone" required="true"></asp:TextBox>
+                                    <ajax:MaskedEditExtender runat="server" ID="maskTel" TargetControlID="txtTel" Mask="(99)9 9999-9999" MaskType="Number" ClearMaskOnLostFocus="false"/>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -116,19 +121,19 @@
                                 <label class="col-lg-2 control-label">Atividade principal</label>
                                 <div class="btn-group col-lg-10" data-toggle="buttons">
                                     <label class="btn btn-primary">
-                                        <input type="radio" name="rdAtividade" id="rdComprar" required="required"/>
+                                        <input type="radio" name="rdAtividade" id="rdComprar" onchange="areAtuacaoDisplay('c');" runat="server" required="required"/>
                                         Comprar
                                     </label>
                                     <label class="btn btn-primary">
-                                        <input type="radio" name="rdAtividade" id="rdVender"/>
+                                        <input type="radio" name="rdAtividade" id="rdVender" onchange="areAtuacaoDisplay('v');" runat="server" />
                                         Vender
                                     </label>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="<% =txtEndereco.ClientID %>"" class="col-lg-2 control-label">Endereço</label>
+                                <label for="<% =txtEndereco.ClientID %>" class="col-lg-2 control-label">Endereço</label>
                                 <div class="col-lg-10">
-                                    <asp:TextBox ID="txtEndereco" runat="server" CssClass="form-control" placeholder="CEP ou Endereço" required="true"></asp:TextBox>
+                                    <asp:TextBox ID="txtEndereco" runat="server" CssClass="form-control" AutoPostBack="true" placeholder="CEP ou Endereço" required="true" OnTextChanged="txtEndereco_TextChanged"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -137,7 +142,7 @@
                                     <asp:TextBox ID="txtComplemento" runat="server" CssClass="form-control" placeholder="Complemento" required="true"></asp:TextBox>
                                 </div>
                             </div>
-                            <div id="dvAreaAtuacao" class="form-group">
+                            <div id="dvAreaAtuacao" class="form-group" runat="server">
                                 <label for="<% =txtArea.ClientID %>"" class="col-lg-2 control-label">Área de atuação</label>
                                 <div class="col-lg-10">
                                     <asp:TextBox ID="txtArea" runat="server" CssClass="form-control" placeholder="Área de atuação" TextMode="Number" required="true"></asp:TextBox>
@@ -145,7 +150,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-lg-2"></div>
-                                <div class="col-lg-10" id="map" style="width: 460px; height: 260px;"></div>
+                                <div class="col-lg-10 form-control" id="map" style="width: 460px; height: 260px;"></div>
                             </div>
                             <div class="form-group">
                                 <div class="col-lg-10 col-lg-offset-2">
@@ -166,6 +171,7 @@
                 </div>
             </div>
         </div>
+
         <!--Scripts-->
         <!--reCaptcha-->
         <script src='https://www.google.com/recaptcha/api.js'></script>
@@ -186,8 +192,18 @@
                     document.getElementById('<% =dvPessoaJuridica.ClientID %>').style.display = "block";
                 }
             }
+
+            function areAtuacaoDisplay(s) {
+                if (s == 'c') {
+                    document.getElementById('<% =dvAreaAtuacao.ClientID%>').style.display = "none";
+                } else {
+                    document.getElementById('<% =dvAreaAtuacao.ClientID%>').style.display = "block";
+                }
+            }
+
         </script>
     </div>
+
 </asp:Content>
 
 

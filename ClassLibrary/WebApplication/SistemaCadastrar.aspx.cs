@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using ClassLibrary;
 using ClassUtilitario;
 using ClassLibrary.Repositorio;
+using System.Data;
 
 namespace WebApplication
 {
@@ -75,6 +76,38 @@ namespace WebApplication
             UsuarioRepositorio cadastrar = new UsuarioRepositorio();
             cadastrar.CadastrarUsuario(u);
 
+        }
+
+        protected void txtEndereco_TextChanged(object sender, EventArgs e)
+        {
+            if (Convert.ToString(txtEndereco.Text).Length == 8|| Convert.ToString(txtEndereco.Text).Where(c => char.IsNumber(c)).Count() > 0)
+            {
+                try
+                {
+                    DataSet ds = new DataSet();
+
+                    string cep = txtEndereco.Text.Trim();
+
+                    ds.ReadXml("https://viacep.com.br/ws/" + cep + "/xml/");
+                    if (ds != null && ds.Tables[0].Columns.Count > 5)
+                    {
+                        string endereco = ds.Tables[0].Rows[0]["logradouro"].ToString().Trim();
+                        string bairro = ds.Tables[0].Rows[0]["bairro"].ToString().Trim();
+                        string cidade = ds.Tables[0].Rows[0]["localidade"].ToString().Trim();
+                        string uf = ds.Tables[0].Rows[0]["uf"].ToString().Trim();
+                        
+
+                    }
+                }
+                catch
+                {
+
+                }
+            }
+            else
+            {
+
+            }
         }
     }
 }

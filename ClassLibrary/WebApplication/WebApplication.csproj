@@ -41,6 +41,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=16.1.1.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxControlToolkit.16.1.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="GoogleMapsApi, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoogleMapsApi.0.64.0\lib\net45\GoogleMapsApi.dll</HintPath>
+    </Reference>
     <Reference Include="hbehr.recaptcha, Version=1.3.1.26219, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ReCaptcha-AspNet.1.3.1\lib\net45\hbehr.recaptcha.dll</HintPath>
     </Reference>
