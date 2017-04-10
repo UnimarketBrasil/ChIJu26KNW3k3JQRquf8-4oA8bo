@@ -229,6 +229,15 @@ namespace WebApplication {
         protected global::System.Web.UI.WebControls.TextBox txtEndereco;
         
         /// <summary>
+        /// Controle txtNumero.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNumero;
+        
+        /// <summary>
         /// Controle txtComplemento.
         /// </summary>
         /// <remarks>
@@ -256,12 +265,21 @@ namespace WebApplication {
         protected global::System.Web.UI.WebControls.TextBox txtArea;
         
         /// <summary>
-        /// Controle myButtonEtapa2.
+        /// Controle map.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button myButtonEtapa2;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl map;
+        
+        /// <summary>
+        /// Controle btCadastrar.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btCadastrar;
     }
 }

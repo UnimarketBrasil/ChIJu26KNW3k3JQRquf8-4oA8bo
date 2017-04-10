@@ -24,6 +24,10 @@ namespace ClassLibrary.Repositorio
                     Cmd.Parameters.AddWithValue("@Nascimento", user.Nascimento);
                     Cmd.Parameters.AddWithValue("@Genero", user.Genero);
                     Cmd.Parameters.AddWithValue("@Telefone", user.Telefone);
+                    Cmd.Parameters.AddWithValue("@Longitude", user.Longitude);
+                    Cmd.Parameters.AddWithValue("@Latitude", user.Latitude);
+                    Cmd.Parameters.AddWithValue("@Complemento", user.Complemento);
+                    Cmd.Parameters.AddWithValue("@AreaAtuacao", user.AreaAtuacao);
                     Cmd.Parameters.AddWithValue("@IdTipoUsuario", user.Tipousuario.Id);
                     Cmd.ExecuteNonQuery();
                 }
@@ -251,8 +255,8 @@ namespace ClassLibrary.Repositorio
                         user.Sobrenome = Convert.ToString(Dr["Usuario.Sobrenome"]);
                         user.Email = Convert.ToString(Dr["Usuario.Email"]);
                         user.Telefone = Convert.ToString(Dr["Usuario.Telefone"]);
-                        user.Latitude = Convert.ToInt64(Dr["Usuario.Latitude"]);
-                        user.Longitude = Convert.ToInt64(Dr["Usuario.Longitude"]);
+                        user.Latitude = Convert.ToString(Dr["Usuario.Latitude"]);
+                        user.Longitude = Convert.ToString(Dr["Usuario.Longitude"]);
                         user.Complemento = Convert.ToString(Dr["Usuario.Complemento"]);
                         user.AreaAtuacao = Convert.ToInt32(Dr["Usuario.AreaAtuacao"]);
                         Cmd.ExecuteNonQuery();
@@ -298,8 +302,8 @@ namespace ClassLibrary.Repositorio
                         user.Sobrenome = Convert.ToString(Dr["Usuario.Sobrenome"]);
                         user.Email = Convert.ToString(Dr["Usuario.Email"]);
                         user.Telefone = Convert.ToString(Dr["Usuario.Telefone"]);
-                        user.Latitude = Convert.ToInt64(Dr["Usuario.Latitude"]);
-                        user.Longitude = Convert.ToInt64(Dr["Usuario.Longitude"]);
+                        user.Latitude = Convert.ToString(Dr["Usuario.Latitude"]);
+                        user.Longitude = Convert.ToString(Dr["Usuario.Longitude"]);
                         user.Complemento = Convert.ToString(Dr["Usuario.Complemento"]);
                         user.AreaAtuacao = Convert.ToInt32(Dr["Usuario.AreaAtuacao"]);
                         user.Tipousuario.Nome = Convert.ToString(Dr["TipoUsuario.Nome"]);

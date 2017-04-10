@@ -11,6 +11,10 @@ create procedure CadastrarUsuario(
 	@Nascimento datetime,
 	@Genero smallint = null,
 	@Telefone varchar(15),
+	@Longitude varchar(20),
+	@Latitude varchar(20),
+	@Complemento varchar(20) = null,
+	@AreaAtuacao real =null,
 	@IdTipoUsuario int
 	)
 as 
@@ -25,7 +29,11 @@ begin
 			 CpfCnpj,
 			 Nascimento, 
 			 Genero, 
-			 Telefone, 
+			 Telefone,
+			 Longitude,
+			 Latitude,
+			 Complemento,
+			 AreaAtuacao,
 			 IdTipoUsuario
 			 ) 
 			 values(
@@ -37,6 +45,10 @@ begin
 			 @Nascimento,
 			 @Genero,
 			 @Telefone,
+			 @Longitude,
+			 @Latitude,
+			 @Complemento,
+			 @AreaAtuacao,
 			 @IdTipoUsuario
 			 )
 		commit tran

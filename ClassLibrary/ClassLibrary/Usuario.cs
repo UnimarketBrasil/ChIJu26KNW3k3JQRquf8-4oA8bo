@@ -22,9 +22,9 @@ namespace ClassLibrary
 
         public string Telefone { get; set; }
 
-        public long Latitude { get; set; }
+        public string Latitude { get; set; }
 
-        public long Longitude { get; set; }
+        public string Longitude { get; set; }
 
         public string Complemento { get; set; }
 

@@ -78,3 +78,4 @@ C:\Users\José\Documents\TCC\TCC2\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebAp
 C:\Users\José\Documents\TCC\TCC2\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\bin\AjaxControlToolkit.dll
 C:\Users\José\Documents\TCC\TCC2\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\bin\GoogleMapsApi.dll
 C:\Users\José\Documents\TCC\TCC2\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\bin\GoogleMapsApi.xml
+C:\Users\José\Documents\TCC\TCC2\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\bin\GMaps.dll

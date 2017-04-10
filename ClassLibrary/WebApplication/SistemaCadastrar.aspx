@@ -121,23 +121,26 @@
                                 <label class="col-lg-2 control-label">Atividade principal</label>
                                 <div class="btn-group col-lg-10" data-toggle="buttons">
                                     <label class="btn btn-primary">
-                                        <input type="radio" name="rdAtividade" id="rdComprar" onchange="areAtuacaoDisplay('c');" runat="server" required="required"/>
+                                        <input type="radio" name="rdAtividade" id="rdComprar" onchange="areAtuacaoDisplay('c');" runat="server" value="1" required="required"/>
                                         Comprar
                                     </label>
                                     <label class="btn btn-primary">
-                                        <input type="radio" name="rdAtividade" id="rdVender" onchange="areAtuacaoDisplay('v');" runat="server" />
+                                        <input type="radio" name="rdAtividade" id="rdVender" onchange="areAtuacaoDisplay('v');" runat="server" value="2" />
                                         Vender
                                     </label>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="<% =txtEndereco.ClientID %>" class="col-lg-2 control-label">Endereço</label>
-                                <div class="col-lg-10">
-                                    <asp:TextBox ID="txtEndereco" runat="server" CssClass="form-control" AutoPostBack="true" placeholder="CEP ou Endereço" required="true" OnTextChanged="txtEndereco_TextChanged"></asp:TextBox>
+                                <div class="col-lg-8">
+                                    <asp:TextBox ID="txtEndereco" runat="server" CssClass="form-control" placeholder="CEP ou Endereço" required="true"></asp:TextBox>
+                                </div>
+                                <div class="col-lg-2">
+                                    <asp:TextBox ID="txtNumero" runat="server" CssClass="form-control"  placeholder="N°" required="true" OnTextChanged="txtNumero_TextChanged" AutoPostBack="true" ></asp:TextBox>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="<% =txtComplemento.ClientID %>"" class="col-lg-2 control-label">Complemento</label>
+                                <label for="<% =txtComplemento.ClientID %>" class="col-lg-2 control-label">Complemento</label>
                                 <div class="col-lg-10">
                                     <asp:TextBox ID="txtComplemento" runat="server" CssClass="form-control" placeholder="Complemento" required="true"></asp:TextBox>
                                 </div>
@@ -150,7 +153,8 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-lg-2"></div>
-                                <div class="col-lg-10 form-control" id="map" style="width: 460px; height: 260px;"></div>
+                                
+                                <div class="col-lg-10 form-control" runat="server" id="map" style="width: 460px; height: 260px;"></div>
                             </div>
                             <div class="form-group">
                                 <div class="col-lg-10 col-lg-offset-2">
@@ -162,7 +166,7 @@
                             <div class="form-group">
                                 <div class="col-lg-10 col-lg-offset-2">
                                     <div>
-                                        <asp:Button runat="server" ID="myButtonEtapa2" Text="Cadastrar!" CssClass="btn btn-primary" OnClick="myButtonEtapa2_Click"></asp:Button>
+                                        <asp:Button runat="server" ID="btCadastrar" Text="Cadastrar!" CssClass="btn btn-primary" OnClick="btCadastrar_Click" ></asp:Button>
                                     </div>
                                 </div>
                             </div>
@@ -194,11 +198,16 @@
             }
 
             function areAtuacaoDisplay(s) {
+                
                 if (s == 'c') {
                     document.getElementById('<% =dvAreaAtuacao.ClientID%>').style.display = "none";
                 } else {
                     document.getElementById('<% =dvAreaAtuacao.ClientID%>').style.display = "block";
                 }
+            }
+
+            function Func() {
+                alert("hello!")
             }
 
         </script>
