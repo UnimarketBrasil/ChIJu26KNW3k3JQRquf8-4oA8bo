@@ -3,15 +3,15 @@ go
 if exists ( select name FROM sys.objects where (type in ('FN')) and (name = 'CalculoDistancia')) drop function CalculoDistancia
 go
 create function CalculoDistancia(
-	 @LatitudeVendedor int,
-	 @LongitudeVendedor int,
-	 @LatitudeComprador int,
-	 @LongitudeComprador int
+	 @LatitudeVendedor varchar(20),
+	 @LongitudeVendedor varchar(20),
+	 @LatitudeComprador varchar(20),
+	 @LongitudeComprador varchar(20)
 	 )
 returns real
 as
 begin 
-	return sqrt( power( @LatitudeVendedor - @LatitudeComprador, 2) + power(@LongitudeVendedor - @LongitudeComprador, 2));
+	return sqrt( power(convert(bigint, @LatitudeVendedor) - convert(bigint, @LatitudeComprador), 2) + power( convert(bigint, @LongitudeVendedor) -  convert(bigint, @LongitudeComprador), 2))
 end
 
 
