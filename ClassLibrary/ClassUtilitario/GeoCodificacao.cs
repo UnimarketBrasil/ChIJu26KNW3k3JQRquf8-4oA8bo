@@ -58,7 +58,7 @@ namespace ClassUtilitario
             }
             catch (Exception ex)
             {
-                throw new;
+                return "erro";
             }
         }
     }

@@ -1,5 +1,6 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Comprar.Master.cs" Inherits="WebApplication.Site" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Comprar.Master.cs" Inherits="WebApplication.Comprar" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajax" %>
 <!DOCTYPE html>
 
 <html>
@@ -27,13 +28,13 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="Sistema.aspx">Início <span class="sr-only">(current)</span></a></li>
+                    <li class="active"><a runat="server" href="~/Default.aspx">Início <span class="sr-only">(current)</span></a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categorias <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="SistemaConcluirCadastro.aspx">Mapinha do Google</a></li>
-                            <li><a href="SistemaHomeVendedor.aspx">Home Vendedor</a></li>
-                            <li><a href="SistemaListaPedidos.aspx">Lista de Pedidos</a></li>
+                            <li><a href="#">Mapinha do Google</a></li>
+                            <li><a href="#">Home Vendedor</a></li>
+                            <li><a href="#">Lista de Pedidos</a></li>
                             <li class="divider"></li>
                             <li><a href="#">Novo Item</a></li>
                             <li class="divider"></li>
@@ -47,23 +48,29 @@
                     </div>
                     <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                 </form>
-                <!--
-                <div>
+
+                <div id="dvSemLogin" runat="server">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="SistemaCadastrar.aspx">Cadastre-se</a></li>
-                        <li><a href="SistemaLogin.aspx">Entrar</a></li>
+                        <li><a runat="server" href="Views/SistemaCadastrar.aspx">Cadastre-se</a></li>
+                        <li><a runat="server" href="Views/SistemaLogin.aspx">Entrar</a></li>
                     </ul>
                 </div>
-                -->
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a id="LinkButton3" class="btn btn-primary glyphicon glyphicon-shopping-cart"></a></li>
-                    <li>
-                        <asp:Label ID="lbNomeUsuario" CssClass="navbar-brand" runat="server" Text="Meu nome aqui"></asp:Label>
-                    </li>
-                    <li><a id="LinkButton4" class="btn btn-primary glyphicon glyphicon-user"></a></li>
-                    <li><a id="LinkButton1" class="btn btn-primary glyphicon glyphicon-cog"></a></li>
-                    <li><a id="LinkButton2" class="btn btn-primary glyphicon glyphicon-log-out"></a></li>
-                </ul>
+                <div id="dvCarrinho" runat="server">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a id="LinkButton3" class="btn btn-primary glyphicon glyphicon-shopping-cart"></a></li>
+                    </ul>
+                </div>
+                <div id="dvLogin" runat="server">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <asp:Label ID="lbNomeUsuario" CssClass="navbar-brand" runat="server" Text="Meu nome aqui"></asp:Label>
+                        </li>
+                        <li><a id="LinkButton4" class="btn btn-primary glyphicon glyphicon-user"></a></li>
+                        <li><a id="LinkButton1" class="btn btn-primary glyphicon glyphicon-cog"></a></li>
+                        <li><a id="LinkButton2" class="btn btn-primary glyphicon glyphicon-log-out"></a></li>
+                    </ul>
+                </div>
+
             </div>
         </div>
         <!--Script-->
@@ -87,3 +94,7 @@
     </div>
 </body>
 </html>
+
+<style type="text/css" media="screen">
+
+</style>
