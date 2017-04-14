@@ -46,8 +46,20 @@ namespace ClassUtilitario
 
         public string ObterEndereco(Usuario user)
         {
-            string endereco;
-            return endereco;
+            try
+            {
+                using (DataSet data = new DataSet())
+                {
+                    string endereco = string.Format("https://maps.googleapis.com/maps/api/geocode/xml?latlng={0},{1}&key=AIzaSyDPNFOUPna4dnTRtQ806ST8G9Vj6WEK32Y", user.Latitude, user.Longitude);
+                    data.ReadXml(endereco);
+                    user.Latitude = data.Tables["result"].Rows[0]["formatted_address"].ToString();
+                    return endereco;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao cadastrar item pedido : " + ex.Message);
+            }
         }
     }
 }

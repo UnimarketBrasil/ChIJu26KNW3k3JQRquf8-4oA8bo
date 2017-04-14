@@ -46,7 +46,7 @@ namespace WebApplication
                 u.Genero = int.Parse(dpGenero.SelectedValue);
 
                 IsCpfCnpj cpf = new IsCpfCnpj();
-                if (cpf.ValidarCpfCnpj(txtCpf.Text))
+                if (cpf.validarCpfCnpj(txtCpf.Text))
                 {
                     u.CpfCnpj = txtCpf.Text;
                 }
@@ -58,7 +58,7 @@ namespace WebApplication
                 u.Nascimento = DateTime.Today;//Falta arrumar PERMITIR NULL
 
                 IsCpfCnpj cnpj = new IsCpfCnpj();
-                if (cnpj.ValidarCpfCnpj(txtCnpj.Text))
+                if (cnpj.validarCpfCnpj(txtCnpj.Text))
                 {
                     u.CpfCnpj = txtCnpj.Text;
                 }
