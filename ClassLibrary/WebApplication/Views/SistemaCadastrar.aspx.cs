@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using ClassLibrary;
 using ClassUtilitario;
 using ClassLibrary.Repositorio;
+using System.Data;
 
 namespace WebApplication
 {
