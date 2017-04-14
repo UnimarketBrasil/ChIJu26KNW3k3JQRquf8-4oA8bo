@@ -102,6 +102,7 @@
     <Content Include="Content\bootswatch\united\bootstrap.min.css" />
     <Content Include="Content\bootswatch\yeti\bootstrap.css" />
     <Content Include="Content\bootswatch\yeti\bootstrap.min.css" />
+    <Content Include="Documentos\Criptografia.js" />
     <Content Include="Documentos\Querys\Criacao do banco UnimarketDB.sql" />
     <Content Include="Documentos\Querys\Deletes\Procedure BloquearUsuario.sql" />
     <Content Include="Documentos\Querys\Deletes\Procedure DesabilitarItemPorId.sql" />
