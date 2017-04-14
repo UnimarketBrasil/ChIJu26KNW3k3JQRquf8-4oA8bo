@@ -42,3 +42,6 @@ C:\Users\José\Documents\TCC\TCC2\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\Class
 C:\Users\José\Documents\TCC\TCC2\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\bin\Debug\itextsharp.xml
 C:\Users\José\Documents\TCC\TCC2\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\bin\Debug\Newtonsoft.Json.dll
 C:\Users\José\Documents\TCC\TCC2\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\bin\Debug\Newtonsoft.Json.xml
+C:\Users\José\TccUnimarket\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\obj\Debug\ClassUtilitario.csprojResolveAssemblyReference.cache
+C:\Users\José\TccUnimarket\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\obj\Debug\ClassUtilitario.dll
+C:\Users\José\TccUnimarket\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\obj\Debug\ClassUtilitario.pdb

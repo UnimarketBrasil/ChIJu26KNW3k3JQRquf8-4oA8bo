@@ -41,25 +41,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AjaxControlToolkit, Version=16.1.1.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
-      <HintPath>..\packages\AjaxControlToolkit.16.1.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
-    </Reference>
-    <Reference Include="GMaps, Version=4.1.0.6, Culture=neutral, PublicKeyToken=564d55b144e7aa5a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Subgurim.Maps.4.1.0.6\lib\net20\GMaps.dll</HintPath>
-    </Reference>
-    <Reference Include="GoogleMapsApi, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GoogleMapsApi.0.64.0\lib\net45\GoogleMapsApi.dll</HintPath>
-    </Reference>
-    <Reference Include="hbehr.recaptcha, Version=1.3.1.26219, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ReCaptcha-AspNet.1.3.1\lib\net45\hbehr.recaptcha.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Recaptcha">
-      <HintPath>..\..\..\..\..\..\Downloads\recaptcha-dotnet-1.0.5.0-binary\Recaptcha.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -159,17 +141,23 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Default.aspx" />
     <Content Include="Scripts\GoogleMapsAPI.js" />
-    <Content Include="SistemaLogin.aspx" />
-    <Content Include="SistemaCadastrar.aspx" />
-    <Content Include="SistemaConcluirCadastro.aspx" />
-    <Content Include="SistemaListaPedidos.aspx" />
-    <Content Include="SistemaHomeVendedor.aspx" />
-    <Content Include="Documentos\Style\images\about-img1.jpg" />
-    <Content Include="Documentos\Style\images\ltst-img-1.jpg" />
-    <Content Include="Sistema.aspx" />
-    <Content Include="SistemaNovoItem.aspx" />
-    <Content Include="Documentos\Style\images\work-img1.jpg" />
-    <Content Include="WebTest.aspx" />
+    <Content Include="Views\SistemaLogin.aspx" />
+    <Content Include="Views\SistemaCadastrar.aspx" />
+    <Content Include="Views\VenderPedido.aspx" />
+    <Content Include="Views\VenderItem.aspx" />
+    <Content Include="Style\images\about-img1.jpg" />
+    <Content Include="Style\images\ltst-img-1.jpg" />
+    <Content Include="Views\Sistema.aspx" />
+    <Content Include="Views\VenderDetalheItem.aspx" />
+    <Content Include="Style\images\work-img1.jpg" />
+    <Content Include="Admin.Master" />
+    <Content Include="Views\ComprarPedido.aspx" />
+    <Content Include="Views\SistemaRecuperarSenha.aspx" />
+    <Content Include="Views\SistemaCarrinho.aspx" />
+    <Content Include="Views\SistemaPesquisa.aspx" />
+    <Content Include="Views\SistemaCategoria.aspx" />
+    <Content Include="Views\SistemaDetalheItem.aspx" />
+    <Content Include="Views\SistemaConta.aspx" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -178,7 +166,8 @@
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="packages.config" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
-    <Content Include="Site.Master" />
+    <Content Include="Comprar.Master" />
+    <Content Include="Vender.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -191,16 +180,23 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin.Master.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin.Master.designer.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Site.Master.cs">
-      <DependentUpon>Site.Master</DependentUpon>
+    <Compile Include="Comprar.Master.cs">
+      <DependentUpon>Comprar.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Site.Master.designer.cs">
-      <DependentUpon>Site.Master</DependentUpon>
+    <Compile Include="Comprar.Master.designer.cs">
+      <DependentUpon>Comprar.Master</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -209,61 +205,103 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SistemaLogin.aspx.cs">
+    <Compile Include="Views\SistemaLogin.aspx.cs">
       <DependentUpon>SistemaLogin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SistemaLogin.aspx.designer.cs">
+    <Compile Include="Views\SistemaLogin.aspx.designer.cs">
       <DependentUpon>SistemaLogin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SistemaCadastrar.aspx.cs">
+    <Compile Include="Views\SistemaCadastrar.aspx.cs">
       <DependentUpon>SistemaCadastrar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SistemaCadastrar.aspx.designer.cs">
+    <Compile Include="Views\SistemaCadastrar.aspx.designer.cs">
       <DependentUpon>SistemaCadastrar.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SistemaConcluirCadastro.aspx.cs">
-      <DependentUpon>SistemaConcluirCadastro.aspx</DependentUpon>
+    <Compile Include="Views\VenderPedido.aspx.cs">
+      <DependentUpon>VenderPedido.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SistemaConcluirCadastro.aspx.designer.cs">
-      <DependentUpon>SistemaConcluirCadastro.aspx</DependentUpon>
+    <Compile Include="Views\VenderPedido.aspx.designer.cs">
+      <DependentUpon>VenderPedido.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SistemaListaPedidos.aspx.cs">
-      <DependentUpon>SistemaListaPedidos.aspx</DependentUpon>
+    <Compile Include="Views\VenderItem.aspx.cs">
+      <DependentUpon>VenderItem.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SistemaListaPedidos.aspx.designer.cs">
-      <DependentUpon>SistemaListaPedidos.aspx</DependentUpon>
+    <Compile Include="Views\VenderItem.aspx.designer.cs">
+      <DependentUpon>VenderItem.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SistemaHomeVendedor.aspx.cs">
-      <DependentUpon>SistemaHomeVendedor.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SistemaHomeVendedor.aspx.designer.cs">
-      <DependentUpon>SistemaHomeVendedor.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Sistema.aspx.cs">
+    <Compile Include="Views\Sistema.aspx.cs">
       <DependentUpon>Sistema.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Sistema.aspx.designer.cs">
+    <Compile Include="Views\Sistema.aspx.designer.cs">
       <DependentUpon>Sistema.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SistemaNovoItem.aspx.cs">
-      <DependentUpon>SistemaNovoItem.aspx</DependentUpon>
+    <Compile Include="Views\VenderDetalheItem.aspx.cs">
+      <DependentUpon>VenderDetalheItem.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SistemaNovoItem.aspx.designer.cs">
-      <DependentUpon>SistemaNovoItem.aspx</DependentUpon>
+    <Compile Include="Views\VenderDetalheItem.aspx.designer.cs">
+      <DependentUpon>VenderDetalheItem.aspx</DependentUpon>
     </Compile>
-    <Compile Include="WebTest.aspx.cs">
-      <DependentUpon>WebTest.aspx</DependentUpon>
+    <Compile Include="Vender.Master.cs">
+      <DependentUpon>Vender.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebTest.aspx.designer.cs">
-      <DependentUpon>WebTest.aspx</DependentUpon>
+    <Compile Include="Vender.Master.designer.cs">
+      <DependentUpon>Vender.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ComprarPedido.aspx.cs">
+      <DependentUpon>ComprarPedido.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\ComprarPedido.aspx.designer.cs">
+      <DependentUpon>ComprarPedido.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SistemaRecuperarSenha.aspx.cs">
+      <DependentUpon>SistemaRecuperarSenha.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\SistemaRecuperarSenha.aspx.designer.cs">
+      <DependentUpon>SistemaRecuperarSenha.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SistemaCarrinho.aspx.cs">
+      <DependentUpon>SistemaCarrinho.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\SistemaCarrinho.aspx.designer.cs">
+      <DependentUpon>SistemaCarrinho.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SistemaPesquisa.aspx.cs">
+      <DependentUpon>SistemaPesquisa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\SistemaPesquisa.aspx.designer.cs">
+      <DependentUpon>SistemaPesquisa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SistemaCategoria.aspx.cs">
+      <DependentUpon>SistemaCategoria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\SistemaCategoria.aspx.designer.cs">
+      <DependentUpon>SistemaCategoria.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SistemaDetalheItem.aspx.cs">
+      <DependentUpon>SistemaDetalheItem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\SistemaDetalheItem.aspx.designer.cs">
+      <DependentUpon>SistemaDetalheItem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SistemaConta.aspx.cs">
+      <DependentUpon>SistemaConta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\SistemaConta.aspx.designer.cs">
+      <DependentUpon>SistemaConta.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
