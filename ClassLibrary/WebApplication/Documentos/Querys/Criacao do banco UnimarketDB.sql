@@ -25,8 +25,8 @@ create table Usuario(
 	Nascimento Date null,
 	Genero smallint null,
 	Telefone varchar(15) not null,
-	Longitude bigint null,
-	Latitude bigint null,
+	Longitude varchar(20),
+	Latitude varchar(20),
 	Complemento varchar(50) null,
 	AreaAtuacao real null check (AreaAtuacao > 0),
 	IdTipoUsuario int foreign key references TipoUsuario(Id),
@@ -93,8 +93,9 @@ insert into StatusUsuario values ('Pendênte')
 insert into StatusUsuario values ('Bloqueado')
 go
 insert into TipoUsuario values ('Admin')
-insert into TipoUsuario values ('Vendedor')
 insert into TipoUsuario values ('Comprador')
+insert into TipoUsuario values ('Vendedor')
+
 go
 insert into Categoria values ('Eletro')
 insert into Categoria values ('Bebidas')
