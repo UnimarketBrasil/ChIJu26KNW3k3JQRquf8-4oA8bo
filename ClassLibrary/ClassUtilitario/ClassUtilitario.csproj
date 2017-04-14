@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GeoCodificacao.cs" />
     <Compile Include="IsCpfCnpj.cs" />
     <Compile Include="Criptografia.cs" />
     <Compile Include="IsEmail.cs" />
@@ -64,7 +65,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Codificacao\packages.config" />
     <None Include="Pdf\packages.config" />
   </ItemGroup>
   <ItemGroup />
