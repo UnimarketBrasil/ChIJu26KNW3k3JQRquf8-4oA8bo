@@ -18,6 +18,8 @@ namespace WebApplication
             if (!IsPostBack)
             {
                 dvSegundaEtapa.Visible = false;
+                dvPessoaJuridica.Visible = false;
+                
             }
         }
 
@@ -29,68 +31,21 @@ namespace WebApplication
                 dvSegundaEtapa.Visible = true;
                 dvPrimeiraEtapa.Visible = false;
                 txtEmailEtapa2.Text = txtEmailEtapa1.Text;
-                //dvPessoaJuridica.Visible = false;
             }
         }
 
 
         protected void txtNumero_TextChanged(object sender, EventArgs e)
         {
-            DataSet ds = new DataSet();
+
             try
             {
-                //Procurar endereço pelo CEP
-                if (Convert.ToString(txtEndereco.Text).Where(c => char.IsNumber(c)).Count() > 0 && Convert.ToString(txtEndereco.Text).Length == 8)
-                {
-                    //Procurar endereço pelo WS VIACEP
-                    ds.ReadXml("https://viacep.com.br/ws/" + txtEndereco.Text + "/xml/");
+                Usuario u = new Usuario();
+                GeoCodificacao g = new GeoCodificacao();
 
-                    string enderecoViaCep = ds.Tables[0].Rows[0]["logradouro"].ToString().Trim();
-                    string addressGoogle = "https://maps.googleapis.com/maps/api/geocode/xml?key=AIzaSyDPNFOUPna4dnTRtQ806ST8G9Vj6WEK32Y&new_forward_geocoder=true&address=" + enderecoViaCep + ", " + txtNumero.Text + "";
+               u = g.ObterCoordenadas(u, txtEndereco.Text, txtNumero.Text);
 
-                    ds = new DataSet();
-                    ds.ReadXml(addressGoogle);
-
-                    if (ds != null && ds.Tables["address_component"].Rows.Count >= 7)
-                    {
-                        string endereco = ds.Tables["result"].Rows[0]["formatted_address"].ToString();
-                        string lat = ds.Tables["location"].Rows[0]["lat"].ToString();
-                        string log = ds.Tables["location"].Rows[0]["lng"].ToString();
-
-                        Usuario u = new Usuario();
-                        u.Latitude = lat;
-                        u.Longitude = log;
-
-                        Session["latLog"] = u;
-                        Session["address"] = endereco;
-
-                    }
-                }
-                else
-                {
-                    string address = "https://maps.googleapis.com/maps/api/geocode/xml?key=AIzaSyDPNFOUPna4dnTRtQ806ST8G9Vj6WEK32Y&new_forward_geocoder=true&address=" + txtEndereco.Text + ", " + txtNumero.Text + "";
-
-                    ds.ReadXml(address);
-
-                    if (ds != null && ds.Tables["address_component"].Rows.Count >= 7)
-                    {
-                        string endereco = ds.Tables["result"].Rows[0]["formatted_address"].ToString();
-                        string lat = ds.Tables["location"].Rows[0]["lat"].ToString();
-                        string log = ds.Tables["location"].Rows[0]["lng"].ToString();
-
-                        Usuario u = new Usuario();
-                        u.Latitude = lat;
-                        u.Longitude = log;
-
-                        Session["latLog"] = u;
-                        Session["address"] = endereco;
-
-                    }
-                    else
-                    {
-
-                    }
-                }
+                Session["latlog"] = u;
             }
             catch
             {
@@ -105,6 +60,7 @@ namespace WebApplication
             if (dpTipoPessoa.SelectedValue == "2")//PESSOA JURÍDICA
             {
                 IsCpfCnpj cnpj = new IsCpfCnpj();
+                txtCnpj.Text = txtCnpj.Text.Replace(">", "").Replace(",", "").Replace(".", "").Replace("-", "").Replace("/", "");
                 if (cnpj.validarCpfCnpj(txtCnpj.Text))
                 {
                     u.CpfCnpj = txtCnpj.Text;
@@ -120,6 +76,7 @@ namespace WebApplication
             else if (dpTipoPessoa.SelectedValue == "1")//PESSOA FÍSICA
             {
                 IsCpfCnpj cpf = new IsCpfCnpj();
+                txtCpf.Text = txtCpf.Text.Replace(">", "").Replace(",", "").Replace(".", "").Replace("-", "").Replace("/","");
                 if (cpf.validarCpfCnpj(txtCpf.Text))
                 {
                     u.CpfCnpj = txtCpf.Text;
@@ -155,6 +112,7 @@ namespace WebApplication
             else if (rdVender.Checked == true)
             {
                 u.Tipousuario = new TipoUsuario(int.Parse(rdVender.Value));
+                u.AreaAtuacao = Convert.ToDouble(dpArea.SelectedValue);
             }
             else
             {
@@ -165,10 +123,27 @@ namespace WebApplication
             u.Latitude = uEndereco.Latitude;
             u.Longitude = uEndereco.Longitude;
             u.Complemento = txtComplemento.Text;
+            
 
             UsuarioRepositorio cadastrar = new UsuarioRepositorio();
             cadastrar.CadastrarUsuario(u);
             //u.Tipousuario = new TipoUsuario(int.Parse(rdOperacao.SelectedValue));
+        }
+
+        protected void dpTipoPessoa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (dpTipoPessoa.SelectedValue=="1")//Significa que é pessoa fisica
+            {
+                dvPessoaJuridica.Visible = false;
+                dvPessoaFisica.Visible = true;
+            }else if(dpTipoPessoa.SelectedValue=="2"){//Significa que é pessoa jurídica
+                dvPessoaFisica.Visible = false;
+                dvPessoaJuridica.Visible = true;
+            }
+            else
+            {
+
+            }
         }
     }
 }

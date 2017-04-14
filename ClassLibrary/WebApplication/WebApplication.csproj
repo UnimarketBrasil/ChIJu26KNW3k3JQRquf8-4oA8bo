@@ -70,38 +70,6 @@
     <Content Include="Content\bootstrap.cosmo.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\bootswatch\cerulean\bootstrap.css" />
-    <Content Include="Content\bootswatch\cerulean\bootstrap.min.css" />
-    <Content Include="Content\bootswatch\cosmo\bootstrap.css" />
-    <Content Include="Content\bootswatch\cosmo\bootstrap.min.css" />
-    <Content Include="Content\bootswatch\cyborg\bootstrap.css" />
-    <Content Include="Content\bootswatch\cyborg\bootstrap.min.css" />
-    <Content Include="Content\bootswatch\darkly\bootstrap.css" />
-    <Content Include="Content\bootswatch\darkly\bootstrap.min.css" />
-    <Content Include="Content\bootswatch\flatly\bootstrap.css" />
-    <Content Include="Content\bootswatch\flatly\bootstrap.min.css" />
-    <Content Include="Content\bootswatch\journal\bootstrap.css" />
-    <Content Include="Content\bootswatch\journal\bootstrap.min.css" />
-    <Content Include="Content\bootswatch\lumen\bootstrap.css" />
-    <Content Include="Content\bootswatch\lumen\bootstrap.min.css" />
-    <Content Include="Content\bootswatch\paper\bootstrap.css" />
-    <Content Include="Content\bootswatch\paper\bootstrap.min.css" />
-    <Content Include="Content\bootswatch\readable\bootstrap.css" />
-    <Content Include="Content\bootswatch\readable\bootstrap.min.css" />
-    <Content Include="Content\bootswatch\sandstone\bootstrap.css" />
-    <Content Include="Content\bootswatch\sandstone\bootstrap.min.css" />
-    <Content Include="Content\bootswatch\simplex\bootstrap.css" />
-    <Content Include="Content\bootswatch\simplex\bootstrap.min.css" />
-    <Content Include="Content\bootswatch\slate\bootstrap.css" />
-    <Content Include="Content\bootswatch\slate\bootstrap.min.css" />
-    <Content Include="Content\bootswatch\spacelab\bootstrap.css" />
-    <Content Include="Content\bootswatch\spacelab\bootstrap.min.css" />
-    <Content Include="Content\bootswatch\superhero\bootstrap.css" />
-    <Content Include="Content\bootswatch\superhero\bootstrap.min.css" />
-    <Content Include="Content\bootswatch\united\bootstrap.css" />
-    <Content Include="Content\bootswatch\united\bootstrap.min.css" />
-    <Content Include="Content\bootswatch\yeti\bootstrap.css" />
-    <Content Include="Content\bootswatch\yeti\bootstrap.min.css" />
     <Content Include="Documentos\Criptografia.js" />
     <Content Include="Documentos\Querys\Criacao do banco UnimarketDB.sql" />
     <Content Include="Documentos\Querys\Deletes\Procedure BloquearUsuario.sql" />
@@ -135,7 +103,12 @@
     <Content Include="Documentos\Querys\Deletes\Procedure CancelarPedido.sql" />
     <Content Include="Documentos\Querys\Updates\Procedure AtualizarSubUsuario.sql" />
     <Content Include="Documentos\Querys\Updates\Procedure FinalizarPedido.sql" />
+    <Content Include="Default.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\GoogleMapsAPI.js" />
+    <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -144,8 +117,11 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Default.aspx" />
-    <Content Include="Scripts\GoogleMapsAPI.js" />
+    <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.1.1.js" />
+    <Content Include="Scripts\jquery-3.1.1.min.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
     <Content Include="Views\SistemaLogin.aspx" />
     <Content Include="Views\SistemaCadastrar.aspx" />
     <Content Include="Views\VenderPedido.aspx" />
@@ -163,16 +139,12 @@
     <Content Include="Views\SistemaCategoria.aspx" />
     <Content Include="Views\SistemaDetalheItem.aspx" />
     <Content Include="Views\SistemaConta.aspx" />
+    <Content Include="Views\AdminListar.aspx" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
-    <None Include="Scripts\jquery-1.9.1.intellisense.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\jquery-1.9.1.js" />
-    <Content Include="Scripts\jquery-1.9.1.min.js" />
-    <Content Include="packages.config" />
-    <Content Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Comprar.Master" />
     <Content Include="Vender.Master" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.1.1.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -307,6 +279,13 @@
     </Compile>
     <Compile Include="Views\SistemaConta.aspx.designer.cs">
       <DependentUpon>SistemaConta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminListar.aspx.cs">
+      <DependentUpon>AdminListar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\AdminListar.aspx.designer.cs">
+      <DependentUpon>AdminListar.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

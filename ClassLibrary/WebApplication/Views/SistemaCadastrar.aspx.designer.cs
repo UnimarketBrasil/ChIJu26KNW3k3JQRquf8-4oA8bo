@@ -202,6 +202,15 @@ namespace WebApplication {
         protected global::System.Web.UI.WebControls.TextBox txtSenha;
         
         /// <summary>
+        /// Controle lbComprar.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbComprar;
+        
+        /// <summary>
         /// Controle rdComprar.
         /// </summary>
         /// <remarks>
@@ -209,6 +218,15 @@ namespace WebApplication {
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton rdComprar;
+        
+        /// <summary>
+        /// Controle lbVender.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lbVender;
         
         /// <summary>
         /// Controle rdVender.
@@ -256,13 +274,13 @@ namespace WebApplication {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvAreaAtuacao;
         
         /// <summary>
-        /// Controle txtArea.
+        /// Controle dpArea.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtArea;
+        protected global::System.Web.UI.WebControls.DropDownList dpArea;
         
         /// <summary>
         /// Controle map.

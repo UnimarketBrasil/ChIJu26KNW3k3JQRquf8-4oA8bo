@@ -170,7 +170,7 @@ namespace ClassLibrary.Repositorio
                     if (Dr.HasRows)
                     {
                         Dr.Read();
-                        retorno  = Convert.ToBoolean(Dr["@Retorno"]);
+                        retorno = Convert.ToBoolean(Dr["@Retorno"]);
                     }
 
                     Dr.Close();
@@ -191,6 +191,7 @@ namespace ClassLibrary.Repositorio
 
         public bool LoginUsuario(Usuario user)
         {
+            bool login;
             Abrirconexao();
 
             using (Cmd = new SqlCommand("LoginUsuario", Con))
@@ -203,28 +204,32 @@ namespace ClassLibrary.Repositorio
                     Cmd.ExecuteNonQuery();
 
                     Dr = Cmd.ExecuteReader();
-                    
+
 
                     if (Dr.HasRows)
                     {
-                        Dr.Read();          
+                        Dr.Read();
                         user.Id = Convert.ToInt32(Dr["Id"]);
                         user.Nome = Convert.ToString(Dr["Nome"]);
                         user.Email = Convert.ToString(Dr["Email"]);
                         user.StatusUsuario = new StatusUsuario(Convert.ToInt32(Dr["IdStatusUsuario"]));
-                        user.Tipousuario = new TipoUsuario(Convert.ToInt32(Dr["IdTipoUsuario"]));                 
-
+                        user.Tipousuario = new TipoUsuario(Convert.ToInt32(Dr["IdTipoUsuario"]));
+                        login = true;
+                    }
+                    else
+                    {
+                        login = false;
                     }
 
                     Dr.Close();
 
-                    return true;
+                    return login;
 
                 }
-                catch (Exception ex)
+                catch
                 {
-                    throw new Exception("Erro ao cadastrar usuario: " + ex.Message);
-
+                    return false;
+                    //                    throw new Exception("Erro ao cadastrar usuario: " + ex.Message);
                 }
                 finally
                 {
@@ -342,7 +347,7 @@ namespace ClassLibrary.Repositorio
 
                     Dr = Cmd.ExecuteReader();
 
-                    if (Dr.HasRows) 
+                    if (Dr.HasRows)
                     {
                         while (Dr.Read())
                         {

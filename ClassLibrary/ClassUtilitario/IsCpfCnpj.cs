@@ -8,7 +8,6 @@ namespace ClassUtilitario
         public bool validarCpfCnpj(string cpfCnpj)
         {
             cpfCnpj = cpfCnpj.Trim();
-            cpfCnpj = cpfCnpj.Replace(".", "").Replace("-", "").Replace("/", "");
             if (cpfCnpj.Length==14)
             {
                 int[] multiplicador1 = new int[12] { 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };

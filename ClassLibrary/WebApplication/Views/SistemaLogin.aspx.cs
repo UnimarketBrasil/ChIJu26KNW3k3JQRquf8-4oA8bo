@@ -28,8 +28,26 @@ namespace WebApplication
             UsuarioRepositorio login = new UsuarioRepositorio();
             if (login.LoginUsuario(usuario))
             {
-                Session["Sistema"] = usuario;
-                Response.Redirect("");
+                Session["sistema"] = usuario;
+
+                if (usuario.Tipousuario.Id == 3)//Tipo de usuário vendedor
+                {
+                    Response.Redirect("~/Views/VenderItem.aspx");
+                }
+                else if (usuario.Tipousuario.Id == 2)//Tipo de usuário comprador
+                {
+                    Response.Redirect("~/Views/Sistema.aspx");
+                }
+                else if (usuario.Tipousuario.Id == 1)//Tipo de usuário administrador
+                {
+                    Response.Redirect("~/Views/AdminListar.aspx");
+                }
+                else
+                {
+                    //Não foi possível atender sua solicitação
+                    Response.Redirect("");
+                }
+
             }
             else
             {
