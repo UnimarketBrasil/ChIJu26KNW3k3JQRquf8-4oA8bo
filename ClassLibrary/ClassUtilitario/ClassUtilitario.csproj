@@ -53,9 +53,7 @@
     <Compile Include="IsCpfCnpj.cs" />
     <Compile Include="Criptografia.cs" />
     <Compile Include="IsEmail.cs" />
-    <Compile Include="Pdf\Pdf.cs" />
-    <Compile Include="Pdf\PedidoPdf.cs" />
-    <Compile Include="Pdf\UsuarioPdf.cs" />
+    <Compile Include="Pdf.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -65,7 +63,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Pdf\packages.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
