@@ -14,7 +14,7 @@ namespace WebApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            dvMsg.Visible = true;
         }
 
         protected void btLogin_Click(object sender, EventArgs e)
@@ -51,7 +51,9 @@ namespace WebApplication
             }
             else
             {
-
+                dvMsg.Visible = true;
+                dvMsg.Attributes["class"] = "alert alert-success alert-dismissible";
+                lbMsg.Text = "Uma mensagem aqui";
             }
 
         }

@@ -1,17 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Comprar.Master" AutoEventWireup="true" CodeBehind="SistemaLogin.aspx.cs" Inherits="WebApplication.SistemaLogin" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
-
-    <!--Style e Script-->
-
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
-        <div id="dvMsg" runat="server" class="alert alert-success alert-dismissible" role="alert">
+        <div id="dvMsg" runat="server" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <strong>Erro!</strong> Better check yourself, you're not looking too good.
+            <strong>Erro!</strong> <asp:Label ID="lbMsg" runat="server"></asp:Label>
         </div>
         <h2 class="text-uppercase"><strong>Login</strong></h2>
         <div id="dvPrimeiraEtapa" class="row" runat="server">
