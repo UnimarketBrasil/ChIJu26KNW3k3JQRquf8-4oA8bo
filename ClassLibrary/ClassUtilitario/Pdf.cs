@@ -189,6 +189,18 @@ namespace ClassUtilitario
                     tabela.DefaultCell.Padding = 10;
                     tabela.DefaultCell.BackgroundColor = fundo;
 
+                    var DadosVendedor = pedido.Vendedor = new Usuario();
+                    var DadosComprador = pedido.Comprador = new Usuario();
+                    var endereco = new GeoCodificacao();
+                    //Colspan = 5;              
+
+                    tabela.AddCell(new Phrase(DadosVendedor.Nome + DadosVendedor.Telefone, titulo));
+                    tabela.AddCell(new Phrase(endereco.ObterEndereco(DadosVendedor), titulo));
+
+                    tabela.AddCell(new Phrase(DadosComprador.Nome + DadosComprador.Telefone, titulo));
+                    tabela.AddCell(new Phrase(endereco.ObterEndereco(DadosComprador), titulo));
+                    
+
                     tabela.AddCell(new Phrase("CÓDIGO", titulo));
                     tabela.AddCell(new Phrase("ITEM", titulo));
                     tabela.AddCell(new Phrase("VALOR (UN)", titulo));
