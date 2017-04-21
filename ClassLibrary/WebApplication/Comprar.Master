@@ -42,13 +42,13 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categorias <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Mapinha do Google</a></li>
-                            <li><a href="#">Home Vendedor</a></li>
-                            <li><a href="#">Lista de Pedidos</a></li>
+                            <li><a href="#">Categoria 1</a></li>
+                            <li><a href="#">Categoria 2</a></li>
+                            <li><a href="#">Categoria 3</a></li>
                             <li class="divider"></li>
-                            <li><a href="#">Novo Item</a></li>
+                            <li><a href="#">Categoria 4</a></li>
                             <li class="divider"></li>
-                            <li><a href="#">E só</a></li>
+                            <li><a href="#">Categoria 5</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -65,11 +65,6 @@
                         <li><a runat="server" href="Views/SistemaLogin.aspx">Entrar</a></li>
                     </ul>
                 </div>
-                <div id="dvCarrinho" runat="server">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a id="LinkButton3" class="btn btn-primary glyphicon glyphicon-shopping-cart"></a></li>
-                    </ul>
-                </div>
                 <div id="dvLogin" runat="server">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
@@ -77,10 +72,14 @@
                         </li>
                         <li><a id="LinkButton4" class="btn btn-primary glyphicon glyphicon-user"></a></li>
                         <li><a id="LinkButton1" class="btn btn-primary glyphicon glyphicon-cog"></a></li>
-                        <li><a id="LinkButton2" class="btn btn-primary glyphicon glyphicon-log-out"></a></li>
+                        <li><a id="LinkButton2" runat="server" href="~/Views/Logout.aspx" class="btn btn-primary glyphicon glyphicon-log-out"></a></li>
                     </ul>
                 </div>
-
+                <div id="dvCarrinho" runat="server">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a id="LinkButton3" class="btn btn-primary glyphicon glyphicon-shopping-cart"></a></li>
+                    </ul>
+                </div>
             </div>
         </div>
         <!--Script-->

@@ -7,11 +7,12 @@ using System.Web.UI.WebControls;
 
 namespace WebApplication
 {
-    public partial class SistemaNovoItem : System.Web.UI.Page
+    public partial class WebForm9 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+            Session["sistema"] = null;
+            Response.Redirect("~/Default.aspx");
         }
     }
 }
