@@ -8,7 +8,7 @@
     <div class="container">
         <div id="dvMsg" runat="server" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <strong>Erro!</strong> <asp:Label ID="lbMsg" runat="server"></asp:Label>
+            <strong>!</strong> <asp:Label ID="lbMsg" runat="server"></asp:Label>
         </div>
         <h2 class="text-uppercase"><strong>Cadastre-se</strong></h2>
         <!--1° Etapa - Validar email-->

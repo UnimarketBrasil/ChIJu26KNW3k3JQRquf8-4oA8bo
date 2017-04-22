@@ -97,6 +97,7 @@ namespace WebApplication
                 //Se não é pessoa física nem jurídica não cadastra
                 dvMsg.Visible = true;
                 dvMsg.Attributes["class"] = "alert alert-danger alert-dismissible";
+                
                 lbMsg.Text = "Uma mensagem aqui";
             }
             u.Email = txtEmailEtapa2.Text;
@@ -137,13 +138,13 @@ namespace WebApplication
             {
                 dvMsg.Visible = true;
                 dvMsg.Attributes["class"] = "alert alert-success alert-dismissible";
-                lbMsg.Text = "Uma mensagem aqui";
+                lbMsg.Text = "Cadastro realizado com sucesso";
             }
             else
             {
                 dvMsg.Visible = true;
                 dvMsg.Attributes["class"] = "alert alert-warning alert-dismissible";
-                lbMsg.Text = "Uma mensagem aqui";
+                lbMsg.Text = "Não foi possível atender sua solucitação, tente novamente mais tarde.";
             }
             //u.Tipousuario = new TipoUsuario(int.Parse(rdOperacao.SelectedValue));
         }
