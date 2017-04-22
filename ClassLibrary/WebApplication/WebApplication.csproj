@@ -117,6 +117,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Views\SistemaErro.aspx" />
     <Content Include="Views\Logout.aspx" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
@@ -182,6 +183,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SistemaErro.aspx.cs">
+      <DependentUpon>SistemaErro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\SistemaErro.aspx.designer.cs">
+      <DependentUpon>SistemaErro.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\SistemaLogin.aspx.cs">
       <DependentUpon>SistemaLogin.aspx</DependentUpon>

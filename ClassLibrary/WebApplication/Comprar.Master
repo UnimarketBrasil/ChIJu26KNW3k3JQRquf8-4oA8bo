@@ -5,7 +5,7 @@
 
 <html>
 <head runat="server">
-    <title></title>
+    <title>Unimarket Brasil</title>
 
     <!--Styles-->
     <link href="Content/bootstrap.cosmo.css" rel="stylesheet" />
@@ -34,21 +34,21 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Unimarket BR</a>
+                <a class="navbar-brand" href="#" draggable="false">Unimarket BR</a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
                 <ul class="nav navbar-nav">
                     <li class="active"><a runat="server" href="~/Default.aspx">Início <span class="sr-only">(current)</span></a></li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categorias <span class="caret"></span></a>
+                        <a href="#" draggable="false" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categorias <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Categoria 1</a></li>
-                            <li><a href="#">Categoria 2</a></li>
-                            <li><a href="#">Categoria 3</a></li>
+                            <li><a draggable="false" href="#">Categoria 1</a></li>
+                            <li><a draggable="false" href="#">Categoria 2</a></li>
+                            <li><a draggable="false" href="#">Categoria 3</a></li>
                             <li class="divider"></li>
-                            <li><a href="#">Categoria 4</a></li>
+                            <li><a draggable="false"href="#">Categoria 4</a></li>
                             <li class="divider"></li>
-                            <li><a href="#">Categoria 5</a></li>
+                            <li><a draggable="false"href="#">Categoria 5</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -56,13 +56,13 @@
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Pesquisar">
                     </div>
-                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                    <button draggable="false" type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                 </form>
 
                 <div id="dvSemLogin" runat="server">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a runat="server" href="Views/SistemaCadastrar.aspx">Cadastre-se</a></li>
-                        <li><a runat="server" href="Views/SistemaLogin.aspx">Entrar</a></li>
+                        <li><a draggable="false" runat="server" href="Views/SistemaCadastrar.aspx">Cadastre-se</a></li>
+                        <li><a draggable="false" runat="server" href="Views/SistemaLogin.aspx">Entrar</a></li>
                     </ul>
                 </div>
                 <div id="dvLogin" runat="server">
@@ -70,14 +70,14 @@
                         <li>
                             <asp:Label ID="lbNomeUsuario" CssClass="navbar-brand" runat="server" Text="Meu nome aqui"></asp:Label>
                         </li>
-                        <li><a id="LinkButton4" class="btn btn-primary glyphicon glyphicon-user"></a></li>
-                        <li><a id="LinkButton1" class="btn btn-primary glyphicon glyphicon-cog"></a></li>
-                        <li><a id="LinkButton2" runat="server" href="~/Views/Logout.aspx" class="btn btn-primary glyphicon glyphicon-log-out"></a></li>
+                        <li><a draggable="false" id="LinkButton4" class="btn btn-primary glyphicon glyphicon-user"></a></li>
+                        <li><a draggable="false" id="LinkButton1" class="btn btn-primary glyphicon glyphicon-cog"></a></li>
+                        <li><a draggable="false" id="LinkButton2" runat="server" href="~/Views/Logout.aspx" class="btn btn-primary glyphicon glyphicon-log-out"></a></li>
                     </ul>
                 </div>
                 <div id="dvCarrinho" runat="server">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a id="LinkButton3" class="btn btn-primary glyphicon glyphicon-shopping-cart"></a></li>
+                        <li><a draggable="false" id="LinkButton3" class="btn btn-primary glyphicon glyphicon-shopping-cart"></a></li>
                     </ul>
                 </div>
             </div>
