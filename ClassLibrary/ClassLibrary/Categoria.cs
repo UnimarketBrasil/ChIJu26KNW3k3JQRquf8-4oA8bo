@@ -6,9 +6,9 @@
 
         public string Nome { get; set; }
 
-        public Categoria(string nome)
-        {
-            Nome = nome;
-        }
+        // public Categoria(string nome)
+        // {
+        //     Nome = nome;
+        //  }
     }
 }

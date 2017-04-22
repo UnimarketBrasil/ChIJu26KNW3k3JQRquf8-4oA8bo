@@ -39,7 +39,7 @@
                         <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 form-group">
                             <label for="<%=dpCategoria.ClientID%>">Categoria</label>
                             <asp:DropDownList ID="dpCategoria" runat="server" CssClass="form-control">
-                                <asp:ListItem Text="banana"> </asp:ListItem>
+                                <asp:ListItem Text="Alimentos/Bebidas" Value="1"> </asp:ListItem>
                             </asp:DropDownList>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 form-group">
@@ -72,13 +72,13 @@
                     <div class="row">
                         <div class="form-group">
                             <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 form-group">
-                                <asp:Button runat="server" CssClass="btn btn-danger glyphicon glyphicon-trash"></asp:Button>
+                                <asp:LinkButton ID="btnLixeira" runat="server" CssClass="btn btn-danger"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></asp:LinkButton>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1 form-group">
                                 <button type="reset" class="btn btn-default">Cancelar</button>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1 form-group">
-                                <button type="submit" class="btn btn-primary">Salvar</button>
+                                <asp:Button runat="server" ID="btSalvarrItem" Text="Salvar" CssClass="btn btn-primary" OnClick="btSalvar_Click"></asp:Button>
                             </div>
                         </div>
                     </div>
@@ -86,5 +86,4 @@
             </div>
         </div>
     </div>
-
 </asp:Content>
