@@ -14,7 +14,7 @@ namespace WebApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            dvMsg.Visible = true;
+            dvMsg.Visible = false;
         }
 
         protected void btLogin_Click(object sender, EventArgs e)
@@ -52,8 +52,8 @@ namespace WebApplication
             else
             {
                 dvMsg.Visible = true;
-                dvMsg.Attributes["class"] = "alert alert-success alert-dismissible";
-                lbMsg.Text = "Uma mensagem aqui";
+                dvMsg.Attributes["class"] = "alert alert-warning alert-dismissible";
+                lbMsg.Text = "Email ou senha inválidos.";
             }
 
         }
