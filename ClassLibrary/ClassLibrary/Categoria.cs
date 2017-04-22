@@ -6,9 +6,13 @@
 
         public string Nome { get; set; }
 
-        public Categoria(string nome)
+        public Categoria(int id)
         {
-            Nome = nome;
+            this.Id = id;
         }
+        // public Categoria(string nome)
+        // {
+        //     Nome = nome;
+        //  }
     }
 }

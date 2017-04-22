@@ -32,7 +32,7 @@ namespace ClassLibrary.Repositorio
                     Cmd.ExecuteNonQuery();
                     return true;
                 }
-                catch (Exception ex)
+                catch
                 {
                     //throw new Exception("Erro ao cadastrar usuario: " + ex.Message);
                     return false;

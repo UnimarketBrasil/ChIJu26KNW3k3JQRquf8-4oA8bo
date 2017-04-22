@@ -36,5 +36,15 @@ namespace ClassLibrary
 
         public DateTime DataCadastro { get; set; }
 
+        public Usuario()
+        {
+
+        }
+        public Usuario(int id)
+        {
+            this.Id = id;
+        }
+
     }
+
 }

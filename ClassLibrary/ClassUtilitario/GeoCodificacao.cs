@@ -56,7 +56,7 @@ namespace ClassUtilitario
                     return endereco;
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 return "erro";
             }

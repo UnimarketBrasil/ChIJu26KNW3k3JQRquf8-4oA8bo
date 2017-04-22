@@ -7,7 +7,7 @@ namespace ClassLibrary.Repositorio
 {
     public class ItemRepositorio : Conexao
     {
-        public void CadastrarItem(Item item)
+        public bool CadastrarItem(Item item)
         {
             Abrirconexao();
 
@@ -24,10 +24,12 @@ namespace ClassLibrary.Repositorio
                     Cmd.Parameters.AddWithValue("@IdCategoria", item.Categoria.Id);
                     Cmd.Parameters.AddWithValue("@IdUsuario", item.Usuario.Id);
                     Cmd.ExecuteNonQuery();
+                    return true;
 
                 }
                 catch (Exception ex)
                 {
+                    return false;
                     throw new Exception("Erro ao cadastrar item: " + ex.Message);
                 }
                 finally
@@ -114,7 +116,7 @@ namespace ClassLibrary.Repositorio
                         item.Descricao = Convert.ToString(Dr["Item.Descricao"]);
                         item.ValorUnitario = Convert.ToDouble(Dr["Item.Valorunitario"]);
                         item.Quantidade = Convert.ToDouble(Dr["Item.Quantidade"]);
-                        item.Categoria = new Categoria(Convert.ToString(Dr["Categoria.Nome"]));
+                        //item.Categoria = new Categoria(Convert.ToString(Dr["Categoria.Nome"]));
                     }
 
                     Dr.Close();
@@ -157,7 +159,7 @@ namespace ClassLibrary.Repositorio
                         item.Descricao = Convert.ToString(Dr["Item.Descricao"]);
                         item.ValorUnitario = Convert.ToDouble(Dr["Item.Valorunitario"]);
                         item.Quantidade = Convert.ToDouble(Dr["Item.Quantidade"]);
-                        item.Categoria = new Categoria(Convert.ToString(Dr["Categoria.Nome"]));
+                        //item.Categoria = new Categoria(Convert.ToString(Dr["Categoria.Nome"]));
                         item.Usuario = new Usuario();
                         item.Usuario.Nome = Convert.ToString(Dr["Usuario.Nome"]);
 
