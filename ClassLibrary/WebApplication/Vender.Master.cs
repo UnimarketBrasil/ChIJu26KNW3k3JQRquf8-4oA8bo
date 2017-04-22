@@ -14,18 +14,13 @@ namespace WebApplication
         {
             if (Session["sistema"] != null)
             {
-
-
                 Usuario u = (Usuario)Session["sistema"];
                 lbNomeUsuario.Text = u.Nome;
-                dvSemLogin.Visible = false;
                 dvLogin.Visible = true;
-                dvCarrinho.Visible = true;
             }
             else
             {
                 dvLogin.Visible = false;
-                dvSemLogin.Visible = true;
             }
         }
     }

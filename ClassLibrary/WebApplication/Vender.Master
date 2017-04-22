@@ -24,7 +24,7 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-green ">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
@@ -39,25 +39,14 @@
                 <ul class="nav navbar-nav">
                     <li class="active"><a runat="server" href="#">Início <span class="sr-only">(current)</span></a></li>
                 </ul>
-                <div id="dvSemLogin" runat="server">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a runat="server" href="Views/SistemaCadastrar.aspx">Cadastre-se</a></li>
-                        <li><a runat="server" href="Views/SistemaLogin.aspx">Entrar</a></li>
-                    </ul>
-                </div>
                 <div id="dvLogin" runat="server">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                             <asp:Label ID="lbNomeUsuario" CssClass="navbar-brand" runat="server" Text="Meu nome aqui"></asp:Label>
                         </li>
-                        <li><a id="LinkButton4" class="btn btn-primary glyphicon glyphicon-user"></a></li>
-                        <li><a id="LinkButton1" class="btn btn-primary glyphicon glyphicon-cog"></a></li>
-                        <li><a id="LinkButton2" runat="server" href="~/Views/Logout.aspx" class="btn btn-primary glyphicon glyphicon-log-out"></a></li>
-                    </ul>
-                </div>
-                <div id="dvCarrinho" runat="server">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a id="LinkButton3" class="btn btn-primary glyphicon glyphicon-shopping-cart"></a></li>
+                        <li><a id="LinkButton4" class="navbar-green glyphicon glyphicon-user"></a></li>
+                        <li><a id="LinkButton1" class="navbar-green glyphicon glyphicon-cog"></a></li>
+                        <li><a id="LinkButton2" runat="server" href="~/Views/Logout.aspx" class="navbar-green glyphicon glyphicon-log-out"></a></li>
                     </ul>
                 </div>
             </div>
@@ -84,6 +73,89 @@
 </body>
 </html>
 
-<style type="text/css" media="screen">
+<style type="text/css">
+    .navbar-green {
+        background-color: #2ad83f;
+        border-color: #23a70c;
+    }
 
+        .navbar-green .navbar-brand {
+            color: #23a70c;
+        }
+
+            .navbar-green .navbar-brand:hover,
+            .navbar-green .navbar-brand:focus {
+                color: #f4f3f6;
+            }
+
+        .navbar-green .navbar-text {
+            color: #23a70c;
+        }
+
+        .navbar-green .navbar-nav > li > a {
+            color: #23a70c;
+        }
+
+            .navbar-green .navbar-nav > li > a:hover,
+            .navbar-green .navbar-nav > li > a:focus {
+                color: #f4f3f6;
+            }
+
+        .navbar-green .navbar-nav > .active > a,
+        .navbar-green .navbar-nav > .active > a:hover,
+        .navbar-green .navbar-nav > .active > a:focus {
+            color: #f4f3f6;
+            background-color: #23a70c;
+        }
+
+        .navbar-green .navbar-nav > .open > a,
+        .navbar-green .navbar-nav > .open > a:hover,
+        .navbar-green .navbar-nav > .open > a:focus {
+            color: #f4f3f6;
+            background-color: #23a70c;
+        }
+
+        .navbar-green .navbar-toggle {
+            border-color: #23a70c;
+        }
+
+            .navbar-green .navbar-toggle:hover,
+            .navbar-green .navbar-toggle:focus {
+                background-color: #23a70c;
+            }
+
+            .navbar-green .navbar-toggle .icon-bar {
+                background-color: #23a70c;
+            }
+
+        .navbar-green .navbar-collapse,
+        .navbar-green .navbar-form {
+            border-color: #23a70c;
+        }
+
+        .navbar-green .navbar-link {
+            color: #23a70c;
+        }
+
+            .navbar-green .navbar-link:hover {
+                color: #f4f3f6;
+            }
+
+    @media (max-width: 767px) {
+        .navbar-green .navbar-nav .open .dropdown-menu > li > a {
+            color: #23a70c;
+        }
+
+            .navbar-green .navbar-nav .open .dropdown-menu > li > a:hover,
+            .navbar-green .navbar-nav .open .dropdown-menu > li > a:focus {
+                color: #f4f3f6;
+            }
+
+        .navbar-green .navbar-nav .open .dropdown-menu > .active > a,
+        .navbar-green .navbar-nav .open .dropdown-menu > .active > a:hover,
+        .navbar-green .navbar-nav .open .dropdown-menu > .active > a:focus {
+            color: #f4f3f6;
+            background-color: #23a70c;
+        }
+    }
 </style>

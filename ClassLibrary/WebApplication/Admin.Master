@@ -4,17 +4,158 @@
 
 <html>
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
+
+    <!--Styles-->
+    <link href="Content/bootstrap.cosmo.css" rel="stylesheet" />
+    <link href="Content/bootstrap.cosmo.min.css" rel="stylesheet" />
+
+    <!--Script-->
+    <script src="Scripts/bootstrap.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/jquery-3.1.1.js"></script>
+    <script src="Scripts/jquery-3.1.1.min.js"></script>
+
+    <script src='http://code.jquery.com/jquery-2.1.3.min.js'></script>
+    <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js'></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <form id="form1" runat="server">
-        <div>
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
+    <nav class="navbar navbar-grey ">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Unimarket BR</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a runat="server" href="#">Início <span class="sr-only">(current)</span></a></li>
+                </ul>
+                <div id="dvLogin" runat="server">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <asp:Label ID="lbNomeUsuario" CssClass="navbar-brand" runat="server" Text="Meu nome aqui"></asp:Label>
+                        </li>
+                        <li><a id="LinkButton4" class="navbar-grey glyphicon glyphicon-user"></a></li>
+                        <li><a id="LinkButton1" class="navbar-grey glyphicon glyphicon-cog"></a></li>
+                        <li><a id="LinkButton2" runat="server" href="~/Views/Logout.aspx" class="navbar-grey glyphicon glyphicon-log-out"></a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-    </form>
+        <!--Script-->
+        <script src="Scripts/jquery-1.9.1.min.js"></script>
+        <script src="Scripts/bootstrap.min.js"></script>
+        <script>
+            $(function () {
+                $('.dropdown-toggle').dropdown();
+            });
+        </script>
+    </nav>
+    <div class="container-fluid">
+        <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+    </div>
+
+    <div class="container-fluid body-content">
+        <hr />
+        <footer>
+            <p><%: DateTime.Now.Year %> - Unimarket Brasil</p>
+        </footer>
+    </div>
 </body>
 </html>
+
+<style type="text/css">
+    .navbar-grey {
+        background-color: #c7ccc8;
+        border-color: #23a70c;
+    }
+
+        .navbar-grey .navbar-brand {
+            color: #23a70c;
+        }
+
+            .navbar-grey .navbar-brand:hover,
+            .navbar-grey .navbar-brand:focus {
+                color: #f4f3f6;
+            }
+
+        .navbar-grey .navbar-text {
+            color: #23a70c;
+        }
+
+        .navbar-grey .navbar-nav > li > a {
+            color: #23a70c;
+        }
+
+            .navbar-grey .navbar-nav > li > a:hover,
+            .navbar-grey .navbar-nav > li > a:focus {
+                color: #f4f3f6;
+            }
+
+        .navbar-grey .navbar-nav > .active > a,
+        .navbar-grey .navbar-nav > .active > a:hover,
+        .navbar-grey .navbar-nav > .active > a:focus {
+            color: #f4f3f6;
+            background-color: #23a70c;
+        }
+
+        .navbar-grey .navbar-nav > .open > a,
+        .navbar-grey .navbar-nav > .open > a:hover,
+        .navbar-grey .navbar-nav > .open > a:focus {
+            color: #f4f3f6;
+            background-color: #23a70c;
+        }
+
+        .navbar-grey .navbar-toggle {
+            border-color: #23a70c;
+        }
+
+            .navbar-grey .navbar-toggle:hover,
+            .navbar-grey .navbar-toggle:focus {
+                background-color: #23a70c;
+            }
+
+            .navbar-grey .navbar-toggle .icon-bar {
+                background-color: #23a70c;
+            }
+
+        .navbar-grey .navbar-collapse,
+        .navbar-grey .navbar-form {
+            border-color: #23a70c;
+        }
+
+        .navbar-grey .navbar-link {
+            color: #23a70c;
+        }
+
+            .navbar-grey .navbar-link:hover {
+                color: #f4f3f6;
+            }
+
+    @media (max-width: 767px) {
+        .navbar-grey .navbar-nav .open .dropdown-menu > li > a {
+            color: #23a70c;
+        }
+
+            .navbar-grey .navbar-nav .open .dropdown-menu > li > a:hover,
+            .navbar-grey .navbar-nav .open .dropdown-menu > li > a:focus {
+                color: #f4f3f6;
+            }
+
+        .navbar-grey .navbar-nav .open .dropdown-menu > .active > a,
+        .navbar-grey .navbar-nav .open .dropdown-menu > .active > a:hover,
+        .navbar-grey .navbar-nav .open .dropdown-menu > .active > a:focus {
+            color: #f4f3f6;
+            background-color: #23a70c;
+        }
+    }
+</style>
