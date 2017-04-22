@@ -16,11 +16,10 @@ namespace WebApplication
             {
                 Usuario u = (Usuario)Session["sistema"];
                 lbNomeUsuario.Text = u.Nome;
-                dvLogin.Visible = true;
             }
             else
             {
-                dvLogin.Visible = false;
+                Response.Redirect("~/Views/SistemaLogin.aspx");
             }
         }
     }
