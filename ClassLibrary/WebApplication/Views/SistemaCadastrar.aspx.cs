@@ -19,6 +19,7 @@ namespace WebApplication
             {
                 dvSegundaEtapa.Visible = false;
                 dvPessoaJuridica.Visible = false;
+                dvMsg.Visible = false;
                 
             }
         }
@@ -93,7 +94,10 @@ namespace WebApplication
             }
             else
             {
-                //TENTE NOVAMENTE MAIS TARDE;
+                //Se não é pessoa física nem jurídica não cadastra
+                dvMsg.Visible = true;
+                dvMsg.Attributes["class"] = "alert alert-danger alert-dismissible";
+                lbMsg.Text = "Uma mensagem aqui";
             }
             u.Email = txtEmailEtapa2.Text;
             u.Telefone = txtTel.Text;
@@ -108,6 +112,7 @@ namespace WebApplication
             if (rdComprar.Checked == true)
             {
                 u.Tipousuario = new TipoUsuario(int.Parse(rdComprar.Value));
+                u.AreaAtuacao = 0.1;//É necessário verificar porque não está aceitando null
             }
             else if (rdVender.Checked == true)
             {
@@ -116,7 +121,9 @@ namespace WebApplication
             }
             else
             {
-                //TENTE NOVAMENTE MAIS TARDE;
+                dvMsg.Visible = true;
+                dvMsg.Attributes["class"] = "alert alert-danger alert-dismissible";
+                lbMsg.Text = "Uma mensagem aqui";
             }
             Usuario uEndereco = (Usuario)Session["latlog"];
 
@@ -126,7 +133,18 @@ namespace WebApplication
             
 
             UsuarioRepositorio cadastrar = new UsuarioRepositorio();
-            cadastrar.CadastrarUsuario(u);
+            if (cadastrar.CadastrarUsuario(u))
+            {
+                dvMsg.Visible = true;
+                dvMsg.Attributes["class"] = "alert alert-success alert-dismissible";
+                lbMsg.Text = "Uma mensagem aqui";
+            }
+            else
+            {
+                dvMsg.Visible = true;
+                dvMsg.Attributes["class"] = "alert alert-warning alert-dismissible";
+                lbMsg.Text = "Uma mensagem aqui";
+            }
             //u.Tipousuario = new TipoUsuario(int.Parse(rdOperacao.SelectedValue));
         }
 

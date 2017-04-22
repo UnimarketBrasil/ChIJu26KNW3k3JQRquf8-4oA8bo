@@ -7,7 +7,7 @@ namespace ClassLibrary.Repositorio
 {
     public class UsuarioRepositorio : Conexao
     {
-        public void CadastrarUsuario(Usuario user)
+        public bool CadastrarUsuario(Usuario user)
         {
             Abrirconexao();
 
@@ -30,10 +30,12 @@ namespace ClassLibrary.Repositorio
                     Cmd.Parameters.AddWithValue("@AreaAtuacao", user.AreaAtuacao);
                     Cmd.Parameters.AddWithValue("@IdTipoUsuario", user.Tipousuario.Id);
                     Cmd.ExecuteNonQuery();
+                    return true;
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("Erro ao cadastrar usuario: " + ex.Message);
+                    //throw new Exception("Erro ao cadastrar usuario: " + ex.Message);
+                    return false;
                 }
                 finally
                 {
