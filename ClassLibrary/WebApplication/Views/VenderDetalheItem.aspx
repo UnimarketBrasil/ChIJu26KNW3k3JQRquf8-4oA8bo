@@ -40,6 +40,7 @@
                             <label for="<%=dpCategoria.ClientID%>">Categoria</label>
                             <asp:DropDownList ID="dpCategoria" runat="server" CssClass="form-control">
                                 <asp:ListItem Text="Alimentos/Bebidas" Value="1"> </asp:ListItem>
+                                <asp:ListItem Text="Eletronicos" Value="2"> </asp:ListItem>
                             </asp:DropDownList>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 form-group">
@@ -65,7 +66,7 @@
                         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 form-group">
                             <label for="<%=txtValorTotal.ClientID%>">Valor Total</label>
                             <div class="input-group">
-                                <asp:TextBox runat="server" ID="txtValorTotal" CssClass="form-control" placeholder="Valor Total" required="true"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txtValorTotal" CssClass="form-control" placeholder="Valor Total"></asp:TextBox>
                             </div>
                         </div>
                     </div>
@@ -78,7 +79,7 @@
                                 <button type="reset" class="btn btn-default">Cancelar</button>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1 form-group">
-                                <asp:Button runat="server" ID="btSalvarrItem" Text="Salvar" CssClass="btn btn-primary" OnClick="btSalvar_Click"></asp:Button>
+                                <asp:Button runat="server" ID="btSalvarrItem" Text="Salvar" CssClass="btn btn-primary" OnClick="bt_CadastrarItem"></asp:Button>
                             </div>
                         </div>
                     </div>

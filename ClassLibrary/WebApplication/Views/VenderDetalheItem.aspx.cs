@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using ClassLibrary;
 using ClassUtilitario;
 using ClassLibrary.Repositorio;
@@ -15,27 +10,63 @@ namespace WebApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
-        protected void btSalvar_Click(object sender, EventArgs e)
+        protected void bt_CadastrarItem(object sender, EventArgs e)
         {
-            Item i = new Item();
+            Item item = new Item();
 
-            i.Nome = txtNome.Text;
-            i.Codigo = txtCod.Text;
-            i.Quantidade = Convert.ToInt64(txtQuantidade.Text);
-            i.ValorUnitario = Convert.ToDouble(txtValorUnitario.Text);
-            i.Descricao = txtDescricao.InnerText;
+            txtCod.Text = txtCod.Text.Replace(">", "");
+            item.Codigo = txtCod.Text;
+            txtNome.Text = txtNome.Text.Replace(">", "");
+            item.Nome = txtNome.Text;
+            item.Descricao = txtDescricao.InnerText;
+            item.ValorUnitario = Convert.ToDouble(txtValorUnitario.Text);
+            item.Quantidade = Convert.ToInt64(txtQuantidade.Text);
 
-            if (dpCategoria.SelectedValue == "1")
+            item.Categoria = new Categoria(Convert.ToInt32(dpCategoria.SelectedValue));
+
+            Usuario u = (Usuario)Session["sistema"];
+
+            item.Usuario = new Usuario(u.Id);
+
+            ItemRepositorio cadastrarItem = new ItemRepositorio();
+
+            if (cadastrarItem.CadastrarItem(item))
             {
-
-                // Alimentos/Bebidas
-
-                Categoria c = new Categoria();
-                c.Nome = dpCategoria.Text;
+                txtCod.Text = "Sucesso";
             }
+            else
+            {
+                txtCod.Text = "Erro";
+            }
+
+
+
+  
+            
+
+
+
+            /* if (dpCategoria.SelectedValue == "1")
+              {
+
+                  // Alimentos/Bebidas
+
+                  Categoria c = new Categoria();
+                  c.Nome = dpCategoria.Text;
+
+              }
+
+              else if (dpCategoria.SelectedValue == "2")
+              {
+
+                  // Eletronicos
+
+                  Categoria c = new Categoria();
+                  c.Nome = dpCategoria.Text;
+             } */
         }
     }
 }

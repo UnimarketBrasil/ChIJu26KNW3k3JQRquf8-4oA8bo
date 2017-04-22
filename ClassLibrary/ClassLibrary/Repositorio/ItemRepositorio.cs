@@ -7,7 +7,7 @@ namespace ClassLibrary.Repositorio
 {
     public class ItemRepositorio : Conexao
     {
-        public void CadastrarItem(Item item)
+        public bool CadastrarItem(Item item)
         {
             Abrirconexao();
 
@@ -24,10 +24,12 @@ namespace ClassLibrary.Repositorio
                     Cmd.Parameters.AddWithValue("@IdCategoria", item.Categoria.Id);
                     Cmd.Parameters.AddWithValue("@IdUsuario", item.Usuario.Id);
                     Cmd.ExecuteNonQuery();
+                    return true;
 
                 }
                 catch (Exception ex)
                 {
+                    return false;
                     throw new Exception("Erro ao cadastrar item: " + ex.Message);
                 }
                 finally
