@@ -214,6 +214,7 @@ namespace ClassLibrary.Repositorio
                         user.Id = Convert.ToInt32(Dr["Id"]);
                         user.Nome = Convert.ToString(Dr["Nome"]);
                         user.Email = Convert.ToString(Dr["Email"]);
+                        user.CpfCnpj = Convert.ToString(Dr["CpfCnpj"]);
                         user.StatusUsuario = new StatusUsuario(Convert.ToInt32(Dr["IdStatusUsuario"]));
                         user.Tipousuario = new TipoUsuario(Convert.ToInt32(Dr["IdTipoUsuario"]));
                         login = true;
@@ -240,7 +241,7 @@ namespace ClassLibrary.Repositorio
             }
         }
 
-        public Usuario CarregarUsuario(Usuario user)
+        public bool CarregarUsuario(Usuario user)
         {
             Abrirconexao();
 
@@ -257,24 +258,27 @@ namespace ClassLibrary.Repositorio
                     if (Dr.HasRows)
                     {
                         Dr.Read();
-                        user.Id = Convert.ToInt32(Dr["Usuario.Id"]);
-                        user.Nome = Convert.ToString(Dr["Usuario.Nome"]);
-                        user.Sobrenome = Convert.ToString(Dr["Usuario.Sobrenome"]);
-                        user.Email = Convert.ToString(Dr["Usuario.Email"]);
-                        user.Telefone = Convert.ToString(Dr["Usuario.Telefone"]);
-                        user.Latitude = Convert.ToString(Dr["Usuario.Latitude"]);
-                        user.Longitude = Convert.ToString(Dr["Usuario.Longitude"]);
-                        user.Complemento = Convert.ToString(Dr["Usuario.Complemento"]);
-                        user.AreaAtuacao = Convert.ToInt32(Dr["Usuario.AreaAtuacao"]);
-                        Cmd.ExecuteNonQuery();
+                        user.Email = Convert.ToString(Dr["Email"]);
+                        user.Nome = Convert.ToString(Dr["Nome"]);
+                        user.Sobrenome = Convert.ToString(Dr["Sobrenome"]);
+                        user.CpfCnpj = Convert.ToString(Dr["CpfCnpj"]);
+                        user.DataCadastro = Convert.ToDateTime(Dr["Nascimento"]);
+                        user.Genero = Convert.ToInt32(Dr["Genero"]);
+                        user.Telefone = Convert.ToString(Dr["Telefone"]);
+                        user.Latitude = Convert.ToString(Dr["Latitude"]);
+                        user.Longitude = Convert.ToString(Dr["Longitude"]);
+                        user.Complemento = Convert.ToString(Dr["Complemento"]);
+                        user.AreaAtuacao = Convert.ToInt32(Dr["AreaAtuacao"]);
+                        user.Tipousuario = new TipoUsuario(Convert.ToInt32(Dr["IdTipoUsuario"]));
                     }
 
                     Dr.Close();
 
-                    return user;
+                    return true;
                 }
                 catch (Exception ex)
                 {
+                    return false;
                     throw new Exception("Erro ao Carregar usuario: " + ex.Message);
                 }
                 finally

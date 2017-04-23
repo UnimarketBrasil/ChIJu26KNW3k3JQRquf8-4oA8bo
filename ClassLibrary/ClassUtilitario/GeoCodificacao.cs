@@ -1,5 +1,6 @@
 ﻿using ClassLibrary;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -44,21 +45,24 @@ namespace ClassUtilitario
 
         }
 
-        public string ObterEndereco(Usuario user)
+        public ArrayList ObterEndereco(Usuario user)
         {
+            ArrayList rEndereco = new ArrayList();
             try
             {
                 using (DataSet data = new DataSet())
                 {
                     string endereco = string.Format("https://maps.googleapis.com/maps/api/geocode/xml?latlng={0},{1}&key=AIzaSyDPNFOUPna4dnTRtQ806ST8G9Vj6WEK32Y", user.Latitude, user.Longitude);
                     data.ReadXml(endereco);
-                    user.Latitude = data.Tables["result"].Rows[0]["formatted_address"].ToString();
-                    return endereco;
+                    rEndereco.Add(data.Tables["address_component"].Rows[0]["long_name"].ToString());
+                    rEndereco.Add(data.Tables["address_component"].Rows[1]["long_name"].ToString() + ", " + data.Tables["address_component"].Rows[2]["long_name"].ToString() + ", " + data.Tables["address_component"].Rows[3]["short_name"].ToString());
+
+                    return rEndereco;
                 }
             }
             catch
             {
-                return "erro";
+                return rEndereco;
             }
         }
     }

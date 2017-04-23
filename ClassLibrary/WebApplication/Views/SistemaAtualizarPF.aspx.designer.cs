@@ -94,13 +94,13 @@ namespace WebApplication {
         protected global::System.Web.UI.WebControls.DropDownList dpGenero;
         
         /// <summary>
-        /// Controle txtEmailEtapa2.
+        /// Controle txtEmail.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmailEtapa2;
+        protected global::System.Web.UI.WebControls.TextBox txtEmail;
         
         /// <summary>
         /// Controle txtTel.
@@ -119,6 +119,15 @@ namespace WebApplication {
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSenha;
+        
+        /// <summary>
+        /// Controle txtConfSenha.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtConfSenha;
         
         /// <summary>
         /// Controle lbComprar.

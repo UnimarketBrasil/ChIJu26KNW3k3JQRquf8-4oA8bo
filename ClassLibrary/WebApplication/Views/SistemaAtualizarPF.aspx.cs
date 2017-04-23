@@ -1,5 +1,8 @@
 ﻿using ClassLibrary;
+using ClassLibrary.Repositorio;
+using ClassUtilitario;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -36,17 +39,71 @@ namespace WebApplication
             {
                 Response.Redirect("~/Views/SistemaLogin.aspx");
             }
-
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["sistema"] != null)
+            Usuario u = (Usuario)Session["sistema"];
+            UsuarioRepositorio carregaUsuario = new UsuarioRepositorio();
+
+            if (Session["sistema"] != null && u.CpfCnpj.Length==11)
             {
                 dvMsg.Visible = false;
+
+                if (carregaUsuario.CarregarUsuario(u))
+                {
+                    txtCpf.Text = u.CpfCnpj;
+                    txtNome.Text = u.Nome;
+                    txtSobrenome.Text = u.Sobrenome;
+                    //txtDtNasc.Text = Aqui tem que arrumar depois
+                    if (u.Genero == 1)
+                    {
+                        dpGenero.SelectedIndex = 1;
+                    }
+                    else if (u.Genero == 2)
+                    {
+                        dpGenero.SelectedIndex = 2;
+                    }
+                    else if (u.Genero == 3)
+                    {
+                        dpGenero.SelectedIndex = 3;
+                    }
+                    else
+                    {
+                        //Aqui apresenta um erro;
+                    }
+                    txtEmail.Text = u.Email;
+                    txtTel.Text = u.Telefone;
+                    if (u.Tipousuario.Id == 2)
+                    {
+                        rdComprar.Checked = true;
+                        rdVender.Checked = false;
+                    }
+                    else if (u.Tipousuario.Id == 3)
+                    {
+                        rdVender.Checked = true;
+                        rdComprar.Checked = false;
+                    }
+                    else
+                    {
+                        //Aqui apresenta um erro;
+                    }
+
+                    GeoCodificacao g = new GeoCodificacao();
+                    ArrayList sEndereco = new ArrayList();
+                    sEndereco = g.ObterEndereco(u);
+                    txtEndereco.Text = sEndereco[1].ToString();
+                    txtNumero.Text = sEndereco[0].ToString();
+                    txtComplemento.Text = u.Complemento;
+                    dpArea.SelectedValue = Convert.ToString(u.AreaAtuacao);
+                }
+                else
+                {
+                    Response.Redirect("~/Views/Logout.aspx");
+                }
             }
             else
             {
-                Response.Redirect("~/Views/SistemaLogin.aspx");
+                Response.Redirect("~/Views/Logout.aspx");
             }
 
         }

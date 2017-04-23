@@ -32,9 +32,9 @@
                             </div>
                             <!--Email / Tel / Senha / Robô / Botão -->
                             <div class="form-group">
-                                <label for="<% =txtEmailEtapa2.ClientID %>"" class="col-lg-2 control-label">Email</label>
+                                <label for="<% =txtEmail.ClientID %>"" class="col-lg-2 control-label">Email</label>
                                 <div class="col-lg-10">
-                                    <asp:TextBox ID="txtEmailEtapa2" runat="server" CssClass="form-control" placeholder="Email" required="true"></asp:TextBox>
+                                    <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" placeholder="Email" required="true"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -47,6 +47,12 @@
                                 <label for="<% =txtSenha.ClientID %>"" class="col-lg-2 control-label">Senha</label>
                                 <div class="col-lg-10">
                                     <asp:TextBox ID="txtSenha" runat="server" CssClass="form-control" TextMode="Password" placeholder="Senha" required="true"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="<% =txtConfSenha.ClientID %>"" class="col-lg-2 control-label">Confirmar Senha</label>
+                                <div class="col-lg-10">
+                                    <asp:TextBox ID="txtConfSenha" runat="server" CssClass="form-control" TextMode="Password" placeholder="Confirmar Senha" required="true"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="form-group">
