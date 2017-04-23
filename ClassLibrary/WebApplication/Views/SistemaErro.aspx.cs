@@ -16,19 +16,27 @@ namespace WebApplication
         }
         protected void btErro_Click(object sender, EventArgs e)
         {
-            Usuario u = (Usuario)Session["sistema"];
-            if (u.Tipousuario.Id == 1)
+            if (Session["sistema"] != null)
             {
-                Response.Redirect("~/Views/AdminListar.aspx");
-            }
-            else if (u.Tipousuario.Id == 3)
-            {
-                Response.Redirect("~/Views/VenderItem.aspx");
+                Usuario u = (Usuario)Session["sistema"];
+                if (u.Tipousuario.Id == 1)
+                {
+                    Response.Redirect("~/Views/AdminListar.aspx");
+                }
+                else if (u.Tipousuario.Id == 3)
+                {
+                    Response.Redirect("~/Views/VenderItem.aspx");
+                }
+                else
+                {
+                    Response.Redirect("~/Views/Sistema.aspx");
+                }
             }
             else
             {
                 Response.Redirect("~/Views/Sistema.aspx");
             }
+
         }
     }
 }

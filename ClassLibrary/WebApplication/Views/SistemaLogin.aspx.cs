@@ -15,6 +15,22 @@ namespace WebApplication
         protected void Page_Load(object sender, EventArgs e)
         {
             dvMsg.Visible = false;
+            if (Session["sistema"] != null)
+            {
+                Usuario u = (Usuario)Session["sistema"];
+                if (u.Tipousuario.Id == 1)
+                {
+                    Response.Redirect("~/Views/AdminListar.aspx");
+                }
+                else if (u.Tipousuario.Id == 3)
+                {
+                    Response.Redirect("~/Views/VenderItem.aspx");
+                }
+                else
+                {
+                    Response.Redirect("~/Views/Sistema.aspx");
+                }
+            }
         }
 
         protected void btLogin_Click(object sender, EventArgs e)
@@ -44,10 +60,8 @@ namespace WebApplication
                 }
                 else
                 {
-                    //Não foi possível atender sua solicitação
-                    Response.Redirect("");
+                    Response.Redirect("~/Views/SistemaErro.aspx");
                 }
-
             }
             else
             {
