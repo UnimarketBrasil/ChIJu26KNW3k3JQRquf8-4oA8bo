@@ -45,9 +45,10 @@ namespace WebApplication
             Usuario u = (Usuario)Session["sistema"];
             UsuarioRepositorio carregaUsuario = new UsuarioRepositorio();
 
-            if (Session["sistema"] != null && u.CpfCnpj.Length==11)
+            if (Session["sistema"] != null && u.CpfCnpj.Length == 11)
             {
                 dvMsg.Visible = false;
+                dvPessoaJuridica.Visible = false;
 
                 if (carregaUsuario.CarregarUsuario(u))
                 {
@@ -101,11 +102,49 @@ namespace WebApplication
                     Response.Redirect("~/Views/Logout.aspx");
                 }
             }
+            else if (Session["sistema"] != null && u.CpfCnpj.Length == 14)
+            {
+                dvMsg.Visible = false;
+                dvPessoaFisica.Visible = false;
+
+                if (carregaUsuario.CarregarUsuario(u))
+                {
+                    txtCnpj.Text = u.CpfCnpj;
+                    txtRazaoSocial.Text = u.Nome;
+                    txtEmail.Text = u.Email;
+                    txtTel.Text = u.Telefone;
+                    if (u.Tipousuario.Id == 2)
+                    {
+                        rdComprar.Checked = true;
+                        rdVender.Checked = false;
+                    }
+                    else if (u.Tipousuario.Id == 3)
+                    {
+                        rdVender.Checked = true;
+                        rdComprar.Checked = false;
+                    }
+                    else
+                    {
+                        //Aqui apresenta um erro;
+                    }
+
+                    GeoCodificacao g = new GeoCodificacao();
+                    ArrayList sEndereco = new ArrayList();
+                    sEndereco = g.ObterEndereco(u);
+                    txtEndereco.Text = sEndereco[1].ToString();
+                    txtNumero.Text = sEndereco[0].ToString();
+                    txtComplemento.Text = u.Complemento;
+                    dpArea.SelectedValue = Convert.ToString(u.AreaAtuacao);
+                }
+                else
+                {
+                    Response.Redirect("~/Views/Logout.aspx");
+                }
+            }
             else
             {
                 Response.Redirect("~/Views/Logout.aspx");
             }
-
         }
     }
 }

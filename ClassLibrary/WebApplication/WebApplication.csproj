@@ -119,8 +119,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Views\SistemaErro.aspx" />
     <Content Include="Views\Logout.aspx" />
-    <Content Include="Views\SistemaAtualizarPJ.aspx" />
-    <Content Include="Views\SistemaAtualizarPF.aspx" />
+    <Content Include="Views\SistemaAtualizarCadastro.aspx" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
@@ -305,19 +304,12 @@
     <Compile Include="Views\Logout.aspx.designer.cs">
       <DependentUpon>Logout.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\SistemaAtualizarPJ.aspx.cs">
-      <DependentUpon>SistemaAtualizarPJ.aspx</DependentUpon>
+    <Compile Include="Views\SistemaAtualizarCadastro.aspx.cs">
+      <DependentUpon>SistemaAtualizarCadastro.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\SistemaAtualizarPJ.aspx.designer.cs">
-      <DependentUpon>SistemaAtualizarPJ.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\SistemaAtualizarPF.aspx.cs">
-      <DependentUpon>SistemaAtualizarPF.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\SistemaAtualizarPF.aspx.designer.cs">
-      <DependentUpon>SistemaAtualizarPF.aspx</DependentUpon>
+    <Compile Include="Views\SistemaAtualizarCadastro.aspx.designer.cs">
+      <DependentUpon>SistemaAtualizarCadastro.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -10,10 +10,13 @@
     <title>Unimarket Brasil</title>
 </head>
 <body>
-    <div class="jumbotron">
-        <h1>UNIMARKET Brasil</h1>
-        <p>Não foi possível atender sua solicitação, tente novamente mais tarde.</p>
-        <p><a class="btn btn-primary btn-lg" href="Sistema.aspx" draggable="false">Página inicial</a></p>
-    </div>
+    <form runat="server">
+        <div class="jumbotron">
+            <h1>UNIMARKET Brasil</h1>
+            <p>Não foi possível atender sua solicitação, tente novamente mais tarde.</p>
+            <p><asp:Button ID="btErro" runat="server" CssClass="btn btn-primary btn-lg" draggable="false" Text="Página inicial" OnClick="btErro_Click" /></p>
+        </div>
+    </form>
+
 </body>
 </html>
