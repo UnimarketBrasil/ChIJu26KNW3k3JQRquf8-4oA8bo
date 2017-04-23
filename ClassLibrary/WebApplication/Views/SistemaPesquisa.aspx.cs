@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ClassLibrary;
+using ClassLibrary.Repositorio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +13,17 @@ namespace WebApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            string pesquisa = Request.QueryString["p"];
+            if (Session["sistema"] != null)
+            {
+                ItemRepositorio itemPesquisa = new ItemRepositorio();
+                List<Item> lst = itemPesquisa.MecanismoDeBusca(pesquisa, (Usuario)Session["sistema"]);
 
+            }
+            else
+            {
+
+            }
         }
     }
 }

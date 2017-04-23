@@ -52,10 +52,11 @@
                         </ul>
                     </li>
                 </ul>
-                <form id="pesquisar" class="navbar-form navbar-left" role="search">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Pesquisar">
+                <form runat="server" class="navbar-form navbar-left" role="search">
+                    <div runat="server" class="form-group">
+                        <asp:TextBox runat="server" ID="txtPesquisa" CssClass="form-control" placeholder="Pesquisar" ></asp:TextBox>
                     </div>
+                    <asp:LinkButton runat="server" ID="btPesquisa" draggable="false" class="btn btn-primary" OnClick="btPesquisa_Click" ><span class="glyphicon glyphicon-search" aria-hidden="true"></span></asp:LinkButton>
                     <button draggable="false" type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                 </form>
 
