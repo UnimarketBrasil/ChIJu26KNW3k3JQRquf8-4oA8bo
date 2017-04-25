@@ -18,7 +18,6 @@ namespace WebApplication
             {
                 ItemRepositorio itemPesquisa = new ItemRepositorio();
                 List<Item> lst = itemPesquisa.MecanismoDeBusca(pesquisa, (Usuario)Session["sistema"]);
-
             }
             else
             {
