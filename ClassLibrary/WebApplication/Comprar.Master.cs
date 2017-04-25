@@ -29,11 +29,11 @@ namespace WebApplication
             }
         }
 
-        protected void btPesquisa_Click(object sender, EventArgs e)
-        {
+        //protected void btPesquisa_Click(object sender, EventArgs e)
+        //{
 
-            txtPesquisa.Text = txtPesquisa.Text.Replace(" ", "+");
-            Response.Redirect("~/Views/SistemaPesquisa.aspx?p="+txtPesquisa.Text);
-        }
+            //txtPesquisa.Text = txtPesquisa.Text.Replace(" ", "+");
+            //Response.Redirect("~/Views/SistemaPesquisa.aspx?p="+txtPesquisa.Text);
+        //}
     }
 }

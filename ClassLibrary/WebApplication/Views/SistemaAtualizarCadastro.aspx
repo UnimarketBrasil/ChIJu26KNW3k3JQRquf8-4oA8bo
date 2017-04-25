@@ -19,7 +19,7 @@
                                 <div class="form-group">
                                     <label for="<% =txtCpf.ClientID %>"" class="col-lg-2 control-label">CPF</label>
                                     <div class="col-lg-10">
-                                        <asp:TextBox ID="txtCpf" runat="server" CssClass="form-control" placeholder="CPF" required="true"></asp:TextBox>
+                                        <asp:TextBox ID="txtCpf" runat="server" CssClass="form-control" placeholder="CPF" required="true" Enabled="False"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -78,18 +78,6 @@
                                 <label for="<% =txtTel.ClientID %>"" class="col-lg-2 control-label">Telefone</label>
                                 <div class="col-lg-10">
                                     <asp:TextBox ID="txtTel" runat="server" CssClass="form-control" placeholder="Telefone" required="true"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="<% =txtSenha.ClientID %>"" class="col-lg-2 control-label">Senha</label>
-                                <div class="col-lg-10">
-                                    <asp:TextBox ID="txtSenha" runat="server" CssClass="form-control" TextMode="Password" placeholder="Senha" required="true"></asp:TextBox>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="<% =txtConfSenha.ClientID %>"" class="col-lg-2 control-label">Confirmar Senha</label>
-                                <div class="col-lg-10">
-                                    <asp:TextBox ID="txtConfSenha" runat="server" CssClass="form-control" TextMode="Password" placeholder="Confirmar Senha" required="true"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="form-group">
