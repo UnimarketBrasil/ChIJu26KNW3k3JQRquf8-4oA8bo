@@ -215,6 +215,9 @@ namespace ClassLibrary.Repositorio
                         user.Nome = Convert.ToString(Dr["Nome"]);
                         user.Email = Convert.ToString(Dr["Email"]);
                         user.CpfCnpj = Convert.ToString(Dr["CpfCnpj"]);
+                        user.Latitude = Convert.ToString(Dr["Latitude"]);
+                        user.Longitude = Convert.ToString(Dr["Longitude"]);
+                        user.AreaAtuacao = Convert.ToDouble(Dr["AreaAtuacao"]);
                         user.StatusUsuario = new StatusUsuario(Convert.ToInt32(Dr["IdStatusUsuario"]));
                         user.Tipousuario = new TipoUsuario(Convert.ToInt32(Dr["IdTipoUsuario"]));
                         login = true;

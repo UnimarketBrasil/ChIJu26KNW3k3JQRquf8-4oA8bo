@@ -53,9 +53,9 @@
                     </li>
                 </ul>
 
-                <form id="pesquisar" class="navbar-form navbar-left" role="search" action="<% Response.Write(ResolveUrl("~/Views/SistemaPesquisa.aspx"));%>" method="post">
+                <form id="pesquisar" class="navbar-form navbar-left" role="search" action="<% Response.Write(ResolveUrl("~/Views/SistemaPesquisa.aspx"));%>">
                     <div class="form-group">
-                        <input type="text" name="txtPesquisa" class="form-control" placeholder="Pesquisar">
+                        <input type="text" name="buscar" class="form-control" placeholder="Pesquisar">
                     </div>
                     <button draggable="false" type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                 </form>

@@ -336,10 +336,11 @@ namespace ClassLibrary.Repositorio
                         while (Dr.Read())
                         {
                             Item item = new Item();
-                            item.Id = Convert.ToInt32(Dr["Item.Id"]);
-                            item.Nome = Convert.ToString(Dr["Item.Nome"]);
-                            item.ValorUnitario = Convert.ToDouble(Dr["Item.ValorUnitario"]);
-                            item.Usuario.Nome = Convert.ToString(Dr["Usuario.Nome"]);
+                            item.Id = Convert.ToInt32(Dr["Id"]);
+                            item.Nome = Convert.ToString(Dr["Nome"]);
+                            item.ValorUnitario = Convert.ToDouble(Dr["ValorUnitario"]);
+                            item.Usuario = new Usuario();
+                            item.Usuario.Nome = Convert.ToString(Dr["Vendedor"]);
 
                             itemList.Add(item);
                         }

@@ -3,8 +3,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="list-group" runat="server">
-        <a href="#" class="list-group-item" id="txtGridDetalhe"  runat="server">
-        </a>
+    <div>
+        <form runat="server">
+            <asp:ListBox ID="lbItens" runat="server"></asp:ListBox>
+        </form>
+
     </div>
 </asp:Content>

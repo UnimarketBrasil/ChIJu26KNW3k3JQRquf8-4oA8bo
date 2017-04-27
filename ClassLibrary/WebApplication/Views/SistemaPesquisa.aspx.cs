@@ -13,11 +13,18 @@ namespace WebApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string pesquisa = Request.QueryString["p"];
+            string pesquisa = Request.QueryString["buscar"];
+
+
             if (Session["sistema"] != null)
             {
                 ItemRepositorio itemPesquisa = new ItemRepositorio();
-                List<Item> lst = itemPesquisa.MecanismoDeBusca(pesquisa, (Usuario)Session["sistema"]);
+                Usuario u = (Usuario)Session["sistema"];
+                List<Item> lst = itemPesquisa.MecanismoDeBusca(pesquisa, u);
+
+                lbItens.DataSource = lst;
+                lbItens.DataBind();
+
             }
             else
             {

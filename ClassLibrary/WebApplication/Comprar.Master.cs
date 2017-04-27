@@ -28,12 +28,5 @@ namespace WebApplication
                 dvSemLogin.Visible = true;
             }
         }
-
-        //protected void btPesquisa_Click(object sender, EventArgs e)
-        //{
-
-            //txtPesquisa.Text = txtPesquisa.Text.Replace(" ", "+");
-            //Response.Redirect("~/Views/SistemaPesquisa.aspx?p="+txtPesquisa.Text);
-        //}
     }
 }

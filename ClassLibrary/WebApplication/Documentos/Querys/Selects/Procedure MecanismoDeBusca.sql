@@ -6,8 +6,8 @@ Excluir MecanismoDeBusca
 go
 create procedure MecanismoDeBusca(
 	@Pesquisa varchar(50),
-	@LatitudeComprador int,
-	@LongitudeComprador int
+	@LatitudeComprador varchar(20),
+	@LongitudeComprador varchar(20)
 	)
 as begin
 	select Item.Id, Item.Nome,Item.ValorUnitario, Usuario.Nome as Vendedor from Item
