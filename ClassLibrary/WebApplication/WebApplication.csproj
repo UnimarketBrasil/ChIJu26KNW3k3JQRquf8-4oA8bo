@@ -118,6 +118,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Scripts\Mascara.js" />
     <Content Include="Views\SistemaErro.aspx" />
     <Content Include="Views\Logout.aspx" />
     <Content Include="Views\SistemaAtualizarCadastro.aspx" />

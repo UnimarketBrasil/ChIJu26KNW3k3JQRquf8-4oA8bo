@@ -5,6 +5,7 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <script type="text/javascript" src="../Scripts/Mascara.js"></script>
     <div class="container">
         <div id="dvMsg" runat="server" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -53,8 +54,7 @@
                                 <div class="form-group">
                                     <label for="<% =txtCnpj.ClientID%>"" class="col-lg-2 control-label">CNPJ</label>
                                     <div class="col-lg-10">
-                                        <asp:TextBox ID="txtCnpj" runat="server" CssClass="form-control" placeholder="CNPJ" required="true"></asp:TextBox>
-                                        <ajax:MaskedEditExtender runat="server" ID="maskCnpj" TargetControlID="txtCnpj" Mask="99,999,999/9999-99" MaskType="Number" ClearMaskOnLostFocus="false"/>
+                                        <asp:TextBox ID="txtCnpj" runat="server" CssClass="form-control" placeholder="CNPJ" OnKeyUp="formataCNPJ(this,event)" required="true" MaxLength="18"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -69,8 +69,7 @@
                                 <div class="form-group">
                                     <label for="<% =txtCpf.ClientID %>"" class="col-lg-2 control-label">CPF</label>
                                     <div class="col-lg-10">
-                                        <asp:TextBox ID="txtCpf" runat="server" CssClass="form-control" placeholder="CPF" required="true"></asp:TextBox>
-                                        <ajax:MaskedEditExtender runat="server" ID="maskCpf" TargetControlID="txtCpf" Mask="999,999,999-99" MaskType="Number" ClearMaskOnLostFocus="false"/>
+                                        <asp:TextBox ID="txtCpf" runat="server" CssClass="form-control" placeholder="CPF" OnKeyUp="formataCPF(this,event);" MaxLength="14" required="true"></asp:TextBox>  
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -112,8 +111,7 @@
                             <div class="form-group">
                                 <label for="<% =txtTel.ClientID %>"" class="col-lg-2 control-label">Telefone</label>
                                 <div class="col-lg-10">
-                                    <asp:TextBox ID="txtTel" runat="server" CssClass="form-control" placeholder="Telefone" required="true"></asp:TextBox>
-                                    <ajax:MaskedEditExtender runat="server" ID="maskTel" TargetControlID="txtTel" Mask="(99)9 9999-9999" MaskType="Number" ClearMaskOnLostFocus="false"/>
+                                    <asp:TextBox ID="txtTel" runat="server" onkeyup="formataTelefone(this,event);" style="text-align:left" MaxLength="15" CssClass="form-control" placeholder="Telefone" required="true"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -233,5 +231,3 @@
     </div>
 
 </asp:Content>
-
-
