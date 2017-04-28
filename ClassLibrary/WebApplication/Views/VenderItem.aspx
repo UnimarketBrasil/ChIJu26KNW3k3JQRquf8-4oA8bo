@@ -10,7 +10,7 @@
         <div id="mytabcontent" class="tab-content">
             <div class="tab-pane fade active in" id="produtos">
                 <div class="form-group">
-                    <a href="SistemaNovoItem.aspx" class="col-lg-2 control-label btn btn-success"><strong>+</strong>Novo Item</a>
+                    <a href="VenderDetalheItem.aspx" class="col-lg-2 control-label btn btn-success"><strong>+</strong>Novo Item</a>
                     <div class="col-lg-2">
                     </div>
                     <div class="col-lg-7">
