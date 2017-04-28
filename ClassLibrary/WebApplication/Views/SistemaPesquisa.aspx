@@ -5,12 +5,17 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div>
         <form runat="server">
-            <asp:GridView ID="lbItens" CssClass="table table-hover table-bordered" runat="server" AutoGenerateColumns="false" AllowPaging="True">
+            <asp:GridView ID="lbItens" class="table table-striped table-hover " runat="server" AutoGenerateColumns="false" AllowPaging="True">
                 <Columns>
                     <asp:BoundField DataField="Id" HeaderText="ID" ItemStyle-Width="100" />
                     <asp:BoundField DataField="Nome" HeaderText="Produto" ItemStyle-Width="100" />
                     <asp:BoundField DataField="ValorUnitario" HeaderText="Preço por Unidade" ItemStyle-Width="100" />
                     <asp:BoundField DataField="Usuario.Nome" HeaderText="Vendedor" ItemStyle-Width="100" />
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:LinkButton ID="verDetalheProduto" CssClass="btn btn-primary btn-xs" runat="server" PostBackUrl='<%# Page.ResolveUrl("~/Views/SistemaDetalheItem.aspx?id=") + DataBinder.Eval(Container.DataItem, "Id" )%>' Text="Ver Detalhes" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
                 </Columns>
             </asp:GridView>
         </form>

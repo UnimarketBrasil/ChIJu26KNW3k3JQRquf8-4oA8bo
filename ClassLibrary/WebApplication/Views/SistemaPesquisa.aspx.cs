@@ -20,15 +20,23 @@ namespace WebApplication
             {
                 ItemRepositorio itemPesquisa = new ItemRepositorio();
                 Usuario u = (Usuario)Session["sistema"];
-                List<Item> lst = itemPesquisa.MecanismoDeBusca(pesquisa, u);
 
-                lbItens.DataSource = lst;
-                lbItens.DataBind();
+                //CASO NÃO SEJA DIGITADO NADA NA PESQUISA, O SISTEMA APRESENTA A TELA DE ERRO
+                if(String.IsNullOrEmpty(pesquisa) == true) {
+                    Response.Redirect("~/Views/SistemaErro.aspx");
+                }
 
+                //CASO SEJA DIGITADO ALGO NA PESQUISA, O SISTEMA RETORNA O RESULTADO DA MESMA
+                else
+                {
+                    List<Item> lst = itemPesquisa.MecanismoDeBusca(pesquisa, u);
+                    lbItens.DataSource = lst;
+                    lbItens.DataBind();
+                }
             }
             else
             {
-                //Response.Redirect("~/Views/SistemaErro.aspx");
+              
             }
         }
     }
