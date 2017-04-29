@@ -52,7 +52,7 @@
                                 <div class="form-group">
                                     <label for="<% =txtCnpj.ClientID%>"" class="col-lg-2 control-label">CNPJ</label>
                                     <div class="col-lg-10">
-                                        <asp:TextBox ID="txtCnpj" runat="server" CssClass="form-control" placeholder="CNPJ" OnKeyUp="formataCNPJ(this,event)" required="true" MaxLength="18"></asp:TextBox>
+                                        <asp:TextBox ID="txtCnpj" runat="server" CssClass="form-control" placeholder="CNPJ" OnKeyUp="formataCNPJ(this,event);" onchange="formataCNPJ(this,event);" required="true" MaxLength="18"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -109,7 +109,7 @@
                             <div class="form-group">
                                 <label for="<% =txtTel.ClientID %>"" class="col-lg-2 control-label">Telefone</label>
                                 <div class="col-lg-10">
-                                    <asp:TextBox ID="txtTel" runat="server" onkeyup="formataTelefone(this,event);" style="text-align:left" MaxLength="15" CssClass="form-control" placeholder="Telefone" required="true"></asp:TextBox>
+                                    <asp:TextBox ID="txtTel" runat="server" onkeyup="formataTelefone(this,event);" onchange="formataTelefone(this,event);" style="text-align:left" MaxLength="15" CssClass="form-control" placeholder="Telefone" required="true"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="form-group">
