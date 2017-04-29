@@ -55,7 +55,8 @@ namespace WebApplication
                     txtCpf.Text = u.CpfCnpj;
                     txtNome.Text = u.Nome;
                     txtSobrenome.Text = u.Sobrenome;
-                    //txtDtNasc.Text = Aqui tem que arrumar depois
+                    txtDtNasc.Text = u.Nascimento.ToString("dd/MM/yyyy");
+                    
                     if (u.Genero == 1)
                     {
                         dpGenero.SelectedIndex = 1;

@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Comprar.Master" AutoEventWireup="true" CodeBehind="SistemaAtualizarCadastro.aspx.cs" Inherits="WebApplication.WebForm10" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link href="../Content/bootstrap-datepicker.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
         <div class="container">
@@ -37,7 +38,7 @@
                                 <div class="form-group">
                                     <label for="<% =txtDtNasc.ClientID %>"" class="col-lg-2 control-label">Data de Nasc.</label>
                                     <div class="col-lg-10">
-                                        <asp:TextBox ID="txtDtNasc" TextMode="Date" runat="server" CssClass="form-control" placeholder="dd/mm/aaaa" required="true"></asp:TextBox>
+                                        <asp:TextBox ID="txtDtNasc" runat="server" CssClass="form-control" placeholder="dd/mm/aaaa" required="true"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -145,6 +146,7 @@
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAErShX6RRNkCAj2d3E9bxaEEGKSpIHZ1A&callback=initMap"
             async defer></script>
         <!--Outros-->
+        <script src="../Scripts/bootstrap-datepicker.js"></script>
         <script>
             function areAtuacaoDisplay(s) {
 
@@ -158,6 +160,10 @@
                     document.getElementById('<% =lbComprar.ClientID%>').className = "btn btn-primary";
                 }
             }
+
+            $('#<%=txtDtNasc.ClientID%>').datepicker({
+                format: "dd/mm/yyyy"
+            });
         </script>
     </div>
 </asp:Content>

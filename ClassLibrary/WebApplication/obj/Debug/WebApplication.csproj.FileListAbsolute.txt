@@ -103,7 +103,6 @@ C:\Users\José\TccUnimarket\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplicat
 C:\Users\José\TccUnimarket\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\bin\ClassLibrary.pdb
 C:\Users\José\TccUnimarket\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\bin\ClassUtilitario.pdb
 C:\Users\José\TccUnimarket\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\bin\itextsharp.xml
-C:\Users\José\TccUnimarket\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\bin\AjaxControlToolkit.dll
 C:\Users\José\TccUnimarket\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\bin\AjaxControlToolkit.pdb
 C:\Users\José\TccUnimarket\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\bin\ar\AjaxControlToolkit.resources.dll
 C:\Users\José\TccUnimarket\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\bin\cs\AjaxControlToolkit.resources.dll
