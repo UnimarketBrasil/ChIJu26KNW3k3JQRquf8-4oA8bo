@@ -78,7 +78,7 @@
                             <div class="form-group">
                                 <label for="<% =txtTel.ClientID %>"" class="col-lg-2 control-label">Telefone</label>
                                 <div class="col-lg-10">
-                                    <asp:TextBox ID="txtTel" runat="server" CssClass="form-control" placeholder="Telefone" required="true"></asp:TextBox>
+                                    <asp:TextBox ID="txtTel" runat="server" CssClass="form-control" placeholder="Telefone" MaxLength="15" onkeyup="formataTelefone(this,event);" required="true"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -147,6 +147,8 @@
             async defer></script>
         <!--Outros-->
         <script src="../Scripts/bootstrap-datepicker.js"></script>
+        <script src="../Scripts/locales/bootstrap-datepicker.pt-BR.min.js"></script>
+        <script type="text/javascript" src="../Scripts/Mascara.js"></script>
         <script>
             function areAtuacaoDisplay(s) {
 
@@ -162,6 +164,7 @@
             }
 
             $('#<%=txtDtNasc.ClientID%>').datepicker({
+                language: "pt-BR",
                 format: "dd/mm/yyyy"
             });
         </script>

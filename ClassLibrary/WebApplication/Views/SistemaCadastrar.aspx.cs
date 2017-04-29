@@ -24,15 +24,11 @@ namespace WebApplication
             }
         }
 
-        protected void Validar_Click(object sender, EventArgs e)
+        protected void btValidar_Click(object sender, EventArgs e)
         {
-            IsEmail u = new IsEmail();
-            if (u.ValidarEmail(txtEmailEtapa1.Text))
-            {
                 dvSegundaEtapa.Visible = true;
                 dvPrimeiraEtapa.Visible = false;
                 txtEmailEtapa2.Text = txtEmailEtapa1.Text;
-            }
         }
 
 

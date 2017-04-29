@@ -1,31 +1,29 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Comprar.Master" AutoEventWireup="true" CodeBehind="SistemaCadastrar.aspx.cs" Inherits="WebApplication.SistemaCadastrar" %>
 
-<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajax" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
+    <link href="../Content/bootstrap-datepicker.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <script type="text/javascript" src="../Scripts/Mascara.js"></script>
     <div class="container">
         <div id="dvMsg" runat="server" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <strong>!</strong> <asp:Label ID="lbMsg" runat="server"></asp:Label>
         </div>
         <h2 class="text-uppercase"><strong>Cadastre-se</strong></h2>
-        <!--1° Etapa - Validar email-->
+        <!--1° Etapa - Validar email(Informar um e-mail válido)-->
         <div id="dvPrimeiraEtapa" class="row" runat="server">
             <div class="col-md-6">
                 <form class="form-horizontal" runat="server">
                     <div class="form-group">
                         <label for="<%=txtEmailEtapa1.ClientID%>"" class="col-lg-2 control-label">Email</label>
                         <div class="col-lg-10">
-                            <asp:TextBox ID="txtEmailEtapa1" CssClass="form-control" runat="server" AutoPostBack="True" AutoCompleteType="Email" TextMode="Email" placeholder="Email" required="true"></asp:TextBox>
+                            <asp:TextBox ID="txtEmailEtapa1" CssClass="form-control" runat="server" AutoCompleteType="Email" TextMode="Email" placeholder="Email" required="true"></asp:TextBox>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-lg-10 col-lg-offset-2">
                             <div>
-                                <asp:Button ID="btValidar" runat="server" Text="Criar uma conta" CssClass="btn btn-primary" OnClick="Validar_Click" />
+                                <asp:Button ID="btValidar" runat="server" Text="Criar uma conta" OnClick="btValidar_Click" CssClass="btn btn-primary" />
                             </div>
                         </div>
                     </div>
@@ -87,7 +85,7 @@
                                 <div class="form-group">
                                     <label for="<% =txtDtNasc.ClientID %>"" class="col-lg-2 control-label">Data de Nasc.</label>
                                     <div class="col-lg-10">
-                                        <asp:TextBox ID="txtDtNasc" TextMode="Date" runat="server" CssClass="form-control" placeholder="dd/mm/aaaa" required="true"></asp:TextBox>
+                                        <asp:TextBox ID="txtDtNasc" runat="server" CssClass="form-control" placeholder="dd/mm/aaaa" required="true"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -196,6 +194,9 @@
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAErShX6RRNkCAj2d3E9bxaEEGKSpIHZ1A&callback=initMap"
             async defer></script>
         <!--Outros-->
+        <script type="text/javascript" src="../Scripts/Mascara.js"></script>
+        <script src="../Scripts/bootstrap-datepicker.js"></script>
+        <script src="../Scripts/locales/bootstrap-datepicker.pt-BR.min.js"></script>
         <script>
             function tipoPessoaSel() {
                 var dropdown = document.getElementById('<% =dpTipoPessoa.ClientID %>');
@@ -223,9 +224,10 @@
                 }
             }
 
-            function Func() {
-                alert("hello!")
-            }
+            $('#<%=txtDtNasc.ClientID%>').datepicker({
+                language: "pt-BR",
+                format: "dd/mm/yyyy"
+            });
 
         </script>
     </div>
