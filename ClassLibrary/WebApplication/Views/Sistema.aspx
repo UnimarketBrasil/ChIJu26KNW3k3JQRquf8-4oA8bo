@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="height:368px; width:550px; margin:inherit">
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="height: 368px; width: 550px; margin: inherit">
         <!-- Indicators -->
         <ol class="carousel-indicators">
             <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>

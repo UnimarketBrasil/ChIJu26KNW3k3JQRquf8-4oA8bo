@@ -8,6 +8,7 @@ using ClassLibrary;
 using ClassUtilitario;
 using ClassLibrary.Repositorio;
 using System.Data;
+using System.Collections;
 
 namespace WebApplication
 {
@@ -20,17 +21,16 @@ namespace WebApplication
                 dvSegundaEtapa.Visible = false;
                 dvPessoaJuridica.Visible = false;
                 dvMsg.Visible = false;
-                
+                lbEndereco.Visible = false;
             }
         }
 
         protected void btValidar_Click(object sender, EventArgs e)
         {
-                dvSegundaEtapa.Visible = true;
-                dvPrimeiraEtapa.Visible = false;
-                txtEmailEtapa2.Text = txtEmailEtapa1.Text;
+            dvSegundaEtapa.Visible = true;
+            dvPrimeiraEtapa.Visible = false;
+            txtEmailEtapa2.Text = txtEmailEtapa1.Text;
         }
-
 
         protected void txtNumero_TextChanged(object sender, EventArgs e)
         {
@@ -40,13 +40,21 @@ namespace WebApplication
                 Usuario u = new Usuario();
                 GeoCodificacao g = new GeoCodificacao();
 
-               u = g.ObterCoordenadas(u, txtEndereco.Text, txtNumero.Text);
+                u = g.ObterCoordenadas(u, txtEndereco.Text, txtNumero.Text);
 
                 Session["latlog"] = u;
+
+                ArrayList sEndereco = new ArrayList();
+                sEndereco = g.ObterEndereco(u);
+                lbEndereco.Visible = true;
+                lbEndereco.Text = sEndereco[1].ToString();
             }
             catch
             {
-
+                dvMsg.Visible = true;
+                dvEnderecoCompleto.Visible = false;
+                dvMsg.Attributes["class"] = "alert alert-warning alert-dismissible";
+                lbMsg.Text = "Desculpe, não localizamos o seu endereço.";
             }
         }
 
@@ -68,12 +76,12 @@ namespace WebApplication
                     txtCnpj.BorderColor = System.Drawing.Color.Red;
                 }
                 u.Nome = txtRazaoSocial.Text;
-                u.Nascimento = DateTime.Today;//Falta arrumar PERMITIR NULL
+                u.Nascimento = DateTime.Today;//Falta arrumar a data de nascimento.
             }
             else if (dpTipoPessoa.SelectedValue == "1")//PESSOA FÍSICA
             {
                 IsCpfCnpj cpf = new IsCpfCnpj();
-                txtCpf.Text = txtCpf.Text.Replace(">", "").Replace(",", "").Replace(".", "").Replace("-", "").Replace("/","");
+                txtCpf.Text = txtCpf.Text.Replace(">", "").Replace(",", "").Replace(".", "").Replace("-", "").Replace("/", "");
                 if (cpf.validarCpfCnpj(txtCpf.Text))
                 {
                     u.CpfCnpj = txtCpf.Text;
@@ -85,16 +93,8 @@ namespace WebApplication
                 }
                 u.Nome = txtNome.Text;
                 u.Sobrenome = txtSobrenome.Text;
-                u.Nascimento = DateTime.Today;//Falta arrumar a data de nascimento.
+                u.Nascimento = Convert.ToDateTime(txtDtNasc.Text);
                 u.Genero = int.Parse(dpGenero.SelectedValue);
-            }
-            else
-            {
-                //Se não é pessoa física nem jurídica não cadastra
-                dvMsg.Visible = true;
-                dvMsg.Attributes["class"] = "alert alert-danger alert-dismissible";
-                
-                lbMsg.Text = "Uma mensagem aqui";
             }
             u.Email = txtEmailEtapa2.Text;
             u.Telefone = txtTel.Text;
@@ -116,25 +116,20 @@ namespace WebApplication
                 u.Tipousuario = new TipoUsuario(int.Parse(rdVender.Value));
                 u.AreaAtuacao = Convert.ToDouble(dpArea.SelectedValue);
             }
-            else
-            {
-                dvMsg.Visible = true;
-                dvMsg.Attributes["class"] = "alert alert-danger alert-dismissible";
-                lbMsg.Text = "Uma mensagem aqui";
-            }
             Usuario uEndereco = (Usuario)Session["latlog"];
 
             u.Latitude = uEndereco.Latitude;
             u.Longitude = uEndereco.Longitude;
             u.Complemento = txtComplemento.Text;
-            
 
             UsuarioRepositorio cadastrar = new UsuarioRepositorio();
             if (cadastrar.CadastrarUsuario(u))
             {
+                //Response.Redirect(Request.RawUrl);
                 dvMsg.Visible = true;
                 dvMsg.Attributes["class"] = "alert alert-success alert-dismissible";
-                lbMsg.Text = "Cadastro realizado com sucesso";
+                lbMsg.Text = "Cadastro realizado com sucesso!";
+
             }
             else
             {
@@ -147,11 +142,13 @@ namespace WebApplication
 
         protected void dpTipoPessoa_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (dpTipoPessoa.SelectedValue=="1")//Significa que é pessoa fisica
+            if (dpTipoPessoa.SelectedValue == "1")//Significa que é pessoa fisica
             {
                 dvPessoaJuridica.Visible = false;
                 dvPessoaFisica.Visible = true;
-            }else if(dpTipoPessoa.SelectedValue=="2"){//Significa que é pessoa jurídica
+            }
+            else if (dpTipoPessoa.SelectedValue == "2")
+            {//Significa que é pessoa jurídica
                 dvPessoaFisica.Visible = false;
                 dvPessoaJuridica.Visible = true;
             }

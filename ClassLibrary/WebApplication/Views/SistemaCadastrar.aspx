@@ -35,7 +35,7 @@
             <div>
                 <div class="col-md-6">
                     <div class="sm-m-top-50">
-                        <form class="form-horizontal" runat="server">
+                        <form id="form1" class="form-horizontal" runat="server">
                             <!--Selecionar Tipo Pessoa-->
                             <fieldset class="form-group">
                                 <label for="<% =dpTipoPessoa.ClientID%>"" class="col-lg-2 control-label">Tipo Pessoa</label>
@@ -67,7 +67,7 @@
                                 <div class="form-group">
                                     <label for="<% =txtCpf.ClientID %>"" class="col-lg-2 control-label">CPF</label>
                                     <div class="col-lg-10">
-                                        <asp:TextBox ID="txtCpf" runat="server" CssClass="form-control" placeholder="CPF" OnKeyUp="formataCPF(this,event);" MaxLength="14" required="true"></asp:TextBox>  
+                                        <asp:TextBox ID="txtCpf" runat="server" CssClass="form-control" placeholder="CPF" OnKeyUp="formataCPF(this,event);" onchange="formataCPF(this,event);" MaxLength="14" required="true"></asp:TextBox>  
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -103,7 +103,7 @@
                             <div class="form-group">
                                 <label for="<% =txtEmailEtapa2.ClientID %>"" class="col-lg-2 control-label">Email</label>
                                 <div class="col-lg-10">
-                                    <asp:TextBox ID="txtEmailEtapa2" runat="server" CssClass="form-control" placeholder="Email" required="true"></asp:TextBox>
+                                    <asp:TextBox ID="txtEmailEtapa2" TextMode="Email" runat="server" CssClass="form-control" placeholder="Email" required="true"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -138,7 +138,12 @@
                                     <asp:TextBox ID="txtEndereco" runat="server" CssClass="form-control" placeholder="CEP ou Endereço" required="true"></asp:TextBox>
                                 </div>
                                 <div class="col-lg-3">
-                                    <asp:TextBox ID="txtNumero" runat="server" CssClass="form-control" TextMode="Number"  placeholder="N°" required="true" OnTextChanged="txtNumero_TextChanged" AutoPostBack="true" ></asp:TextBox>
+                                    <asp:TextBox ID="txtNumero" runat="server" CssClass="form-control" TextMode="Number"  placeholder="N°" required="true" OnTextChanged="txtNumero_TextChanged" AutoPostBack="true"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div id="dvEnderecoCompleto" runat="server" class="form-group">
+                                <div class="col-lg-10 col-lg-offset-2">
+                                    <asp:Label runat="server" ID="lbEndereco"></asp:Label>
                                 </div>
                             </div>
                             <div class="form-group">
