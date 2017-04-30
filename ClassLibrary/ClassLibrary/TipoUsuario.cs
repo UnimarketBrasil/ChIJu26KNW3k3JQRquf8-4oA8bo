@@ -6,10 +6,15 @@
 
         public string Nome { get; set; }
 
+        public TipoUsuario()
+        {
+
+        }
         public TipoUsuario(int id)
         {
             Id = id;
         }
+
     }
 
 }

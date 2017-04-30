@@ -100,7 +100,12 @@
                                     <asp:TextBox ID="txtEndereco" runat="server" CssClass="form-control" placeholder="CEP ou Endereço" required="true"></asp:TextBox>
                                 </div>
                                 <div class="col-lg-3">
-                                    <asp:TextBox ID="txtNumero" runat="server" CssClass="form-control" TextMode="Number"  placeholder="N°" required="true" AutoPostBack="true" ></asp:TextBox>
+                                    <asp:TextBox ID="txtNumero" runat="server" CssClass="form-control" TextMode="Number"  placeholder="N°" required="true" OnTextChanged="txtNumero_TextChanged" AutoPostBack="true" ></asp:TextBox>
+                                </div>
+                            </div>
+                            <div id="dvEnderecoCompleto" runat="server" class="form-group">
+                                <div class="col-lg-10 col-lg-offset-2">
+                                    <asp:Label runat="server" ID="lbEndereco"></asp:Label>
                                 </div>
                             </div>
                             <div class="form-group">

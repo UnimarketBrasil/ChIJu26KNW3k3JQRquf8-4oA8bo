@@ -202,6 +202,24 @@ namespace WebApplication {
         protected global::System.Web.UI.WebControls.TextBox txtNumero;
         
         /// <summary>
+        /// Controle dvEnderecoCompleto.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvEnderecoCompleto;
+        
+        /// <summary>
+        /// Controle lbEndereco.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbEndereco;
+        
+        /// <summary>
         /// Controle txtComplemento.
         /// </summary>
         /// <remarks>
