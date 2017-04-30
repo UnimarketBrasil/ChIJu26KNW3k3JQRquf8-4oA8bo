@@ -123,11 +123,11 @@
                                 <label class="col-lg-2 control-label">Atividade principal</label>
                                 <div class="btn-group col-lg-10" data-toggle="buttons">
                                     <label id="lbComprar" runat="server" class="btn btn-primary">
-                                        <input type="radio" name="rdAtividade" id="rdComprar" onchange="areAtuacaoDisplay('c');" runat="server" value="1" required="required"/>
+                                        <input type="radio" name="rdAtividade" id="rdComprar" onchange="areAtuacaoDisplay('c');" runat="server" value="2" required="required"/>
                                         Comprar
                                     </label>
                                     <label id="lbVender" runat="server" class="btn btn-primary">
-                                        <input type="radio" name="rdAtividade" id="rdVender" onchange="areAtuacaoDisplay('v');" runat="server" value="2" />
+                                        <input type="radio" name="rdAtividade" id="rdVender" onchange="areAtuacaoDisplay('v');" runat="server" value="3" />
                                         Vender
                                     </label>
                                 </div>
