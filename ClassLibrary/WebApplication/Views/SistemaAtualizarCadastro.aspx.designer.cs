@@ -238,12 +238,12 @@ namespace WebApplication {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl map;
         
         /// <summary>
-        /// Controle btCadastrar.
+        /// Controle btSalvar.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btCadastrar;
+        protected global::System.Web.UI.WebControls.Button btSalvar;
     }
 }

@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormatarCnpjCpf.cs" />
     <Compile Include="GeoCodificacao.cs" />
     <Compile Include="IsCpfCnpj.cs" />
     <Compile Include="Criptografia.cs" />

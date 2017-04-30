@@ -58,7 +58,7 @@
                                 <div class="form-group">
                                     <label for="<% =txtCnpj.ClientID%>"" class="col-lg-2 control-label">CNPJ</label>
                                     <div class="col-lg-10">
-                                        <asp:TextBox ID="txtCnpj" runat="server" CssClass="form-control" placeholder="CNPJ" required="true"></asp:TextBox>
+                                        <asp:TextBox ID="txtCnpj" runat="server" CssClass="form-control" placeholder="CNPJ" required="true" Enabled="False"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -132,7 +132,7 @@
                             <div class="form-group">
                                 <div class="col-lg-10 col-lg-offset-2">
                                     <div>
-                                        <asp:Button runat="server" ID="btCadastrar" Text="Salvar" CssClass="btn btn-primary" ></asp:Button>
+                                        <asp:Button runat="server" ID="btSalvar" Text="Salvar" CssClass="btn btn-primary" OnClick="btSalvar_Click" ></asp:Button>
                                     </div>
                                 </div>
                             </div>

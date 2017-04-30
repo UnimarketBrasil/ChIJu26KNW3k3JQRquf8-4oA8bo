@@ -52,7 +52,7 @@ namespace WebApplication
 
                 if (carregaUsuario.CarregarUsuario(u))
                 {
-                    txtCpf.Text = u.CpfCnpj;
+                    txtCpf.Text = FormatarCnpjCpf.FormatCPF(u.CpfCnpj);
                     txtNome.Text = u.Nome;
                     txtSobrenome.Text = u.Sobrenome;
                     txtDtNasc.Text = u.Nascimento.ToString("dd/MM/yyyy");
@@ -68,10 +68,6 @@ namespace WebApplication
                     else if (u.Genero == 3)
                     {
                         dpGenero.SelectedIndex = 3;
-                    }
-                    else
-                    {
-                        //Aqui apresenta um erro;
                     }
                     txtEmail.Text = u.Email;
                     txtTel.Text = u.Telefone;
@@ -110,7 +106,7 @@ namespace WebApplication
 
                 if (carregaUsuario.CarregarUsuario(u))
                 {
-                    txtCnpj.Text = u.CpfCnpj;
+                    txtCnpj.Text = FormatarCnpjCpf.FormatCNPJ(u.CpfCnpj);  
                     txtRazaoSocial.Text = u.Nome;
                     txtEmail.Text = u.Email;
                     txtTel.Text = u.Telefone;
@@ -123,10 +119,6 @@ namespace WebApplication
                     {
                         rdVender.Checked = true;
                         rdComprar.Checked = false;
-                    }
-                    else
-                    {
-                        //Aqui apresenta um erro;
                     }
 
                     GeoCodificacao g = new GeoCodificacao();
@@ -146,6 +138,11 @@ namespace WebApplication
             {
                 Response.Redirect("~/Views/Logout.aspx");
             }
+        }
+
+        protected void btSalvar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
