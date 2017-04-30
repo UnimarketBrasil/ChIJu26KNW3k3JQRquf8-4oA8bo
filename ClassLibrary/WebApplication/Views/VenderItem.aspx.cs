@@ -1,9 +1,7 @@
-﻿using System;
+﻿using ClassLibrary;
+using ClassLibrary.Repositorio;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace WebApplication
 {
@@ -11,7 +9,24 @@ namespace WebApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
+            if (Session["sistema"] != null)
+            {
+                 Item item = new Item();
+
+                ItemRepositorio listarItens = new ItemRepositorio();
+                Usuario u = (Usuario)Session["sistema"];
+
+                item.Usuario = new Usuario(u.Id);
+
+                grdDetalheVendedor.DataSource = listarItens.ListarItem(u.Id);
+                grdDetalheVendedor.DataBind();
+
+               // List<Item> listaItens = itemDisponivel.
+
+                // grdDetalheVendedor.DataSource = itemDisponivel.DetalheItemVendedor;
+                //grdDetalheVendedor.DataBind();*/
+            }
         }
     }
 }

@@ -20,30 +20,15 @@
                         <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                     </div>
                 </div>
-                <table class="table table-striped table-hover ">
-                    <thead>
-                        <tr>
-                            <th>Cód</th>
-                            <th>Nome</th>
-                            <th>Valor</th>
-                            <th>Ação</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="active">
-                            <td>1</td>
-                            <td>Column content</td>
-                            <td>Column content</td>
-                            <td><a href="#" class="btn btn-warning btn-xs">Alterar</a> &nbsp;<a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
-                        </tr>
-                        <tr class="active">
-                            <td>4</td>
-                            <td>Column contant</td>
-                            <td>Column content</td>
-                            <td>Column content</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <asp:GridView ID="grdDetalheVendedor" class="table table-striped table-hover " runat="server" AutoGenerateColumns="false" AllowPaging="True">
+                    <Columns>
+                        <asp:BoundField DataField="Codigo" HeaderText="Código" ItemStyle-Width="100" />
+                        <asp:BoundField DataField="Nome" HeaderText="Produto" ItemStyle-Width="100" />
+                        <asp:BoundField DataField="Descricao" HeaderText="Descrição" ItemStyle-Width="100" />
+                        <asp:BoundField DataField="ValorUnitario" HeaderText="Valor Unitário" ItemStyle-Width="100" />
+                        <asp:BoundField DataField="Quantidade" HeaderText="Quantidade" ItemStyle-Width="100" />
+                    </Columns>
+                </asp:GridView>
             </div>
         </div>
     </section>
