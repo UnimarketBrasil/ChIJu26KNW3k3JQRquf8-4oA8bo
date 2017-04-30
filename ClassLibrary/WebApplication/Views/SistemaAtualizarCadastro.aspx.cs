@@ -219,8 +219,9 @@ namespace WebApplication
             }
             else if (u.CpfCnpj.Length == 11)
             {
-                u.Nome = txtRazaoSocial.Text;
+                u.Nome = txtNome.Text;
                 u.Sobrenome = txtSobrenome.Text;
+                u.Nascimento = Convert.ToDateTime(txtDtNasc.Text);
                 u.Genero = int.Parse(dpGenero.SelectedValue);
                 u.Email = txtEmail.Text;
                 u.Telefone = txtTel.Text;
@@ -249,7 +250,7 @@ namespace WebApplication
                 u.Complemento = txtComplemento.Text;
 
                 UsuarioRepositorio atulizarCadastro = new UsuarioRepositorio();
-                if (atulizarCadastro.AtualizarUsuarioPJ(u))
+                if (atulizarCadastro.AtualizarUsuarioPF(u))
                 {
                     dvMsg.Visible = true;
                     dvMsg.Attributes["class"] = "alert alert-success alert-dismissible";

@@ -103,8 +103,9 @@ namespace ClassLibrary.Repositorio
                 }
                 catch (Exception ex)
                 {
+                    //return false;
+                    throw new Exception("Erro ao atualizar usuario: " + ex.Message);
                     return false;
-                    //throw new Exception("Erro ao atualizar usuario: " + ex.Message);
                 }
                 finally
                 {

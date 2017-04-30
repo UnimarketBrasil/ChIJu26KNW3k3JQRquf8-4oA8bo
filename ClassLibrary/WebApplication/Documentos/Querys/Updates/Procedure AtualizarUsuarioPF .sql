@@ -10,8 +10,8 @@ create  procedure AtualizarUsuarioPF(
 	@Genero smallint,
 	@Nascimento Date,
 	@Telefone varchar(15),
-	@Latitude int,
-	@Longitude int,
+	@Latitude varchar(20),
+	@Longitude varchar(20),
 	@Complemento text,
 	@AreaAtuacao real,
 	@IdTipoUsuario int
