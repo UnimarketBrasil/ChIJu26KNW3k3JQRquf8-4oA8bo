@@ -20,7 +20,7 @@ as
 begin
 	begin try
 		begin tran
-			update administrador set
+			update Usuario set
 			Email = @Email,
 			Nome = @Nome,
 			Sobrenome = @Sobrenome,
