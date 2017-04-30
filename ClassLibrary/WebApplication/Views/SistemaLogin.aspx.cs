@@ -44,23 +44,38 @@ namespace WebApplication
             UsuarioRepositorio login = new UsuarioRepositorio();
             if (login.LoginUsuario(usuario))
             {
-                Session["sistema"] = usuario;
+                if (usuario.StatusUsuario.Id == 2)
+                {
+                    dvMsg.Visible = true;
+                    dvMsg.Attributes["class"] = "alert alert-warning alert-dismissible";
+                    lbMsg.Text = "<strong>Confirme seu cadastro</strong>, enviamos um link de confirmação para <a><u>" + usuario.Email.ToString()+"</u></a>!";
+                }
+                else if (usuario.StatusUsuario.Id == 3)
+                {
+                    dvMsg.Visible = true;
+                    dvMsg.Attributes["class"] = "alert alert-danger alert-dismissible";
+                    lbMsg.Text = "<strong>Conta bloqueada</strong>, entre em contato com o administrador do sistema.";
+                }
+                else if (usuario.StatusUsuario.Id == 1)
+                {
+                    Session["sistema"] = usuario;
 
-                if (usuario.Tipousuario.Id == 3)//Tipo de usuário vendedor
-                {
-                    Response.Redirect("~/Views/VenderItem.aspx");
-                }
-                else if (usuario.Tipousuario.Id == 2)//Tipo de usuário comprador
-                {
-                    Response.Redirect("~/Views/Sistema.aspx");
-                }
-                else if (usuario.Tipousuario.Id == 1)//Tipo de usuário administrador
-                {
-                    Response.Redirect("~/Views/AdminListar.aspx");
-                }
-                else
-                {
-                    Response.Redirect("~/Views/SistemaErro.aspx");
+                    if (usuario.Tipousuario.Id == 3)//Tipo de usuário vendedor
+                    {
+                        Response.Redirect("~/Views/VenderItem.aspx");
+                    }
+                    else if (usuario.Tipousuario.Id == 2)//Tipo de usuário comprador
+                    {
+                        Response.Redirect("~/Views/Sistema.aspx");
+                    }
+                    else if (usuario.Tipousuario.Id == 1)//Tipo de usuário administrador
+                    {
+                        Response.Redirect("~/Views/AdminListar.aspx");
+                    }
+                    else
+                    {
+                        Response.Redirect("~/Views/SistemaErro.aspx");
+                    }
                 }
             }
             else
