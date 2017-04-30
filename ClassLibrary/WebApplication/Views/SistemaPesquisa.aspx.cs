@@ -22,10 +22,12 @@ namespace WebApplication
                 Usuario u = (Usuario)Session["sistema"];
 
                 //CASO NÃO SEJA DIGITADO NADA NA PESQUISA, O SISTEMA APRESENTA A TELA DE ERRO
-                if(String.IsNullOrEmpty(pesquisa) == true) {
-                    Response.Redirect("~/Views/SistemaErro.aspx");
+                if (String.IsNullOrWhiteSpace(pesquisa) == true)
+                {
+                    divMsg.Visible = true;
+                    divMsg.Attributes["class"] = "alert alert-dismissible alert-info";
+                    msgPesquisa.Text = "<strong>Pesquisa Inválida</strong>. O campo de pesquisa está vazio.";
                 }
-
                 //CASO SEJA DIGITADO ALGO NA PESQUISA, O SISTEMA RETORNA O RESULTADO DA MESMA
                 else
                 {
@@ -36,7 +38,7 @@ namespace WebApplication
             }
             else
             {
-              
+
             }
         }
     }
