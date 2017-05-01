@@ -19,7 +19,7 @@
                         <asp:BoundField DataField="Usuario.Nome" HeaderText="Vendedor" ItemStyle-Width="300" />
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:LinkButton ID="verDetalheProduto" CssClass="btn btn-primary btn-xs" runat="server" PostBackUrl='<%# Page.ResolveUrl("~/Views/SistemaDetalheItem.aspx?id=") + DataBinder.Eval(Container.DataItem, "Id" )%>' Text="Ver Detalhes" />
+                                <asp:LinkButton ID="verDetalheProduto" CssClass="btn btn-primary btn-xs" runat="server" PostBackUrl='<%# Page.ResolveUrl("~/Views/SistemaDetalheItem.aspx")%>' Text="Ver Detalhes" />
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
