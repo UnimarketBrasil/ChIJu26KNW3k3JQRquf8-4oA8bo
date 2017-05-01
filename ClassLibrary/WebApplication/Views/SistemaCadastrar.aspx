@@ -129,9 +129,9 @@
                                     <label id="lbVender" runat="server" class="btn btn-primary">
                                         <input type="radio" name="rdAtividade" id="rdVender" onchange="areAtuacaoDisplay('v');" runat="server" value="3" />
                                         Vender
-                                    </label>   
+                                    </label> 
+                                    <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=10' target='_blank'></a>  
                                 </div>
-                                <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=10' target='_blank'></a>
                             </div>
                             <div class="form-group">
                                 <label for="<% =txtEndereco.ClientID %>" class="col-lg-2 control-label">Endereço</label>
@@ -145,8 +145,8 @@
                             <div id="dvEnderecoCompleto" runat="server" class="form-group">
                                 <div class="col-lg-10 col-lg-offset-2">
                                     <asp:Label runat="server" ID="lbEndereco"></asp:Label>
+                                    <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=11' target='_blank'></a>
                                 </div>
-                                <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=11' target='_blank'></a>
                             </div>
                             <div class="form-group">
                                 <label for="<% =txtComplemento.ClientID %>" class="col-lg-2 control-label">Complemento</label>
