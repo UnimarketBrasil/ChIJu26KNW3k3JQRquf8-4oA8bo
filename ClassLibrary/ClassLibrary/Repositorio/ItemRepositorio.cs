@@ -24,6 +24,9 @@ namespace ClassLibrary.Repositorio
                     Cmd.Parameters.AddWithValue("@IdCategoria", item.Categoria.Id);
                     Cmd.Parameters.AddWithValue("@IdUsuario", item.Usuario.Id);
                     Cmd.ExecuteNonQuery();
+
+                    item.Id = int.Parse(Cmd.ExecuteScalar().ToString());
+
                     return true;
 
                 }
@@ -116,11 +119,11 @@ namespace ClassLibrary.Repositorio
                     {
                         item = new Item();
                         Dr.Read();                        
-                        item.Codigo = Convert.ToString(Dr["Item.Codigo"]);
-                        item.Nome = Convert.ToString(Dr["Item.Nome"]);
-                        item.Descricao = Convert.ToString(Dr["Item.Descricao"]);
-                        item.ValorUnitario = Convert.ToDouble(Dr["Item.Valorunitario"]);
-                        item.Quantidade = Convert.ToDouble(Dr["Item.Quantidade"]);
+                        item.Codigo = Convert.ToString(Dr["Codigo"]);
+                        item.Nome = Convert.ToString(Dr["Nome"]);
+                        item.Descricao = Convert.ToString(Dr["Descricao"]);
+                        item.ValorUnitario = Convert.ToDouble(Dr["Valorunitario"]);
+                        item.Quantidade = Convert.ToDouble(Dr["Quantidade"]);
                         //item.Categoria = new Categoria(Convert.ToString(Dr["Categoria.Nome"]));
                     }
 
@@ -159,11 +162,11 @@ namespace ClassLibrary.Repositorio
                     {
                         item = new Item();
                         Dr.Read();
-                        item.Codigo = Convert.ToString(Dr["Item.Codigo"]);
-                        item.Nome = Convert.ToString(Dr["Item.Nome"]);
-                        item.Descricao = Convert.ToString(Dr["Item.Descricao"]);
-                        item.ValorUnitario = Convert.ToDouble(Dr["Item.Valorunitario"]);
-                        item.Quantidade = Convert.ToDouble(Dr["Item.Quantidade"]);
+                        item.Codigo = Convert.ToString(Dr["Codigo"]);
+                        item.Nome = Convert.ToString(Dr["Nome"]);
+                        item.Descricao = Convert.ToString(Dr["Descricao"]);
+                        item.ValorUnitario = Convert.ToDouble(Dr["Valorunitario"]);
+                        item.Quantidade = Convert.ToDouble(Dr["Quantidade"]);
                         //item.Categoria = new Categoria(Convert.ToString(Dr["Categoria.Nome"]));
                         item.Usuario = new Usuario();
                         item.Usuario.Nome = Convert.ToString(Dr["Usuario.Nome"]);
@@ -205,11 +208,11 @@ namespace ClassLibrary.Repositorio
                     {
                         Item item = new Item();
                         Dr.Read();
-                        item.Id = Convert.ToInt32(Dr["Item.Id"]);
-                        item.Codigo = Convert.ToString(Dr["Item.Codigo"]);
-                        item.Nome = Convert.ToString(Dr["Item.Nome"]);
-                        item.ValorUnitario = Convert.ToDouble(Dr["Item.Valorunitario"]);
-                        item.Quantidade = Convert.ToDouble(Dr["Item.Quantidade"]);
+                        item.Id = Convert.ToInt32(Dr["Id"]);
+                        item.Codigo = Convert.ToString(Dr["Codigo"]);
+                        item.Nome = Convert.ToString(Dr["Nome"]);
+                        item.ValorUnitario = Convert.ToDouble(Dr["Valorunitario"]);
+                        item.Quantidade = Convert.ToDouble(Dr["Quantidade"]);
 
                         itemList.Add(item);
                     }
@@ -251,11 +254,11 @@ namespace ClassLibrary.Repositorio
                     {
                         Item item = new Item();
                         Dr.Read();
-                        item.Id = Convert.ToInt32(Dr["Item.Id"]);
-                        item.Codigo = Convert.ToString(Dr["Item.Codigo"]);
-                        item.Nome = Convert.ToString(Dr["Item.Nome"]);
-                        item.ValorUnitario = Convert.ToDouble(Dr["Item.Valorunitario"]);
-                        item.Quantidade = Convert.ToDouble(Dr["Item.Quantidade"]);
+                        item.Id = Convert.ToInt32(Dr["Id"]);
+                        item.Codigo = Convert.ToString(Dr["Codigo"]);
+                        item.Nome = Convert.ToString(Dr["Nome"]);
+                        item.ValorUnitario = Convert.ToDouble(Dr["Valorunitario"]);
+                        item.Quantidade = Convert.ToDouble(Dr["Quantidade"]);
 
                         itemList.Add(item);
                     }
@@ -295,11 +298,11 @@ namespace ClassLibrary.Repositorio
                         while (Dr.Read())
                         {
                             Item item = new Item();
-                            item.Id = Convert.ToInt32(Dr["Item.Id"]);
-                            item.Codigo = Convert.ToString(Dr["Item.Codigo"]);
-                            item.Nome = Convert.ToString(Dr["Item.Nome"]);
-                            item.ValorUnitario = Convert.ToDouble(Dr["Item.Valorunitario"]);
-                            item.Quantidade = Convert.ToDouble(Dr["Item.Quantidade"]);
+                            item.Id = Convert.ToInt32(Dr["Id"]);
+                            item.Codigo = Convert.ToString(Dr["Codigo"]);
+                            item.Nome = Convert.ToString(Dr["Nome"]);
+                            item.ValorUnitario = Convert.ToDouble(Dr["Valorunitario"]);
+                            item.Quantidade = Convert.ToDouble(Dr["Quantidade"]);
 
                             itemList.Add(item);
                         }

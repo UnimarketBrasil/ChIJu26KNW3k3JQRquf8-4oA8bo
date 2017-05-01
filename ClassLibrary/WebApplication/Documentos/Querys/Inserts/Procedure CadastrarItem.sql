@@ -22,8 +22,7 @@ as begin
 			Quantidade,
 			IdCategoria,
 			IdUsuario
-			) 
-			values (
+			) output inserted.Id values (
 			@Codigo,
 			@Nome,
 			@Descricao,
