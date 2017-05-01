@@ -1,8 +1,8 @@
 use unimarket
 go
-Excluir AtualizarUsuarioPJ
+--Excluir AtualizarUsuarioPJ
 go
-create  procedure AtualizarUsuarioPJ(
+create  procedure AtualizarUsuario(
 	@IdUsuario int,
 	@Email varchar(50),
 	@Nome varchar(50),

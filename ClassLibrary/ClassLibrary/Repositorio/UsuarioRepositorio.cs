@@ -44,11 +44,11 @@ namespace ClassLibrary.Repositorio
             }
         }
 
-        public bool AtualizarUsuarioPJ(Usuario user)
+        public bool AtualizarUsuario(Usuario user)
         {
             Abrirconexao();
 
-            using (Cmd = new SqlCommand("AtualizarUsuarioPJ", Con))
+            using (Cmd = new SqlCommand("AtualizarUsuario", Con))
             {
                 try
                 {
@@ -68,7 +68,7 @@ namespace ClassLibrary.Repositorio
                 catch (Exception ex)
                 {
                     return false;
-                    //throw new Exception("Erro ao atualizar usuario: " + ex.Message);
+                    throw new Exception("Erro ao atualizar usuario: " + ex.Message);
                 }
                 finally
                 {
@@ -97,41 +97,6 @@ namespace ClassLibrary.Repositorio
                 catch
                 {
                     return Dr;
-                }
-            }
-        }
-
-        public bool AtualizarUsuarioPF(Usuario user)
-        {
-            Abrirconexao();
-
-            using (Cmd = new SqlCommand("AtualizarUsuarioPF", Con))
-            {
-                try
-                {
-                    Cmd.CommandType = CommandType.StoredProcedure;
-                    Cmd.Parameters.AddWithValue("@IdUsuario", user.Id);
-                    Cmd.Parameters.AddWithValue("@Email", user.Email);
-                    Cmd.Parameters.AddWithValue("@Nome", user.Nome);
-                    Cmd.Parameters.AddWithValue("@Sobrenome", user.Sobrenome);
-                    Cmd.Parameters.AddWithValue("@Genero", user.Genero);
-                    Cmd.Parameters.AddWithValue("@Nascimento", user.Nascimento);
-                    Cmd.Parameters.AddWithValue("@Telefone", user.Telefone);
-                    Cmd.Parameters.AddWithValue("@Latitude", user.Latitude);
-                    Cmd.Parameters.AddWithValue("@Longitude", user.Longitude);
-                    Cmd.Parameters.AddWithValue("@Complemento", user.Complemento);
-                    Cmd.Parameters.AddWithValue("@AreaAtuacao", user.AreaAtuacao);
-                    Cmd.Parameters.AddWithValue("@IdTipoUsuario", user.Tipousuario.Id);
-                    Cmd.ExecuteNonQuery();
-                    return true;
-                }
-                catch
-                {
-                    return false;
-                }
-                finally
-                {
-                    FecharConexao();
                 }
             }
         }
