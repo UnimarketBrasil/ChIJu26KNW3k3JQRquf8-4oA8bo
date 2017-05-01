@@ -2,6 +2,7 @@
 using ClassLibrary.Repositorio;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -32,6 +33,18 @@ namespace WebApplication
                 else
                 {
                     List<Item> lst = itemPesquisa.MecanismoDeBusca(pesquisa, u);
+
+                    //foreach (var item in lst)
+                    //{
+                    //    var diretorio = new DirectoryInfo(string.Format("../../Imagens/{0}", u.Id, item.Id));
+                    //    var arquivos = diretorio.GetFiles().Last().FullName;
+                         
+                            //OR
+
+                    //    IMAGEM DO PRODUTO.Uri =  Server.MapPath(string.Format(@"~/Imagens/{0}/{1}/", u.Id, item.Id)).Last();
+
+                    //}
+
                     lbItens.DataSource = lst;
                     lbItens.DataBind();
                 }
