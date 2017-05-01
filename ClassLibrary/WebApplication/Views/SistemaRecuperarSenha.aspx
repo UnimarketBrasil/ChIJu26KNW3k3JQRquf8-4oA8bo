@@ -2,4 +2,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <div>
+        <form  runat="server">
+            <asp:PasswordRecovery ID="recuperaçãoSenha" runat="server"></asp:PasswordRecovery>
+        </form>
+    </div>
 </asp:Content>
