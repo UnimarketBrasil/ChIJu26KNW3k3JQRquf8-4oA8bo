@@ -75,6 +75,7 @@ namespace WebApplication
                 {
                     txtCnpj.Text = null;
                     txtCnpj.BorderColor = System.Drawing.Color.Red;
+                    return;
                 }
                 u.Nome = txtRazaoSocial.Text;
                 u.Nascimento = DateTime.Today;//Falta arrumar a data de nascimento.
@@ -91,7 +92,7 @@ namespace WebApplication
                 {
                     txtCpf.Text = "";
                     txtCpf.BorderColor = System.Drawing.Color.Red;
-                    
+                    return;
                 }
                 u.Nome = txtNome.Text;
                 u.Sobrenome = txtSobrenome.Text;
