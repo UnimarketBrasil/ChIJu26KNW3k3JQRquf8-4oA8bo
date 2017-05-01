@@ -42,11 +42,6 @@ namespace ClassLibrary.Repositorio
             }
         }
 
-        public object ListarItem()
-        {
-            throw new NotImplementedException();
-        }
-
         public void AtualizarItem(Item item)
         {
             Abrirconexao();

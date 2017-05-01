@@ -103,9 +103,9 @@ namespace ClassLibrary.Repositorio
                     {
                         Dr.Read();
                         user = new SubUsuario();
-                        user.Id = Convert.ToInt32(Dr["SubUsuario.Id"]);
-                        user.Nome = Convert.ToString(Dr["SubUsuario.Email"]);
-                        user.Email = Convert.ToString(Dr["SubUsuario.Nome"]);
+                        user.Id = Convert.ToInt32(Dr["Id"]);
+                        user.Nome = Convert.ToString(Dr["Email"]);
+                        user.Email = Convert.ToString(Dr["Nome"]);
                     }
 
                     Dr.Close();

@@ -422,9 +422,9 @@ namespace ClassLibrary.Repositorio
                         while (Dr.Read())
                         {
                             Usuario user = new Usuario();
-                            user.Id = Convert.ToInt32(Dr["Usuario.Id"]);
-                            user.Email = Convert.ToString(Dr["Usuario.Email"]);
-                            user.Nome = Convert.ToString(Dr["Usuario.Nome"]);
+                            user.Id = Convert.ToInt32(Dr["Id"]);
+                            user.Email = Convert.ToString(Dr["Email"]);
+                            user.Nome = Convert.ToString(Dr["Nome"]);
                             user.Tipousuario.Nome = Convert.ToString(Dr["TipoUsuario.Nome"]);
                             user.StatusUsuario.Nome = Convert.ToString(Dr["StatusUsuario.Nome"]);
 
