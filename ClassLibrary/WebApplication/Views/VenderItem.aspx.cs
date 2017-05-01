@@ -10,7 +10,7 @@ namespace WebApplication
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            if (Session["sistema"] != null)
+            /* if (Session["sistema"] != null)
             {
                  Item item = new Item();
 
@@ -25,8 +25,8 @@ namespace WebApplication
                // List<Item> listaItens = itemDisponivel.
 
                 // grdDetalheVendedor.DataSource = itemDisponivel.DetalheItemVendedor;
-                //grdDetalheVendedor.DataBind();*/
-            }
+                //grdDetalheVendedor.DataBind();
+            }*/
         }
     }
 }
