@@ -32,10 +32,10 @@ namespace ClassLibrary.Repositorio
                     Cmd.ExecuteNonQuery();
                     return true;
                 }
-                catch
+                catch (Exception ex)
                 {
-                    //throw new Exception("Erro ao cadastrar usuario: " + ex.Message);
-                    return false;
+                    throw new Exception(ex.Message);
+                    //return false;
                 }
                 finally
                 {
@@ -77,6 +77,30 @@ namespace ClassLibrary.Repositorio
             }
         }
 
+        public SqlDataReader ValidarEmailCpfCnpj(Usuario user)
+        {
+            Abrirconexao();
+
+            using (Cmd = new SqlCommand("ValidaEmailCpfCnpj", Con))
+            {
+                try
+                {
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@Email", user.Email);
+                    Cmd.Parameters.AddWithValue("@CpfCnpj", user.CpfCnpj);
+                    Cmd.ExecuteNonQuery();
+
+                    Dr = Cmd.ExecuteReader();
+
+                    return Dr;
+                }
+                catch
+                {
+                    return Dr;
+                }
+            }
+        }
+
         public bool AtualizarUsuarioPF(Usuario user)
         {
             Abrirconexao();
@@ -101,10 +125,8 @@ namespace ClassLibrary.Repositorio
                     Cmd.ExecuteNonQuery();
                     return true;
                 }
-                catch (Exception ex)
+                catch
                 {
-                    //return false;
-                    throw new Exception("Erro ao atualizar usuario: " + ex.Message);
                     return false;
                 }
                 finally

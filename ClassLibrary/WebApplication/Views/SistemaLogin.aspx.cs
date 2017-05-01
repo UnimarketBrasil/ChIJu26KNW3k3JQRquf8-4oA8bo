@@ -48,13 +48,13 @@ namespace WebApplication
                 {
                     dvMsg.Visible = true;
                     dvMsg.Attributes["class"] = "alert alert-warning alert-dismissible";
-                    lbMsg.Text = "<strong>Confirme seu cadastro</strong>, enviamos um link de confirmação para <a><u>" + usuario.Email.ToString()+"</u></a>!";
+                    lbMsg.Text = "<strong>Confirme seu cadastro</strong>, enviamos um link de confirmação para <a href='/Views/SistemaAjuda.aspx?help=1' target='_blank'><u>" + usuario.Email.ToString()+"</u></a>!";
                 }
                 else if (usuario.StatusUsuario.Id == 3)
                 {
                     dvMsg.Visible = true;
                     dvMsg.Attributes["class"] = "alert alert-danger alert-dismissible";
-                    lbMsg.Text = "<strong>Conta bloqueada</strong>, entre em contato com o administrador do sistema.";
+                    lbMsg.Text = "<strong>Conta bloqueada</strong>, entre em contato com o administrador do sistema. <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=2' target='_blank'></a>";
                 }
                 else if (usuario.StatusUsuario.Id == 1)
                 {
@@ -82,7 +82,7 @@ namespace WebApplication
             {
                 dvMsg.Visible = true;
                 dvMsg.Attributes["class"] = "alert alert-warning alert-dismissible";
-                lbMsg.Text = "Email ou senha inválidos.";
+                lbMsg.Text = "Email ou senha inválidos. <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=2' target='_blank'></a>";
             }
 
         }

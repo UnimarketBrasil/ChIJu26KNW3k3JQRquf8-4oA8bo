@@ -61,15 +61,15 @@ namespace WebApplication
 
                         if (u.Genero == 1)
                         {
-                            dpGenero.SelectedIndex = 1;
+                            dpGenero.SelectedValue = "1";
                         }
                         else if (u.Genero == 2)
                         {
-                            dpGenero.SelectedIndex = 2;
+                            dpGenero.SelectedValue = "2";
                         }
                         else if (u.Genero == 3)
                         {
-                            dpGenero.SelectedIndex = 3;
+                            dpGenero.SelectedValue = "3";
                         }
                         txtEmail.Text = u.Email;
                         txtTel.Text = u.Telefone;
