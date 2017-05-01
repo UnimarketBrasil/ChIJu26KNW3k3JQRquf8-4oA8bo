@@ -9,6 +9,7 @@ using ClassUtilitario;
 using ClassLibrary.Repositorio;
 using System.Data;
 using System.Collections;
+using System.Data.SqlClient;
 
 namespace WebApplication
 {
@@ -54,7 +55,7 @@ namespace WebApplication
                 dvMsg.Visible = true;
                 dvEnderecoCompleto.Visible = false;
                 dvMsg.Attributes["class"] = "alert alert-warning alert-dismissible";
-                lbMsg.Text = "Desculpe, não localizamos o seu endereço.";
+                lbMsg.Text = "Desculpe, não localizamos o seu endereço. <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=4' target='_blank'></a>";
             }
         }
 
@@ -90,6 +91,7 @@ namespace WebApplication
                 {
                     txtCpf.Text = "";
                     txtCpf.BorderColor = System.Drawing.Color.Red;
+                    
                 }
                 u.Nome = txtNome.Text;
                 u.Sobrenome = txtSobrenome.Text;
@@ -123,21 +125,58 @@ namespace WebApplication
             u.Complemento = txtComplemento.Text;
 
             UsuarioRepositorio cadastrar = new UsuarioRepositorio();
-            if (cadastrar.CadastrarUsuario(u))
-            {
-                //Response.Redirect(Request.RawUrl);
-                dvMsg.Visible = true;
-                dvMsg.Attributes["class"] = "alert alert-success alert-dismissible";
-                lbMsg.Text = "Cadastro realizado com sucesso!";
 
-            }
-            else
+            SqlDataReader Dr = cadastrar.ValidarEmailCpfCnpj(u);
+
+            if (!Dr.HasRows)
             {
-                dvMsg.Visible = true;
-                dvMsg.Attributes["class"] = "alert alert-warning alert-dismissible";
-                lbMsg.Text = "Não foi possível atender sua solucitação, tente novamente mais tarde.";
+                if (cadastrar.CadastrarUsuario(u))
+                {
+                    //Response.Redirect(Request.RawUrl);
+                    dvMsg.Visible = true;
+                    dvMsg.Attributes["class"] = "alert alert-success alert-dismissible";
+                    lbMsg.Text = "Cadastro realizado com sucesso!";
+
+                }
+                else
+                {
+                    dvMsg.Visible = true;
+                    dvMsg.Attributes["class"] = "alert alert-warning alert-dismissible";
+                    lbMsg.Text = "Não foi possível atender sua solucitação, tente novamente mais tarde.";
+                }
             }
-            //u.Tipousuario = new TipoUsuario(int.Parse(rdOperacao.SelectedValue));
+            else if (Dr.HasRows)
+            {
+                Dr.Read();
+                string existe = Convert.ToString(Dr["Existe"]);
+                if (existe.Equals("Email_CpfCnpj"))
+                {
+                    dvMsg.Visible = true;
+                    dvMsg.Attributes["class"] = "alert alert-info alert-dismissible";
+                    lbMsg.Text = "E-mail e CNPJ/CPJ já estão cadastrado no sistema.<a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=5' target='_blank'></a>";
+                }
+                else if (existe.Equals("Email"))
+                {
+                    dvMsg.Visible = true;
+                    dvMsg.Attributes["class"] = "alert alert-info alert-dismissible";
+                    lbMsg.Text = "O E-mail "+u.Email.ToString()+" já está cadastrado no sistema.<a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=6' target='_blank'></a>";
+                }
+                else if (existe.Equals("CpfCnpj"))
+                {
+                    if (existe.Length == 11)
+                    {
+                        dvMsg.Visible = true;
+                        dvMsg.Attributes["class"] = "alert alert-info alert-dismissible";
+                        lbMsg.Text = "O CPF: "+u.CpfCnpj.ToString()+ ", já cadastrado. <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=7' target='_blank'></a>";
+                    }
+                    else if (existe.Length == 14)
+                    {
+                        dvMsg.Visible = true;
+                        dvMsg.Attributes["class"] = "alert alert-info alert-dismissible";
+                        lbMsg.Text = "O CNPJ: "+u.CpfCnpj+", já cadastrado. <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=8' target='_blank'></a>";
+                    }
+                }
+            }
         }
 
         protected void dpTipoPessoa_SelectedIndexChanged(object sender, EventArgs e)

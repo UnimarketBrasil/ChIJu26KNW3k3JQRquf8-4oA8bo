@@ -102,6 +102,7 @@
     <Content Include="Documentos\Querys\Selects\Procedure DetalheItemComprador.sql" />
     <Content Include="Documentos\Querys\Selects\Procedure DetalheItemVendedor.sql" />
     <Content Include="Documentos\Querys\Selects\Procedure DetalheUsuario.sql" />
+    <Content Include="Documentos\Querys\Selects\Procedure ValidaEmailCpfCnpj .sql" />
     <Content Include="Documentos\Querys\Selects\Procedure LoginUsuario.sql" />
     <Content Include="Documentos\Querys\Selects\Procedure MecanismoDeBusca.sql" />
     <Content Include="Documentos\Querys\Selects\Procedure RecuperarSenha.sql" />
@@ -196,6 +197,7 @@
     <Content Include="Scripts\locales\bootstrap-datepicker.zh-CN.min.js" />
     <Content Include="Scripts\locales\bootstrap-datepicker.zh-TW.min.js" />
     <Content Include="Scripts\Mascara.js" />
+    <Content Include="Views\SistemaAjuda.aspx" />
     <Content Include="Views\SistemaErro.aspx" />
     <Content Include="Views\Logout.aspx" />
     <Content Include="Views\SistemaAtualizarCadastro.aspx" />
@@ -271,6 +273,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SistemaAjuda.aspx.cs">
+      <DependentUpon>SistemaAjuda.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\SistemaAjuda.aspx.designer.cs">
+      <DependentUpon>SistemaAjuda.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\SistemaErro.aspx.cs">
       <DependentUpon>SistemaErro.aspx</DependentUpon>
