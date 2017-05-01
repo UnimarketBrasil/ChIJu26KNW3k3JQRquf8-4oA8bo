@@ -32,7 +32,7 @@ namespace WebApplication.Views
             else if (pesquisa.Equals("4"))
             {
                 lbAjudaCabecalho.Text = "NÃO LOCALIZAMOS SEU ENDEREÇO";
-                lbAjudaCorpo.Text = "Não conseguimos localizar seu endereço. Por favor, verifique o CEP digitado e tente novamente. Caso você não saiba seu CEP, acesse o site <a href='http://www.buscacep.correios.com.br/sistemas/buscacep/'>Correios - Busca CEP</a> e digite seu endereço para saber seu CEP";
+                lbAjudaCorpo.Text = "Não conseguimos localizar seu endereço. Por favor, verifique o CEP digitado e tente novamente. Caso você não saiba seu CEP, acesse o site <a href='http://www.buscacep.correios.com.br/sistemas/buscacep/' target='_blank'>Correios - Busca CEP</a> e digite seu endereço para saber seu CEP";
             }
             else if (pesquisa.Equals("5"))
             {
