@@ -3,6 +3,7 @@ using ClassLibrary;
 using ClassUtilitario;
 using ClassLibrary.Repositorio;
 using System.Data;
+using System.IO;
 
 namespace WebApplication
 {
@@ -35,6 +36,14 @@ namespace WebApplication
 
             if (cadastrarItem.CadastrarItem(item))
             {
+                var caminho = Server.MapPath(string.Format(@"~/Imagens/{0}/{1}/", u.Id, item.Id));
+
+                Directory.CreateDirectory(caminho);
+
+                var sw = new StreamWriter(caminho + InputFoto.FileName);
+                sw.Flush();
+                sw.Close();
+
                 txtCod.Text = "Sucesso";
             }
             else

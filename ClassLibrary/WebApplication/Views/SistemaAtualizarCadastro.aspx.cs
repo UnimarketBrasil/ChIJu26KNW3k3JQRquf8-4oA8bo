@@ -57,20 +57,20 @@ namespace WebApplication
                         txtCpf.Text = FormatarCnpjCpf.FormatCPF(u.CpfCnpj);
                         txtNome.Text = u.Nome;
                         txtSobrenome.Text = u.Sobrenome;
-                        txtDtNasc.Text = u.Nascimento.ToString("dd/MM/yyyy");
+                        //txtDtNasc.Text = u.Nascimento.ToString("dd/MM/yyyy");
 
-                        if (u.Genero == 1)
-                        {
-                            dpGenero.SelectedValue = "1";
-                        }
-                        else if (u.Genero == 2)
-                        {
-                            dpGenero.SelectedValue = "2";
-                        }
-                        else if (u.Genero == 3)
-                        {
-                            dpGenero.SelectedValue = "3";
-                        }
+                        //if (u.Genero == 1)
+                        //{
+                        //    dpGenero.SelectedValue = "1";
+                        //}
+                        //else if (u.Genero == 2)
+                        //{
+                        //    dpGenero.SelectedValue = "2";
+                        //}
+                        //else if (u.Genero == 3)
+                        //{
+                        //    dpGenero.SelectedValue = "3";
+                        //}
                         txtEmail.Text = u.Email;
                         txtTel.Text = u.Telefone;
                         if (u.Tipousuario.Id == 2)
@@ -202,8 +202,8 @@ namespace WebApplication
                 }
                 u.Complemento = txtComplemento.Text;
 
-                UsuarioRepositorio atulizarCadastro = new UsuarioRepositorio();
-                if (atulizarCadastro.AtualizarUsuarioPJ(u))
+                UsuarioRepositorio atualizarCadastro = new UsuarioRepositorio();
+                if (atualizarCadastro.AtualizarUsuario(u))
                 {
                     dvMsg.Visible = true;
                     dvMsg.Attributes["class"] = "alert alert-success alert-dismissible";
@@ -221,8 +221,8 @@ namespace WebApplication
             {
                 u.Nome = txtNome.Text;
                 u.Sobrenome = txtSobrenome.Text;
-                u.Nascimento = Convert.ToDateTime(txtDtNasc.Text);
-                u.Genero = int.Parse(dpGenero.SelectedValue);
+                //u.Nascimento = Convert.ToDateTime(txtDtNasc.Text);
+                //u.Genero = int.Parse(dpGenero.SelectedValue);
                 u.Email = txtEmail.Text;
                 u.Telefone = txtTel.Text;
                 if (rdComprar.Checked == true)
@@ -249,19 +249,19 @@ namespace WebApplication
                 }
                 u.Complemento = txtComplemento.Text;
 
-                UsuarioRepositorio atulizarCadastro = new UsuarioRepositorio();
-                if (atulizarCadastro.AtualizarUsuarioPF(u))
-                {
-                    dvMsg.Visible = true;
-                    dvMsg.Attributes["class"] = "alert alert-success alert-dismissible";
-                    lbMsg.Text = "Cadastro realizado com sucesso!";
-                }
-                else
-                {
-                    dvMsg.Visible = true;
-                    dvMsg.Attributes["class"] = "alert alert-warning alert-dismissible";
-                    lbMsg.Text = "Não foi possível atender sua solicitação.";
-                }
+                //UsuarioRepositorio atulizarCadastro = new UsuarioRepositorio();
+                //if (atulizarCadastro.AtualizarUsuarioPF(u))
+                //{
+                //    dvMsg.Visible = true;
+                //    dvMsg.Attributes["class"] = "alert alert-success alert-dismissible";
+                //    lbMsg.Text = "Cadastro realizado com sucesso!";
+                //}
+                //else
+                //{
+                //    dvMsg.Visible = true;
+                //    dvMsg.Attributes["class"] = "alert alert-warning alert-dismissible";
+                //    lbMsg.Text = "Não foi possível atender sua solicitação.";
+                //}
             }
 
         }
