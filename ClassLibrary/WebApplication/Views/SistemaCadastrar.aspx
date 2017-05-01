@@ -129,8 +129,9 @@
                                     <label id="lbVender" runat="server" class="btn btn-primary">
                                         <input type="radio" name="rdAtividade" id="rdVender" onchange="areAtuacaoDisplay('v');" runat="server" value="3" />
                                         Vender
-                                    </label>
+                                    </label>   
                                 </div>
+                                <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=10' target='_blank'></a>
                             </div>
                             <div class="form-group">
                                 <label for="<% =txtEndereco.ClientID %>" class="col-lg-2 control-label">Endereço</label>
@@ -145,6 +146,7 @@
                                 <div class="col-lg-10 col-lg-offset-2">
                                     <asp:Label runat="server" ID="lbEndereco"></asp:Label>
                                 </div>
+                                <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=11' target='_blank'></a>
                             </div>
                             <div class="form-group">
                                 <label for="<% =txtComplemento.ClientID %>" class="col-lg-2 control-label">Complemento</label>
@@ -164,6 +166,7 @@
                                         <asp:ListItem Text="50 km" Value="50" />
                                         <asp:ListItem Text="75 km" Value="75" />
                                     </asp:DropDownList>
+                                    <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=12' target='_blank'></a>
                                 </div>
                             </div>
                             <!--GOOGLE MAPS

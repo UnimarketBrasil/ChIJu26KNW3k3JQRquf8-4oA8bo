@@ -82,7 +82,7 @@ namespace WebApplication
             {
                 dvMsg.Visible = true;
                 dvMsg.Attributes["class"] = "alert alert-warning alert-dismissible";
-                lbMsg.Text = "Email ou senha inválidos. <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=2' target='_blank'></a>";
+                lbMsg.Text = "Email ou senha inválidos. <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=3' target='_blank'></a>";
             }
 
         }
