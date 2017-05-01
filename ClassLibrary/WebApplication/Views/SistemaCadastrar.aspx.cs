@@ -73,7 +73,7 @@ namespace WebApplication
                 }
                 else
                 {
-                    txtCnpj.Text = null;
+                    //txtCnpj.Text = null;
                     txtCnpj.BorderColor = System.Drawing.Color.Red;
                     return;
                 }
@@ -90,7 +90,7 @@ namespace WebApplication
                 }
                 else
                 {
-                    txtCpf.Text = "";
+                    //txtCpf.Text = "";
                     txtCpf.BorderColor = System.Drawing.Color.Red;
                     return;
                 }
@@ -99,7 +99,19 @@ namespace WebApplication
                 u.Nascimento = Convert.ToDateTime(txtDtNasc.Text);
                 u.Genero = int.Parse(dpGenero.SelectedValue);
             }
-            u.Email = txtEmailEtapa2.Text;
+            IsEmail mail = new IsEmail();
+            if (mail.ValidarEmail(txtEmailEtapa2.Text))
+            {
+                u.Email = txtEmailEtapa2.Text;
+            }
+            else
+            {
+                txtEmailEtapa2.BorderColor = System.Drawing.Color.Red;
+                dvMsg.Visible = true;
+                dvMsg.Attributes["class"] = "alert alert-info alert-dismissible";
+                lbMsg.Text = "Por favor, digite um email válido.<a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=cleiton-qual-id' target='_blank'></a>";
+                return;
+            }
             u.Telefone = txtTel.Text;
 
             /*
@@ -160,7 +172,7 @@ namespace WebApplication
                 {
                     dvMsg.Visible = true;
                     dvMsg.Attributes["class"] = "alert alert-info alert-dismissible";
-                    lbMsg.Text = "O E-mail "+u.Email.ToString()+" já está cadastrado no sistema.<a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=6' target='_blank'></a>";
+                    lbMsg.Text = "O E-mail " + u.Email.ToString() + " já está cadastrado no sistema.<a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=6' target='_blank'></a>";
                 }
                 else if (existe.Equals("CpfCnpj"))
                 {
@@ -168,13 +180,13 @@ namespace WebApplication
                     {
                         dvMsg.Visible = true;
                         dvMsg.Attributes["class"] = "alert alert-info alert-dismissible";
-                        lbMsg.Text = "O CPF: "+u.CpfCnpj.ToString()+ ", já cadastrado. <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=7' target='_blank'></a>";
+                        lbMsg.Text = "O CPF: " + u.CpfCnpj.ToString() + ", já cadastrado. <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=7' target='_blank'></a>";
                     }
                     else if (existe.Length == 14)
                     {
                         dvMsg.Visible = true;
                         dvMsg.Attributes["class"] = "alert alert-info alert-dismissible";
-                        lbMsg.Text = "O CNPJ: "+u.CpfCnpj+", já cadastrado. <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=8' target='_blank'></a>";
+                        lbMsg.Text = "O CNPJ: " + u.CpfCnpj + ", já cadastrado. <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=8' target='_blank'></a>";
                     }
                 }
             }
