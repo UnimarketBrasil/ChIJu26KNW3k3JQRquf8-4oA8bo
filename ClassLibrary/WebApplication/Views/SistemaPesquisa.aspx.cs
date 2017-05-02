@@ -34,16 +34,20 @@ namespace WebApplication
                 {
                     List<Item> lst = itemPesquisa.MecanismoDeBusca(pesquisa, u);
 
-                    //foreach (var item in lst)
-                    //{
-                    //    var diretorio = new DirectoryInfo(string.Format("../../Imagens/{0}", u.Id, item.Id));
-                    //    var arquivos = diretorio.GetFiles().Last().FullName;
-                         
-                            //OR
+                    foreach (var item in lst)
+                    {
+                        string caminho = string.Format("~/Imagens/{0}/{1}/", u.Id, item.Id);
 
-                    //    IMAGEM DO PRODUTO.Uri =  Server.MapPath(string.Format(@"~/Imagens/{0}/{1}/", u.Id, item.Id)).Last();
+                        if (Directory.Exists(Server.MapPath(caminho)))
+                        {
+                            var diretorio = new DirectoryInfo(Server.MapPath(caminho));
+                            var arquivos = diretorio.GetFiles();
+                            string i = arquivos.Last().Name;
+                            item.Imagem = ResolveUrl(Path.Combine(caminho, i));
 
-                    //}
+                        }
+
+                    }
 
                     lbItens.DataSource = lst;
                     lbItens.DataBind();

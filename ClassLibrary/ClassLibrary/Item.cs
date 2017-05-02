@@ -17,6 +17,8 @@ namespace ClassLibrary
 
         public double Quantidade { get; set; }
 
+        public string Imagem { get; set; }
+
         public Categoria Categoria { get; set; }
 
         public Usuario Usuario { get; set; }
