@@ -40,7 +40,7 @@ namespace WebApplication
 
                 Directory.CreateDirectory(caminho);
 
-                InputFoto.PostedFile.SaveAs(caminho + InputFoto.FileName);
+                InputFoto.PostedFile.SaveAs(caminho +"/"+ InputFoto.FileName);
 
                 txtCod.Text = "Sucesso";
             }

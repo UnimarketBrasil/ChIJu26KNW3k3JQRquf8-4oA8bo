@@ -13,6 +13,7 @@
             <form runat="server">
                 <asp:GridView ID="lbItens" class="table table-striped table-hover " runat="server" AutoGenerateColumns="false" AllowPaging="True">
                     <Columns>
+                        <asp:ImageField DataImageUrlField="Imagem" HeaderText="Imagem" ControlStyle-Width="100" ControlStyle-Height="100"/>
                         <asp:BoundField DataField="Id" HeaderText="ID" ItemStyle-Width="300" />
                         <asp:BoundField DataField="Nome" HeaderText="Produto" ItemStyle-Width="300" />
                         <asp:BoundField DataField="ValorUnitario" HeaderText="Preço por Unidade" ItemStyle-Width="300" />
