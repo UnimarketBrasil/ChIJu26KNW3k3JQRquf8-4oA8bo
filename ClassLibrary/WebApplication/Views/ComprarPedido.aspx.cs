@@ -13,5 +13,25 @@ namespace WebApplication
         {
 
         }
+
+        protected void blTabs_Click(object sender, BulletedListEventArgs e)
+        {
+            switch (e.Index)
+            {
+                case 0:
+                    Response.Write("<script>alert('Todos')</script>");
+                    break;
+                case 1:
+                    Response.Write("<script>alert('Pendentes')</script>");
+                    break;
+                case 2:
+                    Response.Write("<script>alert('cancelados')</script>");
+                    break;
+                default:
+                    Response.Write("<script>alert('Finalizados')</script>");
+                    break;
+
+            }
+        }
     }
 }
