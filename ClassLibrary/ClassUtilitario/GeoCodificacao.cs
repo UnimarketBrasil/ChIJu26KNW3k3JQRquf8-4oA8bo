@@ -11,58 +11,56 @@ namespace ClassUtilitario
 {
     public class GeoCodificacao
     {
-        public Usuario ObterCoordenadas(Usuario user, string rua, string numero)
+        public Usuario ObterCoordenadas(Usuario user, string cep, string numero)
         {
             DataSet data = new DataSet();
 
             try
             {
-                string viacep = string.Format("https://viacep.com.br/ws/{0}/xml/", rua);
+                string viacep = string.Format("https://viacep.com.br/ws/{0}/xml/", cep);
                 data.ReadXml(viacep);
-                string enderecoPorCep = data.Tables[0].Rows[0]["logradouro"].ToString().Trim();
+                string enderecoPorCep = data.Tables[0].Rows[0]["logradouro"].ToString().Trim() + ", " + data.Tables[0].Rows[0]["bairro"].ToString().Trim() + ", " + data.Tables[0].Rows[0]["bairro"].ToString().Trim() + data.Tables[0].Rows[0]["localidade"].ToString().Trim();
+
                 string googleMaps = string.Format("https://maps.googleapis.com/maps/api/geocode/xml?key=AIzaSyDPNFOUPna4dnTRtQ806ST8G9Vj6WEK32Y&new_forward_geocoder=true&address={0},{1}", enderecoPorCep, numero);
                 data = new DataSet();
                 data.ReadXml(googleMaps);
                 user.Latitude = data.Tables["location"].Rows[0]["lat"].ToString();
                 user.Longitude = data.Tables["location"].Rows[0]["lng"].ToString();
-                data.Dispose();
+                data.Dispose();     
 
                 return user;
 
             }
             catch (Exception)
-            {
-
-                string googleMaps = string.Format("https://maps.googleapis.com/maps/api/geocode/xml?key=AIzaSyDPNFOUPna4dnTRtQ806ST8G9Vj6WEK32Y&new_forward_geocoder=true&address={0},{1}", rua, numero);
-                data = new DataSet();
-                data.ReadXml(googleMaps);
-                user.Latitude = data.Tables["location"].Rows[0]["lat"].ToString();
-                user.Longitude = data.Tables["location"].Rows[0]["lng"].ToString();
-                data.Dispose();
-
-                return user;
+            {                
+                return user = null;
             }
 
         }
 
-        public ArrayList ObterEndereco(Usuario user)
+        public string ObterEndereco(Usuario user)
         {
             ArrayList rEndereco = new ArrayList();
+
+            string resposta = null;
+
             try
-            {
+            {                
                 using (DataSet data = new DataSet())
                 {
                     string endereco = string.Format("https://maps.googleapis.com/maps/api/geocode/xml?latlng={0},{1}&key=AIzaSyDPNFOUPna4dnTRtQ806ST8G9Vj6WEK32Y", user.Latitude, user.Longitude);
                     data.ReadXml(endereco);
                     rEndereco.Add(data.Tables["address_component"].Rows[0]["long_name"].ToString());
                     rEndereco.Add(data.Tables["address_component"].Rows[1]["long_name"].ToString() + ", " + data.Tables["address_component"].Rows[2]["long_name"].ToString() + ", " + data.Tables["address_component"].Rows[3]["short_name"].ToString());
-
-                    return rEndereco;
+                    
+                    resposta = rEndereco[0].ToString();
+                    resposta += rEndereco[1].ToString();
+                    return resposta;
                 }
             }
             catch
             {
-                return rEndereco;
+                return resposta;
             }
         }
     }

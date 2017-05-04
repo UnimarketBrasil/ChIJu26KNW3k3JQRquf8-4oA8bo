@@ -139,8 +139,9 @@
                                     <asp:TextBox ID="txtEndereco" runat="server" CssClass="form-control" OnKeyUp="formataCEP(this,event);" onchange="formataCEP(this,event);" placeholder="CEP" required="true" MaxLength="9"></asp:TextBox>
                                 </div>
                                 <div class="col-lg-3">
-                                    <asp:TextBox ID="txtNumero" runat="server" CssClass="form-control" TextMode="Number"  placeholder="N°" required="true" OnTextChanged="txtNumero_TextChanged" AutoPostBack="true"></asp:TextBox>
+                                    <asp:TextBox ID="txtNumero" runat="server" CssClass="form-control" TextMode="Number"  placeholder="N°" required="true"></asp:TextBox>
                                 </div>
+                                <input type="button" onclick="chamarAjax();" />
                             </div>
                             <div id="dvEnderecoCompleto" runat="server" class="form-group">
                                 <div class="col-lg-10 col-lg-offset-2">
@@ -238,6 +239,23 @@
             });
 
         </script>
+           <script type="text/javascript">
+               function chamarAjax() {
+                   var xmlhttp = window.XMLHttpRequest ? new XMLHttpRequest : new ActiveXObject("Microsoft.XMLHTTP");
+
+                   xmlhttp.onreadystatechange = function () {
+                       if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                           document.getElementById('<%Response.Write(txtEndereco.ClientID);%>').value = xmlhttp.response;
+                       }
+                   }
+
+                   xmlhttp.open("GET", "<%Response.Write(ResolveUrl("~/Views/Ajax/BuscaEndereco.aspx"));%>?cep=" +
+                       document.getElementById("<%Response.Write(txtEndereco.ClientID);%>").value +
+                       "&num=" + document.getElementById("<%Response.Write(txtNumero.ClientID);%>").value , true);
+                   xmlhttp.send();
+               }
+
+    </script>
     </div>
 
 </asp:Content>

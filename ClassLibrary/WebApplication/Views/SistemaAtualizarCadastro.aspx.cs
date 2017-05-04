@@ -57,20 +57,7 @@ namespace WebApplication
                         txtCpf.Text = FormatarCnpjCpf.FormatCPF(u.CpfCnpj);
                         txtNome.Text = u.Nome;
                         txtSobrenome.Text = u.Sobrenome;
-                        //txtDtNasc.Text = u.Nascimento.ToString("dd/MM/yyyy");
 
-                        //if (u.Genero == 1)
-                        //{
-                        //    dpGenero.SelectedValue = "1";
-                        //}
-                        //else if (u.Genero == 2)
-                        //{
-                        //    dpGenero.SelectedValue = "2";
-                        //}
-                        //else if (u.Genero == 3)
-                        //{
-                        //    dpGenero.SelectedValue = "3";
-                        //}
                         txtEmail.Text = u.Email;
                         txtTel.Text = u.Telefone;
                         if (u.Tipousuario.Id == 2)
@@ -83,18 +70,14 @@ namespace WebApplication
                             rdVender.Checked = true;
                             rdComprar.Checked = false;
                         }
-                        else
-                        {
-                            //Aqui apresenta um erro;
-                        }
 
-                        GeoCodificacao g = new GeoCodificacao();
-                        ArrayList sEndereco = new ArrayList();
-                        sEndereco = g.ObterEndereco(u);
-                        txtEndereco.Text = sEndereco[1].ToString();
-                        txtNumero.Text = sEndereco[0].ToString();
-                        txtComplemento.Text = u.Complemento;
-                        dpArea.SelectedValue = Convert.ToString(u.AreaAtuacao);
+                        //GeoCodificacao g = new GeoCodificacao();
+                        //ArrayList sEndereco = new ArrayList();
+                        //sEndereco = g.ObterEndereco(u);
+                        //txtEndereco.Text = sEndereco[1].ToString();
+                        //txtNumero.Text = sEndereco[0].ToString();
+                        //txtComplemento.Text = u.Complemento;
+                        //dpArea.SelectedValue = Convert.ToString(u.AreaAtuacao);
                     }
                     else
                     {
@@ -123,13 +106,13 @@ namespace WebApplication
                             rdComprar.Checked = false;
                         }
 
-                        GeoCodificacao g = new GeoCodificacao();
-                        ArrayList sEndereco = new ArrayList();
-                        sEndereco = g.ObterEndereco(u);
-                        txtEndereco.Text = sEndereco[1].ToString();
-                        txtNumero.Text = sEndereco[0].ToString();
-                        txtComplemento.Text = u.Complemento;
-                        dpArea.SelectedValue = Convert.ToString(u.AreaAtuacao);
+                        //GeoCodificacao g = new GeoCodificacao();
+                        //ArrayList sEndereco = new ArrayList();
+                        //sEndereco = g.ObterEndereco(u);
+                        //txtEndereco.Text = sEndereco[1].ToString();
+                        //txtNumero.Text = sEndereco[0].ToString();
+                        //txtComplemento.Text = u.Complemento;
+                        //dpArea.SelectedValue = Convert.ToString(u.AreaAtuacao);
                     }
                     else
                     {
@@ -155,10 +138,10 @@ namespace WebApplication
 
                 Session["latlog"] = u;
 
-                ArrayList sEndereco = new ArrayList();
-                sEndereco = g.ObterEndereco(u);
-                lbEndereco.Visible = true;
-                lbEndereco.Text = sEndereco[1].ToString();
+                //ArrayList sEndereco = new ArrayList();
+                //sEndereco = g.ObterEndereco(u);
+                //lbEndereco.Visible = true;
+                //lbEndereco.Text = sEndereco[1].ToString();
             }
             catch
             {
@@ -221,8 +204,6 @@ namespace WebApplication
             {
                 u.Nome = txtNome.Text;
                 u.Sobrenome = txtSobrenome.Text;
-                //u.Nascimento = Convert.ToDateTime(txtDtNasc.Text);
-                //u.Genero = int.Parse(dpGenero.SelectedValue);
                 u.Email = txtEmail.Text;
                 u.Telefone = txtTel.Text;
                 if (rdComprar.Checked == true)
@@ -248,20 +229,21 @@ namespace WebApplication
                     u.Longitude = uEndereco.Longitude;
                 }
                 u.Complemento = txtComplemento.Text;
+                u.AreaAtuacao = Convert.ToDouble(dpArea.SelectedValue);
 
-                //UsuarioRepositorio atulizarCadastro = new UsuarioRepositorio();
-                //if (atulizarCadastro.AtualizarUsuarioPF(u))
-                //{
-                //    dvMsg.Visible = true;
-                //    dvMsg.Attributes["class"] = "alert alert-success alert-dismissible";
-                //    lbMsg.Text = "Cadastro realizado com sucesso!";
-                //}
-                //else
-                //{
-                //    dvMsg.Visible = true;
-                //    dvMsg.Attributes["class"] = "alert alert-warning alert-dismissible";
-                //    lbMsg.Text = "Não foi possível atender sua solicitação.";
-                //}
+                UsuarioRepositorio atulizarCadastro = new UsuarioRepositorio();
+                if (atulizarCadastro.AtualizarUsuario(u))
+                {
+                    dvMsg.Visible = true;
+                    dvMsg.Attributes["class"] = "alert alert-success alert-dismissible";
+                    lbMsg.Text = "Cadastro realizado com sucesso!";
+                }
+                else
+                {
+                    dvMsg.Visible = true;
+                    dvMsg.Attributes["class"] = "alert alert-warning alert-dismissible";
+                    lbMsg.Text = "Não foi possível atender sua solicitação.";
+                }
             }
 
         }

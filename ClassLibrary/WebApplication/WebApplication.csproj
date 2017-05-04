@@ -196,6 +196,7 @@
     <Content Include="Scripts\locales\bootstrap-datepicker.zh-CN.min.js" />
     <Content Include="Scripts\locales\bootstrap-datepicker.zh-TW.min.js" />
     <Content Include="Scripts\Mascara.js" />
+    <Content Include="Views\Ajax\BuscaEndereco.aspx" />
     <Content Include="Views\SistemaAjuda.aspx" />
     <Content Include="Views\SistemaErro.aspx" />
     <Content Include="Views\Logout.aspx" />
@@ -272,6 +273,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Ajax\BuscaEndereco.aspx.cs">
+      <DependentUpon>BuscaEndereco.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Ajax\BuscaEndereco.aspx.designer.cs">
+      <DependentUpon>BuscaEndereco.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\SistemaAjuda.aspx.cs">
       <DependentUpon>SistemaAjuda.aspx</DependentUpon>

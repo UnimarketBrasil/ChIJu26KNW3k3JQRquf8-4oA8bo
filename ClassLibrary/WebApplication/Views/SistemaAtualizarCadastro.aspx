@@ -35,22 +35,6 @@
                                         <asp:TextBox ID="txtSobrenome" runat="server" CssClass="form-control" placeholder="Sobrenome" required="true"></asp:TextBox>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="<% =txtDtNasc.ClientID %>"" class="col-lg-2 control-label">Data de Nasc.</label>
-                                    <div class="col-lg-10">
-                                        <asp:TextBox ID="txtDtNasc" runat="server" CssClass="form-control" placeholder="dd/mm/aaaa" required="true"></asp:TextBox>
-                                    </div>
-                                </div>
-                              <%--<div class="form-group">
-                                    <label for="<% =dpGenero.ClientID %>"" class="col-lg-2 control-label">Genero</label>
-                                   <div class="col-lg-10">
-                                        <asp:DropDownList CssClass="form-control" ID="dpGenero" runat="server">
-                                            <asp:ListItem Text="Masculino" Value="1" />
-                                            <asp:ListItem Text="Feminino" Value="2" />
-                                            <asp:ListItem Text="Outros" Value="3" />
-                                        </asp:DropDownList>
-                                    </div>
-                                </div>--%>
                             </div>
                             <!--Pessoa Jurídica-->
                             <div id="dvPessoaJuridica" runat="server">
@@ -167,11 +151,6 @@
                     document.getElementById('<% =lbComprar.ClientID%>').className = "btn btn-primary";
                 }
             }
-
-            $('#<%=txtDtNasc.ClientID%>').datepicker({
-                language: "pt-BR",
-                format: "dd/mm/yyyy"
-            });
         </script>
     </div>
 </asp:Content>

@@ -33,31 +33,6 @@ namespace WebApplication
             txtEmailEtapa2.Text = txtEmailEtapa1.Text;
         }
 
-        protected void txtNumero_TextChanged(object sender, EventArgs e)
-        {
-
-            try
-            {
-                Usuario u = new Usuario();
-                GeoCodificacao g = new GeoCodificacao();
-
-                u = g.ObterCoordenadas(u, txtEndereco.Text, txtNumero.Text);
-
-                Session["latlog"] = u;
-
-                ArrayList sEndereco = new ArrayList();
-                sEndereco = g.ObterEndereco(u);
-                lbEndereco.Visible = true;
-                lbEndereco.Text = sEndereco[1].ToString();
-            }
-            catch
-            {
-                dvMsg.Visible = true;
-                dvEnderecoCompleto.Visible = false;
-                dvMsg.Attributes["class"] = "alert alert-warning alert-dismissible";
-                lbMsg.Text = "Desculpe, não localizamos o seu endereço. <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=4' target='_blank'></a>";
-            }
-        }
 
         protected void btCadastrar_Click(object sender, EventArgs e)
         {

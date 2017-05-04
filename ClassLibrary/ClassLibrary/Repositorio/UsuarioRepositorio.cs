@@ -56,6 +56,7 @@ namespace ClassLibrary.Repositorio
                     Cmd.Parameters.AddWithValue("@IdUsuario", user.Id);
                     Cmd.Parameters.AddWithValue("@Email", user.Email);
                     Cmd.Parameters.AddWithValue("@Nome", user.Nome);
+                    Cmd.Parameters.AddWithValue("@Sobrenome", user.Sobrenome);
                     Cmd.Parameters.AddWithValue("@Telefone", user.Telefone);
                     Cmd.Parameters.AddWithValue("@Latitude", user.Latitude);
                     Cmd.Parameters.AddWithValue("@Longitude", user.Longitude);
