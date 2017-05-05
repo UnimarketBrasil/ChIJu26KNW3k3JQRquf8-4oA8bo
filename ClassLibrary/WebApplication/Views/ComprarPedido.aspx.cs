@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ClassLibrary;
+using ClassLibrary.Repositorio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,10 +18,18 @@ namespace WebApplication
 
         protected void blTabs_Click(object sender, BulletedListEventArgs e)
         {
+            Usuario user = (Usuario)Session["sistema"];
+            PedidoRepositorio consulta = new PedidoRepositorio();
+
+
             switch (e.Index)
             {
                 case 0:
-                    Response.Write("<script>alert('Todos')</script>");
+                    List<Pedido> lst = consulta.ListarPedidoComprador(user.Id);
+
+                    grdPedido.DataSource = lst;
+                    grdPedido.DataBind();
+
                     break;
                 case 1:
                     Response.Write("<script>alert('Pendentes')</script>");

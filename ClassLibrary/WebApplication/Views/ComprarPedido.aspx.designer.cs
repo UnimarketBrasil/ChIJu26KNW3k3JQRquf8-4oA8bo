@@ -22,12 +22,12 @@ namespace WebApplication {
         protected global::System.Web.UI.WebControls.BulletedList blTabs;
         
         /// <summary>
-        /// Controle GridView1.
+        /// Controle grdPedido.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.GridView grdPedido;
     }
 }

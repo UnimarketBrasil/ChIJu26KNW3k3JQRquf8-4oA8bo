@@ -12,7 +12,7 @@
             <asp:ListItem>Cancelados</asp:ListItem>
             <asp:ListItem>Finalizados</asp:ListItem>
         </asp:BulletedList>
-        <asp:GridView ID="GridView1" class="table table-striped table-hover " runat="server" AutoGenerateColumns="false" AllowPaging="True">
+        <asp:GridView ID="grdPedido" class="table table-striped table-hover " runat="server" AutoGenerateColumns="false" AllowPaging="True">
             <Columns>
                 <asp:BoundField DataField="Id" HeaderText="Código" ItemStyle-Width="100" />
                 <asp:BoundField DataField="Codigo" HeaderText="Produto" ItemStyle-Width="100" />
