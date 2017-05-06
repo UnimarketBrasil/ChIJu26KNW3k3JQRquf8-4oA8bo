@@ -2,6 +2,8 @@
 using ClassLibrary.Repositorio;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace WebApplication
 {
@@ -10,23 +12,29 @@ namespace WebApplication
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            /* if (Session["sistema"] != null)
+            Usuario user = (Usuario)Session["sistema"];
+            ItemRepositorio listarItemVendedor = new ItemRepositorio();
+
+            List<Item> lst = listarItemVendedor.ListarItem(user.Id);
+
+            foreach (var item in lst)
             {
-                 Item item = new Item();
+                string caminho = string.Format("~/Imagens/{0}/{1}/", user.Id, item.Id);
 
-                ItemRepositorio listarItens = new ItemRepositorio();
-                Usuario u = (Usuario)Session["sistema"];
+                if (Directory.Exists(Server.MapPath(caminho)))
+                {
+                    var diretorio = new DirectoryInfo(Server.MapPath(caminho));
+                    var arquivos = diretorio.GetFiles();
+                    string i = arquivos.Last().Name;
+                    item.Imagem = ResolveUrl(Path.Combine(caminho, i));
 
-                item.Usuario = new Usuario(u.Id);
+                }
 
-                grdDetalheVendedor.DataSource = listarItens.ListarItem(u.Id);
-                grdDetalheVendedor.DataBind();
+            }
 
-               // List<Item> listaItens = itemDisponivel.
+            grdDetalheVendedor.DataSource = lst;
+            grdDetalheVendedor.DataBind();
 
-                // grdDetalheVendedor.DataSource = itemDisponivel.DetalheItemVendedor;
-                //grdDetalheVendedor.DataBind();
-            }*/
         }
     }
 }

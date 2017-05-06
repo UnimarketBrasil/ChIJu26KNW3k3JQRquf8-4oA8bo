@@ -25,9 +25,10 @@
                         <form runat="server">
                             <asp:GridView ID="grdDetalheVendedor" class="table table-striped table-hover " runat="server" AutoGenerateColumns="false" AllowPaging="True">
                                 <Columns>
+                                    <asp:ImageField DataImageUrlField="Imagem" HeaderText="Imagem" ControlStyle-Width="100" ControlStyle-Height="100"/>
+                                    <asp:BoundField DataField="Id" HeaderText="Id" ItemStyle-Width="100" />
                                     <asp:BoundField DataField="Codigo" HeaderText="Código" ItemStyle-Width="100" />
-                                    <asp:BoundField DataField="Nome" HeaderText="Produto" ItemStyle-Width="100" />
-                                    <asp:BoundField DataField="Descricao" HeaderText="Descrição" ItemStyle-Width="100" />
+                                    <asp:BoundField DataField="Nome" HeaderText="Produto" ItemStyle-Width="100" /> 
                                     <asp:BoundField DataField="ValorUnitario" HeaderText="Valor Unitário" ItemStyle-Width="100" />
                                     <asp:BoundField DataField="Quantidade" HeaderText="Quantidade" ItemStyle-Width="100" />
                                 </Columns>
