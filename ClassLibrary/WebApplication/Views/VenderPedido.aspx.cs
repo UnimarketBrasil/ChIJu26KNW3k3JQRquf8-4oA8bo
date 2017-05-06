@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ClassLibrary;
+using ClassLibrary.Repositorio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,26 +13,52 @@ namespace WebApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["sistema"] != null)
+            {
 
+            }
+            else
+            {
+                Response.Redirect("~/Views/SistemaLogin.aspx");
+            }
         }
 
         protected void blTabs_Click(object sender, BulletedListEventArgs e)
         {
+            Usuario user = (Usuario)Session["sistema"];
+            PedidoRepositorio consulta = new PedidoRepositorio();
+
+
             switch (e.Index)
             {
                 case 0:
-                    Response.Write("<script>alert('Todos')</script>");
+                    List<Pedido> lstTodos = consulta.ListarPedidoVendedor(user.Id);
+
+                    grdPedido.DataSource = lstTodos;
+                    grdPedido.DataBind();
+
                     break;
                 case 1:
-                    Response.Write("<script>alert('Pendentes')</script>");
+                    List<Pedido> lstPendentes = consulta.ListarPedidoPeloStatusVendedor(user.Id, 1);
+
+                    grdPedido.DataSource = lstPendentes;
+                    grdPedido.DataBind();
                     break;
                 case 2:
-                    Response.Write("<script>alert('cancelados')</script>");
+                    List<Pedido> lstCancelados = consulta.ListarPedidoPeloStatusVendedor(user.Id, 3);
+
+                    grdPedido.DataSource = lstCancelados;
+                    grdPedido.DataBind();
+                    break;
+                case 3:
+                    List<Pedido> lstFinalizados = consulta.ListarPedidoPeloStatusVendedor(user.Id, 2);
+
+                    grdPedido.DataSource = lstFinalizados;
+                    grdPedido.DataBind();
                     break;
                 default:
-                    Response.Write("<script>alert('Finalizados')</script>");
-                    break;
 
+                    break;
             }
         }
     }

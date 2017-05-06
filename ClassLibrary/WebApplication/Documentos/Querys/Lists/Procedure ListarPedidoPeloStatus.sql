@@ -8,9 +8,11 @@ create procedure ListarPedidoPeloStatusVendedor(
 	)
 as
 begin
-	select Pedido.Id, Pedido.Codigo, Usuario.Nome from Pedido
-	inner join Usuario on Pedido.IdComprador = Usuario.Id
-	where ((Usuario.Id = @IdUsuario) and (Pedido.Id = Pedido.IdStatusPedido))
+	Select Pedido.Id, Pedido.Codigo, Comprador.Nome as 'Comprador', ItemPedido.Quantidade * ItemPedido.ValorUnitario as 'Valor' from Pedido
+	inner join Usuario as Vendedor on Pedido.IdVendedor = Vendedor.Id
+	inner join Usuario as Comprador on Pedido.IdComprador = Comprador.Id
+	inner join ItemPedido on Pedido.Id = ItemPedido.IdPedido
+	where ((Vendedor.Id = @IdUsuario) and (Pedido.IdStatusPedido = @IdStatus))
 end
 go
 create procedure ListarPedidoPeloStatusComprador(
@@ -19,7 +21,9 @@ create procedure ListarPedidoPeloStatusComprador(
 	)
 as
 begin
-	select Pedido.Id, Pedido.Codigo, Usuario.Nome from Pedido
-	inner join Usuario on Pedido.IdVendedor = Usuario.Id
-	where ((Usuario.Id = @IdUsuario) and (Pedido.Id = Pedido.IdStatusPedido))
+	Select Pedido.Id, Pedido.Codigo, Vendedor.Nome as 'Vendedor', ItemPedido.Quantidade * ItemPedido.ValorUnitario as 'Valor' from Pedido
+	inner join Usuario as Vendedor on Pedido.IdVendedor = Vendedor.Id
+	inner join Usuario as Comprador on Pedido.IdComprador = Comprador.Id
+	inner join ItemPedido on Pedido.Id = ItemPedido.IdPedido
+	where ((Comprador.Id = @IdUsuario) and (Pedido.IdStatusPedido = @IdStatus))
 end

@@ -6,21 +6,43 @@
     <h2 class="text-uppercase"><strong>Meus Pedidos</strong></h2>
     <hr />
     <form runat="server">
-        <asp:BulletedList ID="blTabs" DisplayMode="LinkButton" runat="server" CssClass="nav nav-tabs" OnClick="blTabs_Click">
-            <asp:ListItem>Todos</asp:ListItem>
-            <asp:ListItem>Pendêntes</asp:ListItem>
-            <asp:ListItem>Cancelados</asp:ListItem>
-            <asp:ListItem>Finalizados</asp:ListItem>
-        </asp:BulletedList>
-        <asp:GridView ID="GridView1" class="table table-striped table-hover " runat="server" AutoGenerateColumns="false" AllowPaging="True">
-            <Columns>
-                <asp:BoundField DataField="Id" HeaderText="Código" ItemStyle-Width="100" />
-                <asp:BoundField DataField="Codigo" HeaderText="Produto" ItemStyle-Width="100" />
-                <asp:BoundField DataField="Descricao" HeaderText="Descrição" ItemStyle-Width="100" />
-                <asp:BoundField DataField="ValorUnitario" HeaderText="Valor Unitário" ItemStyle-Width="100" />
-                <asp:BoundField DataField="Quantidade" HeaderText="Quantidade" ItemStyle-Width="100" />
-            </Columns>
-        </asp:GridView>
-        <hr />
+        <div class="row container-fluid">
+            <asp:BulletedList ID="blTabs" DisplayMode="LinkButton" runat="server" CssClass="nav nav-tabs" OnClick="blTabs_Click">
+                <asp:ListItem>Todos</asp:ListItem>
+                <asp:ListItem>Pendêntes</asp:ListItem>
+                <asp:ListItem>Cancelados</asp:ListItem>
+                <asp:ListItem>Finalizados</asp:ListItem>
+            </asp:BulletedList>
+        </div>
+        <div class="row container-fluid">
+            <asp:GridView ID="grdPedido" CssClass="table table-hover table-striped" GridLines="None" runat="server" AutoGenerateColumns="false" AllowPaging="True">
+                <Columns>
+                    <asp:BoundField DataField="Id" HeaderText="Id" Visible="False" />
+                    <asp:BoundField DataField="Codigo" HeaderText="Codigo" ItemStyle-CssClass="col-md-3" />
+                    <asp:BoundField DataField="Comprador.Nome" HeaderText="Comprador" ItemStyle-CssClass="col-md-4" />
+                    <asp:BoundField DataField="Valor" HeaderText="Valor" ItemStyle-CssClass="col-md-2" />
+                    <asp:TemplateField ItemStyle-CssClass="col-md-2">
+                        <ItemTemplate>
+                            <asp:LinkButton ID="detalhePedido" CssClass="btn btn-primary btn-xs" runat="server" PostBackUrl='<%# Page.ResolveUrl("~/Views/SistemaDetalheItem.aspx")%>' Text="Detalhes" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField ItemStyle-CssClass="col-md-1">
+                        <ItemTemplate>
+                            <asp:LinkButton ID="pdfPedido" CssClass="btn btn-success btn-xs" runat="server" PostBackUrl='<%# Page.ResolveUrl("~/Views/SistemaDetalheItem.aspx")%>' Text="Finalizar" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField ItemStyle-CssClass="col-md-1">
+                        <ItemTemplate>
+                            <asp:LinkButton ID="pdfPedido" CssClass="btn btn-danger btn-xs" runat="server" PostBackUrl='<%# Page.ResolveUrl("~/Views/SistemaDetalheItem.aspx")%>' Text="Cancelar" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField ItemStyle-CssClass="col-md-1">
+                        <ItemTemplate>
+                            <asp:LinkButton ID="pdfPedido" CssClass="btn btn-info btn-xs" runat="server" PostBackUrl='<%# Page.ResolveUrl("~/Views/SistemaDetalheItem.aspx")%>' Text="PDF" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
+        </div>
     </form>
 </asp:Content>

@@ -49,6 +49,7 @@
                             <a href="#" draggable="false" class="dropdown-toggle glyphicon glyphicon-user" data-toggle="dropdown" role="button" aria-expanded="false"></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a draggable="false" runat="server" href="~/Views/SistemaAtualizarCadastro.aspx">Atualizar Cadastro</a></li>
+                                <li><a draggable="false" runat="server" href="~/Views/VenderPedido.aspx">Meus Pedidos</a></li>
                             </ul>
                         </li>
                         <li><a id="LinkButton2" runat="server" href="~/Views/Logout.aspx" class="navbar-green glyphicon glyphicon-log-out"></a></li>

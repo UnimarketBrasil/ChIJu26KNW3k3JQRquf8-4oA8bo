@@ -171,10 +171,11 @@ namespace ClassLibrary.Repositorio
                         while (Dr.Read())
                         {
                             Pedido pedido = new Pedido();
-
                             pedido.Id = Convert.ToInt32(Dr["Id"]);
                             pedido.Codigo = Convert.ToString(Dr["Codigo"]);
-                            pedido.Comprador.Nome = Convert.ToString(Dr["Nome"]);
+                            pedido.Comprador = new Usuario();
+                            pedido.Comprador.Nome = Convert.ToString(Dr["Comprador"]).ToUpper();
+                            pedido.Valor = Math.Round(Convert.ToDouble(Dr["Valor"]), 2);
 
                             pedidoList.Add(pedido);
                         }
@@ -218,8 +219,8 @@ namespace ClassLibrary.Repositorio
                             pedido.Id = Convert.ToInt32(Dr["Id"]);
                             pedido.Codigo = Convert.ToString(Dr["Codigo"]);
                             pedido.Vendedor = new Usuario();
-                            pedido.Vendedor.Nome = Convert.ToString(Dr["Vendedor"]);
-                            pedido.Valor = Convert.ToDouble(Dr["Valor"]);
+                            pedido.Vendedor.Nome = Convert.ToString(Dr["Vendedor"]).ToUpper();
+                            pedido.Valor = Math.Round(Convert.ToDouble(Dr["Valor"]), 2);
 
                             pedidoList.Add(pedido);
                         }
@@ -265,7 +266,9 @@ namespace ClassLibrary.Repositorio
                             Pedido pedido = new Pedido();
                             pedido.Id = Convert.ToInt32(Dr["Id"]);
                             pedido.Codigo = Convert.ToString(Dr["Codigo"]);
-                            pedido.Comprador.Nome = Convert.ToString(Dr["Nome"]);
+                            pedido.Comprador = new Usuario();
+                            pedido.Comprador.Nome = Convert.ToString(Dr["Comprador"]).ToUpper();
+                            pedido.Valor = Math.Round(Convert.ToDouble(Dr["Valor"]), 2);
 
                             pedidoList.Add(pedido);
                         }
@@ -312,7 +315,9 @@ namespace ClassLibrary.Repositorio
                             Pedido pedido = new Pedido();
                             pedido.Id = Convert.ToInt32(Dr["Id"]);
                             pedido.Codigo = Convert.ToString(Dr["Codigo"]);
-                            pedido.Vendedor.Nome = Convert.ToString(Dr["Nome"]);
+                            pedido.Vendedor = new Usuario();
+                            pedido.Vendedor.Nome = Convert.ToString(Dr["Vendedor"]).ToUpper();
+                            pedido.Valor = Math.Round(Convert.ToDouble(Dr["Valor"]),2);
 
                             pedidoList.Add(pedido);
                         }

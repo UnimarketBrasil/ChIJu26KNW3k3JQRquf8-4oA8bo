@@ -13,7 +13,14 @@ namespace WebApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["sistema"] != null)
+            {
 
+            }
+            else
+            {
+                Response.Redirect("~/Views/SistemaLogin.aspx");
+            }
         }
 
         protected void blTabs_Click(object sender, BulletedListEventArgs e)
@@ -25,20 +32,32 @@ namespace WebApplication
             switch (e.Index)
             {
                 case 0:
-                    List<Pedido> lst = consulta.ListarPedidoComprador(user.Id);
+                    List<Pedido> lstTodos = consulta.ListarPedidoComprador(user.Id);
 
-                    grdPedido.DataSource = lst;
+                    grdPedido.DataSource = lstTodos;
                     grdPedido.DataBind();
 
                     break;
                 case 1:
-                    Response.Write("<script>alert('Pendentes')</script>");
+                    List<Pedido> lstPendentes = consulta.ListarPedidoPeloStatusComprador(user.Id, 1);
+
+                    grdPedido.DataSource = lstPendentes;
+                    grdPedido.DataBind();
                     break;
                 case 2:
-                    Response.Write("<script>alert('cancelados')</script>");
+                    List<Pedido> lstCancelados = consulta.ListarPedidoPeloStatusComprador(user.Id, 3);
+
+                    grdPedido.DataSource = lstCancelados;
+                    grdPedido.DataBind();
+                    break;
+                case 3:
+                    List<Pedido> lstFinalizados = consulta.ListarPedidoPeloStatusComprador(user.Id, 2);
+
+                    grdPedido.DataSource = lstFinalizados;
+                    grdPedido.DataBind();
                     break;
                 default:
-                    Response.Write("<script>alert('Finalizados')</script>");
+
                     break;
 
             }
