@@ -13,6 +13,7 @@ namespace WebApplication
         {
 
             Usuario user = (Usuario)Session["sistema"];
+
             ItemRepositorio listarItemVendedor = new ItemRepositorio();
 
             List<Item> lst = listarItemVendedor.ListarItem(user.Id);

@@ -199,17 +199,20 @@ namespace ClassLibrary.Repositorio
 
                     List<Item> itemList = new List<Item>();
 
-                    while (Dr.HasRows)
+                    if (Dr.HasRows)
                     {
-                        Item item = new Item();
-                        Dr.Read();
-                        item.Id = Convert.ToInt32(Dr["Id"]);
-                        item.Codigo = Convert.ToString(Dr["Codigo"]);
-                        item.Nome = Convert.ToString(Dr["Nome"]);
-                        item.ValorUnitario = Convert.ToDouble(Dr["Valorunitario"]);
-                        item.Quantidade = Convert.ToDouble(Dr["Quantidade"]);
+                        while (Dr.Read())
+                        {
+                            Item item = new Item();
+                            item.Id = Convert.ToInt32(Dr["Id"]);
+                            item.Codigo = Convert.ToString(Dr["Codigo"]);
+                            item.Nome = Convert.ToString(Dr["Nome"]);
+                            item.ValorUnitario = Convert.ToDouble(Dr["Valorunitario"]);
+                            item.Quantidade = Convert.ToDouble(Dr["Quantidade"]);
 
-                        itemList.Add(item);
+                            itemList.Add(item);
+                        }
+                        
                     }
 
                     Dr.Close();
