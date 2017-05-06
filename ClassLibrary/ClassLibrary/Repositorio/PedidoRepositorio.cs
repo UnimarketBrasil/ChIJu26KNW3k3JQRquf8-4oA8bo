@@ -219,6 +219,7 @@ namespace ClassLibrary.Repositorio
                             pedido.Codigo = Convert.ToString(Dr["Codigo"]);
                             pedido.Vendedor = new Usuario();
                             pedido.Vendedor.Nome = Convert.ToString(Dr["Vendedor"]);
+                            pedido.Valor = Convert.ToDouble(Dr["Valor"]);
 
                             pedidoList.Add(pedido);
                         }

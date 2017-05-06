@@ -14,6 +14,8 @@ namespace ClassLibrary
 
         public List<Item> Item { get; set; }
 
+        public double Valor { get; set; }
+
         public StatusPedido StatusPedido { get; set; }
     }
 }

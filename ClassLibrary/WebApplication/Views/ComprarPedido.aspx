@@ -14,11 +14,10 @@
         </asp:BulletedList>
         <asp:GridView ID="grdPedido" class="table table-striped table-hover " runat="server" AutoGenerateColumns="false" AllowPaging="True">
             <Columns>
-                <asp:BoundField DataField="Id" HeaderText="Código" ItemStyle-Width="100" />
-                <asp:BoundField DataField="Codigo" HeaderText="Produto" ItemStyle-Width="100" />
-                <asp:BoundField DataField="Descricao" HeaderText="Descrição" ItemStyle-Width="100" />
-                <asp:BoundField DataField="ValorUnitario" HeaderText="Valor Unitário" ItemStyle-Width="100" />
-                <asp:BoundField DataField="Quantidade" HeaderText="Quantidade" ItemStyle-Width="100" />
+                <asp:BoundField DataField="Id" HeaderText="Id" ItemStyle-Width="100" />
+                <asp:BoundField DataField="Codigo" HeaderText="Codigo" ItemStyle-Width="100" />
+                <asp:BoundField DataField="Vendedor" HeaderText="Vendedor" ItemStyle-Width="100" />
+                <asp:BoundField DataField="Valor" HeaderText="Valor" ItemStyle-Width="100" />
             </Columns>
         </asp:GridView>
         <hr />
