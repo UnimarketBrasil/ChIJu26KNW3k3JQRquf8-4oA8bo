@@ -7,7 +7,7 @@ create procedure CadastrarItem(
 	@Nome varchar(50),
 	@Descricao text,
 	@ValorUnitario real,
-	@Quantidade varchar(50),
+	@Quantidade real,
 	@IdCategoria int,
 	@IdUsuario int
 	)

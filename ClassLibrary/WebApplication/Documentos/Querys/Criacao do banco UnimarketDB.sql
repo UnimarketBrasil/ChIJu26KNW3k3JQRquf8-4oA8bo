@@ -69,7 +69,7 @@ create table Item(
 	Nome varchar(50) not null,
 	Descricao varchar(255) not null,
 	ValorUnitario real not null,
-	Quantidade varchar(20) null check (Quantidade > -1),
+	Quantidade real null check (Quantidade > -1),
 	IdCategoria int foreign key references Categoria(Id),
 	IdUsuario int not null foreign key references Usuario(Id),
 	DataCadastro DateTime not null default getdate(),
@@ -78,7 +78,8 @@ create table Item(
 go
 create table ItemPedido(
 	Id int not null primary key identity(1,1),
-	Quantidade int null, --Alterar nas procedures
+	Quantidade real null,
+	ValorUnitario real not null,
 	IdItem int not null foreign key references Item(Id),
 	IdPedido int not null foreign key references Pedido(Id),
 	Desabilitado bit not null default 'false'

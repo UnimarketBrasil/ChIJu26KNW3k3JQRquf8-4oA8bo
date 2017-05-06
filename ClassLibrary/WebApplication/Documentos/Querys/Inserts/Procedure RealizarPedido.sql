@@ -32,10 +32,11 @@ end
 go
 Excluir CadastrarItemPedido
 go
-Create procedure CadastrarItemPedido(
+create procedure CadastrarItemPedido(
 	@IdPedido int,
 	@IdItem int,
-	@Quantidade varchar(20)
+	@Quantidade real,
+	@ValorUnitario real
 	)
 as
 begin
@@ -44,16 +45,20 @@ begin
 			if ((select Quantidade from Item where (Item.Id = @IdItem)) >= (@Quantidade))
 				begin
 					insert into ItemPedido( 
-					Quantidade, 
+					Quantidade,
+					ValorUnitario,
 					IdItem,	
 					IdPedido
 					)
 					values (
-					@Quantidade, 
+					@Quantidade,
+					@ValorUnitario,
 					@IdItem, 
 					@IdPedido
 					)		
 			  end
+			else
+			print 'deu erro';
 		commit tran
 	end try
 	begin catch

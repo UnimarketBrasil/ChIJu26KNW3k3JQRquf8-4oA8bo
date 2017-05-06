@@ -217,7 +217,8 @@ namespace ClassLibrary.Repositorio
                             Pedido pedido = new Pedido();
                             pedido.Id = Convert.ToInt32(Dr["Id"]);
                             pedido.Codigo = Convert.ToString(Dr["Codigo"]);
-                            pedido.Vendedor.Nome = Convert.ToString(Dr["Nome"]);
+                            pedido.Vendedor = new Usuario();
+                            pedido.Vendedor.Nome = Convert.ToString(Dr["Vendedor"]);
 
                             pedidoList.Add(pedido);
                         }
