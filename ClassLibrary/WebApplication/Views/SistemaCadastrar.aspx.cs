@@ -17,6 +17,11 @@ namespace WebApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["sistema"]!=null)
+            {
+                Response.Redirect("~/Views/Sistema.aspx");
+            }
+
             if (!IsPostBack)
             {
                 dvSegundaEtapa.Visible = false;
