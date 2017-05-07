@@ -19,7 +19,7 @@ namespace WebApplication
             }
             else
             {
-                Response.Redirect("~/Views/SistemaLogin.aspx");
+                Response.Redirect("~/Views/Logout.aspx");
             }
         }
     }

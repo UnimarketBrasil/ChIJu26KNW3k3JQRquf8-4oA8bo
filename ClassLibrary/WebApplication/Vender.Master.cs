@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace WebApplication
 {
-    public partial class Vende : System.Web.UI.MasterPage
+    public partial class Vender : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -19,7 +19,7 @@ namespace WebApplication
             }
             else
             {
-                Response.Redirect("~/Views/SistemaLogin.aspx");
+                Response.Redirect("~/Views/Logout.aspx");
             }
         }
     }

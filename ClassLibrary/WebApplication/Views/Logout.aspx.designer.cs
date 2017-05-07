@@ -10,6 +10,6 @@
 namespace WebApplication {
     
     
-    public partial class WebForm9 {
+    public partial class Logout {
     }
 }

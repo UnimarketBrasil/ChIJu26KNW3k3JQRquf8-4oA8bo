@@ -1,13 +1,17 @@
-﻿using ClassLibrary;
-using ClassLibrary.Repositorio;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using ClassLibrary;
+using ClassLibrary.Repositorio;
+using System.IO;
+
 
 namespace WebApplication
 {
-    public partial class SistemaHomeVendedor : System.Web.UI.Page
+    public partial class VenderItem : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -28,11 +32,8 @@ namespace WebApplication
                     var arquivos = diretorio.GetFiles();
                     string i = arquivos.Last().Name;
                     item.Imagem = ResolveUrl(Path.Combine(caminho, i));
-
                 }
-
             }
-
             grdDetalheVendedor.DataSource = lst;
             grdDetalheVendedor.DataBind();
 

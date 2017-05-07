@@ -10,7 +10,7 @@
 namespace WebApplication {
     
     
-    public partial class SistemaHomeVendedor {
+    public partial class VenderItem {
         
         /// <summary>
         /// Controle grdDetalheVendedor.

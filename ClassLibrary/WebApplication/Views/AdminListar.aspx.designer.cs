@@ -10,6 +10,6 @@
 namespace WebApplication {
     
     
-    public partial class WebForm8 {
+    public partial class AdminListar {
     }
 }

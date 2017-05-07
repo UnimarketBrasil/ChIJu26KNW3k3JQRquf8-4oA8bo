@@ -10,7 +10,7 @@
 namespace WebApplication {
     
     
-    public partial class Vende {
+    public partial class Vender {
         
         /// <summary>
         /// Controle head.
