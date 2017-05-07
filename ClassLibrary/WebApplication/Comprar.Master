@@ -83,7 +83,7 @@
                 </div>
                 <div id="dvCarrinho" runat="server">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a draggable="false" id="LinkButton3" class="btn btn-primary glyphicon glyphicon-shopping-cart"></a></li>
+                        <li><a href="SistemaCarrinho.aspx" draggable="false" id="LinkButton3" class="btn btn-primary glyphicon glyphicon-shopping-cart"></a></li>
                     </ul>
                 </div>
             </div>
