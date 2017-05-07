@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-
+using System.Globalization;
 namespace ClassLibrary.Repositorio
 {
     public class ItemRepositorio : Conexao
@@ -336,6 +336,7 @@ namespace ClassLibrary.Repositorio
                     Dr = Cmd.ExecuteReader();
 
                     List<Item> itemList = new List<Item>();
+                    TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
 
                     if (Dr.HasRows)
                     {
@@ -343,8 +344,8 @@ namespace ClassLibrary.Repositorio
                         {
                             Item item = new Item();
                             item.Id = Convert.ToInt32(Dr["Id"]);
-                            item.Nome = Convert.ToString(Dr["Nome"]);
-                            item.ValorUnitario = Convert.ToDouble(Dr["ValorUnitario"]);
+                            item.Nome = ti.ToTitleCase(Convert.ToString(Dr["Nome"]));
+                            item.ValorUnitario = Math.Round(Convert.ToDouble(Dr["ValorUnitario"]), 2);
                             item.Usuario = new Usuario();
                             item.Usuario.Nome = Convert.ToString(Dr["Vendedor"]);
 

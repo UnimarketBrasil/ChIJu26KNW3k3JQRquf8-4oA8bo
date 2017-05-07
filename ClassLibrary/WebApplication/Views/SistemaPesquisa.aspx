@@ -3,29 +3,25 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="container">
-        <div id="divMsg" runat="server" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <strong class="glyphicon glyphicon-info-sign"></strong>
-            <asp:Label ID="msgPesquisa" runat="server"></asp:Label>
+    <form runat="server">
+        <div class="row container-fluid">
+            <div id="divMsg" runat="server" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong class="glyphicon glyphicon-info-sign"></strong>
+                <asp:Label ID="msgPesquisa" runat="server"></asp:Label>
+            </div>
         </div>
-        <div>
-            <form runat="server">
-                <asp:GridView ID="lbItens" class="table table-striped table-hover " runat="server" AutoGenerateColumns="false" AllowPaging="True">
-                    <Columns>
-                        <asp:ImageField DataImageUrlField="Imagem" HeaderText="Imagem" ControlStyle-Width="100" ControlStyle-Height="100"/>
-                        <asp:BoundField DataField="Id" HeaderText="ID" ItemStyle-Width="300" />
-                        <asp:BoundField DataField="Nome" HeaderText="Produto" ItemStyle-Width="300" />
-                        <asp:BoundField DataField="ValorUnitario" HeaderText="Preço por Unidade" ItemStyle-Width="300" />
-                        <asp:BoundField DataField="Usuario.Nome" HeaderText="Vendedor" ItemStyle-Width="300" />
-                        <asp:TemplateField>
-                            <ItemTemplate>
-                                <asp:LinkButton ID="verDetalheProduto" CssClass="btn btn-primary btn-xs" runat="server" PostBackUrl='<%# Page.ResolveUrl("~/Views/SistemaDetalheItem.aspx")%>' Text="Ver Detalhes" />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                    </Columns>
-                </asp:GridView>
-            </form>
+        <div class="row container-fluid">
+            <asp:GridView ID="lbItens" CssClass="table table-hover table-striped" GridLines="None" runat="server" AutoGenerateColumns="false" AllowPaging="True">
+                <Columns>
+                    <asp:ImageField DataImageUrlField="Imagem" ControlStyle-Width="80" ControlStyle-Height="80"/>
+                    <asp:BoundField DataField="Id" HeaderText="ID" ItemStyle-Width="300" Visible="false" />
+                    <asp:HyperLinkField DataNavigateUrlFields="Nome" DataTextField="Nome" DataNavigateUrlFormatString="SistemaDetalheItem.aspx?item="/>
+                    <asp:BoundField DataField="ValorUnitario" HeaderText="Preço" ItemStyle-Width="300" />
+                    <asp:BoundField DataField="Usuario.Nome" HeaderText="Vendedor" ItemStyle-Width="300" />
+                    
+                </Columns>
+            </asp:GridView>
         </div>
-    </div>
+    </form>
 </asp:Content>
