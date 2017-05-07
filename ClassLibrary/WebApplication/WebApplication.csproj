@@ -209,6 +209,7 @@
     <Content Include="Content\bootstrap-datepicker.standalone.css.map" />
     <Content Include="Content\bootstrap-datepicker.min.css.map" />
     <Content Include="Content\bootstrap-datepicker.css.map" />
+    <Content Include="Views\VenderItem.aspx" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
@@ -217,7 +218,6 @@
     <Content Include="Views\SistemaLogin.aspx" />
     <Content Include="Views\SistemaCadastrar.aspx" />
     <Content Include="Views\VenderPedido.aspx" />
-    <Content Include="Views\VenderItem.aspx" />
     <Content Include="Style\images\about-img1.jpg" />
     <Content Include="Style\images\ltst-img-1.jpg" />
     <Content Include="Views\Sistema.aspx" />
@@ -316,13 +316,6 @@
     <Compile Include="Views\VenderPedido.aspx.designer.cs">
       <DependentUpon>VenderPedido.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\VenderItem.aspx.cs">
-      <DependentUpon>VenderItem.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\VenderItem.aspx.designer.cs">
-      <DependentUpon>VenderItem.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Views\Sistema.aspx.cs">
       <DependentUpon>Sistema.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -413,6 +406,13 @@
     </Compile>
     <Compile Include="Views\SistemaAtualizarCadastro.aspx.designer.cs">
       <DependentUpon>SistemaAtualizarCadastro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VenderItem.aspx.cs">
+      <DependentUpon>VenderItem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\VenderItem.aspx.designer.cs">
+      <DependentUpon>VenderItem.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

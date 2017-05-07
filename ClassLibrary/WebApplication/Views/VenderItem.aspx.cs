@@ -1,13 +1,12 @@
-﻿using System;
+﻿using ClassLibrary;
+using ClassLibrary.Repositorio;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using ClassLibrary;
-using ClassLibrary.Repositorio;
-using System.IO;
-
 
 namespace WebApplication
 {
@@ -15,6 +14,8 @@ namespace WebApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["sistema"] == null)
+                Response.Redirect("~/Views/Logout.aspx");
 
             Usuario user = (Usuario)Session["sistema"];
 
@@ -36,7 +37,6 @@ namespace WebApplication
             }
             grdDetalheVendedor.DataSource = lst;
             grdDetalheVendedor.DataBind();
-
         }
     }
 }
