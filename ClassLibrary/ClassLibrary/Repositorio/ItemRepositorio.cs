@@ -113,7 +113,7 @@ namespace ClassLibrary.Repositorio
                     if (Dr.HasRows)
                     {
                         item = new Item();
-                        Dr.Read();                        
+                        Dr.Read();
                         item.Codigo = Convert.ToString(Dr["Codigo"]);
                         item.Nome = Convert.ToString(Dr["Nome"]);
                         item.Descricao = Convert.ToString(Dr["Descricao"]);
@@ -198,6 +198,7 @@ namespace ClassLibrary.Repositorio
                     Dr = Cmd.ExecuteReader();
 
                     List<Item> itemList = new List<Item>();
+                    TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
 
                     if (Dr.HasRows)
                     {
@@ -206,13 +207,13 @@ namespace ClassLibrary.Repositorio
                             Item item = new Item();
                             item.Id = Convert.ToInt32(Dr["Id"]);
                             item.Codigo = Convert.ToString(Dr["Codigo"]);
-                            item.Nome = Convert.ToString(Dr["Nome"]);
-                            item.ValorUnitario = Convert.ToDouble(Dr["Valorunitario"]);
+                            item.Nome = ti.ToTitleCase(Convert.ToString(Dr["Nome"]));
+                            item.ValorUnitario = Math.Round(Convert.ToDouble(Dr["Valorunitario"]), 2);
                             item.Quantidade = Convert.ToDouble(Dr["Quantidade"]);
 
                             itemList.Add(item);
                         }
-                        
+
                     }
 
                     Dr.Close();
@@ -370,5 +371,4 @@ namespace ClassLibrary.Repositorio
     }
 }
 
-    
- 
+
