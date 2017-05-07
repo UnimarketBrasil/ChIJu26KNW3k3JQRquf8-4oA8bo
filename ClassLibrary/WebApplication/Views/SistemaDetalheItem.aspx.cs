@@ -11,11 +11,11 @@ namespace WebApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.QueryString["Id"] == null) { 
-                Response.Redirect("~/Views/SistemaLogin.aspx");
-            }
+            //if (Request.QueryString["Id"] == null) { 
+            //    Response.Redirect("~/Views/SistemaLogin.aspx");
+            //}
 
-            int id = int.Parse(Request.QueryString["Id"].ToString());
+            //int id = int.Parse(Request.QueryString["Id"].ToString());
         }
     }
 }
