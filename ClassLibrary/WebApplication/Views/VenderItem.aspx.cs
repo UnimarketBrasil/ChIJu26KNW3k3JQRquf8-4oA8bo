@@ -38,5 +38,11 @@ namespace WebApplication
             grdDetalheVendedor.DataSource = lst;
             grdDetalheVendedor.DataBind();
         }
+
+        protected void grdDetalheVendedor_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            grdDetalheVendedor.PageIndex = e.NewPageIndex;
+            grdDetalheVendedor.DataBind();
+        }
     }
 }

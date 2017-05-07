@@ -22,7 +22,7 @@
             </div>
             <p>&nbsp;</p>
             <div>
-                <asp:GridView ID="grdDetalheVendedor" CssClass="table table-hover table-striped" GridLines="None" runat="server" AutoGenerateColumns="false" AllowPaging="True">
+                <asp:GridView ID="grdDetalheVendedor" OnPageIndexChanging="grdDetalheVendedor_PageIndexChanging" CssClass="table table-hover table-striped" GridLines="None" runat="server" AutoGenerateColumns="false" AllowPaging="True">
                     <Columns>
                         <asp:BoundField DataField="Id" HeaderText="Id" ItemStyle-Width="100" Visible="false" />
                         <asp:BoundField DataField="Codigo" HeaderText="Código" ItemStyle-Width="100" ItemStyle-CssClass="col-md-2" />
@@ -31,6 +31,8 @@
                         <asp:BoundField DataField="ValorUnitario" HeaderText="Valor Unitário" ItemStyle-Width="100" ItemStyle-CssClass="col-md-2" />
                         <asp:BoundField DataField="Quantidade" HeaderText="Quantidade" ItemStyle-Width="100" ItemStyle-CssClass="col-md-2" />
                     </Columns>
+                    <PagerSettings Mode="Numeric" Position="TopAndBottom" PageButtonCount="5" />
+                    <PagerStyle HorizontalAlign="Right" Font-Size="Medium" CssClass="GridPager" />
                 </asp:GridView>
             </div>
         </div>
