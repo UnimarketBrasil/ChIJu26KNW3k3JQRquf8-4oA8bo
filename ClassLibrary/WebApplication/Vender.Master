@@ -9,6 +9,7 @@
     <!--Styles-->
     <link href="Content/bootstrap.cosmo.css" rel="stylesheet" />
     <link href="Content/bootstrap.cosmo.min.css" rel="stylesheet" />
+    <link href="Content/GridPager.css" rel="stylesheet" />
 
     <!--Script-->
     <script src="Scripts/bootstrap.js"></script>

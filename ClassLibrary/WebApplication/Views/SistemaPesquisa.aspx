@@ -12,16 +12,18 @@
             </div>
         </div>
         <div class="row container-fluid">
-            <asp:GridView ID="lbItens" CssClass="table table-hover table-striped" GridLines="None" runat="server" AutoGenerateColumns="false" AllowPaging="True">
+            <asp:GridView ID="grdItens" CssClass="table table-hover table-striped" GridLines="None" runat="server" OnPageIndexChanging="lbItens_PageIndexChanging" AutoGenerateColumns="false" AllowPaging="True">
                 <Columns>
-                    <asp:ImageField DataImageUrlField="Imagem" ControlStyle-Width="80" ControlStyle-Height="80"/>
+                    <asp:ImageField DataImageUrlField="Imagem" ControlStyle-Width="80" ControlStyle-Height="80" />
                     <asp:BoundField DataField="Id" HeaderText="ID" ItemStyle-Width="300" Visible="false" />
-                    <asp:HyperLinkField DataNavigateUrlFields="Nome" DataTextField="Nome" DataNavigateUrlFormatString="SistemaDetalheItem.aspx?item="/>
+                    <asp:HyperLinkField DataNavigateUrlFields="Nome" DataTextField="Nome" DataNavigateUrlFormatString="SistemaDetalheItem.aspx?item=" />
                     <asp:BoundField DataField="ValorUnitario" HeaderText="Preço" ItemStyle-Width="300" />
                     <asp:BoundField DataField="Usuario.Nome" HeaderText="Vendedor" ItemStyle-Width="300" />
-                    
                 </Columns>
+                <PagerSettings Mode="Numeric" Position="TopAndBottom" PageButtonCount="5" />
+                <PagerStyle HorizontalAlign="Right" Font-Size="Medium" CssClass="GridPager" />
             </asp:GridView>
         </div>
     </form>
 </asp:Content>
+

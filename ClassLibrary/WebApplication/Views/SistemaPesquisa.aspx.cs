@@ -49,14 +49,20 @@ namespace WebApplication
 
                     }
 
-                    lbItens.DataSource = lst;
-                    lbItens.DataBind();
+                    grdItens.DataSource = lst;
+                    grdItens.DataBind();
                 }
             }
             else
             {
 
             }
+        }
+
+        protected void lbItens_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            grdItens.PageIndex = e.NewPageIndex;
+            grdItens.DataBind();
         }
     }
 }
