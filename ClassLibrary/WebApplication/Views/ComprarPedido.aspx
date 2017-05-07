@@ -15,7 +15,7 @@
             </asp:BulletedList>
         </div>
         <div class="row container-fluid">
-            <asp:GridView ID="grdPedido" CssClass="table table-hover table-striped" GridLines="None"  runat="server" AutoGenerateColumns="false" AllowPaging="True">
+            <asp:GridView ID="grdPedido" OnPageIndexChanging="grdPedido_PageIndexChanging" CssClass="table table-hover table-striped" GridLines="None" runat="server" AutoGenerateColumns="false" AllowPaging="True">
                 <Columns>
                     <asp:BoundField DataField="Id" HeaderText="Id" Visible="False" />
                     <asp:BoundField DataField="Codigo" HeaderText="Codigo" ItemStyle-CssClass="col-md-3" />
@@ -32,6 +32,8 @@
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
+                <PagerSettings Mode="Numeric" Position="TopAndBottom" PageButtonCount="5" />
+                <PagerStyle HorizontalAlign="Right" Font-Size="Medium" CssClass="GridPager" />
             </asp:GridView>
         </div>
     </form>

@@ -62,5 +62,11 @@ namespace WebApplication
 
             }
         }
+
+        protected void grdPedido_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            grdPedido.PageIndex = e.NewPageIndex;
+            grdPedido.DataBind();
+        }
     }
 }
