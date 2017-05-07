@@ -13,14 +13,8 @@ namespace WebApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["sistema"] != null)
-            {
-
-            }
-            else
-            {
-                Response.Redirect("~/Views/SistemaLogin.aspx");
-            }
+            if (Session["sistema"] == null)
+                Response.Redirect("~/Views/Logout.aspx");
         }
 
         protected void blTabs_Click(object sender, BulletedListEventArgs e)
