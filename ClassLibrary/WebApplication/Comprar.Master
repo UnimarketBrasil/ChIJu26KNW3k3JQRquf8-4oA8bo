@@ -27,65 +27,63 @@
 <body>
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
-            <div class="row">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#" draggable="false">Unimarket BR</a>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#" draggable="false">Unimarket BR</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a runat="server" draggable="false" href="~/Default.aspx">Início <span class="sr-only">(current)</span></a></li>
+                    <li class="dropdown">
+                        <a href="#" draggable="false" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categorias <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a draggable="false" href="#">Categoria 1</a></li>
+                            <li><a draggable="false" href="#">Categoria 2</a></li>
+                            <li><a draggable="false" href="#">Categoria 3</a></li>
+                            <li class="divider"></li>
+                            <li><a draggable="false" href="#">Categoria 4</a></li>
+                            <li class="divider"></li>
+                            <li><a draggable="false" href="#">Categoria 5</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form id="pesquisar" class="navbar-form navbar-left" role="search" action="<% Response.Write(ResolveUrl("~/Views/SistemaPesquisa.aspx"));%>">
+                    <div class="form-group">
+                        <input type="text" name="buscar" class="form-control" placeholder="Pesquisar">
+                    </div>
+                    <button draggable="false" type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                </form>
+                <div id="dvSemLogin" runat="server">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a draggable="false" runat="server" href="Views/SistemaCadastrar.aspx">Cadastre-se</a></li>
+                        <li><a draggable="false" runat="server" href="Views/SistemaLogin.aspx">Entrar</a></li>
+                    </ul>
                 </div>
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a runat="server" href="~/Default.aspx">Início <span class="sr-only">(current)</span></a></li>
+                <div id="dvLogin" runat="server">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <asp:Label ID="lbNomeUsuario" CssClass="navbar-brand" runat="server" Text="Meu nome aqui"></asp:Label>
+                        </li>
+                        <li><a draggable="false" id="LinkButton4" runat="server" href="~/Views/VenderItem.aspx" class="btn btn-primary glyphicon glyphicon-sort" style="background: green"></a></li>
                         <li class="dropdown">
-                            <a href="#" draggable="false" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categorias <span class="caret"></span></a>
+                            <a href="#" draggable="false" class="dropdown-toggle btn btn-primary glyphicon glyphicon-user" data-toggle="dropdown" role="button" aria-expanded="false"></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a draggable="false" href="#">Categoria 1</a></li>
-                                <li><a draggable="false" href="#">Categoria 2</a></li>
-                                <li><a draggable="false" href="#">Categoria 3</a></li>
-                                <li class="divider"></li>
-                                <li><a draggable="false" href="#">Categoria 4</a></li>
-                                <li class="divider"></li>
-                                <li><a draggable="false" href="#">Categoria 5</a></li>
+                                <li><a draggable="false" runat="server" href="~/Views/SistemaAtualizarCadastro.aspx">Atualizar Cadastro</a></li>
+                                <li><a draggable="false" runat="server" href="~/Views/ComprarPedido.aspx">Meus Pedidos</a></li>
                             </ul>
                         </li>
+                        <li><a draggable="false" id="LinkButton2" runat="server" href="~/Views/Logout.aspx" class="btn btn-primary glyphicon glyphicon-log-out"></a></li>
                     </ul>
-                    <form id="pesquisar" class="navbar-form navbar-left" role="search" action="<% Response.Write(ResolveUrl("~/Views/SistemaPesquisa.aspx"));%>">
-                        <div class="form-group">
-                            <input type="text" name="buscar" class="form-control" placeholder="Pesquisar">
-                        </div>
-                        <button draggable="false" type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-                    </form>
-                    <div id="dvSemLogin" runat="server">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a draggable="false" runat="server" href="Views/SistemaCadastrar.aspx">Cadastre-se</a></li>
-                            <li><a draggable="false" runat="server" href="Views/SistemaLogin.aspx">Entrar</a></li>
-                        </ul>
-                    </div>
-                    <div id="dvLogin" runat="server">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li>
-                                <asp:Label ID="lbNomeUsuario" CssClass="navbar-brand" runat="server" Text="Meu nome aqui"></asp:Label>
-                            </li>
-                            <li><a draggable="false" id="LinkButton4" runat="server" href="~/Views/VenderItem.aspx" class="btn btn-primary glyphicon glyphicon-sort" style="background: green"></a></li>
-                            <li class="dropdown">
-                                <a href="#" draggable="false" class="dropdown-toggle btn btn-primary glyphicon glyphicon-user" data-toggle="dropdown" role="button" aria-expanded="false"></a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><a draggable="false" runat="server" href="~/Views/SistemaAtualizarCadastro.aspx">Atualizar Cadastro</a></li>
-                                    <li><a draggable="false" runat="server" href="~/Views/ComprarPedido.aspx">Meus Pedidos</a></li>
-                                </ul>
-                            </li>
-                            <li><a draggable="false" id="LinkButton2" runat="server" href="~/Views/Logout.aspx" class="btn btn-primary glyphicon glyphicon-log-out"></a></li>
-                        </ul>
-                    </div>
-                    <div id="dvCarrinho" runat="server">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a href="SistemaCarrinho.aspx" draggable="false" id="LinkButton3" class="btn btn-primary glyphicon glyphicon-shopping-cart"></a></li>
-                        </ul>
-                    </div>
+                </div>
+                <div id="dvCarrinho" runat="server">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="SistemaCarrinho.aspx" draggable="false" id="LinkButton3" class="btn btn-primary glyphicon glyphicon-shopping-cart"></a></li>
+                    </ul>
                 </div>
             </div>
         </div>

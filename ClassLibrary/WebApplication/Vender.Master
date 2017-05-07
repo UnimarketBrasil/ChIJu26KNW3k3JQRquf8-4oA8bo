@@ -37,14 +37,14 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a runat="server" href="~/Views/VenderItem.aspx">Início <span class="sr-only">(current)</span></a></li>
+                    <li class="active"><a runat="server" draggable="false" href="~/Views/VenderItem.aspx">Início <span class="sr-only">(current)</span></a></li>
                 </ul>
                 <div id="dvLogin" runat="server">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                             <asp:Label ID="lbNomeUsuario" CssClass="navbar-brand" runat="server" Text="Meu nome aqui"></asp:Label>
                         </li>
-                        <li><a id="LinkButton4" runat="server" href="~/Views/Sistema.aspx" class="navbar-green glyphicon glyphicon-sort" style="background:blue"></a></li>
+                        <li><a id="LinkButton4" runat="server" draggable="false" href="~/Views/Sistema.aspx" class="navbar-green glyphicon glyphicon-sort" style="background:blue"></a></li>
                         <li class="dropdown">
                             <a href="#" draggable="false" class="dropdown-toggle glyphicon glyphicon-user" data-toggle="dropdown" role="button" aria-expanded="false"></a>
                             <ul class="dropdown-menu" role="menu">
@@ -52,7 +52,7 @@
                                 <li><a draggable="false" runat="server" href="~/Views/VenderPedido.aspx">Meus Pedidos</a></li>
                             </ul>
                         </li>
-                        <li><a id="LinkButton2" runat="server" href="~/Views/Logout.aspx" class="navbar-green glyphicon glyphicon-log-out"></a></li>
+                        <li><a id="LinkButton2" runat="server" draggable="false" href="~/Views/Logout.aspx" class="navbar-green glyphicon glyphicon-log-out"></a></li>
                     </ul>
                 </div>
             </div>
