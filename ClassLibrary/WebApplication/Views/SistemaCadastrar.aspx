@@ -121,7 +121,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="col-lg-2 control-label">Atividade principal</label>
-                                <div class="btn-group col-lg-10" data-toggle="buttons">
+                                <div class="btn-group col-lg-5" data-toggle="buttons">
                                     <label id="lbComprar" runat="server" class="btn btn-primary">
                                         <input type="radio" name="rdAtividade" id="rdComprar" onchange="areAtuacaoDisplay('c');" runat="server" value="2" required="required"/>
                                         Comprar
@@ -129,35 +129,41 @@
                                     <label id="lbVender" runat="server" class="btn btn-primary">
                                         <input type="radio" name="rdAtividade" id="rdVender" onchange="areAtuacaoDisplay('v');" runat="server" value="3" />
                                         Vender
-                                    </label> 
-                                    <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=10' target='_blank'></a>  
+                                    </label>
+                                </div>
+                                <div class="col-lg-1">
+                                    <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=10' target='_blank'></a>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="<% =txtEndereco.ClientID %>" class="col-lg-2 control-label">Endereço</label>
-                                <div class="col-lg-7">
+                                <div class="col-lg-4">
                                     <asp:TextBox ID="txtEndereco" runat="server" CssClass="form-control" OnKeyUp="formataCEP(this,event);" onchange="formataCEP(this,event);" placeholder="CEP" required="true" MaxLength="9"></asp:TextBox>
                                 </div>
                                 <div class="col-lg-3">
                                     <asp:TextBox ID="txtNumero" runat="server" CssClass="form-control" TextMode="Number"  placeholder="N°" required="true"></asp:TextBox>
                                 </div>
-                                <input type="button" onclick="chamarAjax();" />
+                                <div class="col-lg-2">
+                                    <button draggable="false" class="btn btn-primary" onclick="chamarAjax();"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                </div>
+                                <div class="col-lg-1">
+                                    <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=11' target='_blank'></a>
+                                </div>
                             </div>
                             <div id="dvEnderecoCompleto" runat="server" class="form-group">
                                 <div class="col-lg-10 col-lg-offset-2">
-                                    <asp:Label runat="server" ID="lbEndereco"></asp:Label>
-                                    <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=11' target='_blank'></a>
+                                    <asp:Label runat="server" ID="lbEndereco" Text=""></asp:Label>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="<% =txtComplemento.ClientID %>" class="col-lg-2 control-label">Complemento</label>
-                                <div class="col-lg-10">
+                                <div class="col-lg-9">
                                     <asp:TextBox ID="txtComplemento" runat="server" CssClass="form-control" placeholder="Complemento" required="true"></asp:TextBox>
                                 </div>
                             </div>
                             <div id="dvAreaAtuacao" class="form-group" runat="server">
                                 <label for="<% =dpArea.ClientID %>"" class="col-lg-2 control-label">Área de atuação</label>
-                                <div class="col-lg-10">
+                                <div class="col-lg-9">
                                     <asp:DropDownList CssClass="form-control" ID="dpArea" runat="server">
                                         <asp:ListItem Text="5 km" Value="5" />
                                         <asp:ListItem Text="10 km" Value="10" />
@@ -167,6 +173,8 @@
                                         <asp:ListItem Text="50 km" Value="50" />
                                         <asp:ListItem Text="75 km" Value="75" />
                                     </asp:DropDownList>
+                                </div>
+                                <div class="col-lg-1">
                                     <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=12' target='_blank'></a>
                                 </div>
                             </div>
@@ -245,7 +253,7 @@
 
                    xmlhttp.onreadystatechange = function () {
                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                           document.getElementById('<%Response.Write(txtEndereco.ClientID);%>').value = xmlhttp.response;
+                           document.getElementById('<%Response.Write(lbEndereco.ClientID);%>').innerHTML = xmlhttp.response;
                        }
                    }
 

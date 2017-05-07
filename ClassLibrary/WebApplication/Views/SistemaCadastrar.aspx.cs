@@ -27,7 +27,6 @@ namespace WebApplication
                 dvSegundaEtapa.Visible = false;
                 dvPessoaJuridica.Visible = false;
                 dvMsg.Visible = false;
-                lbEndereco.Visible = false;
             }
         }
 
