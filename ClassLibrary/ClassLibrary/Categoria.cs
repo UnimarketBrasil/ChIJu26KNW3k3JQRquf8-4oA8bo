@@ -10,9 +10,9 @@
         {
             this.Id = id;
         }
-        // public Categoria(string nome)
-        // {
-        //     Nome = nome;
-        //  }
+        public Categoria()
+        {
+
+        }
     }
 }

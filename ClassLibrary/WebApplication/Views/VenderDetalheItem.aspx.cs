@@ -30,7 +30,7 @@ namespace WebApplication
 
             Usuario u = (Usuario)Session["sistema"];
 
-            item.Usuario = new Usuario(u.Id);
+            item.Vendedor = new Usuario(u.Id);
 
             ItemRepositorio cadastrarItem = new ItemRepositorio();
 
