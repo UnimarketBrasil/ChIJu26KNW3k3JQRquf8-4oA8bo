@@ -348,7 +348,7 @@ namespace ClassLibrary.Repositorio
                             item.Nome = ti.ToTitleCase(Convert.ToString(Dr["Nome"]));
                             item.ValorUnitario = Math.Round(Convert.ToDouble(Dr["ValorUnitario"]), 2);
                             item.Usuario = new Usuario();
-                            item.Usuario.Nome = Convert.ToString(Dr["Vendedor"]);
+                            item.Usuario.Nome = ti.ToTitleCase(Convert.ToString(Dr["Vendedor"]));
 
                             itemList.Add(item);
                         }
