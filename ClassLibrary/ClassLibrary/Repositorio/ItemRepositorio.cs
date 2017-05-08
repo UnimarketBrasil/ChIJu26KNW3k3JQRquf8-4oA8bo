@@ -117,7 +117,7 @@ namespace ClassLibrary.Repositorio
                         Dr.Read();
                         item.Codigo = Convert.ToString(Dr["Codigo"]);
                         item.Nome = Convert.ToString(Dr["Nome"]);
-                        item.ValorUnitario = Convert.ToDouble(Dr["Valorunitario"]);
+                        item.ValorUnitario = Math.Round(Convert.ToDouble(Dr["Valorunitario"]), 2);
                         item.Quantidade = Convert.ToDouble(Dr["Quantidade"]);
                         item.Descricao = Convert.ToString(Dr["Descricao"]);
                         item.Categoria = new Categoria();
@@ -136,8 +136,6 @@ namespace ClassLibrary.Repositorio
                 catch(Exception ex)
                 {
                     throw new Exception("Erro o carregar Item: " + ex.Message);
-
-                    return item;
                 }
                 finally
                 {

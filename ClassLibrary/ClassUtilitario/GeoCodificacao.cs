@@ -26,13 +26,13 @@ namespace ClassUtilitario
                 data.ReadXml(googleMaps);
                 user.Latitude = data.Tables["location"].Rows[0]["lat"].ToString();
                 user.Longitude = data.Tables["location"].Rows[0]["lng"].ToString();
-                data.Dispose();     
+                data.Dispose();
 
                 return user;
 
             }
             catch (Exception)
-            {                
+            {
                 return user = null;
             }
 
@@ -45,16 +45,36 @@ namespace ClassUtilitario
             string resposta = null;
 
             try
-            {                
+            {
                 using (DataSet data = new DataSet())
                 {
                     string endereco = string.Format("https://maps.googleapis.com/maps/api/geocode/xml?latlng={0},{1}&key=AIzaSyDPNFOUPna4dnTRtQ806ST8G9Vj6WEK32Y", user.Latitude, user.Longitude);
                     data.ReadXml(endereco);
                     rEndereco.Add(data.Tables["address_component"].Rows[0]["long_name"].ToString());
                     rEndereco.Add(data.Tables["address_component"].Rows[1]["long_name"].ToString() + ", " + data.Tables["address_component"].Rows[2]["long_name"].ToString() + ", " + data.Tables["address_component"].Rows[3]["short_name"].ToString());
-                    
+
                     resposta = rEndereco[0].ToString();
                     resposta += rEndereco[1].ToString();
+                    return resposta;
+                }
+            }
+            catch
+            {
+                return resposta;
+            }
+        }
+        public string ObterEndereco(string lat, string lon)
+        {
+            string resposta = null;
+
+            try
+            {
+                using (DataSet data = new DataSet())
+                {
+                    string endereco = string.Format("https://maps.googleapis.com/maps/api/geocode/xml?latlng={0},{1}&key=AIzaSyDPNFOUPna4dnTRtQ806ST8G9Vj6WEK32Y", lat, lon);
+                    data.ReadXml(endereco);
+                    resposta = data.Tables["result"].Rows[0]["formatted_address"].ToString();
+                    
                     return resposta;
                 }
             }

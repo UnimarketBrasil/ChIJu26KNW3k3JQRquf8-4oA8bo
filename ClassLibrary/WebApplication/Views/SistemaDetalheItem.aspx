@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <form runat="server">
+    <form runat="server" oninput="calc_total();">
         <div class="panel panel-default">
             <!-- Default panel contents -->
             <div class="panel-heading text-center">
@@ -18,16 +18,16 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group well well-sm">
-                            <asp:Label runat="server" Text="Preço:"></asp:Label>
-                            <asp:Label runat="server" ID="lbValorUnitario" Text="R$ 190,00"></asp:Label>
+                            <asp:Label runat="server" Text="Preço: R$ "></asp:Label>
+                            <asp:Label runat="server" ID="lbValorUnitario" Text="R$ 190.00"></asp:Label>
                         </div>
                         <div class="form-group">
                             <asp:Label runat="server" Text="Quantidade:"></asp:Label>
-                            <asp:TextBox runat="server" ID="txtQuantidade" TextMode="Number" CssClass="form-control"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="txtQuantidade" TextMode="Number" MaxLength="0" CssClass="form-control"></asp:TextBox>
                         </div>
                         <div class="form-group">
                             <asp:Label runat="server" Text="Total:"></asp:Label>
-                            <asp:Label runat="server" ID="lbTotal" Text="R$ 190,00"></asp:Label>
+                            <asp:Label runat="server" ID="lbTotal" Text=""></asp:Label>
                         </div>
                         <div class="form-group">
                             <asp:LinkButton ID="btnLixeira" runat="server" CssClass="btn btn-default"><span aria-hidden="true" class="glyphicon glyphicon-arrow-left"></span></asp:LinkButton>
@@ -64,4 +64,12 @@
             </div>
         </div>
     </form>
+    <script type="text/javascript">
+        function calc_total() {
+            var qtd = parseInt(document.getElementById('<% Response.Write(txtQuantidade.ClientID); %>').value);
+                var preco = parseInt(document.getElementById('<% Response.Write(lbValorUnitario.ClientID); %>').innerHTML);
+                tot = (qtd*1) * (preco*1);
+                document.getElementById('<% Response.Write(lbTotal.ClientID);%>').innerHTML = tot;
+        }
+	</script>
 </asp:Content>

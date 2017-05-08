@@ -1,5 +1,6 @@
 ﻿using ClassLibrary;
 using ClassLibrary.Repositorio;
+using ClassUtilitario;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace WebApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            int idItem=0;
+            int idItem = 0;
             try
             {
                 idItem = int.Parse(Request.QueryString["id"]);
@@ -25,19 +26,21 @@ namespace WebApplication
 
             Item i = new Item();
             ItemRepositorio carregarItem = new ItemRepositorio();
-
+            GeoCodificacao g = new GeoCodificacao();
 
             i = carregarItem.DetalheItem(idItem);
 
             if (i != null)
             {
                 lbNomeProduto.Text = i.Nome;
-                lbValorUnitario.Text = "R$ " + i.ValorUnitario;
+                lbValorUnitario.Text = i.ValorUnitario.ToString();
                 lbNomeVendedor.Text = i.Vendedor.Nome;
                 lbEndereco.Text = "Falta buscar endereco";
                 lbTelefone.Text = i.Vendedor.Telefone;
                 lbEmailVendedor.Text = i.Vendedor.Email;
                 lbDescricao.Text = i.Descricao;
+                lbEndereco.Text = g.ObterEndereco(i.Vendedor.Latitude, i.Vendedor.Longitude);
+                txtQuantidade.MaxLength = 2; // = Convert.ToInt32(i.Quantidade);
             }
         }
     }
