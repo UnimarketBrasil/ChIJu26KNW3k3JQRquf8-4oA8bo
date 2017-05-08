@@ -157,13 +157,12 @@ namespace ClassUtilitario
         //    table.WriteSelectedRows(0, -1, doc.LeftMargin, 70, writer.DirectContent);
         //}
 
-        public virtual void PedidoPdf(Pedido pedido)
+        public virtual void PedidoPdf(Pedido pedido, MemoryStream saida)
         {
             try
             {
                 using (Document documento = new Document(PageSize.A4, 20, 10, 80, 80))
                 {
-                    var saida = new MemoryStream();
                     var preto = new BaseColor(0, 0, 0);
                     var fundo = new BaseColor(200, 200, 200);
                     Font corpo = FontFactory.GetFont("Verdana", 8, Font.NORMAL, preto);
@@ -233,13 +232,12 @@ namespace ClassUtilitario
             }
         }
 
-        public virtual void PdfUsuario(List<Usuario> usuario)
+        public virtual void PdfUsuario(List<Usuario> usuario, MemoryStream saida)
         {
             try
             {
                 using (Document documento = new Document(PageSize.A4, 20, 10, 80, 80))
                 {
-                    var saida = new MemoryStream();
                     var preto = new BaseColor(0, 0, 0);
                     var fundo = new BaseColor(200, 200, 200);
                     Font corpo = FontFactory.GetFont("Verdana", 8, Font.NORMAL, preto);
