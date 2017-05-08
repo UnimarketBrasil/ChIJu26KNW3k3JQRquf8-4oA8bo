@@ -25,7 +25,7 @@ namespace ClassLibrary.Repositorio
                     Cmd.Parameters.AddWithValue("@IdUsuario", item.Vendedor.Id);
                     Cmd.ExecuteNonQuery();
 
-                    item.Id = int.Parse(Cmd.ExecuteScalar().ToString());
+                    //item.Id = int.Parse(Cmd.ExecuteScalar().ToString());
 
                     return true;
 

@@ -67,7 +67,6 @@ C:\Users\numero\Source\Repos\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtili
 C:\Users\numero\Source\Repos\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\bin\Debug\ClassUtilitario.pdb
 C:\Users\numero\Source\Repos\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\bin\Debug\ClassLibrary.dll
 C:\Users\numero\Source\Repos\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\bin\Debug\itextsharp.dll
-C:\Users\numero\Source\Repos\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\bin\Debug\Newtonsoft.Json.dll
 C:\Users\numero\Source\Repos\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\bin\Debug\ClassLibrary.pdb
 C:\Users\numero\Source\Repos\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\bin\Debug\itextsharp.xml
 C:\Users\numero\Source\Repos\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\bin\Debug\Newtonsoft.Json.xml

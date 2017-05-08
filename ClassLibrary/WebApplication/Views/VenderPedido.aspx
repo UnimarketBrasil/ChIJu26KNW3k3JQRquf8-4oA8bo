@@ -28,17 +28,17 @@
                     </asp:TemplateField>
                     <asp:TemplateField ItemStyle-CssClass="col-md-1">
                         <ItemTemplate>
-                            <asp:LinkButton ID="pdfPedido" CssClass="btn btn-success btn-xs" runat="server" PostBackUrl='<%# Page.ResolveUrl("~/Views/SistemaDetalheItem.aspx")%>' Text="Finalizar" />
+                            <asp:LinkButton ID="detalhe" CssClass="btn btn-success btn-xs" runat="server" PostBackUrl='<%# Page.ResolveUrl("~/Views/SistemaDetalheItem.aspx")%>' Text="Finalizar" />
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField ItemStyle-CssClass="col-md-1">
                         <ItemTemplate>
-                            <asp:LinkButton ID="pdfPedido" CssClass="btn btn-danger btn-xs" runat="server" PostBackUrl='<%# Page.ResolveUrl("~/Views/SistemaDetalheItem.aspx")%>' Text="Cancelar" />
+                            <asp:LinkButton ID="cancelar" CssClass="btn btn-danger btn-xs" runat="server" PostBackUrl='<%# Page.ResolveUrl("~/Views/SistemaDetalheItem.aspx")%>' Text="Cancelar" />
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField ItemStyle-CssClass="col-md-1">
                         <ItemTemplate>
-                            <asp:LinkButton ID="pdfPedido" CssClass="btn btn-info btn-xs" runat="server" PostBackUrl='<%# Page.ResolveUrl("~/Views/SistemaDetalheItem.aspx")%>' Text="PDF" />
+                            <asp:LinkButton ID="pdfPedido" CssClass="btn btn-info btn-xs" OnCommand="pdfPedido_Command" runat="server" CommandName="Pedido"  CommandArgument='<%# DataBinder.Eval(Container.DataItem, "Id")%>' Text="PDF"></asp:LinkButton>
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>

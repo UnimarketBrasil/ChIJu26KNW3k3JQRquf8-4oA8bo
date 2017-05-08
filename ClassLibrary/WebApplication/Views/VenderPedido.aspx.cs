@@ -1,7 +1,9 @@
 ﻿using ClassLibrary;
 using ClassLibrary.Repositorio;
+using ClassUtilitario;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -60,6 +62,24 @@ namespace WebApplication
         {
             grdPedido.PageIndex = e.NewPageIndex;
             grdPedido.DataBind();
+        }
+
+       
+        protected void pdfPedido_Command(object sender, CommandEventArgs e)
+        {
+             if (e.CommandName == "Pedido")
+            {
+                string IdPedido = e.CommandArgument.ToString();
+                Pedido pedido = new Pedido();
+                pedido.Id = Convert.ToInt32(IdPedido);
+                PedidoRepositorio p = new PedidoRepositorio();
+                pedido = p.CarregarPedido(pedido);
+                MemoryStream m = new MemoryStream();
+                Pdf pdf = new Pdf();
+                pdf.PedidoPdf(pedido, m);
+                Response.OutputStream.Write(m.GetBuffer(), 0, m.GetBuffer().Length);
+
+            }
         }
     }
 }

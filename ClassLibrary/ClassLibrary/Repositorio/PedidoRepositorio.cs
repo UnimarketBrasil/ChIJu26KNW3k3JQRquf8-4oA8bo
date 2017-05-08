@@ -128,7 +128,7 @@ namespace ClassLibrary.Repositorio
 
                             item.Nome = Convert.ToString(Dr["Nome"]);
                             item.Quantidade = Convert.ToDouble(Dr["Quantidade"]);
-                            item.ValorUnitario = Convert.ToDouble(Dr["Valorunitario"]);
+                            //item.ValorUnitario = Convert.ToDouble(Dr["ValorUnitario"]);
 
                             pedido.Item.Add(item);
                         }
