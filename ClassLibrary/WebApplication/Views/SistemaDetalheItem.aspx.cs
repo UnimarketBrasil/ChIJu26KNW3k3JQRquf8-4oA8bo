@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ClassLibrary;
+using ClassLibrary.Repositorio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +13,7 @@ namespace WebApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            int idItem;
+            int idItem=0;
             try
             {
                 idItem = int.Parse(Request.QueryString["id"]);
@@ -20,8 +22,23 @@ namespace WebApplication
             {
                 Response.Redirect("~/Views/SistemaErro.aspx");
             }
-            
 
+            Item i = new Item();
+            ItemRepositorio carregarItem = new ItemRepositorio();
+
+
+            i = carregarItem.DetalheItem(idItem);
+
+            if (i != null)
+            {
+                lbNomeProduto.Text = i.Nome;
+                lbValorUnitario.Text = "R$ " + i.ValorUnitario;
+                lbNomeVendedor.Text = i.Vendedor.Nome;
+                lbEndereco.Text = "Falta buscar endereco";
+                lbTelefone.Text = i.Vendedor.Telefone;
+                lbEmailVendedor.Text = i.Vendedor.Email;
+                lbDescricao.Text = i.Descricao;
+            }
         }
     }
 }

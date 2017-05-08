@@ -18,7 +18,7 @@
                     <asp:ImageField DataImageUrlField="Imagem" ControlStyle-Width="80" ControlStyle-Height="80" />
                     <asp:HyperLinkField DataNavigateUrlFields="Id" DataTextField="Nome" DataNavigateUrlFormatString="SistemaDetalheItem.aspx?id={0}" />
                     <asp:BoundField DataField="ValorUnitario" HeaderText="Preço" ItemStyle-Width="300" />
-                    <asp:BoundField DataField="Usuario.Nome" HeaderText="Vendedor" ItemStyle-Width="300" />
+                    <asp:BoundField DataField="Vendedor.Nome" HeaderText="Vendedor" ItemStyle-Width="300" />
                 </Columns>
                 <PagerSettings Mode="Numeric" Position="TopAndBottom" PageButtonCount="5" />
                 <PagerStyle HorizontalAlign="Right" Font-Size="Medium" CssClass="GridPager" />

@@ -401,8 +401,8 @@ namespace ClassLibrary.Repositorio
                             item.Id = Convert.ToInt32(Dr["Id"]);
                             item.Nome = ti.ToTitleCase(Convert.ToString(Dr["Nome"]));
                             item.ValorUnitario = Math.Round(Convert.ToDouble(Dr["ValorUnitario"]), 2);
-                            item.Comprador = new Usuario();
-                            item.Comprador.Nome = ti.ToTitleCase(Convert.ToString(Dr["Vendedor"]));
+                            item.Vendedor = new Usuario();
+                            item.Vendedor.Nome = ti.ToTitleCase(Convert.ToString(Dr["Vendedor"]));
 
                             itemList.Add(item);
                         }
