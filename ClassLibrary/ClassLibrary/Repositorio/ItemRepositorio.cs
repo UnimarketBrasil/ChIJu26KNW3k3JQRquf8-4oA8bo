@@ -94,6 +94,51 @@ namespace ClassLibrary.Repositorio
             }
         }
 
+        public Item DetalheItem(int idItem)
+        {
+            Abrirconexao();
+
+            Item item = null;
+
+            using (Cmd = new SqlCommand("", Con))
+            {
+                try
+                {
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@IdItem", idItem);
+                    Cmd.ExecuteNonQuery();
+
+                    Dr = Cmd.ExecuteReader();
+
+                    if (Dr.HasRows)
+                    {
+                        item = new Item();
+                        Dr.Read();
+                        item.Codigo = Convert.ToString(Dr["Codigo"]);
+                        item.Nome = Convert.ToString(Dr["Nome"]);
+                        item.Descricao = Convert.ToString(Dr["Descricao"]);
+                        item.ValorUnitario = Convert.ToDouble(Dr["Valorunitario"]);
+                        item.Quantidade = Convert.ToDouble(Dr["Quantidade"]);
+
+                    }
+
+                    return item;
+                }
+                catch(Exception ex)
+                {
+                    throw new Exception("Erro o carregar Item: " + ex.Message);
+
+                    return item;
+                }
+                finally
+                {
+                    Dr.Close();
+
+                    FecharConexao();
+
+                }
+            }
+        }
         public Item DetalheItemVendedor(int idItem)
         {
             Abrirconexao();

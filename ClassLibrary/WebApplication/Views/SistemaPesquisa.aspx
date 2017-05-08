@@ -14,9 +14,9 @@
         <div class="row container-fluid">
             <asp:GridView ID="grdItens" CssClass="table table-hover table-striped" GridLines="None" runat="server" OnPageIndexChanging="lbItens_PageIndexChanging" AutoGenerateColumns="false" AllowPaging="True">
                 <Columns>
-                    <asp:ImageField DataImageUrlField="Imagem" ControlStyle-Width="80" ControlStyle-Height="80" />
                     <asp:BoundField DataField="Id" HeaderText="ID" ItemStyle-Width="300" Visible="false" />
-                    <asp:HyperLinkField DataNavigateUrlFields="Nome" DataTextField="Nome" DataNavigateUrlFormatString='SistemaDetalheItem.aspx?id=' />
+                    <asp:ImageField DataImageUrlField="Imagem" ControlStyle-Width="80" ControlStyle-Height="80" />
+                    <asp:HyperLinkField DataNavigateUrlFields="Id" DataTextField="Nome" DataNavigateUrlFormatString="SistemaDetalheItem.aspx?id={0}" />
                     <asp:BoundField DataField="ValorUnitario" HeaderText="Preço" ItemStyle-Width="300" />
                     <asp:BoundField DataField="Usuario.Nome" HeaderText="Vendedor" ItemStyle-Width="300" />
                 </Columns>
