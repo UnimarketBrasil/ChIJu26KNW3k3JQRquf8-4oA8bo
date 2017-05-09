@@ -3,6 +3,7 @@ using ClassLibrary.Repositorio;
 using ClassUtilitario;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -34,6 +35,7 @@ namespace WebApplication
             {
                 lbNomeProduto.Text = i.Nome;
                 lbValorUnitario.Text = i.ValorUnitario.ToString();
+                lbTotal.Text = i.ValorUnitario.ToString();
                 lbNomeVendedor.Text = i.Vendedor.Nome;
                 lbEndereco.Text = "Falta buscar endereco";
                 lbTelefone.Text = i.Vendedor.Telefone;
@@ -41,6 +43,16 @@ namespace WebApplication
                 lbDescricao.Text = i.Descricao;
                 lbEndereco.Text = g.ObterEndereco(i.Vendedor.Latitude, i.Vendedor.Longitude);
                 txtQuantidade.MaxLength = 2; // = Convert.ToInt32(i.Quantidade);
+
+                string caminho = string.Format("~/Imagens/{0}/{1}/", i.Vendedor.Id, i.Id);
+
+                if (Directory.Exists(Server.MapPath(caminho)))
+                {
+                    var diretorio = new DirectoryInfo(Server.MapPath(caminho));
+                    var arquivos = diretorio.GetFiles();
+                    string img = arquivos.Last().Name;
+                    imProduto.ImageUrl = ResolveUrl(Path.Combine(caminho, img));
+                }
             }
         }
     }

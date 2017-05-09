@@ -80,11 +80,19 @@
                             </div>
                             <div class="form-group">
                                 <label for="<% =txtEndereco.ClientID %>" class="col-lg-2 control-label">Endereço</label>
-                                <div class="col-lg-7">
-                                    <asp:TextBox ID="txtEndereco" runat="server" CssClass="form-control" placeholder="CEP ou Endereço" required="true"></asp:TextBox>
+                                <div class="col-lg-5">
+                                    <asp:TextBox ID="txtEndereco" runat="server" CssClass="form-control" OnKeyUp="formataCEP(this,event);" onchange="formataCEP(this,event);" placeholder="CEP" required="true" MaxLength="9"></asp:TextBox>
                                 </div>
                                 <div class="col-lg-3">
-                                    <asp:TextBox ID="txtNumero" runat="server" CssClass="form-control" TextMode="Number"  placeholder="N°" required="true" OnTextChanged="txtNumero_TextChanged" AutoPostBack="true" ></asp:TextBox>
+                                    <asp:TextBox ID="txtNumero" runat="server" CssClass="form-control" TextMode="Number"  placeholder="N°" required="true"></asp:TextBox>
+                                </div>
+                                <div class="col-lg-2">
+                                    <button draggable="false" class="btn btn-primary" onclick="chamarAjax();"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                </div>
+                            </div>
+                            <div id="Div1" runat="server" class="form-group">
+                                <div class="col-lg-10 col-lg-offset-2">
+                                    <asp:Label runat="server" ID="Label1" Text=""></asp:Label>
                                 </div>
                             </div>
                             <div id="dvEnderecoCompleto" runat="server" class="form-group">
@@ -151,6 +159,23 @@
                     document.getElementById('<% =lbComprar.ClientID%>').className = "btn btn-primary";
                 }
             }
+        </script>
+        <script type="text/javascript">
+            function chamarAjax() {
+                var xmlhttp = window.XMLHttpRequest ? new XMLHttpRequest : new ActiveXObject("Microsoft.XMLHTTP");
+
+                xmlhttp.onreadystatechange = function () {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                        document.getElementById('<%Response.Write(lbEndereco.ClientID);%>').innerHTML = xmlhttp.response;
+                }
+            }
+
+            xmlhttp.open("GET", "<%Response.Write(ResolveUrl("~/Views/Ajax/BuscaEndereco.aspx"));%>?cep=" +
+                document.getElementById("<%Response.Write(txtEndereco.ClientID);%>").value +
+        "&num=" + document.getElementById("<%Response.Write(txtNumero.ClientID);%>").value, true);
+            xmlhttp.send();
+            }
+
         </script>
     </div>
 </asp:Content>

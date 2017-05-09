@@ -99,6 +99,7 @@ namespace ClassLibrary.Repositorio
             Abrirconexao();
 
             Item item = null;
+            TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
 
             using (Cmd = new SqlCommand("DetalheItem", Con))
             {
@@ -115,15 +116,17 @@ namespace ClassLibrary.Repositorio
                         item = new Item();
 
                         Dr.Read();
+                        item.Id = Convert.ToInt32(Dr["Id"]);
                         item.Codigo = Convert.ToString(Dr["Codigo"]);
-                        item.Nome = Convert.ToString(Dr["Nome"]);
+                        item.Nome = ti.ToTitleCase(Convert.ToString(Dr["Nome"]));
                         item.ValorUnitario = Math.Round(Convert.ToDouble(Dr["Valorunitario"]), 2);
                         item.Quantidade = Convert.ToDouble(Dr["Quantidade"]);
-                        item.Descricao = Convert.ToString(Dr["Descricao"]);
+                        item.Descricao = char.ToUpper(Convert.ToString(Dr["Descricao"])[0]) + Convert.ToString(Dr["Descricao"]).Substring(1); //Teste
                         item.Categoria = new Categoria();
                         item.Categoria.Nome = Convert.ToString(Dr["Categoria"]);
                         item.Vendedor = new Usuario();
-                        item.Vendedor.Nome = Convert.ToString(Dr["Vendedor"]);
+                        item.Vendedor.Id = Convert.ToInt32(Dr["IdVendedor"]);
+                        item.Vendedor.Nome = ti.ToTitleCase(Convert.ToString(Dr["Vendedor"]));
                         item.Vendedor.Latitude = Convert.ToString(Dr["Latitude"]);
                         item.Vendedor.Longitude = Convert.ToString(Dr["Longitude"]);
                         item.Vendedor.Telefone = Convert.ToString(Dr["Telefone"]);

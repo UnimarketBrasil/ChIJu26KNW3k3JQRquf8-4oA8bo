@@ -259,7 +259,7 @@
 
                    xmlhttp.open("GET", "<%Response.Write(ResolveUrl("~/Views/Ajax/BuscaEndereco.aspx"));%>?cep=" +
                        document.getElementById("<%Response.Write(txtEndereco.ClientID);%>").value +
-                       "&num=" + document.getElementById("<%Response.Write(txtNumero.ClientID);%>").value , true);
+                       "&num=" + document.getElementById("<%Response.Write(txtNumero.ClientID);%>").value, true);
                    xmlhttp.send();
                }
 

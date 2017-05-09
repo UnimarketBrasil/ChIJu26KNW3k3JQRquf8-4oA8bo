@@ -99,7 +99,7 @@
     <Content Include="Documentos\Querys\Selects\Procedure CarregarUsuario.sql" />
     <Content Include="Documentos\Querys\Selects\Procedure DetalheItemComprador.sql" />
     <Content Include="Documentos\Querys\Selects\Procedure DetalheItemVendedor.sql" />
-    <Content Include="Documentos\Querys\Selects\Procedure DetalheItema .sql" />
+    <Content Include="Documentos\Querys\Selects\Procedure DetalheItem .sql" />
     <Content Include="Documentos\Querys\Selects\Procedure DetalheUsuario.sql" />
     <Content Include="Documentos\Querys\Selects\Procedure ValidaEmailCpfCnpj .sql" />
     <Content Include="Documentos\Querys\Selects\Procedure LoginUsuario.sql" />

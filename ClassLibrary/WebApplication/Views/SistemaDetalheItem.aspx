@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <asp:Image runat="server" ImageUrl="http://localhost:49756/Imagens/65/4/imagem2.png" />
+                            <asp:Image ID="imProduto" runat="server" />
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -23,10 +23,10 @@
                         </div>
                         <div class="form-group">
                             <asp:Label runat="server" Text="Quantidade:"></asp:Label>
-                            <asp:TextBox runat="server" ID="txtQuantidade" TextMode="Number" MaxLength="0" CssClass="form-control"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="txtQuantidade" TextMode="Number" MaxLength="1" Text="1" CssClass="form-control"></asp:TextBox>
                         </div>
                         <div class="form-group">
-                            <asp:Label runat="server" Text="Total:"></asp:Label>
+                            <asp:Label runat="server" Text="Total: R$ "></asp:Label>
                             <asp:Label runat="server" ID="lbTotal" Text=""></asp:Label>
                         </div>
                         <div class="form-group">
@@ -67,8 +67,10 @@
     <script type="text/javascript">
         function calc_total() {
             var qtd = parseInt(document.getElementById('<% Response.Write(txtQuantidade.ClientID); %>').value);
-                var preco = parseInt(document.getElementById('<% Response.Write(lbValorUnitario.ClientID); %>').innerHTML);
-                tot = (qtd*1) * (preco*1);
+            var preco = parseFloat(document.getElementById('<% Response.Write(lbValorUnitario.ClientID); %>').innerText.replace(",","."));
+            var tot = (qtd * preco);
+            tot = tot.toFixed(2);
+            tot = tot.replace(".", ",");
                 document.getElementById('<% Response.Write(lbTotal.ClientID);%>').innerHTML = tot;
         }
 	</script>

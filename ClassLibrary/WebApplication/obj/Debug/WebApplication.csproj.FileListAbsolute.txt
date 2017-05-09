@@ -99,7 +99,6 @@ C:\Users\José\TccUnimarket\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplicat
 C:\Users\José\TccUnimarket\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\bin\WebApplication.pdb
 C:\Users\José\TccUnimarket\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\bin\ClassLibrary.dll
 C:\Users\José\TccUnimarket\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\bin\ClassUtilitario.dll
-C:\Users\José\TccUnimarket\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\bin\itextsharp.dll
 C:\Users\José\TccUnimarket\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\bin\ClassLibrary.pdb
 C:\Users\José\TccUnimarket\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\bin\ClassUtilitario.pdb
 C:\Users\José\TccUnimarket\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\bin\itextsharp.xml
@@ -313,3 +312,7 @@ C:\Users\numero\Source\Repos\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplica
 C:\Users\numero\Source\Repos\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\bin\Microsoft.VisualStudio.OLE.Interop.dll
 C:\Users\numero\Source\Repos\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\bin\stdole.dll
 C:\Users\numero\Source\Repos\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\bin\Microsoft.VisualStudio.OLE.Interop.xml
+C:\Users\José\TccUnimarket\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\bin\Microsoft.VisualStudio.Debugger.Parallel.MultiValueVisualizers.dll
+C:\Users\José\TccUnimarket\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\bin\Microsoft.VisualStudio.Debugger.InteropA.dll
+C:\Users\José\TccUnimarket\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\bin\Microsoft.VisualStudio.OLE.Interop.dll
+C:\Users\José\TccUnimarket\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\bin\stdole.dll
