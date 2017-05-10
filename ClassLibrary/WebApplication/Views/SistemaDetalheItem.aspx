@@ -30,8 +30,9 @@
                             <asp:Label runat="server" ID="lbTotal" Text=""></asp:Label>
                         </div>
                         <div class="form-group">
-                            <asp:LinkButton ID="btnLixeira" runat="server" CssClass="btn btn-default"><span aria-hidden="true" class="glyphicon glyphicon-arrow-left"></span></asp:LinkButton>
-                            <asp:LinkButton ID="LinkButton1" runat="server" CssClass="btn btn-success"><span aria-hidden="true" class="glyphicon glyphicon-plus-sign"></span>&nbsp;COMPRAR</asp:LinkButton>
+                            <asp:Label runat="server" ID="lbIdItem" Visible="false"></asp:Label>
+                            <asp:LinkButton ID="btLixeira" runat="server" CssClass="btn btn-default" PostBackUrl="~/Views/SistemaPesquisa.aspx"><span aria-hidden="true" class="glyphicon glyphicon-arrow-left"></span></asp:LinkButton>
+                            <asp:LinkButton ID="btAdicionaCarrinho" OnClick="btAdicionaCarrinho_Click" runat="server" CssClass="btn btn-success"><span aria-hidden="true" class="glyphicon glyphicon-plus-sign"></span>&nbsp;COMPRAR</asp:LinkButton>
                         </div>
                     </div>
                     <div class="col-md-4">

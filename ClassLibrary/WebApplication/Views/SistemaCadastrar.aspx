@@ -247,23 +247,22 @@
             });
 
         </script>
-           <script type="text/javascript">
-               function chamarAjax() {
-                   var xmlhttp = window.XMLHttpRequest ? new XMLHttpRequest : new ActiveXObject("Microsoft.XMLHTTP");
+        <script type="text/javascript">
+            function chamarAjax() {
+                var xmlhttp = window.XMLHttpRequest ? new XMLHttpRequest : new ActiveXObject("Microsoft.XMLHTTP");
 
-                   xmlhttp.onreadystatechange = function () {
-                       if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                           document.getElementById('<%Response.Write(lbEndereco.ClientID);%>').innerHTML = xmlhttp.response;
-                       }
-                   }
+                xmlhttp.onreadystatechange = function () {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                        document.getElementById('<%Response.Write(lbEndereco.ClientID);%>').innerHTML = xmlhttp.response;
+                    }
+                }
 
-                   xmlhttp.open("GET", "<%Response.Write(ResolveUrl("~/Views/Ajax/BuscaEndereco.aspx"));%>?cep=" +
-                       document.getElementById("<%Response.Write(txtEndereco.ClientID);%>").value +
-                       "&num=" + document.getElementById("<%Response.Write(txtNumero.ClientID);%>").value, true);
-                   xmlhttp.send();
-               }
-
-    </script>
+                xmlhttp.open("GET", "<%Response.Write(ResolveUrl("~/Views/Ajax/BuscaEndereco.aspx"));%>?cep=" +
+                    document.getElementById("<%Response.Write(txtEndereco.ClientID);%>").value +
+                    "&num=" + document.getElementById("<%Response.Write(txtNumero.ClientID);%>").value, true);
+                xmlhttp.send();
+            }
+        </script>
     </div>
 
 </asp:Content>

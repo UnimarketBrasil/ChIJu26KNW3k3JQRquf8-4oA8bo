@@ -149,6 +149,54 @@ namespace ClassLibrary.Repositorio
                 }
             }
         }
+
+        public Item DetalheItemCarrinho(int idItem)
+        {
+            Abrirconexao();
+
+            Item item = null;
+            TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
+
+            using (Cmd = new SqlCommand("DetalheItem", Con))
+            {
+                try
+                {
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@IdItem", idItem);
+                    Cmd.ExecuteNonQuery();
+
+                    Dr = Cmd.ExecuteReader();
+
+                    if (Dr.HasRows)
+                    {
+                        item = new Item();
+
+                        Dr.Read();
+                        item.Id = Convert.ToInt32(Dr["Id"]);
+                        item.Nome = ti.ToTitleCase(Convert.ToString(Dr["Nome"]));
+                        item.ValorUnitario = Math.Round(Convert.ToDouble(Dr["Valorunitario"]), 2);
+                        item.Quantidade = Convert.ToDouble(Dr["Quantidade"]);
+                        item.Vendedor = new Usuario();
+                        item.Vendedor.Id = Convert.ToInt32(Dr["IdVendedor"]);
+
+                    }
+
+                    return item;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Erro o carregar Item: " + ex.Message);
+                }
+                finally
+                {
+                    Dr.Close();
+
+                    FecharConexao();
+
+                }
+            }
+        }
+
         public Item DetalheItemVendedor(int idItem)
         {
             Abrirconexao();

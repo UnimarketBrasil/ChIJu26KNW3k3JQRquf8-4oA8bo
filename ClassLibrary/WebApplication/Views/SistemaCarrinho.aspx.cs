@@ -1,6 +1,7 @@
 ﻿using ClassLibrary;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -8,25 +9,51 @@ using System.Web.UI.WebControls;
 
 namespace WebApplication
 {
-    public partial class WebForm3 : System.Web.UI.Page
+    public partial class SistemaCarrinho : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Usuario u = (Usuario)Session["sistema"];
-            List<Item> lst = null;
-
-            if (Session["carrinho"] == null)
+            if (Session["carrinho"] != null)
             {
-                lst = new List<Item>();
-                Session["carrinho"] = lst;
-            }
-            else
-            {
-                lst = (List<Item>)Session["carrinho"];
-            }
+                List<Item> lst = (List<Item>)Session["carrinho"];
 
-            lbItens.DataSource = lst;
-            lbItens.DataBind();
+                foreach (var item in lst)
+                {
+                    string caminho = string.Format("~/Imagens/{0}/{1}/", item.Vendedor.Id, item.Id);
+
+                    if (Directory.Exists(Server.MapPath(caminho)))
+                    {
+                        var diretorio = new DirectoryInfo(Server.MapPath(caminho));
+                        var arquivos = diretorio.GetFiles();
+                        string i = arquivos.Last().Name;
+                        item.Imagem = ResolveUrl(Path.Combine(caminho, i));
+                    }
+                }
+
+                grdCarrinhoDeCompra.DataSource = lst;
+                grdCarrinhoDeCompra.DataBind();
+            }
+        }
+
+        protected void grdCarrinhoDeCompra_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            grdCarrinhoDeCompra.PageIndex = e.NewPageIndex;
+            grdCarrinhoDeCompra.DataBind();
+        }
+
+        protected void lnkExcluir_Command(object sender, CommandEventArgs e)
+        {
+            string id = e.CommandArgument.ToString();
+
+            List<Item> lst = new List<Item>();
+            lst = (List<Item>)Session["carrinho"];
+
+            lst.RemoveAll((x) => x.Id == int.Parse(id));
+
+            Session["carrinho"] = lst;
+
+            Response.Redirect(Request.RawUrl);
+
         }
     }
 }
