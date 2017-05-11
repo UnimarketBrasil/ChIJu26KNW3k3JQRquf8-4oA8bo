@@ -4,6 +4,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
+        <div id="dvMsg" runat="server" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <asp:Label ID="lbMsg" runat="server"></asp:Label>
+        </div>
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4>Novo Produto</h4>

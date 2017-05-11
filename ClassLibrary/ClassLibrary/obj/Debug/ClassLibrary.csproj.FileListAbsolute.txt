@@ -58,3 +58,8 @@ C:\Users\numero\Source\Repos\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassLibra
 C:\Users\numero\Source\Repos\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassLibrary\obj\Debug\ClassLibrary.csprojResolveAssemblyReference.cache
 C:\Users\numero\Source\Repos\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassLibrary\obj\Debug\ClassLibrary.dll
 C:\Users\numero\Source\Repos\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassLibrary\obj\Debug\ClassLibrary.pdb
+D:\Users\e23484\Documents\Lotus\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassLibrary\bin\Debug\ClassLibrary.dll
+D:\Users\e23484\Documents\Lotus\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassLibrary\bin\Debug\ClassLibrary.pdb
+D:\Users\e23484\Documents\Lotus\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassLibrary\obj\Debug\ClassLibrary.csprojResolveAssemblyReference.cache
+D:\Users\e23484\Documents\Lotus\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassLibrary\obj\Debug\ClassLibrary.dll
+D:\Users\e23484\Documents\Lotus\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassLibrary\obj\Debug\ClassLibrary.pdb

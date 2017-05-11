@@ -106,3 +106,13 @@ C:\Users\Cleiton\Documents\TCC\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUti
 C:\Users\Cleiton\Documents\TCC\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\obj\Debug\ClassUtilitario.csprojResolveAssemblyReference.cache
 C:\Users\Cleiton\Documents\TCC\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\obj\Debug\ClassUtilitario.dll
 C:\Users\Cleiton\Documents\TCC\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\obj\Debug\ClassUtilitario.pdb
+D:\Users\e23484\Documents\Lotus\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\bin\Debug\ClassUtilitario.dll
+D:\Users\e23484\Documents\Lotus\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\bin\Debug\ClassUtilitario.pdb
+D:\Users\e23484\Documents\Lotus\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\bin\Debug\ClassLibrary.dll
+D:\Users\e23484\Documents\Lotus\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\bin\Debug\itextsharp.dll
+D:\Users\e23484\Documents\Lotus\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\bin\Debug\ClassLibrary.pdb
+D:\Users\e23484\Documents\Lotus\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\bin\Debug\itextsharp.xml
+D:\Users\e23484\Documents\Lotus\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\bin\Debug\Newtonsoft.Json.xml
+D:\Users\e23484\Documents\Lotus\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\obj\Debug\ClassUtilitario.csprojResolveAssemblyReference.cache
+D:\Users\e23484\Documents\Lotus\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\obj\Debug\ClassUtilitario.dll
+D:\Users\e23484\Documents\Lotus\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\obj\Debug\ClassUtilitario.pdb
