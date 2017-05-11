@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ClassLibrary;
+using System.IO;
+using ClassLibrary.Repositorio;
 
 namespace WebApplication
 {
@@ -12,6 +14,25 @@ namespace WebApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                CategoriaRepositorio carregaCategoria = new CategoriaRepositorio();
+
+                List<Categoria> lstCategoria = carregaCategoria.ListarCategoria();
+
+                List<String> lstNomeCategoria = new List<string>();
+
+                foreach (Categoria cat in lstCategoria)
+                {
+                    lstNomeCategoria.Add(cat.Nome);
+                }
+
+                RepeaterCategoria.DataSource = lstCategoria;
+                RepeaterCategoria.DataBind();
+
+            }
+
+
             if (Session["sistema"] != null)
             {
                 Usuario u = (Usuario)Session["sistema"];

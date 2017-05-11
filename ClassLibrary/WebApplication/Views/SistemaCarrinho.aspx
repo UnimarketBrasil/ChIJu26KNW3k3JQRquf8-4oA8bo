@@ -6,7 +6,7 @@
     <h2 class="text-uppercase"><strong>Carrinho de compra</strong></h2>
     <form runat="server">
         <div class="row container-fluid">
-            <div id="divMsg" runat="server" role="alert">
+            <div id="dvMsg" runat="server" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <asp:Label ID="lbMsg" runat="server"></asp:Label>
             </div>

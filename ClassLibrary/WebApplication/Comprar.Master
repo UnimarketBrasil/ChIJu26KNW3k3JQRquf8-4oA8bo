@@ -41,15 +41,17 @@
                     <li class="active"><a runat="server" draggable="false" href="~/Default.aspx">Início <span class="sr-only">(current)</span></a></li>
                     <li class="dropdown">
                         <a href="#" draggable="false" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categorias <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a draggable="false" href="#">Categoria 1</a></li>
-                            <li><a draggable="false" href="#">Categoria 2</a></li>
-                            <li><a draggable="false" href="#">Categoria 3</a></li>
-                            <li class="divider"></li>
-                            <li><a draggable="false" href="#">Categoria 4</a></li>
-                            <li class="divider"></li>
-                            <li><a draggable="false" href="#">Categoria 5</a></li>
-                        </ul>
+                        <asp:Repeater ID="RepeaterCategoria" runat="server">
+                            <HeaderTemplate>
+                                <ul class="dropdown-menu" role="menu">
+                            </HeaderTemplate>
+                            <ItemTemplate>
+                                <li><a runat="server" draggable="false" href='<%# Page.ResolveUrl("~/Views/SistemaCategoria.aspx?idCat=") + DataBinder.Eval(Container.DataItem, "Id") %>'><%# DataBinder.Eval(Container.DataItem, "Nome") %></a></li>
+                            </ItemTemplate>
+                            <FooterTemplate>
+                                </ul>
+                            </FooterTemplate>
+                        </asp:Repeater>
                     </li>
                 </ul>
                 <form id="pesquisar" class="navbar-form navbar-left" role="search" action="<% Response.Write(ResolveUrl("~/Views/SistemaPesquisa.aspx"));%>">

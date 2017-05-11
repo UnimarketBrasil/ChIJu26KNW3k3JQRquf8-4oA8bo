@@ -33,6 +33,11 @@ namespace WebApplication
                 grdCarrinhoDeCompra.DataSource = lst;
                 grdCarrinhoDeCompra.DataBind();
             }
+            else if (Session["carinho"] == null)
+            {
+                dvMsg.Attributes["class"] = "info";
+                lbMsg.Text = "Seu carrinho de compras está vazio...<a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=6' target='_blank'></a>";
+            }
         }
 
         protected void grdCarrinhoDeCompra_PageIndexChanging(object sender, GridViewPageEventArgs e)

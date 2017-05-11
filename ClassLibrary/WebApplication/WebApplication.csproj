@@ -97,6 +97,7 @@
     <Content Include="Documentos\Querys\Selects\Procedure CarregarPedido.sql" />
     <Content Include="Documentos\Querys\Selects\Procedure CarregarSubUsuario.sql" />
     <Content Include="Documentos\Querys\Selects\Procedure CarregarUsuario.sql" />
+    <Content Include="Documentos\Querys\Selects\Procedure CarregarCategoria.sql" />
     <Content Include="Documentos\Querys\Selects\Procedure DetalheItemComprador.sql" />
     <Content Include="Documentos\Querys\Selects\Procedure DetalheItemVendedor.sql" />
     <Content Include="Documentos\Querys\Selects\Procedure DetalheItem .sql" />
