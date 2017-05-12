@@ -11,12 +11,12 @@
             </div>
             <div class="panel-body">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-4 col-sm-6">
                         <div class="form-group">
-                            <asp:Image ID="imProduto" runat="server" />
+                            <asp:Image ID="imProduto" class="img-responsive" runat="server" />
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 col-sm-6">
                         <div class="form-group well well-sm">
                             <asp:Label runat="server" Text="Preço: R$ "></asp:Label>
                             <asp:Label runat="server" ID="lbValorUnitario" Text="R$ 190.00"></asp:Label>
@@ -35,7 +35,7 @@
                             <asp:LinkButton ID="btAdicionaCarrinho" OnClick="btAdicionaCarrinho_Click" runat="server" CssClass="btn btn-success"><span aria-hidden="true" class="glyphicon glyphicon-plus-sign"></span>&nbsp;COMPRAR</asp:LinkButton>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 col-sm-6">
                         <div class="form-group">
                             <asp:Label runat="server" Text="Vendedor:"></asp:Label>
                             <asp:Label runat="server" ID="lbNomeVendedor" Text="Jão da Silva"></asp:Label>

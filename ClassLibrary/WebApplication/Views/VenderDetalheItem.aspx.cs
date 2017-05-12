@@ -4,6 +4,7 @@ using ClassUtilitario;
 using ClassLibrary.Repositorio;
 using System.Data;
 using System.IO;
+using System.Collections.Generic;
 
 namespace WebApplication
 {
@@ -11,7 +12,32 @@ namespace WebApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (!IsPostBack)
+            {
+                CategoriaRepositorio carregaCategoria = new CategoriaRepositorio();
+
+                List<Categoria> lstCategoria = new List<Categoria>();
+
+                lstCategoria = carregaCategoria.ListarCategoria();
+
+                dpCategoria.DataSource = lstCategoria;
+                dpCategoria.DataBind();
+
+                ItemRepositorio carregaItem = new ItemRepositorio();
+                Usuario user = (Usuario)Session["sistema"];
+                int idItem = 0;
+
+                if (int.TryParse(Request.QueryString["idItem"], out idItem) &&
+                    carregaItem.DetalheItemVendedor(idItem, user.Id) != null)
+                {
+                    dvHeadNovo.Visible = false;
+                }
+                else
+                {
+                    dvHeadAlterar.Visible = false;
+                    dvExcluirItem.Visible = false;
+                }
+            }
         }
 
         protected void bt_CadastrarItem(object sender, EventArgs e)
@@ -48,32 +74,6 @@ namespace WebApplication
             {
                 txtCod.Text = "Erro";
             }
-
-
-
-  
-            
-
-
-
-            /* if (dpCategoria.SelectedValue == "1")
-              {
-
-                  // Alimentos/Bebidas
-
-                  Categoria c = new Categoria();
-                  c.Nome = dpCategoria.Text;
-
-              }
-
-              else if (dpCategoria.SelectedValue == "2")
-              {
-
-                  // Eletronicos
-
-                  Categoria c = new Categoria();
-                  c.Nome = dpCategoria.Text;
-             } */
         }
     }
 }

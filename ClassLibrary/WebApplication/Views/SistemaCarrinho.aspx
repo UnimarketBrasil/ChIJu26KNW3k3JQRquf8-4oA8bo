@@ -15,23 +15,23 @@
             <asp:GridView ID="grdCarrinhoDeCompra" OnPageIndexChanging="grdCarrinhoDeCompra_PageIndexChanging" CssClass="table table-hover table-striped" GridLines="None" runat="server" AutoGenerateColumns="false" AllowPaging="True">
                 <Columns>
                     <asp:BoundField DataField="Id" HeaderText="Id" ItemStyle-Width="100" Visible="false" />
-                    <asp:ImageField DataImageUrlField="Imagem" ControlStyle-Width="100" ControlStyle-Height="100" ItemStyle-CssClass="col-md-2" />
-                    <asp:HyperLinkField DataNavigateUrlFields="Nome" DataTextField="Nome" HeaderText="Nome do Item" DataNavigateUrlFormatString="SistemaDetalheItem.aspx?item=" ItemStyle-CssClass="col-md-4" />
-                    <asp:TemplateField ItemStyle-CssClass="col-md-2">
+                    <asp:ImageField DataImageUrlField="Imagem" ControlStyle-Width="100" ControlStyle-Height="100" ItemStyle-CssClass="col-md-2 col-sm-2 img-responsive" />
+                    <asp:HyperLinkField DataNavigateUrlFields="Nome" DataTextField="Nome" HeaderText="Nome do Item" DataNavigateUrlFormatString="SistemaDetalheItem.aspx?item=" ItemStyle-CssClass="col-md-4 col-sm-4" />
+                    <asp:TemplateField ItemStyle-CssClass="col-md-2 col-sm-2">
                         <HeaderTemplate>
                             <asp:Label runat="server" Text="Quantidade"></asp:Label>
                         </HeaderTemplate>
                         <ItemTemplate>
-                            <asp:TextBox ItemStyle-CssClass="col-md-2" ID="txtQuantidade" TextMode="Number" runat="server" Text='<% #Bind("Quantidade") %>'></asp:TextBox>
+                            <asp:TextBox ID="txtQuantidade" TextMode="Number" runat="server" Text='<% #Bind("Quantidade") %>'></asp:TextBox>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:BoundField DataField="ValorUnitario" HeaderText="Valor Unitário" ItemStyle-Width="100" ItemStyle-CssClass="col-md-2" />
-                    <asp:TemplateField ItemStyle-CssClass="col-md-2 col-sm-1">
+                    <asp:BoundField DataField="ValorUnitario" HeaderText="Valor Unitário" ItemStyle-Width="100" ItemStyle-CssClass="col-md-2 col-sm-1" />
+                    <asp:TemplateField ItemStyle-CssClass="col-md-2 col-sm-2">
                         <ItemTemplate>
                             <asp:Label runat="server" ID="lbTotal" Text="total"></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField>
+                    <asp:TemplateField ItemStyle-CssClass="col-md-2 col-sm-2">
                         <ItemTemplate>
                             <asp:LinkButton ForeColor="Red" ID="lnkExcluir" OnCommand="lnkExcluir_Command" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "Id")%>'  runat="server"><span aria-hidden="true" class="glyphicon glyphicon-trash"></asp:LinkButton>
                         </ItemTemplate>

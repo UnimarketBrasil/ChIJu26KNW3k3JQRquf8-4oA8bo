@@ -7,6 +7,8 @@ namespace ClassLibrary.Repositorio
 {
     public class ItemRepositorio : Conexao
     {
+        //ESSE MÉTODO CADASTRA UM ITEM NO BANCO DE DADOS E RETORNA "TRUE" CASO O ITEM SEJA
+        //CADASTRADO COM SUCESSO
         public bool CadastrarItem(Item item)
         {
             Abrirconexao();
@@ -41,7 +43,8 @@ namespace ClassLibrary.Repositorio
                 }
             }
         }
-
+        //ESSE MÉTODO ALUALIZA UM ITEM NO BANCO DE DADOS E RETORNA "TRUE" CASO O ITEM SEJA
+        //ATUALIZADO COM SUCESSO
         public void AtualizarItem(Item item)
         {
             Abrirconexao();
@@ -70,7 +73,7 @@ namespace ClassLibrary.Repositorio
                 }
             }
         }
-
+        //ESSE MÉTODO DASABILITA (EXCLUI) UM ITEM NO BANDO DE DADOS
         public void DesabilitarItemPorId(int idItem)
         {
             Abrirconexao();
@@ -93,7 +96,7 @@ namespace ClassLibrary.Repositorio
                 }
             }
         }
-
+        //ESSE MÉTODO RETORNA UM ITEM COM DETALHES DO SEU VENDEDOR
         public Item DetalheItem(int idItem)
         {
             Abrirconexao();
@@ -196,8 +199,9 @@ namespace ClassLibrary.Repositorio
                 }
             }
         }
-
-        public Item DetalheItemVendedor(int idItem)
+        //ESSE MÉTODO RECEBE POR PARAMETRO ID DE UM ITEM E ID DO USUÁRIO VENDEDOR (DONO) 
+        //RETORNA ITEM != null CASO AQUELE ITEM EXISTA PARA O VENDEDOR (OBTIDO NA SESSION["sistema"])
+        public Item DetalheItemVendedor(int idItem, int idUsuario)
         {
             Abrirconexao();
 
@@ -207,6 +211,7 @@ namespace ClassLibrary.Repositorio
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.AddWithValue("@IdItem", idItem);
+                    Cmd.Parameters.AddWithValue("@IdUsuario", idUsuario);
                     Cmd.ExecuteNonQuery();
 
                     Dr = Cmd.ExecuteReader();
@@ -222,10 +227,12 @@ namespace ClassLibrary.Repositorio
                         item.Descricao = Convert.ToString(Dr["Descricao"]);
                         item.ValorUnitario = Convert.ToDouble(Dr["Valorunitario"]);
                         item.Quantidade = Convert.ToDouble(Dr["Quantidade"]);
-                        //item.Categoria = new Categoria(Convert.ToString(Dr["Categoria.Nome"]));
+                        item.Categoria = new Categoria();
+                        item.Categoria.Id = Convert.ToInt32(Dr["IdCategoria"]);
+                        item.Vendedor = new Usuario();
+                        item.Vendedor.Id = Convert.ToInt32(Dr["IdUsuario"]);
+                        
                     }
-
-                    Dr.Close();
 
                     return item;
                 }
@@ -235,6 +242,8 @@ namespace ClassLibrary.Repositorio
                 }
                 finally
                 {
+                    Dr.Close();
+
                     FecharConexao();
                 }
             }

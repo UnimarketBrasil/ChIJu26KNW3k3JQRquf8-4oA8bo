@@ -20,13 +20,6 @@ namespace WebApplication
 
                 List<Categoria> lstCategoria = carregaCategoria.ListarCategoria();
 
-                List<String> lstNomeCategoria = new List<string>();
-
-                foreach (Categoria cat in lstCategoria)
-                {
-                    lstNomeCategoria.Add(cat.Nome);
-                }
-
                 RepeaterCategoria.DataSource = lstCategoria;
                 RepeaterCategoria.DataBind();
 

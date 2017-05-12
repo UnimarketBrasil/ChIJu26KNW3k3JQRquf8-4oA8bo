@@ -5,8 +5,11 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
         <div class="panel panel-default">
-            <div class="panel-heading">
+            <div id="dvHeadNovo" runat="server" class="panel-heading">
                 <h4>Novo Produto</h4>
+            </div>
+            <div id="dvHeadAlterar" runat="server" class="panel-heading">
+                <h4>Alterar Produto</h4>
             </div>
             <div class="panel-body">
                 <form runat="server">
@@ -14,7 +17,7 @@
                         <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2 form-group">
                             <label for="iputnome">Imagem do Item</label>
                             <a href="#" class="thumbnail">
-                                <img src="Style/images/work-img1.jpg" />
+                                <img src="" />
                             </a>
                             <a href="#">
                                 <asp:FileUpload ID="InputFoto" runat="server" />
@@ -38,10 +41,7 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 form-group">
                             <label for="<%=dpCategoria.ClientID%>">Categoria</label>
-                            <asp:DropDownList ID="dpCategoria" runat="server" CssClass="form-control">
-                                <asp:ListItem Text="Alimentos/Bebidas" Value="1"> </asp:ListItem>
-                                <asp:ListItem Text="Eletronicos" Value="2"> </asp:ListItem>
-                            </asp:DropDownList>
+                            <asp:DropDownList ID="dpCategoria" runat="server" CssClass="form-control" DataTextField="Nome" DataValueField="Id"/>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 form-group">
                             <label for="<%=txtQuantidade.ClientID %>">Quantidade</label>
@@ -64,15 +64,15 @@
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 form-group">
-                            <label for="<%=txtValorTotal.ClientID%>">Valor Total</label>
+                            <label for="<%=lbValorTotal.ClientID%>">Valor Total</label>
                             <div class="input-group">
-                                <asp:TextBox runat="server" ID="txtValorTotal" CssClass="form-control" placeholder="Valor Total"></asp:TextBox>
+                                <asp:Label runat="server" ID="lbValorTotal" CssClass="form-control" Text="Valor Total"></asp:Label>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group">
-                            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 form-group">
+                            <div id="dvExcluirItem" runat="server" class="col-xs-12 col-sm-12 col-md-10 col-lg-10 form-group">
                                 <asp:LinkButton ID="btnLixeira" runat="server" CssClass="btn btn-danger"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></asp:LinkButton>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1 form-group">
