@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Vender.Master" AutoEventWireup="true" CodeBehind="VenderDetalheItem.aspx.cs" Inherits="WebApplication.SistemaNovoItem" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link href="../Content/bootstrap-fileinput.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
@@ -16,12 +17,14 @@
                     <div class="row">
                         <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2 form-group">
                             <label for="iputnome">Imagem do Item</label>
-                            <a href="#" class="thumbnail">
-                                <img src="" />
-                            </a>
-                            <a href="#">
-                                <asp:FileUpload ID="InputFoto" runat="server" />
-                            </a>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="form-group">
+                                    <asp:Image ID="imItem" class="img-responsive" runat="server" />
+                                </div>
+                            </div>
+                            <div>
+                                <asp:FileUpload ID="InputFoto" CssClass="file" runat="server" />
+                            </div>
                         </div>
                         <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7 form-group">
                             <label for="<%=txtNome.ClientID%>">Nome do Item</label>
@@ -41,7 +44,7 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 form-group">
                             <label for="<%=dpCategoria.ClientID%>">Categoria</label>
-                            <asp:DropDownList ID="dpCategoria" runat="server" CssClass="form-control" DataTextField="Nome" DataValueField="Id"/>
+                            <asp:DropDownList ID="dpCategoria" runat="server" CssClass="form-control" DataTextField="Nome" DataValueField="Id" />
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 form-group">
                             <label for="<%=txtQuantidade.ClientID %>">Quantidade</label>

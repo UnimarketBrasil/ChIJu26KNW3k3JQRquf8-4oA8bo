@@ -222,6 +222,7 @@ namespace ClassLibrary.Repositorio
                     {
                         item = new Item();
                         Dr.Read();
+                        item.Id = Convert.ToInt32(Dr["Id"]);
                         item.Codigo = Convert.ToString(Dr["Codigo"]);
                         item.Nome = Convert.ToString(Dr["Nome"]);
                         item.Descricao = Convert.ToString(Dr["Descricao"]);

@@ -31,6 +31,15 @@ namespace WebApplication {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvHeadAlterar;
         
         /// <summary>
+        /// Controle imItem.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imItem;
+        
+        /// <summary>
         /// Controle InputFoto.
         /// </summary>
         /// <remarks>
