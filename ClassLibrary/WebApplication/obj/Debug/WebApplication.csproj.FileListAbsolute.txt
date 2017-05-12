@@ -316,3 +316,7 @@ C:\Users\José\TccUnimarket\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplicat
 C:\Users\José\TccUnimarket\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\bin\Microsoft.VisualStudio.Debugger.InteropA.dll
 C:\Users\José\TccUnimarket\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\bin\Microsoft.VisualStudio.OLE.Interop.dll
 C:\Users\José\TccUnimarket\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\bin\stdole.dll
+D:\Users\e23484\Documents\Lotus\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\obj\Debug\WebApplication.csprojResolveAssemblyReference.cache
+D:\Users\e23484\Documents\Lotus\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\obj\Debug\WebApplication.dll.licenses
+D:\Users\e23484\Documents\Lotus\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\obj\Debug\WebApplication.dll
+D:\Users\e23484\Documents\Lotus\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\WebApplication\obj\Debug\WebApplication.pdb

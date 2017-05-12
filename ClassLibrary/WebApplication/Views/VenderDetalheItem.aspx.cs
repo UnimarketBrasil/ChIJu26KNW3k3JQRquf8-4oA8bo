@@ -91,11 +91,15 @@ namespace WebApplication
 
                 InputFoto.PostedFile.SaveAs(Path.Combine(caminho, InputFoto.FileName));
 
-                txtCod.Text = "Sucesso";
+                dvMsg.Visible = true;
+                dvMsg.Attributes["class"] = "alert alert-success alert-dismissible";
+                lbMsg.Text = "Cadastro realizado com sucesso!";
             }
             else
             {
-                txtCod.Text = "Erro";
+                dvMsg.Visible = true;
+                dvMsg.Attributes["class"] = "alert alert-warning alert-dismissible";
+                lbMsg.Text = "Erro ao cadastrar o item. Verifique as informações digitadas e tente novamente.";
             }
         }
     }

@@ -134,7 +134,7 @@ namespace WebApplication
                 {
                     dvMsg.Visible = true;
                     dvMsg.Attributes["class"] = "alert alert-warning alert-dismissible";
-                    lbMsg.Text = "Não foi possível atender sua solucitação, tente novamente mais tarde.";
+                    lbMsg.Text = "Não foi possível atender sua solicitação, tente novamente mais tarde.";
                 }
             }
             else if (Dr.HasRows)
@@ -145,7 +145,7 @@ namespace WebApplication
                 {
                     dvMsg.Visible = true;
                     dvMsg.Attributes["class"] = "alert alert-info alert-dismissible";
-                    lbMsg.Text = "E-mail e CNPJ/CPJ já estão cadastrado no sistema.<a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=6' target='_blank'></a>";
+                    lbMsg.Text = "E-mail e CNPJ/CPJ já estão cadastrados no sistema.<a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=6' target='_blank'></a>";
                 }
                 else if (existe.Equals("Email"))
                 {
@@ -165,7 +165,7 @@ namespace WebApplication
                     {
                         dvMsg.Visible = true;
                         dvMsg.Attributes["class"] = "alert alert-info alert-dismissible";
-                        lbMsg.Text = "O CNPJ: " + u.CpfCnpj + ", já cadastrado. <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=9' target='_blank'></a>";
+                        lbMsg.Text = "CNPJ: " + u.CpfCnpj + ", já cadastrado. <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=9' target='_blank'></a>";
                     }
                 }
             }
