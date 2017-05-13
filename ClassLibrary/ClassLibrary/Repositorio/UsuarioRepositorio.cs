@@ -262,7 +262,7 @@ namespace ClassLibrary.Repositorio
                 catch
                 {
                     return false;
-                    //                    throw new Exception("Erro ao cadastrar usuario: " + ex.Message);
+                    //throw new Exception("Erro ao cadastrar usuario: " + ex.Message);
                 }
                 finally
                 {

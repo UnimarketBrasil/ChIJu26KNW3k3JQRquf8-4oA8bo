@@ -15,6 +15,15 @@ namespace WebApplication
             if (Session["sistema"] != null)
             {
                 Usuario u = (Usuario)Session["sistema"];
+                if (u.Tipousuario.Id == 1)
+                {
+                    Response.Redirect("~/Views/AdminListar.aspx");
+                }
+            }
+
+            if (Session["sistema"] != null)
+            {
+                Usuario u = (Usuario)Session["sistema"];
                 lbNomeUsuario.Text = u.Nome;
             }
             else

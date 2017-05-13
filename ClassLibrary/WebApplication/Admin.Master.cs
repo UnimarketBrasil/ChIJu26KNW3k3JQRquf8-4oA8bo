@@ -15,7 +15,19 @@ namespace WebApplication
             if (Session["sistema"] != null)
             {
                 Usuario u = (Usuario)Session["sistema"];
-                lbNomeUsuario.Text = u.Nome;
+                if (u.Tipousuario.Id == 1)
+                {
+                    lbNomeUsuario.Text = u.Nome;
+                }
+                else if (u.Tipousuario.Id == 2)
+                {
+                    Response.Redirect("~/Views/Sistema.aspx");
+                }
+                else if (u.Tipousuario.Id == 3)
+                {
+                    Response.Redirect("~/Views/VenderItem.aspx");
+                }
+
             }
             else
             {
