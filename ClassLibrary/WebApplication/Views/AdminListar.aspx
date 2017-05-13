@@ -16,6 +16,16 @@
                         <asp:BoundField DataField="Nome" HeaderText="Nome" ItemStyle-Width="100" ItemStyle-CssClass="col-md-2" />
                         <asp:BoundField DataField="TipoUsuario.Nome" HeaderText="Tipo Usuario" ItemStyle-Width="100" ItemStyle-CssClass="col-md-2" />
                         <asp:BoundField DataField="StatusUsuario.Nome" HeaderText="Status do Usuario" ItemStyle-Width="100" ItemStyle-CssClass="col-md-2" />
+                        <asp:TemplateField ItemStyle-Width="140">
+                            <ItemTemplate>
+                                    <asp:Button runat="server" ID="btnBloquear" Text="  Bloquear" ControlStyle-CssClass="btn btn-block btn-danger col-lg-10 col-lg-offset-2"/>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField ItemStyle-Width="100">
+                            <ItemTemplate>
+                                    <asp:Button runat="server" ID="btnDesbloquear" Text="Desbloquear" ControlStyle-CssClass="btn btn-block btn-success col-lg-10 col-lg-offset-1" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
                     </Columns>
                     <PagerSettings Mode="Numeric" Position="TopAndBottom" PageButtonCount="5" />
                     <PagerStyle HorizontalAlign="Right" Font-Size="Medium" CssClass="GridPager" />
