@@ -21,10 +21,8 @@
                     <div class="row">
                         <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2 form-group">
                             <label for="iputnome">Imagem do Item</label>
-                            <div class="col-md-4 col-sm-6">
-                                <div class="form-group">
-                                    <asp:Image ID="imItem" class="img-responsive" runat="server" />
-                                </div>
+                            <div class="form-group">
+                                <asp:Image ID="imItem" CssClass="img-responsive" runat="server" />
                             </div>
                             <div>
                                 <asp:FileUpload ID="InputFoto" CssClass="file" runat="server" />

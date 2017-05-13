@@ -12,5 +12,5 @@ begin
 	Categoria.Nome as NomeCategoria, Usuario.Id as IdUsuario from Item
 	inner join Categoria on Categoria.Id = Item.IdCategoria
 	inner join Usuario on Usuario.Id = Item.IdUsuario
-	where (Item.Id = @IdItem) and (Item.IdUsuario = @IdUsuario)
+	where (Item.Id = @IdItem) and (Item.IdUsuario = @IdUsuario) and (Item.Desabilitado = 0)
 end
