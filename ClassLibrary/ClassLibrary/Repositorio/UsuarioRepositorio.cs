@@ -391,8 +391,8 @@ namespace ClassLibrary.Repositorio
                             user.Id = Convert.ToInt32(Dr["Id"]);
                             user.Email = Convert.ToString(Dr["Email"]);
                             user.Nome = Convert.ToString(Dr["Nome"]);
-                            user.Tipousuario.Nome = Convert.ToString(Dr["TipoUsuario.Nome"]);
-                            user.StatusUsuario.Nome = Convert.ToString(Dr["StatusUsuario.Nome"]);
+                           // user.Tipousuario.Nome = Convert.ToString(Dr["TipoUsuario.Nome"]);
+                           // user.StatusUsuario.Nome = Convert.ToString(Dr["StatusUsuario.Nome"]);
 
                             usuarioList.Add(user);
                         }

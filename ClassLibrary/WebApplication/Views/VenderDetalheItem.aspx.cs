@@ -95,15 +95,16 @@ namespace WebApplication
 
                 InputFoto.PostedFile.SaveAs(Path.Combine(caminho, InputFoto.FileName));
 
-                //dvMsg.Visible = true;
-                //dvMsg.Attributes["class"] = "alert alert-success alert-dismissible";
-                //lbMsg.Text = "Cadastro realizado com sucesso!";
+                dvMsg.Visible = true;
+                dvMsg.Attributes["class"] = "alert alert-success alert-dismissible";
+                lbMsg.Text = "Cadastro realizado com sucesso!";
+                Response.Redirect("~/Views/VenderItem.aspx");
             }
             else
             {
-                //dvMsg.Visible = true;
-                //dvMsg.Attributes["class"] = "alert alert-warning alert-dismissible";
-                //lbMsg.Text = "Erro ao cadastrar o item. Verifique as informações digitadas e tente novamente.";
+                dvMsg.Visible = true;
+                dvMsg.Attributes["class"] = "alert alert-warning alert-dismissible";
+                lbMsg.Text = "Erro ao cadastrar o item. Verifique as informações digitadas e tente novamente.";
             }
         }
     }

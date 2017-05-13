@@ -99,7 +99,6 @@ C:\Users\Cleiton\Documents\TCC\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUti
 C:\Users\Cleiton\Documents\TCC\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\bin\Debug\ClassUtilitario.pdb
 C:\Users\Cleiton\Documents\TCC\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\bin\Debug\ClassLibrary.dll
 C:\Users\Cleiton\Documents\TCC\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\bin\Debug\itextsharp.dll
-C:\Users\Cleiton\Documents\TCC\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Cleiton\Documents\TCC\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\bin\Debug\ClassLibrary.pdb
 C:\Users\Cleiton\Documents\TCC\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\bin\Debug\itextsharp.xml
 C:\Users\Cleiton\Documents\TCC\ChIJu26KNW3k3JQRquf8-4oA8bo\ClassLibrary\ClassUtilitario\bin\Debug\Newtonsoft.Json.xml
