@@ -36,15 +36,13 @@ namespace ClassLibrary
 
         public DateTime DataCadastro { get; set; }
 
-        public Usuario()
-        {
+        public int QtdadeItens { get; set; }
 
-        }
-        public Usuario(int id)
-        {
-            this.Id = id;
-        }
+        public int QtdPedidosPendente { get; set; }
 
+        public int QtdPedidosFinanlizado { get; set; }
+
+        public int QtdPedidosCancelado { get; set; }
 
     }
 

@@ -9,21 +9,16 @@
         <div class="container-fluid">
             <p>&nbsp;</p>
             <div class="row">
-                <asp:GridView ID="grdAdmin" OnPageIndexChanging="grdAdmin_PageIndexChanging" CssClass="table table-hover table-striped" GridLines="None" runat="server" AutoGenerateColumns="false" AllowPaging="True">
+                <asp:GridView ID="grdAdmin" OnRowDataBound="grdAdmin_RowDataBound" OnPageIndexChanging="grdAdmin_PageIndexChanging" CssClass="table table-hover table-striped" GridLines="None" runat="server" AutoGenerateColumns="false" AllowPaging="True">
                     <Columns>
-                        <asp:BoundField DataField="Id" HeaderText="Id" ItemStyle-CssClass="col-lg-1 col-md-1" />
-                        <asp:BoundField DataField="Email" HeaderText="Email" ItemStyle-CssClass="col-lg-3 col-md-3" />
-                        <asp:BoundField DataField="Nome" HeaderText="Nome" ItemStyle-CssClass="col-lg-3 col-md-3"/>
-                        <asp:BoundField DataField="TipoUsuario.Nome" HeaderText="Tipo Usuario" ItemStyle-CssClass="col-lg-2 col-md-2" />
-                        <asp:BoundField DataField="StatusUsuario.Nome" HeaderText="Status do Usuario" ItemStyle-CssClass="col-lg-1" />
+                        <asp:BoundField DataField="Id" HeaderText="Id" Visible="false" />
+                        <asp:BoundField DataField="Email" HeaderText="Email" ItemStyle-CssClass="col-xs-4" />
+                        <asp:HyperLinkField DataNavigateUrlFields="Id" HeaderText="Nome/Razão Social" DataTextField="Nome" ItemStyle-CssClass="col-xs-4" DataNavigateUrlFormatString="AdminDetalheUsuario.aspx?idUsuario={0}" />
+                        <asp:BoundField DataField="TipoUsuario.Nome" HeaderText="Tipo Usuario" ItemStyle-CssClass="col-xs-2" />
+                        <asp:BoundField  DataField="StatusUsuario.Nome" HeaderText="Status do Usuario" ItemStyle-CssClass="col-xs-1" />
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:Button runat="server" ID="btnDesbloquear" Text="Detalhes" ControlStyle-CssClass="btn btn-block btn-success btn-sm col-lg-1" />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField>
-                            <ItemTemplate>
-                                <asp:Button runat="server" ID="btnBloquear" Text="  Bloquear" ControlStyle-CssClass="btn btn-block btn-danger btn-sm col-lg-1" />
+                                <asp:Button runat="server" ID="btStatus" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "StatusUsuario.Nome") %>' CommandName="Detail" Text="Bloquear" ControlStyle-CssClass="col-xs-1" />
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>

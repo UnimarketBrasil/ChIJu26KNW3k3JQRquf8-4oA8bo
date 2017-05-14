@@ -6,9 +6,5 @@
 
         public string Nome { get; set; }
 
-        public StatusUsuario(int id)
-        {
-            Id = id;
-        }
     }
 }

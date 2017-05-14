@@ -4,7 +4,8 @@
 
 <html>
 <head runat="server">
-    <title></title>
+    <title>Sistema Unimarket Brasil</title>
+    <link rel="icon" href="~/Content/App_Data/Uni.ico">
 
     <!--Styles-->
     <link href="Content/bootstrap.cosmo.css" rel="stylesheet" />

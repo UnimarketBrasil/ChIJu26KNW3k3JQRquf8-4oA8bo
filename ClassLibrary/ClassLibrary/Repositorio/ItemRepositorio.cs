@@ -139,7 +139,7 @@ namespace ClassLibrary.Repositorio
 
                     return item;
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     throw new Exception("Erro o carregar Item: " + ex.Message);
                 }
@@ -232,7 +232,7 @@ namespace ClassLibrary.Repositorio
                         item.Categoria.Id = Convert.ToInt32(Dr["IdCategoria"]);
                         item.Vendedor = new Usuario();
                         item.Vendedor.Id = Convert.ToInt32(Dr["IdUsuario"]);
-                        
+
                     }
 
                     return item;

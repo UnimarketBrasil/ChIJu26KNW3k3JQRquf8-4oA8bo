@@ -17,11 +17,9 @@ namespace WebApplication
             if (Session["sistema"] == null)
                 Response.Redirect("~/Views/Logout.aspx");
 
-            Usuario user = (Usuario)Session["sistema"];
+            UsuarioRepositorio listarUsuarios = new UsuarioRepositorio();
 
-            UsuarioRepositorio listarUsuariosAdmin = new UsuarioRepositorio();
-
-            List<Usuario> lst = listarUsuariosAdmin.ListarUsuario();
+            List<Usuario> lst = listarUsuarios.ListarUsuario();
 
             grdAdmin.DataSource = lst;
             grdAdmin.DataBind();
@@ -31,6 +29,33 @@ namespace WebApplication
         {
             grdAdmin.PageIndex = e.NewPageIndex;
             grdAdmin.DataBind();
+        }
+
+        protected void grdAdmin_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            Button status = null;
+
+            for (int i = 0; i < grdAdmin.Rows.Count; i++)
+            {
+                status = (Button)grdAdmin.Rows[i].FindControl("btStatus");
+                String state = status.CommandArgument.ToString();
+                if (state.Equals("Ativo"))
+                {
+                    status.Text = "Bloquear";
+                    status.CssClass = "btn btn-block btn-danger btn-sm";
+                }
+                else if (state.Equals("Pendênte"))
+                {
+                    status.Text = "Pendênte...";
+                    status.CssClass = "btn btn-block btn-warning btn-sm disabled";
+                    status.Enabled = false;
+                }
+                else if (state.Equals("Bloqueado"))
+                {
+                    status.Text = "Desbloquear";
+                    status.CssClass = "btn btn-block btn-success btn-sm";
+                }
+            }
         }
     }
 }

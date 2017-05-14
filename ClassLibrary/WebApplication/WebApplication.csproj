@@ -62,6 +62,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\App_Data\Uni.ico" />
     <Content Include="Content\bootstrap-datepicker.css" />
     <Content Include="Content\bootstrap-datepicker.min.css" />
     <Content Include="Content\bootstrap-datepicker.standalone.css" />
@@ -211,6 +212,7 @@
     <Content Include="Content\bootstrap-datepicker.min.css.map" />
     <Content Include="Content\bootstrap-datepicker.css.map" />
     <Content Include="Views\VenderItem.aspx" />
+    <Content Include="Views\AdminDetalheUsuario.aspx" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
@@ -415,10 +417,15 @@
     <Compile Include="Views\VenderItem.aspx.designer.cs">
       <DependentUpon>VenderItem.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\AdminDetalheUsuario.aspx.cs">
+      <DependentUpon>AdminDetalheUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\AdminDetalheUsuario.aspx.designer.cs">
+      <DependentUpon>AdminDetalheUsuario.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Content\App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\ClassLibrary\ClassLibrary.csproj">
       <Project>{7b02c314-1de0-4f1f-8ef5-a5ddcc698bd8}</Project>

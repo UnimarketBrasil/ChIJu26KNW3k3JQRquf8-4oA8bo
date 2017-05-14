@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 
 namespace ClassLibrary.Repositorio
 {
@@ -245,7 +246,8 @@ namespace ClassLibrary.Repositorio
                         user.Latitude = Convert.ToString(Dr["Latitude"]);
                         user.Longitude = Convert.ToString(Dr["Longitude"]);
                         user.AreaAtuacao = Convert.ToDouble(Dr["AreaAtuacao"]);
-                        user.StatusUsuario = new StatusUsuario(Convert.ToInt32(Dr["IdStatusUsuario"]));
+                        user.StatusUsuario = new StatusUsuario();
+                        user.StatusUsuario.Id = Convert.ToInt32(Dr["IdStatusUsuario"]);
                         user.Tipousuario = new TipoUsuario(Convert.ToInt32(Dr["IdTipoUsuario"]));
                         login = true;
                     }
@@ -302,8 +304,6 @@ namespace ClassLibrary.Repositorio
                         user.Tipousuario = new TipoUsuario(Convert.ToInt32(Dr["IdTipoUsuario"]));
                     }
 
-                    Dr.Close();
-
                     return true;
                 }
                 catch (Exception ex)
@@ -313,6 +313,8 @@ namespace ClassLibrary.Repositorio
                 }
                 finally
                 {
+                    Dr.Close();
+
                     FecharConexao();
                 }
             }
@@ -337,22 +339,28 @@ namespace ClassLibrary.Repositorio
 
                     if (Dr.HasRows)
                     {
-                        Dr.Read();
                         user = new Usuario();
-                        user.Nome = Convert.ToString(Dr["Usuario.Nome"]);
-                        user.Sobrenome = Convert.ToString(Dr["Usuario.Sobrenome"]);
-                        user.Email = Convert.ToString(Dr["Usuario.Email"]);
-                        user.Telefone = Convert.ToString(Dr["Usuario.Telefone"]);
-                        user.Latitude = Convert.ToString(Dr["Usuario.Latitude"]);
-                        user.Longitude = Convert.ToString(Dr["Usuario.Longitude"]);
-                        user.Complemento = Convert.ToString(Dr["Usuario.Complemento"]);
-                        user.AreaAtuacao = Convert.ToInt32(Dr["Usuario.AreaAtuacao"]);
-                        user.Tipousuario.Nome = Convert.ToString(Dr["TipoUsuario.Nome"]);
-                        user.StatusUsuario.Nome = Convert.ToString(Dr["StatusUsuario.Nome"]);
-                        Cmd.ExecuteNonQuery();
+                        Dr.Read();
+                        user.CpfCnpj = Convert.ToString(Dr["CpfCnpj"]);
+                        user.Nome = Convert.ToString(Dr["Nome"]);
+                        user.Sobrenome = Convert.ToString(Dr["Sobrenome"]);
+                        user.Email = Convert.ToString(Dr["Email"]);
+                        user.Nascimento = Convert.ToDateTime(Dr["Nascimento"]);
+                        user.Genero = Convert.ToInt32(Dr["Genero"]);
+                        user.Telefone = Convert.ToString(Dr["Telefone"]);
+                        user.Latitude = Convert.ToString(Dr["Latitude"]);
+                        user.Longitude = Convert.ToString(Dr["Longitude"]);
+                        user.Complemento = Convert.ToString(Dr["Complemento"]);
+                        user.AreaAtuacao = Convert.ToInt32(Dr["AreaAtuacao"]);
+                        user.QtdadeItens = Convert.ToInt32(Dr["QtdadeItens"]);
+                        user.QtdPedidosPendente = Convert.ToInt32(Dr["PedidosPendente"]);
+                        user.QtdPedidosFinanlizado = Convert.ToInt32(Dr["PedidosFinalizado"]);
+                        user.QtdPedidosCancelado = Convert.ToInt32(Dr["PedidosCancelado"]);
+                        user.Tipousuario = new TipoUsuario();
+                        user.Tipousuario.Nome = Convert.ToString(Dr["TipoUsuario"]);
+                        user.StatusUsuario = new StatusUsuario();
+                        user.StatusUsuario.Nome = Convert.ToString(Dr["StatusUsuario"]);
                     }
-
-                    Dr.Close();
 
                     return user;
                 }
@@ -362,6 +370,8 @@ namespace ClassLibrary.Repositorio
                 }
                 finally
                 {
+                    Dr.Close();
+
                     FecharConexao();
                 }
             }
@@ -373,6 +383,7 @@ namespace ClassLibrary.Repositorio
             Abrirconexao();
 
             List<Usuario> usuarioList = new List<Usuario>();
+            TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
 
             using (Cmd = new SqlCommand("ListarUsuario", Con))
             {
@@ -389,10 +400,12 @@ namespace ClassLibrary.Repositorio
                         {
                             Usuario user = new Usuario();
                             user.Id = Convert.ToInt32(Dr["Id"]);
-                            user.Email = Convert.ToString(Dr["Email"]);
-                            user.Nome = Convert.ToString(Dr["Nome"]);
-                           // user.Tipousuario.Nome = Convert.ToString(Dr["TipoUsuario.Nome"]);
-                           // user.StatusUsuario.Nome = Convert.ToString(Dr["StatusUsuario.Nome"]);
+                            user.Email = Convert.ToString(Dr["Email"]).ToLower();
+                            user.Nome = ti.ToTitleCase(Convert.ToString(Dr["Nome"]));
+                            user.Tipousuario = new TipoUsuario();
+                            user.Tipousuario.Nome = Convert.ToString(Dr["TipoUsuario"]);
+                            user.StatusUsuario = new StatusUsuario();
+                            user.StatusUsuario.Nome = Convert.ToString(Dr["StatusUsuario"]);
 
                             usuarioList.Add(user);
                         }
