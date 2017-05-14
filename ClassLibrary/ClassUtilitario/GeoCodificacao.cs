@@ -46,12 +46,13 @@ namespace ClassUtilitario
 
             try
             {
-                using (DataSet data = new DataSet())
+                using (DataSet ds = new DataSet())
                 {
+
                     string endereco = string.Format("https://maps.googleapis.com/maps/api/geocode/xml?latlng={0},{1}&key=AIzaSyDPNFOUPna4dnTRtQ806ST8G9Vj6WEK32Y", user.Latitude, user.Longitude);
-                    data.ReadXml(endereco);
-                    rEndereco.Add(data.Tables["address_component"].Rows[0]["long_name"].ToString());
-                    rEndereco.Add(data.Tables["address_component"].Rows[1]["long_name"].ToString() + ", " + data.Tables["address_component"].Rows[2]["long_name"].ToString() + ", " + data.Tables["address_component"].Rows[3]["short_name"].ToString());
+                    ds.ReadXml(endereco);
+                    rEndereco.Add(ds.Tables["address_component"].Rows[0]["long_name"].ToString());
+                    rEndereco.Add(ds.Tables["address_component"].Rows[1]["long_name"].ToString() + ", " + ds.Tables["address_component"].Rows[2]["long_name"].ToString() + ", " + ds.Tables["address_component"].Rows[3]["short_name"].ToString());
 
                     resposta = rEndereco[0].ToString();
                     resposta += rEndereco[1].ToString();
@@ -74,7 +75,7 @@ namespace ClassUtilitario
                     string endereco = string.Format("https://maps.googleapis.com/maps/api/geocode/xml?latlng={0},{1}&key=AIzaSyDPNFOUPna4dnTRtQ806ST8G9Vj6WEK32Y", lat, lon);
                     data.ReadXml(endereco);
                     resposta = data.Tables["result"].Rows[0]["formatted_address"].ToString();
-                    
+
                     return resposta;
                 }
             }

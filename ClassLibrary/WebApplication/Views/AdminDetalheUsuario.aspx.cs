@@ -1,5 +1,6 @@
 ﻿using ClassLibrary;
 using ClassLibrary.Repositorio;
+using ClassUtilitario;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,7 @@ namespace WebApplication
                     {
                         //USUÁRIO PESSOA FISICA
                         lbNome.Text = user.Nome + ", " + user.Sobrenome;
-                        lbCpf.Text = user.CpfCnpj;//Falta mascara
+                        lbCpf.Text = FormatarCnpjCpf.FormatCPF(user.CpfCnpj);
                         lbDtNasc.Text = user.Nascimento.ToString();
                         if (user.Genero == 1)
                         {
@@ -46,23 +47,34 @@ namespace WebApplication
                     else if (user.CpfCnpj.Length == 14)
                     {
                         //USUARIO PESSOA JURIDICA
-                        lbRazao.Text = user.Nome;//Falta máscara
-                        lbCnpj.Text = user.CpfCnpj;
+                        lbRazao.Text = user.Nome;
+                        lbCnpj.Text = FormatarCnpjCpf.FormatCNPJ(user.CpfCnpj);
                         dvPessoaFisica.Visible = false;
 
                     }
                     lbEmail.Text = user.Email;
                     lbTelefone.Text = user.Telefone;
                     lbTipoUsuario.Text = user.Tipousuario.Nome;
+                    if (user.Tipousuario.Nome == "Vendedor")
+                    {
+                        lbAreaAtuacao.Text = user.AreaAtuacao.ToString();
+                        lbItensCadastrados.Text = user.QtdadeItens.ToString();
+                        lbPedidosPendentes.Text = user.QtdPedidosPendente.ToString();
+                        lbPedidosFinalizados.Text = user.QtdPedidosFinanlizado.ToString();
+                        lbPedidosCancelados.Text = user.QtdPedidosCancelado.ToString();
+                    }
+                    else
+                    {
+                        dvVendedor.Visible = false;
+                    }
                     lbStatusUsuario.Text = user.StatusUsuario.Nome;
                     lbDataCadastro.Text = user.DataCadastro.ToString();
                     //CARREGAR ENDEREÇO
+                    GeoCodificacao g = new GeoCodificacao();
+                    lbEndereco.Text = g.ObterEndereco(user);
+                    lbEndereco.Text = g.ObterEndereco(user.Latitude, user.Longitude);
                     lbComplemento.Text = user.Complemento;
                     lbAreaAtuacao.Text = user.AreaAtuacao.ToString();
-                    lbItensCadastrados.Text = user.QtdadeItens.ToString();
-                    lbPedidosPendentes.Text = user.QtdPedidosPendente.ToString();
-                    lbPedidosFinalizados.Text = user.QtdPedidosFinanlizado.ToString();
-                    lbPedidosCancelados.Text = user.QtdPedidosCancelado.ToString();
                 }
             }
         }

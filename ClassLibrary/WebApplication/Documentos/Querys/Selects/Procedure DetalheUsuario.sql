@@ -8,7 +8,7 @@ create procedure DetalheUsuario(
 as	
 begin
 	select Usuario.Email, Usuario.Nome, Usuario.Sobrenome, Usuario.CpfCnpj, Usuario.Nascimento, Usuario.Genero, 
-	Usuario.Telefone, TipoUsuario.Nome as TipoUsuario, StatusUsuario.Nome as StatusUsuario,  
+	Usuario.Telefone, Usuario.DataCadastro, TipoUsuario.Nome as TipoUsuario, StatusUsuario.Nome as StatusUsuario,  
 	Usuario.Latitude, Usuario.Longitude, Usuario.Complemento, Usuario.AreaAtuacao, (
 	select COUNT(*) from Item where IdUsuario=@IdUsuario and Desabilitado=0) as QtdadeItens, (
 	select COUNT(*) from Pedido where IdVendedor=@IdUsuario and IdStatusPedido=1) as PedidosPendente, (

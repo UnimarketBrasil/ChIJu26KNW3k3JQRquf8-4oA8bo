@@ -148,15 +148,6 @@ namespace WebApplication {
         protected global::System.Web.UI.WebControls.Label lbComplemento;
         
         /// <summary>
-        /// Controle lbAreaAtuacao.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbAreaAtuacao;
-        
-        /// <summary>
         /// Controle lbDataCadastro.
         /// </summary>
         /// <remarks>
@@ -164,6 +155,24 @@ namespace WebApplication {
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbDataCadastro;
+        
+        /// <summary>
+        /// Controle dvVendedor.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvVendedor;
+        
+        /// <summary>
+        /// Controle lbAreaAtuacao.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbAreaAtuacao;
         
         /// <summary>
         /// Controle lbItensCadastrados.

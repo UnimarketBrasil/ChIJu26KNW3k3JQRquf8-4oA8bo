@@ -348,6 +348,7 @@ namespace ClassLibrary.Repositorio
                         user.Nascimento = Convert.ToDateTime(Dr["Nascimento"]);
                         user.Genero = Convert.ToInt32(Dr["Genero"]);
                         user.Telefone = Convert.ToString(Dr["Telefone"]);
+                        user.DataCadastro = Convert.ToDateTime(Dr["DataCadastro"]);
                         user.Latitude = Convert.ToString(Dr["Latitude"]);
                         user.Longitude = Convert.ToString(Dr["Longitude"]);
                         user.Complemento = Convert.ToString(Dr["Complemento"]);

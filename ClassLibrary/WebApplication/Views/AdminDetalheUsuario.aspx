@@ -72,10 +72,6 @@
                                 <asp:Label runat="server" Text="Complemento:"></asp:Label>
                                 <asp:Label runat="server" ID="lbComplemento" CssClass="form-control"></asp:Label>
                             </div>
-                            <div class="col-xs-2 form-group">
-                                <asp:Label runat="server" Text="Área de atuação:"></asp:Label>
-                                <asp:Label runat="server" ID="lbAreaAtuacao" CssClass="form-control"></asp:Label>
-                            </div>
                         </div>
                         <div class="row">
                             <div class="col-xs-4 form-group">
@@ -83,9 +79,14 @@
                                 <asp:Label runat="server" ID="lbDataCadastro" CssClass="form-control"></asp:Label>
                             </div>
                         </div>
-                        <div class="row">
+                        <div runat="server" id="dvVendedor" class="row">
                             <div class="col-xs-4 form-group">
                                 <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <span class="badge">
+                                            <asp:Label runat="server" ID="lbAreaAtuacao"></asp:Label></span>
+                                        Área de atuação (Km)
+                                    </li>
                                     <li class="list-group-item">
                                         <span class="badge">
                                             <asp:Label runat="server" ID="lbItensCadastrados"></asp:Label></span>
