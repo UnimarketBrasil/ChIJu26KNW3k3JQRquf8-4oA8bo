@@ -27,11 +27,13 @@ create table Usuario(
 	Telefone varchar(15) not null,
 	Longitude varchar(20),
 	Latitude varchar(20),
+	Numero int not null,
 	Complemento varchar(50) null,
 	AreaAtuacao real null check (AreaAtuacao > 0),
 	IdTipoUsuario int foreign key references TipoUsuario(Id),
 	IdStatusUsuario int foreign key references StatusUsuario(Id) default 2,
-	DataCadastro dateTime not null default getdate()
+	DataCadastro dateTime not null default getdate(),
+	UltimoAcesso DateTime not null
 )
 go
 create table SubUsuario(
