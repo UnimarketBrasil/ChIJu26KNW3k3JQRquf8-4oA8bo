@@ -51,13 +51,13 @@
                         <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 form-group">
                             <label for="<%=txtQuantidade.ClientID %>">Quantidade</label>
                             <div class="input-group">
-                                <asp:TextBox runat="server" ID="txtQuantidade" CssClass="form-control" placeholder="Quantidade" required="true"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txtQuantidade" onKeyUp="calc_total(this, event);" TextMode="Number" MaxLength="1" CssClass="form-control" placeholder="Quantidade" required="true"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 form-group">
                             <label for="<%=txtValorUnitario.ClientID%>">Valor Unitário</label>
                             <div class="input-group">
-                                <asp:TextBox runat="server" ID="txtValorUnitario" CssClass="form-control" placeholder="Valor Unitário" required="true"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txtValorUnitario" onKeyUp="calc_total(this, event);" CssClass="form-control" placeholder="Valor Unitário" required="true"></asp:TextBox>
                             </div>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
                         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 form-group">
                             <label for="<%=lbValorTotal.ClientID%>">Valor Total</label>
                             <div class="input-group">
-                                <asp:Label runat="server" ID="lbValorTotal" CssClass="form-control" Text="Valor Total"></asp:Label>
+                                <asp:Label runat="server" ID="lbValorTotal" CssClass="form-control"></asp:Label>
                             </div>
                         </div>
                     </div>
@@ -92,4 +92,14 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        function calc_total() {
+            var qtd = parseInt(document.getElementById('<% Response.Write(txtQuantidade.ClientID); %>').value);
+            var preco = parseFloat(document.getElementById('<% Response.Write(txtValorUnitario.ClientID); %>'));
+            var tot = (qtd * preco);
+            tot = tot.toFixed(2);
+            tot = tot.replace(".", ",");
+            document.getElementById('<% Response.Write(lbValorTotal.ClientID);%>').innerHTML = tot;
+        }
+    </script>
 </asp:Content>
