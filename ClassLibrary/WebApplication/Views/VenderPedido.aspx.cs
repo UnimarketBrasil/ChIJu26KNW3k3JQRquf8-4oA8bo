@@ -77,8 +77,9 @@ namespace WebApplication
                 MemoryStream m = new MemoryStream();
                 Pdf pdf = new Pdf();
                 pdf.PedidoPdf(pedido, m);
-                Response.OutputStream.Write(m.GetBuffer(), 0, m.GetBuffer().Length);
-
+                Response.ContentType = "Application/pdf";
+                Response.BinaryWrite(m.GetBuffer());
+                Response.End();
             }
         }
     }

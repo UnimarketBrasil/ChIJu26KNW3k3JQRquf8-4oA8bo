@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace ClassLibrary
 {
@@ -17,5 +18,7 @@ namespace ClassLibrary
         public double Valor { get; set; }
 
         public StatusPedido StatusPedido { get; set; }
+
+        public DateTime Data { get; set; }
     }
 }

@@ -107,11 +107,37 @@ namespace ClassLibrary.Repositorio
         public Pedido CarregarPedido(Pedido pedido)
         {
             Abrirconexao();
-
-            using (Cmd = new SqlCommand("CarregarPedido", Con))
+            try
             {
-                try
+
+                using (Cmd = new SqlCommand("CarregarPedido", Con))
                 {
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@IdPedido", pedido.Id);
+                    Cmd.ExecuteNonQuery();
+
+                    Dr = Cmd.ExecuteReader();
+
+                    if (Dr.HasRows)
+                    {
+                        Dr.Read();
+                        pedido.Data = Convert.ToDateTime(Dr["Data"]);
+                        pedido.Vendedor = new Usuario();
+                        pedido.Vendedor.Nome = Convert.ToString(Dr["Vendedor"]);
+                        pedido.Comprador = new Usuario();
+                        pedido.Comprador.Nome = Convert.ToString(Dr["Comprador"]);
+                        pedido.Comprador.Latitude = Convert.ToString(Dr["Latitude"]);
+                        pedido.Comprador.Longitude = Convert.ToString(Dr["Longitude"]);
+                        pedido.Comprador.Numero = Convert.ToInt32(Dr["Numero"]);
+                        pedido.Comprador.Complemento = Convert.ToString(Dr["Complemento"]);
+
+                        Dr.Close();
+                    }
+                }
+
+                using (Cmd = new SqlCommand("CarregarItemPedido", Con))
+                {
+
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.AddWithValue("@IdPedido", pedido.Id);
                     Cmd.ExecuteNonQuery();
@@ -128,7 +154,7 @@ namespace ClassLibrary.Repositorio
 
                             item.Nome = Convert.ToString(Dr["Nome"]);
                             item.Quantidade = Convert.ToDouble(Dr["Quantidade"]);
-                            //item.ValorUnitario = Convert.ToDouble(Dr["ValorUnitario"]);
+                            item.ValorUnitario = Convert.ToDouble(Dr["ValorUnitario"]);
 
                             pedido.Item.Add(item);
                         }
@@ -138,16 +164,15 @@ namespace ClassLibrary.Repositorio
 
                     return pedido;
                 }
-                catch (Exception ex)
-                {
-                    throw new Exception("Ao carregar pedido: " + ex.Message);
-                }
-                finally
-                {
-                    FecharConexao();
-                }
             }
-
+            catch (Exception ex)
+            {
+                throw new Exception("Ao carregar pedido: " + ex.Message);
+            }
+            finally
+            {
+                FecharConexao();
+            }
         }
 
         public List<Pedido> ListarPedidoVendedor(int idUsuario)
@@ -317,7 +342,7 @@ namespace ClassLibrary.Repositorio
                             pedido.Codigo = Convert.ToString(Dr["Codigo"]);
                             pedido.Vendedor = new Usuario();
                             pedido.Vendedor.Nome = Convert.ToString(Dr["Vendedor"]).ToUpper();
-                            pedido.Valor = Math.Round(Convert.ToDouble(Dr["Valor"]),2);
+                            pedido.Valor = Math.Round(Convert.ToDouble(Dr["Valor"]), 2);
 
                             pedidoList.Add(pedido);
                         }
