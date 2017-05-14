@@ -115,7 +115,8 @@ namespace WebApplication
             u.Latitude = uEndereco.Latitude;
             u.Longitude = uEndereco.Longitude;
             u.Complemento = txtComplemento.Text;
-
+            u.Numero = int.Parse(txtNumero.Text);
+            u.UltimoAcesso = DateTime.Now;
             UsuarioRepositorio cadastrar = new UsuarioRepositorio();
 
             SqlDataReader Dr = cadastrar.ValidarEmailCpfCnpj(u);
@@ -124,11 +125,9 @@ namespace WebApplication
             {
                 if (cadastrar.CadastrarUsuario(u))
                 {
-                    //Response.Redirect(Request.RawUrl);
                     dvMsg.Visible = true;
                     dvMsg.Attributes["class"] = "alert alert-success alert-dismissible";
                     lbMsg.Text = "Cadastro realizado com sucesso!";
-
                 }
                 else
                 {

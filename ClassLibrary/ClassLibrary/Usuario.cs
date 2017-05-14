@@ -26,6 +26,8 @@ namespace ClassLibrary
 
         public string Longitude { get; set; }
 
+        public int Numero { get; set; }
+
         public string Complemento { get; set; }
 
         public double AreaAtuacao { get; set; }
@@ -43,6 +45,8 @@ namespace ClassLibrary
         public int QtdPedidosFinanlizado { get; set; }
 
         public int QtdPedidosCancelado { get; set; }
+
+        public DateTime UltimoAcesso { get; set; }
 
     }
 

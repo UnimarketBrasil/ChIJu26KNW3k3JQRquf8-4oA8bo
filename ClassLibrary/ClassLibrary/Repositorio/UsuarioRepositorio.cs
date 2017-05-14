@@ -27,19 +27,39 @@ namespace ClassLibrary.Repositorio
                     Cmd.Parameters.AddWithValue("@Telefone", user.Telefone);
                     Cmd.Parameters.AddWithValue("@Longitude", user.Longitude);
                     Cmd.Parameters.AddWithValue("@Latitude", user.Latitude);
+                    Cmd.Parameters.AddWithValue("@Numero", user.Numero);
                     Cmd.Parameters.AddWithValue("@Complemento", user.Complemento);
                     Cmd.Parameters.AddWithValue("@AreaAtuacao", user.AreaAtuacao);
                     Cmd.Parameters.AddWithValue("@IdTipoUsuario", user.Tipousuario.Id);
+                    Cmd.Parameters.AddWithValue("@UltimoAcesso", user.UltimoAcesso);
                     Cmd.ExecuteNonQuery();
-                    return true;
+
+                    Cmd = new SqlCommand("ValidaEmailCpfCnpj", Con);
+
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@Email", user.Email);
+                    Cmd.Parameters.AddWithValue("@CpfCnpj", user.CpfCnpj);
+                    Cmd.ExecuteNonQuery();
+
+                    Dr = Cmd.ExecuteReader();
+
+                    if (Dr.HasRows)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
                 catch (Exception ex)
                 {
                     throw new Exception(ex.Message);
-                    //return false;
                 }
                 finally
                 {
+                    Dr.Close();
+
                     FecharConexao();
                 }
             }

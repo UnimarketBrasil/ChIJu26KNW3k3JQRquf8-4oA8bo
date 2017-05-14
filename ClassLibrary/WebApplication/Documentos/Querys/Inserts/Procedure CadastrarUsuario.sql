@@ -14,8 +14,10 @@ create procedure CadastrarUsuario(
 	@Longitude varchar(20),
 	@Latitude varchar(20),
 	@Complemento varchar(20) = null,
+	@Numero int,
 	@AreaAtuacao real =null,
-	@IdTipoUsuario int
+	@IdTipoUsuario int,
+	@UltimoAcesso datetime
 	)
 as 
 begin
@@ -32,9 +34,11 @@ begin
 			 Telefone,
 			 Longitude,
 			 Latitude,
+			 Numero,
 			 Complemento,
 			 AreaAtuacao,
-			 IdTipoUsuario
+			 IdTipoUsuario,
+			 UltimoAcesso
 			 ) 
 			 values(
 			 @Email,
@@ -47,10 +51,13 @@ begin
 			 @Telefone,
 			 @Longitude,
 			 @Latitude,
+			 @Numero,
 			 @Complemento,
 			 @AreaAtuacao,
-			 @IdTipoUsuario
+			 @IdTipoUsuario,
+			 @UltimoAcesso
 			 )
+			 select Usuario.Email from Usuario where Email=@Email
 		commit tran
 	end try
 	begin catch

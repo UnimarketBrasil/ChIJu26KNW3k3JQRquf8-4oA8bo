@@ -15,7 +15,7 @@ namespace WebApplication.Views.Ajax
         {
             Usuario u = new Usuario();
             GeoCodificacao g = new GeoCodificacao();
-            u = g.ObterCoordenadas(u, Request.QueryString["cep"], Request.QueryString["numero"]);
+            u = g.ObterCoordenadas(u, Request.QueryString["cep"], Request.QueryString["num"]);
 
             Session["latlog"] = u;
 
