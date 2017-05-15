@@ -12,6 +12,8 @@ namespace WebApplication
         protected void Page_Load(object sender, EventArgs e)
         {
             Session["sistema"] = null;
+            Session["latlog"] = null;
+            Session["carrinho"] = null;
             Response.Redirect("~/Default.aspx");
         }
     }
