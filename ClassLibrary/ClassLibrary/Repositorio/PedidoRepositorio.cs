@@ -7,6 +7,7 @@ namespace ClassLibrary.Repositorio
 {
     public class PedidoRepositorio : Conexao
     {
+        //ESSE MÉTODO CADASTRA UM NOVO PEDIDO NO BANCO DE DADOS
         public void RealizarPedido(Pedido pedido)
         {
             Abrirconexao();
@@ -31,6 +32,7 @@ namespace ClassLibrary.Repositorio
                 }
             }
 
+            //ESTE METODO CADASTRA UM NOVO ITEM AO PEDIDO E RETORNA "TRUE" CASO O ITEM SEJA CADASTRADO NO PEDIDO
             using (Cmd = new SqlCommand("CadastrarItemPedido", Con))
             {
                 try
@@ -57,6 +59,7 @@ namespace ClassLibrary.Repositorio
             }
         }
 
+        //ESTE METODO FINALIZA O PEDIDO DO USUARIO COMPRADOR E RETORNA "TRUE" CASO SEJA REALIZADO COM SUCESSO
         public void FinalizarPedido(int idPedido)
         {
             Abrirconexao();
@@ -81,6 +84,7 @@ namespace ClassLibrary.Repositorio
 
         }
 
+        //ESTE METODO RECEBE O ID DO PEDIDO E CANCELA O PEDIDO REALIZADO PELO USUARIO COMPRADOR
         public void CancelarPedido(int idPedido)
         {
             Abrirconexao();
@@ -104,6 +108,7 @@ namespace ClassLibrary.Repositorio
             }
         }
 
+        //ESTE METODO CARREGA TODOS OS PEDIDOS RECEBIDOS PELO USUARIO VENDEDOR
         public Pedido CarregarPedido(Pedido pedido)
         {
             Abrirconexao();
@@ -175,6 +180,7 @@ namespace ClassLibrary.Repositorio
             }
         }
 
+        //ESTE METODO LISTA TODOS OS PEDIDOS RECEBIDOS PELO USUARIO VENDEDPOR E RETORNA "TRUE" CASO POSSUA PEDIDOS A SEREM EXIBIDOS
         public List<Pedido> ListarPedidoVendedor(int idUsuario)
         {
             Abrirconexao();
@@ -220,6 +226,7 @@ namespace ClassLibrary.Repositorio
 
         }
 
+        //ESTE METODO LISTA TODOS OS PEDIDOS REALIZADO PELO USUARIO COMPRADOR E RETORNA TRUE
         public List<Pedido> ListarPedidoComprador(int idUsuario)
         {
             Abrirconexao();
@@ -267,6 +274,7 @@ namespace ClassLibrary.Repositorio
 
         }
 
+        //ESTE METODO LISTA OS PEDIDOS PELO STATUS E APRESENTA AO USUARIO VENDEDOR
         public List<Pedido> ListarPedidoPeloStatusVendedor(int idUsuario, int idStatus)
         {
             Abrirconexao();
@@ -316,6 +324,7 @@ namespace ClassLibrary.Repositorio
 
         }
 
+        //ESTE METODO LISTA OS PEDIDOS PELO STATUS E APRESENTA AO USUARIO COMPRADOR
         public List<Pedido> ListarPedidoPeloStatusComprador(int idUsuario, int idStatus)
         {
             Abrirconexao();

@@ -14,6 +14,8 @@ namespace WebApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Lista todos os usuarios cadastrados no sistema e preenche a grid do home Administrador com as seguintes informações: 
+            //ID, EMAIL, NOME OU RAZÃO SOCIAL, TIPO DE USUARIO E STATUS DO USUARIO 
             if (Session["sistema"] == null)
                 Response.Redirect("~/Views/Logout.aspx");
 
@@ -35,6 +37,7 @@ namespace WebApplication
         {
             Button status = null;
 
+            //Este metodo altera o botão na grid view conforme o status do usuario
             for (int i = 0; i < grdAdmin.Rows.Count; i++)
             {
                 status = (Button)grdAdmin.Rows[i].FindControl("btStatus");
@@ -61,6 +64,7 @@ namespace WebApplication
 
         protected void btStatus_Command(object sender, CommandEventArgs e)
         {
+            //Este metodo bloqueia ou desbloqueia o usuario
             String[] state = new string[2];
             state = e.CommandArgument.ToString().Split(',');
 

@@ -27,6 +27,7 @@ namespace WebApplication
                     Response.Redirect("~/Views/SistemaErro.aspx");
                 }
 
+                //Este metodoo apresenta os detalhes do item clicado pelo usuario comprador
                 Item i = new Item();
                 ItemRepositorio carregarItem = new ItemRepositorio();
                 GeoCodificacao g = new GeoCodificacao();
@@ -60,6 +61,7 @@ namespace WebApplication
             }
         }
 
+        //Este metodo adiciona um item ao carrinho de compras
         protected void btAdicionaCarrinho_Click(object sender, EventArgs e)
         {
             Item i = new Item();

@@ -24,10 +24,11 @@ namespace WebApplication
             Usuario user = (Usuario)Session["sistema"];
             PedidoRepositorio consulta = new PedidoRepositorio();
 
-
             switch (e.Index)
             {
+
                 case 0:
+                    //Este case lista todos os pedidos na grid de pedidos do usuario vendedor
                     List<Pedido> lstTodos = consulta.ListarPedidoVendedor(user.Id);
 
                     grdPedido.DataSource = lstTodos;
@@ -35,18 +36,21 @@ namespace WebApplication
 
                     break;
                 case 1:
+                    //Este case lista todos os pedidos pendentes na grid de pedidos do usuario vendedor
                     List<Pedido> lstPendentes = consulta.ListarPedidoPeloStatusVendedor(user.Id, 1);
 
                     grdPedido.DataSource = lstPendentes;
                     grdPedido.DataBind();
                     break;
                 case 2:
+                    //Este case lista todos os pedidos cancelados na grid de pedidos do usuario vendedor
                     List<Pedido> lstCancelados = consulta.ListarPedidoPeloStatusVendedor(user.Id, 3);
 
                     grdPedido.DataSource = lstCancelados;
                     grdPedido.DataBind();
                     break;
                 case 3:
+                    //Este case lista todos os pedidos finalizados na grid de pedidos do usuario vendedor
                     List<Pedido> lstFinalizados = consulta.ListarPedidoPeloStatusVendedor(user.Id, 2);
 
                     grdPedido.DataSource = lstFinalizados;
@@ -64,7 +68,7 @@ namespace WebApplication
             grdPedido.DataBind();
         }
 
-       
+        //Este metodo gera um relatorio em PDF do pedidos do usuario vendedor
         protected void pdfPedido_Command(object sender, CommandEventArgs e)
         {
              if (e.CommandName == "Pedido")

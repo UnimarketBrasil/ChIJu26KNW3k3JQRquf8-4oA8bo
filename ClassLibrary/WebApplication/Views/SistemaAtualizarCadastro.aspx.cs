@@ -40,6 +40,7 @@ namespace WebApplication
                 Response.Redirect("~/Views/SistemaLogin.aspx");
             }
         }
+        //ESTE METODO CARREGA AS INFORMAÇOES DO USUARIO PARA ALTERAÇÃO
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)

@@ -23,6 +23,7 @@ namespace WebApplication
             }
         }
 
+        //ESTE METODO LISTA OS PEDIDOS DO USUARIO COMPRADOR
         protected void blTabs_Click(object sender, BulletedListEventArgs e)
         {
             Usuario user = (Usuario)Session["sistema"];

@@ -296,6 +296,7 @@ namespace ClassLibrary.Repositorio
             }
         }
 
+        //ESSE MÉTODO LISTA OS ITENS DO CADASTRADOS PELO USUARIO VENDEDOR
         public List<Item> ListarItem(int idUsuario)
         {
             Abrirconexao();
@@ -344,6 +345,7 @@ namespace ClassLibrary.Repositorio
             }
         }
 
+        //ESSE MÉTODO LISTA OS ITENS CONFORME SUA CATEGORIA
         public List<Item> ListarItemPorCategoria(Usuario user, int idCategoria)
         {
             Abrirconexao();
@@ -388,6 +390,7 @@ namespace ClassLibrary.Repositorio
             }
         }
 
+        //ESSE MÉTODO LISTA OS ITENS CONFORME SEU NOME OU CODIGO CADASTRADOS
         public List<Item> ListarItemPorNomeOuCodigo(Usuario user, string codigo)
         {
             Abrirconexao();
@@ -433,6 +436,7 @@ namespace ClassLibrary.Repositorio
             }
         }
 
+        //ESSE MÉTODO FAZ UMA PESQUISA DE ALGUM ITEM DIGITADO NA BARRA DE PESQUISAS E RETORNA ESTE ITEM CASO SEJA ENCOTRADO CADASTRADO NO SISTEMA
         public List<Item> MecanismoDeBusca(string pesquisa, Usuario comprador)
         {
             Abrirconexao();

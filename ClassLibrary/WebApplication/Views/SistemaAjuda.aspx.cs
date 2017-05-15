@@ -9,6 +9,7 @@ namespace WebApplication.Views
 {
     public partial class SistemaAjuda : System.Web.UI.Page
     {
+        //ESTE METODO TEM POR OBJETIVO RECEBER O ID DE ALGUMA AJUDA POR PARAMETRO E APRESENTAR NA TELA PARA O USUARIO
         protected void Page_Load(object sender, EventArgs e)
         {
             string pesquisa = Request.QueryString["help"];

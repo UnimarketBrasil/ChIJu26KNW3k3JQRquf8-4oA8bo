@@ -12,6 +12,8 @@ namespace WebApplication
 {
     public partial class VenderItem : System.Web.UI.Page
     {
+        //ESTE METODO LISTA TODOS OS ITENS CADASTRADOS NA CONTA DO USUARIO VENDEDOR
+        //A LISTA É EXIBIDA EM UMA GRID NA SUA TELA PRINCIPAL
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["sistema"] == null)

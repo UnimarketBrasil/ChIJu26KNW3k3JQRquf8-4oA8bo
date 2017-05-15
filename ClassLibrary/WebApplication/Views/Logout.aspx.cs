@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace WebApplication
 {
+    //ESTE METODO ZERA A SESSION DO USUARIO PROVOCANDO SEU LOGOUT
     public partial class Logout : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)

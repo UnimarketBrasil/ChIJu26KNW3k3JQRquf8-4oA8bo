@@ -14,6 +14,7 @@ namespace WebApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Recebe o conteudo da barra de pesquisa por parametro
             string pesquisa = Request.QueryString["buscar"];
 
 

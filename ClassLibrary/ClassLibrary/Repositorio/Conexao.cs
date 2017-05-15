@@ -3,6 +3,7 @@ using System.Data.SqlClient;
 
 namespace ClassLibrary
 {
+    //ESTE METODO REALIZA A CONEXAO ENTRE O BANCO DE DADOS E O SISTEMA
     public class Conexao
     {
         protected SqlConnection Con;

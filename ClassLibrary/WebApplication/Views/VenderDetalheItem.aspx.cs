@@ -13,6 +13,7 @@ namespace WebApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Verifica se o usuario está logado
             if (Session["sistema"] == null)
                 Response.Redirect("~/Views/SistemaLogin.aspx");
 
@@ -35,7 +36,7 @@ namespace WebApplication
                 Item i = new Item();
                 int idItem = 0;
 
-                //RECEBE ID DO ITEM POR PARAMETRO E CARREGA NA TELA OU CADASTRA NOVO PRODUTO
+                //RECEBE ID DO ITEM POR PARAMETRO, CARREGA NA TELA OU CADASTRA NOVO PRODUTO
                 if (int.TryParse(Request.QueryString["idItem"], out idItem) &&
                     carregaItem.DetalheItemVendedor(idItem, user.Id) != null)
                 {
@@ -67,6 +68,7 @@ namespace WebApplication
             }
         }
 
+        //ESTE METODO CADASTRA UM NOVO ITEM AO SISTEMA
         protected void bt_CadastrarItem(object sender, EventArgs e)
         {
             Item item = new Item();

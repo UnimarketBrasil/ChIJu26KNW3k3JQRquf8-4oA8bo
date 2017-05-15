@@ -13,6 +13,7 @@ namespace WebApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //ESTE METODO LISTA TODOS OS ITENS ADICIONADOS AO CARRINHO DE COMPRAS.
             if (Session["carrinho"] != null)
             {
                 List<Item> lst = (List<Item>)Session["carrinho"];

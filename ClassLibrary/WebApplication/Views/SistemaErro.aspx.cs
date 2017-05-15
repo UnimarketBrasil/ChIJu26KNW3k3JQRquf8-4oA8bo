@@ -14,6 +14,8 @@ namespace WebApplication
         {
 
         }
+        //Caso ocorra algum erro no sistema, a tela de erros é apresentada ao usuario.
+        //Depois o usuario é redirecionado a sua tela inicial
         protected void btErro_Click(object sender, EventArgs e)
         {
             if (Session["sistema"] != null)
