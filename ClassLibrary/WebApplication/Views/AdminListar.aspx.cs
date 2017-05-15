@@ -38,24 +38,49 @@ namespace WebApplication
             for (int i = 0; i < grdAdmin.Rows.Count; i++)
             {
                 status = (Button)grdAdmin.Rows[i].FindControl("btStatus");
-                String state = status.CommandArgument.ToString();
-                if (state.Equals("Ativo"))
+                String[] state = new string[2];
+                state = status.CommandArgument.ToString().Split(',');
+                if (state[0].Equals("Ativo"))
                 {
                     status.Text = "Bloquear";
                     status.CssClass = "btn btn-block btn-danger btn-sm";
                 }
-                else if (state.Equals("Pendênte"))
+                else if (state[0].Equals("Pendênte"))
                 {
                     status.Text = "Pendênte...";
                     status.CssClass = "btn btn-block btn-warning btn-sm disabled";
                     status.Enabled = false;
                 }
-                else if (state.Equals("Bloqueado"))
+                else if (state[0].Equals("Bloqueado"))
                 {
                     status.Text = "Desbloquear";
                     status.CssClass = "btn btn-block btn-success btn-sm";
                 }
             }
+        }
+
+        protected void btStatus_Command(object sender, CommandEventArgs e)
+        {
+            String[] state = new string[2];
+            state = e.CommandArgument.ToString().Split(',');
+
+            UsuarioRepositorio bloq_desblo = new UsuarioRepositorio();
+
+            switch (state[0])
+            {
+                case "Ativo":
+                    bloq_desblo.BloquearUsuario(Convert.ToInt32(state[1]));
+                    break;
+
+                case "Bloqueado":
+                    bloq_desblo.DesbloquearUsuario(Convert.ToInt32(state[1]));
+                    break;
+
+                default:
+                    break;
+            }
+            Response.Redirect(Request.RawUrl);
+
         }
     }
 }

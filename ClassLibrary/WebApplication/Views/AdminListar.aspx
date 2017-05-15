@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin.Master" AutoEventWireup="true" CodeBehind="AdminListar.aspx.cs" Inherits="WebApplication.AdminListar" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin.Master" AutoEventWireup="true" CodeBehind="AdminListar.aspx.cs" Inherits="WebApplication.AdminListar" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -18,7 +18,7 @@
                         <asp:BoundField  DataField="StatusUsuario.Nome" HeaderText="Status do Usuario" ItemStyle-CssClass="col-xs-1" />
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:Button runat="server" ID="btStatus" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "StatusUsuario.Nome") %>' CommandName="Detail" Text="Bloquear" ControlStyle-CssClass="col-xs-1" />
+                                <asp:Button runat="server" ID="btStatus" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "StatusUsuario.Nome")  +", "+ DataBinder.Eval(Container.DataItem, "Id") %>' OnCommand="btStatus_Command" CommandName="Detail" ControlStyle-CssClass="col-xs-1" />
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>

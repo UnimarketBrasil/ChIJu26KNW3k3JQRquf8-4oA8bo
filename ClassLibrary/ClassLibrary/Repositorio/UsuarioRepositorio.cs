@@ -175,6 +175,29 @@ namespace ClassLibrary.Repositorio
             }
         }
 
+        public void DesbloquearUsuario(int idUsuario)
+        {
+            Abrirconexao();
+
+            using (Cmd = new SqlCommand("DesbloquearUsuario", Con))
+            {
+                try
+                {
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@IdUsuario", idUsuario);
+                    Cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Erro ao bloquear usuario: " + ex.Message);
+                }
+                finally
+                {
+                    FecharConexao();
+                }
+            }
+        }
+
         public void AtualizarSenha(Usuario user, string novaSenha)
         {
             Abrirconexao();
