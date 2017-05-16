@@ -75,9 +75,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div runat="server" id="dvBtnNovo" class="row">
                         <div class="form-group">
-                            <div id="dvExcluirItem" runat="server" class="col-xs-12 col-sm-12 col-md-10 col-lg-10 form-group">
+                            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 form-group">
                                 <asp:LinkButton ID="btnLixeira" runat="server" CssClass="btn btn-danger"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></asp:LinkButton>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1 form-group">
@@ -85,6 +85,18 @@
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1 form-group">
                                 <asp:Button runat="server" ID="btSalvarrItem" Text="Salvar" CssClass="btn btn-primary" OnClick="bt_CadastrarItem"></asp:Button>
+                            </div>
+                        </div>
+                    </div>
+                    <div runat="server" id="dvBtnAlterar" class="row">
+                        <div class="form-group">
+                            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 form-group">
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1 form-group">
+                                <button type="reset" class="btn btn-default">Cancelar</button>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1 form-group">
+                                <asp:Button runat="server" ID="btAtualizarItem" Text="Salvar" CssClass="btn btn-primary" OnClick="btAtualizarItem_Click"></asp:Button>
                             </div>
                         </div>
                     </div>

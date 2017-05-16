@@ -41,6 +41,7 @@ namespace WebApplication
                     carregaItem.DetalheItemVendedor(idItem, user.Id) != null)
                 {
                     dvHeadNovo.Visible = false;
+                    dvBtnNovo.Visible = false;
                     i = carregaItem.DetalheItemVendedor(idItem, user.Id);
                     txtNome.Text = i.Nome;
                     txtCod.Text = i.Codigo;
@@ -50,6 +51,7 @@ namespace WebApplication
                     lbValorTotal.Text = (i.Quantidade * i.ValorUnitario).ToString();
                     dpCategoria.SelectedValue = i.Categoria.Id.ToString();
 
+                    
                     string caminho = string.Format("~/Imagens/{0}/{1}/", i.Vendedor.Id, i.Id);
 
                     if (Directory.Exists(Server.MapPath(caminho)))
@@ -63,7 +65,7 @@ namespace WebApplication
                 else
                 {
                     dvHeadAlterar.Visible = false;
-                    dvExcluirItem.Visible = false;
+                    dvBtnAlterar.Visible = false;
                 }
             }
         }
@@ -92,12 +94,70 @@ namespace WebApplication
 
             if (cadastrarItem.CadastrarItem(item))
             {
-                var caminho = Server.MapPath(string.Format(@"~/Imagens/{0}/{1}/", u.Id, item.Id));
+                var caminho = Server.MapPath(string.Format(@"~/Imagens/{0}/{1}/", item.Vendedor.Id, item.Id));
 
                 Directory.CreateDirectory(caminho);
 
-                InputFoto.PostedFile.SaveAs(Path.Combine(caminho, InputFoto.FileName));
+                if (InputFoto.HasFile)
+                {
+                   InputFoto.PostedFile.SaveAs(Path.Combine(caminho, InputFoto.FileName));
+                }
+                else
+                {
+                    File.Copy(Server.MapPath(string.Format(@"~/Imagens/Sistema/ImagemPadrao.jpg")), caminho + "ImagemPadrao.jpg", true);
+                }
 
+                dvMsg.Visible = true;
+                dvMsg.Attributes["class"] = "alert alert-success alert-dismissible";
+                lbMsg.Text = "Cadastro realizado com sucesso!";
+                Response.Redirect("~/Views/VenderItem.aspx");
+            }
+            else
+            {
+                dvMsg.Visible = true;
+                dvMsg.Attributes["class"] = "alert alert-warning alert-dismissible";
+                lbMsg.Text = "Erro ao cadastrar o item. Verifique as informações digitadas e tente novamente.";
+            }
+        }
+
+        protected void btAtualizarItem_Click(object sender, EventArgs e)
+        {
+            Item item = new Item();
+
+            item.Id = int.Parse(Request.QueryString["idItem"]);
+           
+            txtCod.Text = txtCod.Text.Replace(">", "");
+            item.Codigo = txtCod.Text;
+            txtNome.Text = txtNome.Text.Replace(">", "");
+            item.Nome = txtNome.Text;
+            item.Descricao = txtDescricao.InnerText;
+            item.ValorUnitario = Convert.ToDouble(txtValorUnitario.Text);
+            item.Quantidade = Convert.ToInt64(txtQuantidade.Text);
+
+            item.Categoria = new Categoria(Convert.ToInt32(dpCategoria.SelectedValue));
+
+            Usuario u = (Usuario)Session["sistema"];
+
+            item.Vendedor = new Usuario();
+            item.Vendedor.Id = u.Id;
+
+            ItemRepositorio itemAtualizar = new ItemRepositorio();
+
+            if (itemAtualizar.AtualizarItem(item))
+            {
+                          
+                if (InputFoto.HasFile)
+                {
+                    var caminho = Server.MapPath(string.Format(@"~/Imagens/{0}/{1}/", item.Vendedor.Id, item.Id));
+
+                    Directory.CreateDirectory(caminho);
+
+                    DirectoryInfo dir = new DirectoryInfo((caminho));
+                    dir.GetFiles("*", SearchOption.AllDirectories).ToList().ForEach(file => file.Delete());
+
+                    InputFoto.PostedFile.SaveAs(Path.Combine(caminho, InputFoto.FileName));
+                }
+                                
                 dvMsg.Visible = true;
                 dvMsg.Attributes["class"] = "alert alert-success alert-dismissible";
                 lbMsg.Text = "Cadastro realizado com sucesso!";

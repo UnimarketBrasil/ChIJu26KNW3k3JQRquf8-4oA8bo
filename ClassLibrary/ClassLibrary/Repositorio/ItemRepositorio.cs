@@ -25,9 +25,8 @@ namespace ClassLibrary.Repositorio
                     Cmd.Parameters.AddWithValue("@Quantidade", item.Quantidade);
                     Cmd.Parameters.AddWithValue("@IdCategoria", item.Categoria.Id);
                     Cmd.Parameters.AddWithValue("@IdUsuario", item.Vendedor.Id);
-                    Cmd.ExecuteNonQuery();
-
-                    //item.Id = int.Parse(Cmd.ExecuteScalar().ToString());
+                    
+                    item.Id = int.Parse(Cmd.ExecuteScalar().ToString());
 
                     return true;
 
@@ -45,7 +44,7 @@ namespace ClassLibrary.Repositorio
         }
         //ESSE MÉTODO ALUALIZA UM ITEM NO BANCO DE DADOS E RETORNA "TRUE" CASO O ITEM SEJA
         //ATUALIZADO COM SUCESSO
-        public void AtualizarItem(Item item)
+        public bool AtualizarItem(Item item)
         {
             Abrirconexao();
 
@@ -62,10 +61,14 @@ namespace ClassLibrary.Repositorio
                     Cmd.Parameters.AddWithValue("@Quantidade", item.Quantidade);
                     Cmd.Parameters.AddWithValue("@IdCategoria", item.Categoria.Id);
                     Cmd.ExecuteNonQuery();
+
+                    return true;
                 }
                 catch (Exception ex)
                 {
                     throw new Exception("Erro ao atualizar item: " + ex.Message);
+
+                    return false;
                 }
                 finally
                 {
