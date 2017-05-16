@@ -32,7 +32,6 @@ namespace ClassLibrary.Repositorio
                 }
             }
 
-            //ESTE METODO CADASTRA UM NOVO ITEM AO PEDIDO E RETORNA "TRUE" CASO O ITEM SEJA CADASTRADO NO PEDIDO
             using (Cmd = new SqlCommand("CadastrarItemPedido", Con))
             {
                 try
