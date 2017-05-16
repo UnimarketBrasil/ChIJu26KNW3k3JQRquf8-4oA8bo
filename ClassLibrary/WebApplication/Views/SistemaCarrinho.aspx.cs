@@ -56,10 +56,21 @@ namespace WebApplication
 
             lst.RemoveAll((x) => x.Id == int.Parse(id));
 
-            Session["carrinho"] = lst;
+            if (lst.Count == 0)
+            {
+                Session["carrinho"] = null;
+            }
+            else
+            {
+                Session["carrinho"] = lst;
+            }
+
+
+
 
             Response.Redirect(Request.RawUrl);
 
         }
+
     }
 }
