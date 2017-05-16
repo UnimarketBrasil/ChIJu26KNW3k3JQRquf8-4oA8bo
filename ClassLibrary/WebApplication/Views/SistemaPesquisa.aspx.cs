@@ -23,7 +23,7 @@ namespace WebApplication
                 ItemRepositorio itemPesquisa = new ItemRepositorio();
                 Usuario u = (Usuario)Session["sistema"];
 
-                //CASO NÃO SEJA DIGITADO NADA NA PESQUISA, O SISTEMA APRESENTA A TELA DE ERRO
+                //CASO NÃO SEJA DIGITADO NADA NA PESQUISA, O SISTEMA APRESENTA A MENSAGEM INFORMANDO QUE O CAMPO PESQUISA ESTÁ VAZIO
                 if (String.IsNullOrWhiteSpace(pesquisa) == true)
                 {
                     divMsg.Visible = true;
@@ -49,9 +49,19 @@ namespace WebApplication
                         }
 
                     }
-
-                    grdItens.DataSource = lst;
-                    grdItens.DataBind();
+                    //CASO O USUARIO PROCURE POR UM PRODUTO NÃO CADASTRADO NO SISTEMA, O MESMO RETORNA A MENSAGEM INFORMANDO
+                    //A INEXISTENCIA DO PRODUTO.
+                    if (lst.Count == 0)
+                    {
+                        divMsg.Visible = true;
+                        divMsg.Attributes["class"] = "alert alert-dismissible alert-info";
+                        msgPesquisa.Text = "<strong>Pesquisa Inválida</strong>. Nenhum produto encontrado com esse critério de pesquisa. Tente novamente com outro termo para busca...";
+                    }
+                    else
+                    {
+                        grdItens.DataSource = lst;
+                        grdItens.DataBind();
+                    }
                 }
             }
             else
