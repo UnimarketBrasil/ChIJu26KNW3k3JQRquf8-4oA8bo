@@ -57,6 +57,7 @@ namespace WebApplication
                         divMsg.Attributes["class"] = "alert alert-dismissible alert-info";
                         msgPesquisa.Text = "<strong>Pesquisa Inválida</strong>. Nenhum produto encontrado com esse critério de pesquisa. Tente novamente com outro termo para busca...";
                     }
+                    //CASO O PRODUTO EXISTA NO SISTEMA, A GRID VIEW É PREENCHIDA
                     else
                     {
                         grdItens.DataSource = lst;
