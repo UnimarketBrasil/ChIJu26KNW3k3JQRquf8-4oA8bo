@@ -39,7 +39,7 @@
                     <asp:TemplateField>
                         <FooterTemplate>
                             <asp:Label runat="server" Text="Total: R$"></asp:Label>
-                            <asp:Button runat="server" Text="Confirmar Pedido" CssClass="btn btn-success" />
+                            <asp:Button runat="server" ID="btConfirmarPedido" Text="Confirmar Pedido" CssClass="btn btn-success" OnClick="btConfirmarPedido_Click" />
                         </FooterTemplate>
                     </asp:TemplateField>
                 </Columns>

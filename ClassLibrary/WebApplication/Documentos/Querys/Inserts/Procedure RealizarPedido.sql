@@ -6,7 +6,7 @@ create procedure RealizarPedido(
 	@CodigoPedido varchar(50),
 	@IdVendedor int,
 	@IdComprador int,
-	@IdStatusPedido int
+	@IdStatusPedido int = 1
 	)
 as begin
 	begin try
@@ -21,7 +21,7 @@ as begin
 			@IdVendedor,
 			@IdComprador,
 			@IdStatusPedido
-			);return
+			)
 		commit tran
 	end try
 	begin catch

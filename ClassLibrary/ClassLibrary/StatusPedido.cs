@@ -12,5 +12,9 @@ namespace ClassLibrary
         {
             Id = id;
         }
+
+        public StatusPedido()
+        {
+        }
     }
 }

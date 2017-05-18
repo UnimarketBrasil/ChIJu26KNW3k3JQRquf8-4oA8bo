@@ -20,8 +20,8 @@ namespace ClassLibrary.Repositorio
                     Cmd.Parameters.AddWithValue("@CodigoPedido", pedido.Codigo);
                     Cmd.Parameters.AddWithValue("@IdVendedor", pedido.Vendedor.Id);
                     Cmd.Parameters.AddWithValue("@IdComprador", pedido.Comprador.Id);
-                    Cmd.Parameters.AddWithValue("@IdStatusPedido", pedido.StatusPedido.Id);
-                    Cmd.ExecuteNonQuery();
+
+                    //Cmd.Parameters.AddWithValue("@IdStatusPedido", pedido.StatusPedido.Id);
 
                     pedido.Id = int.Parse(Cmd.ExecuteScalar().ToString());
 
@@ -30,20 +30,24 @@ namespace ClassLibrary.Repositorio
                 {
                     throw new Exception("Erro ao realizar pedido : " + ex.Message);
                 }
+               
             }
 
             //ESTE METODO CADASTRA UM NOVO ITEM AO PEDIDO E RETORNA "TRUE" CASO O ITEM SEJA CADASTRADO NO PEDIDO
+ 
             using (Cmd = new SqlCommand("CadastrarItemPedido", Con))
             {
                 try
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
 
+
                     foreach (var i in pedido.Item)
                     {
                         Cmd.Parameters.AddWithValue("@IdPedido", pedido.Id);
                         Cmd.Parameters.AddWithValue("@IdItem", i.Id);
                         Cmd.Parameters.AddWithValue("@Quantidade", i.Quantidade);
+                        Cmd.Parameters.AddWithValue("@ValorUnitario", i.ValorUnitario);
                         Cmd.ExecuteNonQuery();
                     }
 
