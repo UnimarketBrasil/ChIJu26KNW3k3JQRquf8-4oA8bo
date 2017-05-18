@@ -7,7 +7,6 @@
         <div class="row container-fluid">
             <div id="divMsg" runat="server" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <strong class="glyphicon glyphicon-info-sign"></strong>
                 <asp:Label ID="msgPesquisa" runat="server"></asp:Label>
             </div>
         </div>

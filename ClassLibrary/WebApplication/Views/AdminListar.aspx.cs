@@ -33,11 +33,11 @@ namespace WebApplication
             grdAdmin.DataBind();
         }
 
+        //Este metodo altera o botão na grid view conforme o status do usuario
         protected void grdAdmin_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             Button status = null;
 
-            //Este metodo altera o botão na grid view conforme o status do usuario
             for (int i = 0; i < grdAdmin.Rows.Count; i++)
             {
                 status = (Button)grdAdmin.Rows[i].FindControl("btStatus");
@@ -62,9 +62,9 @@ namespace WebApplication
             }
         }
 
+        //Bloqueia ou desbloqueia o usuario
         protected void btStatus_Command(object sender, CommandEventArgs e)
         {
-            //Este metodo bloqueia ou desbloqueia o usuario
             String[] state = new string[2];
             state = e.CommandArgument.ToString().Split(',');
 
