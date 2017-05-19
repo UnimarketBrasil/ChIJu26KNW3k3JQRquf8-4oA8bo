@@ -36,6 +36,24 @@
                 <div class="col-md-6">
                     <div class="sm-m-top-50">
                         <form id="form1" class="form-horizontal" runat="server">
+                            <!--Ativida Principal-->
+                            <div class="form-group">
+                                <label class="col-lg-2 control-label">Atividade principal</label>
+                                <div class="btn-group col-lg-5" data-toggle="buttons">
+                                    <label id="lbComprar" runat="server" onclick="areAtuacaoDisplay('c');" class="btn btn-primary">
+                                        <input type="radio" name="rdAtividade" id="rdComprar" runat="server" value="2" required="required"/>
+                                        Comprar
+                                    </label>
+                                    &nbsp;
+                                    <label id="lbVender" runat="server" onclick="areAtuacaoDisplay('v');" class="btn btn-primary">
+                                        <input type="radio" name="rdAtividade" id="rdVender" runat="server" value="3" />
+                                        Vender
+                                    </label>
+                                </div>
+                                <div class="col-lg-1">
+                                    <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=10' target='_blank'></a>
+                                </div>
+                            </div>
                             <!--Selecionar Tipo Pessoa-->
                             <fieldset class="form-group">
                                 <label for="<% =dpTipoPessoa.ClientID%>"" class="col-lg-2 control-label">Tipo Pessoa</label>
@@ -120,22 +138,6 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-lg-2 control-label">Atividade principal</label>
-                                <div class="btn-group col-lg-5" data-toggle="buttons">
-                                    <label id="lbComprar" runat="server" class="btn btn-primary">
-                                        <input type="radio" name="rdAtividade" id="rdComprar" onchange="areAtuacaoDisplay('c');" runat="server" value="2" required="required"/>
-                                        Comprar
-                                    </label>
-                                    <label id="lbVender" runat="server" class="btn btn-primary">
-                                        <input type="radio" name="rdAtividade" id="rdVender" onchange="areAtuacaoDisplay('v');" runat="server" value="3" />
-                                        Vender
-                                    </label>
-                                </div>
-                                <div class="col-lg-1">
-                                    <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=10' target='_blank'></a>
-                                </div>
-                            </div>
-                            <div class="form-group">
                                 <label for="<% =txtEndereco.ClientID %>" class="col-lg-2 control-label">Endereço</label>
                                 <div class="col-lg-4">
                                     <asp:TextBox ID="txtEndereco" runat="server" CssClass="form-control" OnKeyUp="formataCEP(this,event);" onchange="formataCEP(this,event);" placeholder="CEP" required="true" MaxLength="9"></asp:TextBox>
@@ -216,32 +218,29 @@
         <script src="../Scripts/locales/bootstrap-datepicker.pt-BR.min.js"></script>
         <script>
             function tipoPessoaSel() {
-                var dropdown = document.getElementById('<% =dpTipoPessoa.ClientID %>');
+                var dropdown = document.getElementById('<% Response.Write(dpTipoPessoa.ClientID); %>');
                 var valorSelecioando = dropdown.options[dropdown.selectedIndex].value;
 
                 if (valorSelecioando == 1) {
-                    document.getElementById('<% =dvPessoaFisica.ClientID  %>').style.display = "block";
-                    document.getElementById('<% =dvPessoaJuridica.ClientID %>').style.display = "none";
+                    document.getElementById('<% Response.Write(dvPessoaFisica.ClientID); %>').style.display = "block";
+                    document.getElementById('<% Response.Write(dvPessoaJuridica.ClientID); %>').style.display = "none";
                 } else {
-                    document.getElementById('<% =dvPessoaFisica.ClientID  %>').style.display = "none";
-                    document.getElementById('<% =dvPessoaJuridica.ClientID %>').style.display = "block";
+                    document.getElementById('<% Response.Write(dvPessoaFisica.ClientID); %>').style.display = "none";
+                    document.getElementById('<% Response.Write(dvPessoaJuridica.ClientID); %>').style.display = "block";
                 }
             }
 
             function areAtuacaoDisplay(s) {
-
                 if (s == 'c') {
-                    document.getElementById('<% =dvAreaAtuacao.ClientID%>').style.display = "none";
-                    document.getElementById('<% =lbComprar.ClientID%>').className = "btn btn-primary active";
-                    document.getElementById('<% =lbVender.ClientID%>').className = "btn btn-primary";
-                } else {
-                    document.getElementById('<% =dvAreaAtuacao.ClientID%>').style.display = "block";
-                    document.getElementById('<% =lbVender.ClientID%>').className = "btn btn-primary active";
-                    document.getElementById('<% =lbComprar.ClientID%>').className = "btn btn-primary";
+                    document.getElementById('<% Response.Write(dvAreaAtuacao.ClientID);%>').style.display = 'none';
                 }
+                if (s == 'v') {
+                    document.getElementById('<% Response.Write(dvAreaAtuacao.ClientID);%>').style.display = "block";
+                }
+                
             }
 
-            $('#<%=txtDtNasc.ClientID%>').datepicker({
+            $('#<% Response.Write(txtDtNasc.ClientID);%>').datepicker({
                 language: "pt-BR",
                 format: "dd/mm/yyyy"
             });
