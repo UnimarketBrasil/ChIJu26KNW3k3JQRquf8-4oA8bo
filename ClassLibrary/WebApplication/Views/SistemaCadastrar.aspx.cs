@@ -146,7 +146,7 @@ namespace WebApplication
                     urlConf = "http://localhost:49756/ConfirmarCadastro.aspx?Hash=" + u.HashConfirmacao;
 
                     StringBuilder strBody = new StringBuilder();
-                    strBody.AppendLine("Seja bem vindo ao Unimarket, "+u.Nome+"!");
+                    strBody.AppendLine("Seja bem vindo(a) ao Unimarket, "+u.Nome+"!");
                     strBody.AppendLine("Complete seu cadastro clicando no link abaixo, para começar a usar o sistema:");
                     strBody.AppendLine("");
                     strBody.AppendLine(""+urlConf+"");
