@@ -8,6 +8,7 @@
     <form runat="server">
         <div class="container-fluid">
             <p>&nbsp;</p>
+            <asp:Button Id="PDF" Text="PDF" runat="server" OnClick="PDF_Click" />
             <div class="row">
                 <asp:GridView ID="grdAdmin" OnRowDataBound="grdAdmin_RowDataBound" OnPageIndexChanging="grdAdmin_PageIndexChanging" CssClass="table table-hover table-striped" GridLines="None" runat="server" AutoGenerateColumns="false" AllowPaging="True">
                     <Columns>

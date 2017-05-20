@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
-using iTextSharp.text.pdf.draw;
 using ClassLibrary;
-using ClassLibrary.Repositorio;
 
 namespace ClassUtilitario
 {
@@ -61,11 +56,21 @@ namespace ClassUtilitario
                     documento.AddAuthor("UNIMARET Brasil");
                     documento.AddTitle(Titulo);
                     documento.AddSubject(Titulo);
-
-                    var footer = new formatacao();
-                    footer.Titulo = Titulo;
+                    
+                    var endereco = new GeoCodificacao();
+                    string e = endereco.ObterEndereco(pedido.Comprador.Latitude, pedido.Comprador.Longitude);
 
                     documento.Open();
+
+                    var tbl = new PdfPTable(3);
+                    tbl.WidthPercentage = 100f;
+
+                    tbl.AddCell(fCell(pedido.Vendedor.Nome, Element.ALIGN_LEFT));
+                    tbl.AddCell(fCell(pedido.Comprador.Nome, Element.ALIGN_LEFT));
+                    tbl.AddCell(fCell((e + pedido.Comprador.Numero), Element.ALIGN_LEFT));
+
+                    documento.Add(tbl);
+
 
                     var tabela = new PdfPTable(5);
                     float[] colsW = { 5, 20, 5, 5, 5 };
@@ -77,15 +82,6 @@ namespace ClassUtilitario
                     var cell = fCell(pedido.Vendedor.Nome, Element.ALIGN_LEFT);
                     cell.Colspan = 5;
                     tabela.AddCell(cell);
-
-                    //clienteOld = d.cliente.RazaoSocial;
-
-                    //var DadosVendedor = pedido.Vendedor = new Usuario();
-                    //var DadosComprador = pedido.Comprador = new Usuario();
-                    //var endereco = new GeoCodificacao();
-
-                    //tabela.AddCell(new Phrase(DadosVendedor.Nome + DadosVendedor.Telefone, titulo));
-                    //tabela.AddCell(new Phrase(DadosComprador.Nome + DadosComprador.Telefone, titulo));
 
                     tabela.AddCell(tCell("CÓDIGO", Element.ALIGN_LEFT));
                     tabela.AddCell(tCell("ITEM", Element.ALIGN_LEFT));
@@ -134,36 +130,26 @@ namespace ClassUtilitario
                     documento.AddSubject("Usuarios");
 
                     documento.Open();
-
-                    #region Cabeçalho do Relatório
+                    
                     var tabela = new PdfPTable(5);
-                    float[] colsW = { 10, 10, 10, 10, 10 };
+                    float[] colsW = { 5, 10, 10, 10, 5 };
                     tabela.SetWidths(colsW);
                     tabela.HeaderRows = 1;
                     tabela.WidthPercentage = 100f;
 
-                    tabela.DefaultCell.Border = Rectangle.BOTTOM_BORDER;
-                    tabela.DefaultCell.BorderColor = preto;
-                    tabela.DefaultCell.BorderColorBottom = new BaseColor(255, 255, 255);
-                    tabela.DefaultCell.Padding = 10;
-                    tabela.DefaultCell.BackgroundColor = fundo;
-
-                    tabela.AddCell(new Phrase("ID", titulo));
-                    tabela.AddCell(new Phrase("NOME", titulo));
-                    tabela.AddCell(new Phrase("EMAIL", titulo));
-                    tabela.AddCell(new Phrase("TIPO USUÁRIO", titulo));
-                    tabela.AddCell(new Phrase("STATUS USUÁRIO", titulo));
-                    #endregion
-
-                    tabela.DefaultCell.Padding = 5;
+                    tabela.AddCell(tCell("ID", Element.ALIGN_LEFT));
+                    tabela.AddCell(tCell("EMAIL", Element.ALIGN_LEFT));
+                    tabela.AddCell(tCell("NOME", Element.ALIGN_LEFT));
+                    tabela.AddCell(tCell("TIPO", Element.ALIGN_RIGHT));
+                    tabela.AddCell(tCell("STATUS", Element.ALIGN_RIGHT));
 
                     foreach (var user in usuario)
                     {
-                        tabela.AddCell(new Phrase(user.Id.ToString(), corpo));
-                        tabela.AddCell(new Phrase(user.Email, corpo));
-                        tabela.AddCell(new Phrase(user.Nome, corpo));
-                        tabela.AddCell(new Phrase(user.Tipousuario.Nome));
-                        tabela.AddCell(new Phrase(user.StatusUsuario.Nome, corpo));
+                        tabela.AddCell(fCell(user.Id.ToString(), Element.ALIGN_LEFT));
+                        tabela.AddCell(fCell(user.Email, Element.ALIGN_LEFT));
+                        tabela.AddCell(fCell(user.Nome, Element.ALIGN_LEFT));
+                        tabela.AddCell(fCell(user.Tipousuario.Nome, Element.ALIGN_RIGHT));
+                        tabela.AddCell(fCell(user.StatusUsuario.Nome, Element.ALIGN_RIGHT));
                     }
 
                     documento.Add(tabela);
@@ -180,166 +166,6 @@ namespace ClassUtilitario
             }
         }
 
-
     }
-
-
-    public class formatacao : PdfPageEventHelper
-    {
-        public string Titulo { get; set; }
-
-        public override void OnOpenDocument(PdfWriter writer, Document doc)
-        {
-            base.OnOpenDocument(writer, doc);
-        }
-
-        public override void OnStartPage(PdfWriter writer, Document doc)
-        {
-            base.OnStartPage(writer, doc);
-
-            ImprimeCabecalho(writer, doc);
-        }
-
-        public override void OnEndPage(PdfWriter writer, Document doc)
-        {
-            base.OnEndPage(writer, doc);
-
-            ImprimeRodape(writer, doc);
-        }
-
-        private void ImprimeRodape(PdfWriter writer, Document doc)
-        {
-            BaseColor preto = new BaseColor(0, 0, 0);
-            Font font = FontFactory.GetFont("Verdana", 8, Font.NORMAL, preto);
-            Font negrito = FontFactory.GetFont("Verdana", 8, Font.BOLD, preto);
-            float[] sizes = new float[] { 1.0f, 3.5f, 1f };
-
-            PdfPTable table = new PdfPTable(3);
-            table.TotalWidth = doc.PageSize.Width - (doc.LeftMargin + doc.RightMargin);
-            table.SetWidths(sizes);
-
-
-            #region Coluna TNE
-            //Image imagem = Image.GetInstance(BasePath + @"\Content\tne_mascote.png");
-            //imagem.ScalePercent(60);
-
-            PdfPCell cell = new PdfPCell();
-            cell.HorizontalAlignment = Element.ALIGN_LEFT;
-            cell.Border = 0;
-            cell.BorderWidthTop = 1.5f;
-            cell.PaddingLeft = 10f;
-            cell.PaddingTop = 10f;
-            table.AddCell(cell);
-
-            PdfPTable micros = new PdfPTable(1);
-            cell = new PdfPCell(new Phrase("UNIMARKET", negrito));
-            cell.Border = 0;
-            micros.AddCell(cell);
-            cell = new PdfPCell(new Phrase("unimarket.academico.trilema.com.br", font));
-            cell.Border = 0;
-            micros.AddCell(cell);
-
-            cell = new PdfPCell(micros);
-            cell.HorizontalAlignment = Element.ALIGN_LEFT;
-            cell.Border = 0;
-            cell.BorderWidthTop = 1.5f;
-            cell.PaddingTop = 10f;
-            table.AddCell(cell);
-            #endregion
-
-            #region Página
-            micros = new PdfPTable(1);
-            cell = new PdfPCell(new Phrase(DateTime.Today.ToString("dd/MM/yyyy"), font));
-            cell.Border = 0;
-            cell.HorizontalAlignment = Element.ALIGN_RIGHT;
-            micros.AddCell(cell);
-            cell = new PdfPCell(new Phrase(DateTime.Now.ToString("HH:mm:ss"), font));
-            cell.Border = 0;
-            cell.HorizontalAlignment = Element.ALIGN_RIGHT;
-            micros.AddCell(cell);
-
-            cell = new PdfPCell(micros);
-            cell.HorizontalAlignment = Element.ALIGN_LEFT;
-            cell.Border = 0;
-            cell.BorderWidthTop = 1.5f;
-            cell.PaddingTop = 10f;
-            table.AddCell(cell);
-            #endregion
-
-            table.WriteSelectedRows(0, -1, doc.LeftMargin, 70, writer.DirectContent);
-
-        }
-
-        private void ImprimeCabecalho(PdfWriter writer, Document doc)
-        {
-            BaseColor preto = new BaseColor(0, 0, 0);
-            Font font = FontFactory.GetFont("Verdana", 8, Font.NORMAL, preto);
-            Font titulo = FontFactory.GetFont("Verdana", 12, Font.BOLD, preto);
-            float[] sizes = new float[] { 1f, 3f, 1f };
-
-            PdfPTable table = new PdfPTable(3);
-            table.TotalWidth = doc.PageSize.Width - (doc.LeftMargin + doc.RightMargin);
-            table.SetWidths(sizes);
-
-            #region Logo Empresa
-            //Image foot;
-            //if (File.Exists(BasePath + @"\PublicResources\" + PageSubLogo))
-            //{
-            //    foot = Image.GetInstance(BasePath + @"\PublicResources\" + PageSubLogo);
-            //}
-            //else
-            //{
-            //    foot = Image.GetInstance(BasePath + @"\Content\tne_mascote.png");
-            //}
-            //foot.ScalePercent(60);
-
-            PdfPCell cell = new PdfPCell();
-            cell.HorizontalAlignment = Element.ALIGN_CENTER;
-            cell.Border = 0;
-            cell.BorderWidthTop = 1.5f;
-            cell.BorderWidthBottom = 1.5f;
-            cell.PaddingTop = 10f;
-            cell.PaddingBottom = 10f;
-            table.AddCell(cell);
-
-            PdfPTable micros = new PdfPTable(1);
-
-            cell = new PdfPCell(new Phrase(Titulo, font));
-            cell.Border = 0;
-            cell.HorizontalAlignment = Element.ALIGN_CENTER;
-            micros.AddCell(cell);
-            cell = new PdfPCell(new Phrase(Titulo, titulo));
-            cell.Border = 0;
-            cell.HorizontalAlignment = Element.ALIGN_CENTER;
-            micros.AddCell(cell);
-
-            cell = new PdfPCell(micros);
-            cell.HorizontalAlignment = Element.ALIGN_LEFT;
-            cell.Border = 0;
-            cell.BorderWidthTop = 1.5f;
-            cell.BorderWidthBottom = 1.5f;
-            cell.PaddingTop = 10f;
-            table.AddCell(cell);
-            #endregion
-
-            #region Página
-
-            cell = new PdfPCell(micros);
-            cell.HorizontalAlignment = Element.ALIGN_LEFT;
-            cell.Border = 0;
-            cell.BorderWidthTop = 1.5f;
-            cell.BorderWidthBottom = 1.5f;
-            cell.PaddingTop = 10f;
-            table.AddCell(cell);
-            #endregion
-
-            table.WriteSelectedRows(0, -1, doc.LeftMargin, (doc.PageSize.Height - 10), writer.DirectContent);
-
-        }
-
-        public override void OnCloseDocument(PdfWriter writer, Document document)
-        {
-            base.OnCloseDocument(writer, document);
-        }
-    }
+    
 }
