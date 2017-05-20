@@ -21,6 +21,7 @@ create table Usuario(
 	Nome varchar(50) not null,
 	Sobrenome varchar (50) null,
 	Senha varchar(50) not null,
+	HashConfirmacao varchar(50) not null,
 	CpfCnpj varchar(20) not null unique,
 	Nascimento Date null,
 	Genero smallint null,
@@ -86,13 +87,27 @@ create table ItemPedido(
 	IdPedido int not null foreign key references Pedido(Id),
 	Desabilitado bit not null default 'false'
 )
+create table MensagemPadrao
+(
+	Id int not null primary key identity(1,1),
+	Mensagem varchar(800) not null
+)
+create table HistoricoMensagem
+(
+	Id int not null primary key identity(1,1),
+	IdMensagem int not null foreign key references MensagemPadrao(Id),
+	IdRemetente int not null foreign key references Usuario(Id),
+	IdDestinatario int not null foreign key references Usuario(Id),
+	DataEnvio dateTime not null default getdate()
+)
+
 go
-insert into StatusPedido values ('Pendênte')
+insert into StatusPedido values ('Pendente')
 insert into StatusPedido values ('Finalizado')
 insert into StatusPedido values ('Cancelado')
 go
 insert into StatusUsuario values ('Ativo')
-insert into StatusUsuario values ('Pendênte')
+insert into StatusUsuario values ('Pendente')
 insert into StatusUsuario values ('Bloqueado')
 go
 insert into TipoUsuario values ('Admin')
@@ -100,23 +115,23 @@ insert into TipoUsuario values ('Comprador')
 insert into TipoUsuario values ('Vendedor')
 
 go
-insert into Categoria values ('Eletro')
+insert into Categoria values ('Eletrônicos')
+insert into Categoria values ('Informática')
 insert into Categoria values ('Bebidas')
-insert into Categoria values ('Hortifrúti')
-insert into Categoria values ('HIgiene')
+insert into Categoria values ('Higiene')
 insert into Categoria values ('Limpeza')
-insert into Categoria values ('Padaria e Confeitaria')
+insert into Categoria values ('Confeitaria')
 insert into Categoria values ('Açougue')
 insert into Categoria values ('Infantil')
 insert into Categoria values ('Casa e Decoração')
 insert into Categoria values ('Esporte e Lazer')
 insert into Categoria values ('Automotivos')
 insert into Categoria values ('Alimentos')
-insert into Categoria values ('Ferramentas')
 insert into Categoria values ('Moda')
 insert into Categoria values ('Saúde e Beleza')
 insert into categoria values ('Pet')
 insert into Categoria values ('Construção')
 insert into Categoria values ('Artesanato')
 insert into Categoria values ('Livros')
+insert into Categoria values ('Serviços')
 go

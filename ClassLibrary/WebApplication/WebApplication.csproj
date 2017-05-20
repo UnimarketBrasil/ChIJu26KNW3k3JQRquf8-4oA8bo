@@ -62,6 +62,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ConfirmarCadastro.aspx" />
     <Content Include="Content\App_Data\Uni.ico" />
     <Content Include="Content\bootstrap-datepicker.css" />
     <Content Include="Content\bootstrap-datepicker.min.css" />
@@ -81,6 +82,7 @@
     <Content Include="Content\GridPager.css" />
     <Content Include="Documentos\Criptografia.js" />
     <Content Include="Documentos\Querys\Criacao do banco UnimarketDB.sql" />
+    <Content Include="Documentos\Querys\Inserts\Procedure RealizarPedido .sql" />
     <Content Include="Documentos\Querys\Updates\Procedure DesbloquearUsuario .sql" />
     <Content Include="Documentos\Querys\Updates\Procedure BloquearUsuario.sql" />
     <Content Include="Documentos\Querys\Deletes\Procedure DesabilitarItemPorId.sql" />
@@ -90,7 +92,7 @@
     <Content Include="Documentos\Querys\Inserts\Procedure CadastrarSubUsuario.sql" />
     <Content Include="Documentos\Querys\Inserts\Procedure CadastrarUsuario.sql" />
     <Content Include="Documentos\Querys\Inserts\Procedure IncluirEndereco.sql" />
-    <Content Include="Documentos\Querys\Inserts\Procedure RealizarPedido.sql" />
+    <Content Include="Documentos\Querys\Inserts\Procedure ConfirmarCadastro.sql" />
     <Content Include="Documentos\Querys\Lists\Procedure ListarItem.sql" />
     <Content Include="Documentos\Querys\Lists\Procedure ListarItemPorCategoria.sql" />
     <Content Include="Documentos\Querys\Lists\Procedure ListarItemPorNomeOuCodigo.sql" />
@@ -222,11 +224,8 @@
     <Content Include="Views\SistemaLogin.aspx" />
     <Content Include="Views\SistemaCadastrar.aspx" />
     <Content Include="Views\VenderPedido.aspx" />
-    <Content Include="Style\images\about-img1.jpg" />
-    <Content Include="Style\images\ltst-img-1.jpg" />
     <Content Include="Views\Sistema.aspx" />
     <Content Include="Views\VenderDetalheItem.aspx" />
-    <Content Include="Style\images\work-img1.jpg" />
     <Content Include="Admin.Master" />
     <Content Include="Views\ComprarPedido.aspx" />
     <Content Include="Views\SistemaRecuperarSenha.aspx" />
@@ -259,6 +258,13 @@
     </Compile>
     <Compile Include="Admin.Master.designer.cs">
       <DependentUpon>Admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="ConfirmarCadastro.aspx.cs">
+      <DependentUpon>ConfirmarCadastro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConfirmarCadastro.aspx.designer.cs">
+      <DependentUpon>ConfirmarCadastro.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -426,7 +432,10 @@
       <DependentUpon>AdminDetalheUsuario.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Style\images\" />
+    <Folder Include="Style\template_mail\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ClassLibrary\ClassLibrary.csproj">
       <Project>{7b02c314-1de0-4f1f-8ef5-a5ddcc698bd8}</Project>

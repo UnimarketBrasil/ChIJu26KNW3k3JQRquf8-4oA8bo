@@ -21,6 +21,7 @@ namespace ClassLibrary.Repositorio
                     Cmd.Parameters.AddWithValue("@Nome", user.Nome);
                     Cmd.Parameters.AddWithValue("@Sobrenome", user.Sobrenome);
                     Cmd.Parameters.AddWithValue("@Senha", user.Senha);
+                    Cmd.Parameters.AddWithValue("@HashConfirmacao", user.HashConfirmacao);
                     Cmd.Parameters.AddWithValue("@CpfCnpj", user.CpfCnpj);
                     Cmd.Parameters.AddWithValue("@Nascimento", user.Nascimento);
                     Cmd.Parameters.AddWithValue("@Genero", user.Genero);
@@ -122,6 +123,36 @@ namespace ClassLibrary.Repositorio
                 }
             }
         }
+
+        public int ConfirmarCadastro(Usuario user)
+        {
+            Abrirconexao();
+
+            using (Cmd = new SqlCommand("ConfirmarCadastro", Con))
+            {
+                int idUsuario = 0;
+                try
+                {
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@HashConfirmacao", user.HashConfirmacao);
+
+                    if (int.TryParse(Cmd.ExecuteScalar().ToString(), out idUsuario))
+                    {
+                        user.Id = idUsuario;
+                    }
+                    return idUsuario;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Erro ao atualizar usuario: " + ex.Message);
+                }
+                finally
+                {
+                    FecharConexao();
+                }
+            }
+        }
+
 
         public void IncluirEndereco(Usuario user)
         {
@@ -333,9 +364,11 @@ namespace ClassLibrary.Repositorio
                     if (Dr.HasRows)
                     {
                         Dr.Read();
-                        user.Email = Convert.ToString(Dr["Email"]);
+
+                        user.Id = Convert.ToInt32(Dr["Id"]);
                         user.Nome = Convert.ToString(Dr["Nome"]);
                         user.Sobrenome = Convert.ToString(Dr["Sobrenome"]);
+                        user.Email = Convert.ToString(Dr["Email"]);
                         user.CpfCnpj = Convert.ToString(Dr["CpfCnpj"]);
                         user.Nascimento = Convert.ToDateTime(Dr["Nascimento"]);
                         user.Genero = Convert.ToInt32(Dr["Genero"]);
@@ -343,7 +376,10 @@ namespace ClassLibrary.Repositorio
                         user.Latitude = Convert.ToString(Dr["Latitude"]);
                         user.Longitude = Convert.ToString(Dr["Longitude"]);
                         user.Complemento = Convert.ToString(Dr["Complemento"]);
-                        user.AreaAtuacao = Convert.ToInt32(Dr["AreaAtuacao"]);
+                        user.Complemento = Convert.ToString(Dr["Numero"]);
+                        user.AreaAtuacao = Convert.ToDouble(Dr["AreaAtuacao"]);
+                        user.StatusUsuario = new StatusUsuario();
+                        user.StatusUsuario.Id = Convert.ToInt32(Dr["IdStatusUsuario"]);
                         user.Tipousuario = new TipoUsuario(Convert.ToInt32(Dr["IdTipoUsuario"]));
                     }
 

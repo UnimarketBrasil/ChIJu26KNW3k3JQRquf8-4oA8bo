@@ -14,6 +14,8 @@ namespace ClassLibrary
 
         public string Senha { get; set; }
 
+        public string HashConfirmacao { get; set; }
+
         public string CpfCnpj { get; set; }
 
         public DateTime Nascimento { get; set; }

@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="FormatarCnpjCpf.cs" />
     <Compile Include="GeoCodificacao.cs" />
+    <Compile Include="HashConfirmacao.cs" />
     <Compile Include="IsCpfCnpj.cs" />
     <Compile Include="Criptografia.cs" />
     <Compile Include="IsEmail.cs" />

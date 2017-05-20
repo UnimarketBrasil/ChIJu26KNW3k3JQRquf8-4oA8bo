@@ -10,6 +10,8 @@ using ClassLibrary.Repositorio;
 using System.Data;
 using System.Collections;
 using System.Data.SqlClient;
+using System.Net.Mail;
+using System.Text;
 
 namespace WebApplication
 {
@@ -17,7 +19,7 @@ namespace WebApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["sistema"]!=null)
+            if (Session["sistema"] != null)
             {
                 Response.Redirect("~/Views/Sistema.aspx");
             }
@@ -117,6 +119,10 @@ namespace WebApplication
             u.Complemento = txtComplemento.Text;
             u.Numero = int.Parse(txtNumero.Text);
             u.UltimoAcesso = DateTime.Now;
+
+            HashConfirmacao hc = new HashConfirmacao();
+            u.HashConfirmacao = hc.GerarHash(30);
+
             UsuarioRepositorio cadastrar = new UsuarioRepositorio();
 
             SqlDataReader Dr = cadastrar.ValidarEmailCpfCnpj(u);
@@ -125,6 +131,38 @@ namespace WebApplication
             {
                 if (cadastrar.CadastrarUsuario(u))
                 {
+                    MailMessage message = null;
+                    IsEmail enviarConf = new IsEmail();
+                    HttpApplication serve = new HttpApplication();
+                    string urlConf = null;
+                    //if (serve.Request.IsLocal)
+                    //{
+                    //    urlConf = "http://localhost:49756/ConfirmarCadastro.aspx?Hash=" + u.HashConfirmacao;
+                    //}
+                    //else
+                    //{
+                    //    urlConf = "http://unimarket.academico.trilema.com.br/ConfirmarCadastro.aspx?Hash=" + u.HashConfirmacao;
+                    //}
+                    urlConf = "http://localhost:49756/ConfirmarCadastro.aspx?Hash=" + u.HashConfirmacao;
+
+                    StringBuilder strBody = new StringBuilder();
+                    strBody.AppendLine("Seja bem vindo ao Unimarket, "+u.Nome+"!");
+                    strBody.AppendLine("Complete seu cadastro clicando no link abaixo, para começar a usar o sistema:</p>");
+                    strBody.AppendLine("");
+                    strBody.AppendLine(""+urlConf+"");
+                    strBody.AppendLine("");
+                    strBody.AppendLine("Unimarket Brasil");
+                    strBody.AppendLine("http://unimarket.academico.trilema.com.br");
+
+
+                    using (message = new MailMessage("unimarketbrasil@gmail.com", u.Email.ToString())
+                    {
+                        Subject = "Assunto",
+                        Body = strBody.ToString()
+
+                    })
+                        enviarConf.Enviar(message);
+
                     dvMsg.Visible = true;
                     dvMsg.Attributes["class"] = "alert alert-success alert-dismissible";
                     lbMsg.Text = "Cadastro realizado com sucesso!";
