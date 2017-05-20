@@ -147,7 +147,7 @@ namespace WebApplication
 
                     StringBuilder strBody = new StringBuilder();
                     strBody.AppendLine("Seja bem vindo ao Unimarket, "+u.Nome+"!");
-                    strBody.AppendLine("Complete seu cadastro clicando no link abaixo, para começar a usar o sistema:</p>");
+                    strBody.AppendLine("Complete seu cadastro clicando no link abaixo, para começar a usar o sistema:");
                     strBody.AppendLine("");
                     strBody.AppendLine(""+urlConf+"");
                     strBody.AppendLine("");
@@ -157,7 +157,8 @@ namespace WebApplication
 
                     using (message = new MailMessage("unimarketbrasil@gmail.com", u.Email.ToString())
                     {
-                        Subject = "Assunto",
+                        
+                        Subject = "Confirmação de Cadastro",
                         Body = strBody.ToString()
 
                     })

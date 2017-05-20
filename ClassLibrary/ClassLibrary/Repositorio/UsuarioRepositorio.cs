@@ -124,23 +124,41 @@ namespace ClassLibrary.Repositorio
             }
         }
 
-        public int ConfirmarCadastro(Usuario user)
+        public bool ConfirmarCadastro(Usuario user)
         {
             Abrirconexao();
 
             using (Cmd = new SqlCommand("ConfirmarCadastro", Con))
             {
-                int idUsuario = 0;
                 try
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.AddWithValue("@HashConfirmacao", user.HashConfirmacao);
 
-                    if (int.TryParse(Cmd.ExecuteScalar().ToString(), out idUsuario))
+                    Dr = Cmd.ExecuteReader();
+
+                    if (Dr.HasRows)
                     {
-                        user.Id = idUsuario;
+                        Dr.Read();
+                        user.Id = Convert.ToInt32(Dr["Id"]);
+                        user.Nome = Convert.ToString(Dr["Nome"]);
+                        user.Email = Convert.ToString(Dr["Email"]);
+                        user.CpfCnpj = Convert.ToString(Dr["CpfCnpj"]);
+                        user.Latitude = Convert.ToString(Dr["Latitude"]);
+                        user.Longitude = Convert.ToString(Dr["Longitude"]);
+                        user.Numero = Convert.ToInt32(Dr["Numero"]);
+                        user.AreaAtuacao = Convert.ToDouble(Dr["AreaAtuacao"]);
+                        user.StatusUsuario = new StatusUsuario();
+                        user.StatusUsuario.Id = Convert.ToInt32(Dr["IdStatusUsuario"]);
+                        user.Tipousuario = new TipoUsuario();
+                        user.Tipousuario.Id = Convert.ToInt32(Dr["IdTipoUsuario"]);
+
+                        return true;
                     }
-                    return idUsuario;
+                    else
+                    {
+                        return false;
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -148,6 +166,8 @@ namespace ClassLibrary.Repositorio
                 }
                 finally
                 {
+                    Dr.Close();
+
                     FecharConexao();
                 }
             }

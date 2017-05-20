@@ -25,10 +25,23 @@ namespace WebApplication
             UsuarioRepositorio conf = new UsuarioRepositorio();
 
             u.HashConfirmacao = hash;
-            u.Id = conf.ConfirmarCadastro(u);
-
-            Response.Write(u.Id.ToString());
-
+            if (conf.ConfirmarCadastro(u))
+            {
+                Response.Write("<script>alerta("+u.Tipousuario.Id.ToString() +")</script>");
+                Session["sistema"] = u;
+                if (u.Tipousuario.Id == 3)//Tipo de usuário vendedor
+                {
+                    Response.Redirect("~/Views/VenderItem.aspx");
+                }
+                else if (u.Tipousuario.Id == 2)//Tipo de usuário comprador
+                {
+                    Response.Redirect("~/Views/Sistema.aspx");
+                }
+                else if (u.Tipousuario.Id == 1)//Tipo de usuário administrador
+                {
+                    Response.Redirect("~/Views/AdminListar.aspx");
+                }
+            }
         }
     }
 }
