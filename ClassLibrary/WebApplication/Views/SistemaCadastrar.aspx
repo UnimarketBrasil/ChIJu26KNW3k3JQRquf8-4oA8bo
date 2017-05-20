@@ -51,7 +51,23 @@
                                     </label>
                                 </div>
                                 <div class="col-lg-1">
-                                    <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=10' target='_blank'></a>
+                                    <a href="#dvAjudaAtividade" data-toggle="modal" class='glyphicon glyphicon-question-sign' target='_blank'></a>
+                                </div>
+                                <div id="dvAjudaAtividade" class="modal">
+                                  <div class="modal-dialog">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <button onclick="document.getElementById('dvAjudaAtividade').style.display='none'" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title">ATIVIDADE PRINCIPAL</h4>
+                                      </div>
+                                      <div class="modal-body">
+                                        <p>No do Unimarket você pode comprar ou vender produtos e/ou serviços...</p>
+                                        <p>Só precisamos saber qual a sua principal intenção, assim vamos preparar o melhor ambiente para você!</p>
+                                      </div>
+                                      <div class="modal-footer">
+                                      </div>
+                                    </div>
+                                  </div>
                                 </div>
                             </div>
                             <!--Selecionar Tipo Pessoa-->
@@ -134,7 +150,7 @@
                                 <label for="<% =txtSenha.ClientID %>"" class="col-lg-2 control-label">Senha</label>
                                 <div class="col-lg-10">
                                     <asp:TextBox ID="txtSenha" runat="server" CssClass="form-control" TextMode="Password" placeholder="Senha" required="true"></asp:TextBox>
-                                    
+                                    <asp:RegularExpressionValidator Display="Dynamic" ControlToValidate="txtSenha" ID="txtSenhaRegular" ValidationExpression="^[\s\S]{8,20}$" runat="server" ErrorMessage="A senha deve conter de 8 a 20 dígitos."></asp:RegularExpressionValidator>
                                 </div>
                             </div>
                             <div class="form-group">
