@@ -42,6 +42,10 @@ namespace WebApplication
                     Response.Redirect("~/Views/AdminListar.aspx");
                 }
             }
+            else
+            {
+                Response.Redirect("~/Views/Sistema.aspx");
+            }
         }
     }
 }
