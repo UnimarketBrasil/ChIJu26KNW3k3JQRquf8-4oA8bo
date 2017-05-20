@@ -1,5 +1,9 @@
 use unimarket
 go
+drop table HistoricoMensagem
+go
+drop table MensagemPadrao
+go
 drop table ItemPedido
 go
 drop table Pedido
