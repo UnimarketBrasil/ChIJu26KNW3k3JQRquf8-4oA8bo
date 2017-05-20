@@ -17,9 +17,17 @@ namespace WebApplication.Views.Ajax
             GeoCodificacao g = new GeoCodificacao();
             u = g.ObterCoordenadas(u, Request.QueryString["cep"], Request.QueryString["num"]);
 
-            Session["latlog"] = u;
+            string rEndereco = g.ObterEndereco(u);
 
-            Response.Write(g.ObterEndereco(u));
+            if (rEndereco != null)
+            {
+                Session["latlog"] = u;
+                Response.Write(rEndereco);
+            }
+            else
+            {
+                Response.Write("Desculpe, não localizamos o seu endereço...");
+            }
         }
     }
 }
