@@ -396,7 +396,7 @@ namespace ClassLibrary.Repositorio
                         user.Latitude = Convert.ToString(Dr["Latitude"]);
                         user.Longitude = Convert.ToString(Dr["Longitude"]);
                         user.Complemento = Convert.ToString(Dr["Complemento"]);
-                        user.Complemento = Convert.ToString(Dr["Numero"]);
+                        user.Numero = Convert.ToInt32(Dr["Numero"]);
                         user.AreaAtuacao = Convert.ToDouble(Dr["AreaAtuacao"]);
                         user.StatusUsuario = new StatusUsuario();
                         user.StatusUsuario.Id = Convert.ToInt32(Dr["IdStatusUsuario"]);

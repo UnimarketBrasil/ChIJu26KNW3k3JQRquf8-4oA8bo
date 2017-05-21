@@ -1,11 +1,11 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Comprar.Master" AutoEventWireup="true" CodeBehind="SistemaAtualizarCadastro.aspx.cs" Inherits="WebApplication.WebForm10" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Comprar.Master" AutoEventWireup="true" CodeBehind="SistemaAtualizarCadastro.aspx.cs" Inherits="WebApplication.SistemaAtualizarCadastro" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="../Content/bootstrap-datepicker.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
         <div class="container">
         <div id="dvMsg" runat="server" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" formmethod="put"><span aria-hidden="true">&times;</span></button>
             <strong>!</strong> <asp:Label ID="lbMsg" runat="server"></asp:Label>
         </div>
         <h2 class="text-uppercase"><strong>Atualizar Cadastro</strong></h2>
@@ -16,7 +16,6 @@
                     <div class="sm-m-top-50">
                         <form class="form-horizontal" runat="server">
                             <!--Pessoa Fisica-->
-
                             <div class="row">
                                 <div id="dvPessoaFisica" runat="server">
                                     <div class="form-group">

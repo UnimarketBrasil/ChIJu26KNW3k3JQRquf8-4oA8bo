@@ -12,7 +12,7 @@ using System.Web.UI.WebControls;
 
 namespace WebApplication
 {
-    public partial class WebForm10 : System.Web.UI.Page
+    public partial class SistemaAtualizarCadastro : System.Web.UI.Page
     {
         protected void Page_PreInit(object sender, EventArgs e)
         {
@@ -75,13 +75,11 @@ namespace WebApplication
                             rdComprar.Checked = false;
                         }
 
-                        //GeoCodificacao g = new GeoCodificacao();
-                        //ArrayList sEndereco = new ArrayList();
-                        //sEndereco = g.ObterEndereco(u);
-                        //txtEndereco.Text = sEndereco[1].ToString();
-                        //txtNumero.Text = sEndereco[0].ToString();
-                        //txtComplemento.Text = u.Complemento;
-                        //dpArea.SelectedValue = Convert.ToString(u.AreaAtuacao);
+                        GeoCodificacao g = new GeoCodificacao();
+                        lbEndereco.Text = g.ObterEndereco(u.Latitude, u.Longitude);
+                        txtNumero.Text = u.Numero.ToString();
+                        txtComplemento.Text = u.Complemento;
+                        dpArea.SelectedValue = Convert.ToString(u.AreaAtuacao);
 
                         string caminho = string.Format("~/Imagens/{0}/Perfil/", u.Id);
 
@@ -123,13 +121,11 @@ namespace WebApplication
                             rdComprar.Checked = false;
                         }
 
-                        //GeoCodificacao g = new GeoCodificacao();
-                        //ArrayList sEndereco = new ArrayList();
-                        //sEndereco = g.ObterEndereco(u);
-                        //txtEndereco.Text = sEndereco[1].ToString();
-                        //txtNumero.Text = sEndereco[0].ToString();
-                        //txtComplemento.Text = u.Complemento;
-                        //dpArea.SelectedValue = Convert.ToString(u.AreaAtuacao);
+                        GeoCodificacao g = new GeoCodificacao();
+                        lbEndereco.Text = g.ObterEndereco(u.Latitude, u.Longitude);
+                        txtNumero.Text = u.Numero.ToString();
+                        txtComplemento.Text = u.Complemento;
+                        dpArea.SelectedValue = Convert.ToString(u.AreaAtuacao);
 
                         string caminho = string.Format("~/Imagens/{0}/Perfil/", u.Id);
 

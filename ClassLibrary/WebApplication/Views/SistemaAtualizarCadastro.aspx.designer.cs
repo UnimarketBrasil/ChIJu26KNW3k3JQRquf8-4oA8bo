@@ -10,7 +10,7 @@
 namespace WebApplication {
     
     
-    public partial class WebForm10 {
+    public partial class SistemaAtualizarCadastro {
         
         /// <summary>
         /// Controle dvMsg.
