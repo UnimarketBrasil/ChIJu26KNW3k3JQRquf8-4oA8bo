@@ -18,16 +18,16 @@ namespace WebApplication
             //Recebe o conteudo da barra de pesquisa por parametro
             string pesquisa = Request.QueryString["buscar"];
             Usuario u = null;
+            Usuario uOff = null;
 
             if (Session["sistema"] != null)
             {
                 u = (Usuario)Session["sistema"];
             }
-            else
+            else if (Session["latlog"] == null & Session["sistema"] ==null)
             {
-                GeoCodificacao g = new GeoCodificacao();
-                u = new Usuario();
-                u = g.ObterCoordenadas(u, "83708120", "618");
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "script", "$(function () { chamaModal(); });", true);
+                return;
             }
 
 
@@ -43,7 +43,16 @@ namespace WebApplication
             //CASO SEJA DIGITADO ALGO NA PESQUISA, O SISTEMA RETORNA O RESULTADO DA MESMA
             else
             {
-                List<Item> lst = itemPesquisa.MecanismoDeBusca(pesquisa, u);
+                List<Item> lst=null;
+                if (Session["sistema"] != null)
+                {
+                    lst = itemPesquisa.MecanismoDeBusca(pesquisa, u);
+                }else
+                {
+                    uOff = (Usuario)Session["latlog"];
+                    lst = itemPesquisa.MecanismoDeBusca(pesquisa, uOff);
+                }
+                 
 
                 foreach (var item in lst)
                 {

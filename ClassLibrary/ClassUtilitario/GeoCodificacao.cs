@@ -27,12 +27,17 @@ namespace ClassUtilitario
                 string googleMaps = string.Format("https://maps.googleapis.com/maps/api/geocode/xml?key=AIzaSyDPNFOUPna4dnTRtQ806ST8G9Vj6WEK32Y&new_forward_geocoder=true&address={0},{1}", enderecoPorCep, numero);
                 data = new DataSet();
                 data.ReadXml(googleMaps);
-                user.Latitude = data.Tables["location"].Rows[0]["lat"].ToString();
-                user.Longitude = data.Tables["location"].Rows[0]["lng"].ToString();
-                data.Dispose();
-
-                return user;
-
+                if (data != null && data.Tables["address_component"].Rows.Count >= 7)
+                {
+                    user.Latitude = data.Tables["location"].Rows[0]["lat"].ToString();
+                    user.Longitude = data.Tables["location"].Rows[0]["lng"].ToString();
+                    data.Dispose();
+                    return user;
+                }
+                else
+                {
+                    return user = null;
+                }
             }
             catch (Exception)
             {

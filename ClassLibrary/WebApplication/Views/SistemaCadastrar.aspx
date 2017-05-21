@@ -61,7 +61,7 @@
                                         <h4 class="modal-title">ATIVIDADE PRINCIPAL</h4>
                                       </div>
                                       <div class="modal-body">
-                                        <p>No Unimarket Brasil você pode comprar ou vender produtos e/ou serviços...</p>
+                                        <p>No Unimarket você pode comprar ou vender produtos e/ou serviços...</p>
                                         <p>Só precisamos saber qual a sua principal intenção, assim vamos preparar o melhor ambiente para você!</p>
                                       </div>
                                       <div class="modal-footer">
@@ -164,6 +164,9 @@
                                 <div class="col-lg-2">
                                     <button type="button" draggable="false" class="btn btn-primary" onclick="chamarAjax();" formmethod="put"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                                 </div>
+                                <div class="col-lg-1">
+                                    <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=11' target='_blank'></a>
+                                </div>
                             </div>
                             <div id="dvEnderecoCompleto" runat="server" class="form-group">
                                 <div class="col-lg-10 col-lg-offset-2">
@@ -190,25 +193,7 @@
                                     </asp:DropDownList>
                                 </div>
                                 <div class="col-lg-1">
-                                    <a href="#dvAjudaAreaAtuacao" data-toggle="modal" class='glyphicon glyphicon-question-sign' target='_blank'></a>
-                                </div>
-                                <div class="col-lg-1">
-                                    <div id="dvAjudaAreaAtuacao" class="modal">
-                                  <div class="modal-dialog">
-                                    <div class="modal-content">
-                                      <div class="modal-header">
-                                        <button onclick="document.getElementById('dvAjudaAreaAtuacao').style.display='none'" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                        <h4 class="modal-title">ÁREA DE ATUAÇÃO</h4>
-                                      </div>
-                                      <div class="modal-body">
-                                        <p>A área de atuação serve para você delimitar o tamanho da área que em deseja atuar com as vendas de seus produtos e/ou serviços.</p>
-                                        <p>Somente os usuários que estiverem dentro da sua área de atuação delimitada poderão visualizar seus anúncios!</p>
-                                      </div>
-                                      <div class="modal-footer">
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
+                                    <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=12' target='_blank'></a>
                                 </div>
                             </div>
                             <!--GOOGLE MAPS

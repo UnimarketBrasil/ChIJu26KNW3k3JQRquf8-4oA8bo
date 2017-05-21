@@ -65,6 +65,11 @@ namespace WebApplication.Views
                 lbAjudaCabecalho.Text = "ATIVIDADE PRINCIPAL";
                 lbAjudaCorpo.Text = "Define qual será sua atividade principal dentro do sistema Unimarket Brasil. Você poderá mais tarde mudar sua atividade principal de acordo com sua necessidade. Informamos que cada atividade possui opções esclusivas que só podem ser utilizadas de acordo com a atividade escolhida pelo usuario";
             }
+            else if (pesquisa.Equals("11"))
+            {
+                lbAjudaCabecalho.Text = "ENDEREÇO PRINCIPAL";
+                lbAjudaCorpo.Text = "Endereço principal cadastrado e visivel aos demais usuarios do sistema. Pode ser entendido como o endereço de origem de suas atividades, ou seja, o local onde você exerce suas compras ou vendas.";
+            }
             else if (pesquisa.Equals("12"))
             {
                 lbAjudaCabecalho.Text = "ÁREA DE ATUAÇÃO";
