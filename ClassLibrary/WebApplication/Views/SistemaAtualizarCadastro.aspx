@@ -16,42 +16,54 @@
                     <div class="sm-m-top-50">
                         <form class="form-horizontal" runat="server">
                             <!--Pessoa Fisica-->
-                            <div id="dvPessoaFisica" runat="server">
-                                <div class="form-group">
-                                    <label for="<% =txtCpf.ClientID %>"" class="col-lg-2 control-label">CPF</label>
-                                    <div class="col-lg-10">
-                                        <asp:TextBox ID="txtCpf" runat="server" CssClass="form-control" placeholder="CPF" required="true" Enabled="False"></asp:TextBox>
+
+                            <div class="row">
+                                <div id="dvPessoaFisica" runat="server">
+                                    <div class="form-group">
+                                        <label for="<% =txtCpf.ClientID %>"" class="col-lg-2 control-label">CPF</label>
+                                        <div class="col-lg-10">
+                                            <asp:TextBox ID="txtCpf" runat="server" CssClass="form-control" placeholder="CPF" required="true" Enabled="False"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="<% =txtNome.ClientID %>"" class="col-lg-2 control-label">Nome</label>
+                                        <div class="col-lg-10">
+                                            <asp:TextBox ID="txtNome" runat="server" CssClass="form-control" placeholder="Nome" required="true"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="<% =txtSobrenome.ClientID %>"" class="col-lg-2 control-label">Sobrenome</label>
+                                        <div class="col-lg-10">
+                                            <asp:TextBox ID="txtSobrenome" runat="server" CssClass="form-control" placeholder="Sobrenome" required="true"></asp:TextBox>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="<% =txtNome.ClientID %>"" class="col-lg-2 control-label">Nome</label>
-                                    <div class="col-lg-10">
-                                        <asp:TextBox ID="txtNome" runat="server" CssClass="form-control" placeholder="Nome" required="true"></asp:TextBox>
+                                <!--Pessoa Jurídica-->
+                                <div id="dvPessoaJuridica" runat="server">
+                                    <asp:ScriptManager ID="ScriptManager" runat="server"></asp:ScriptManager>
+                                    <div class="form-group">
+                                        <label for="<% =txtCnpj.ClientID%>"" class="col-lg-2 control-label">CNPJ</label>
+                                        <div class="col-lg-10">
+                                            <asp:TextBox ID="txtCnpj" runat="server" CssClass="form-control" placeholder="CNPJ" required="true" Enabled="False"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="<% =txtRazaoSocial.ClientID %>"" class="col-lg-2 control-label">Razão Social</label>
+                                        <div class="col-lg-10">
+                                            <asp:TextBox ID="txtRazaoSocial" runat="server" CssClass="form-control" placeholder="Razão Social" required="true"></asp:TextBox>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="<% =txtSobrenome.ClientID %>"" class="col-lg-2 control-label">Sobrenome</label>
-                                    <div class="col-lg-10">
-                                        <asp:TextBox ID="txtSobrenome" runat="server" CssClass="form-control" placeholder="Sobrenome" required="true"></asp:TextBox>
+                                <div class="col-xs-offset-2">
+                                    <div class="form-group">
+                                        <asp:Image ID="userImage" CssClass="img-circle" width="236" height="236" runat="server" />
+                                    </div>
+                                    <div>
+                                        <asp:FileUpload ID="InputFoto" CssClass="file" runat="server" />
                                     </div>
                                 </div>
                             </div>
-                            <!--Pessoa Jurídica-->
-                            <div id="dvPessoaJuridica" runat="server">
-                                <asp:ScriptManager ID="ScriptManager" runat="server"></asp:ScriptManager>
-                                <div class="form-group">
-                                    <label for="<% =txtCnpj.ClientID%>"" class="col-lg-2 control-label">CNPJ</label>
-                                    <div class="col-lg-10">
-                                        <asp:TextBox ID="txtCnpj" runat="server" CssClass="form-control" placeholder="CNPJ" required="true" Enabled="False"></asp:TextBox>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="<% =txtRazaoSocial.ClientID %>"" class="col-lg-2 control-label">Razão Social</label>
-                                    <div class="col-lg-10">
-                                        <asp:TextBox ID="txtRazaoSocial" runat="server" CssClass="form-control" placeholder="Razão Social" required="true"></asp:TextBox>
-                                    </div>
-                                </div>
-                            </div>
+
                             <!--Email / Tel / Senha / Botão -->
                             <div class="form-group">
                                 <label for="<% =txtEmail.ClientID %>"" class="col-lg-2 control-label">Email</label>
@@ -167,13 +179,13 @@
                 xmlhttp.onreadystatechange = function () {
                     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                         document.getElementById('<%Response.Write(lbEndereco.ClientID);%>').innerHTML = xmlhttp.response;
+                    }
                 }
-            }
 
-            xmlhttp.open("GET", "<%Response.Write(ResolveUrl("~/Views/Ajax/BuscaEndereco.aspx"));%>?cep=" +
-                document.getElementById("<%Response.Write(txtEndereco.ClientID);%>").value +
-        "&num=" + document.getElementById("<%Response.Write(txtNumero.ClientID);%>").value, true);
-            xmlhttp.send();
+                xmlhttp.open("GET", "<%Response.Write(ResolveUrl("~/Views/Ajax/BuscaEndereco.aspx"));%>?cep=" +
+                    document.getElementById("<%Response.Write(txtEndereco.ClientID);%>").value +
+                "&num=" + document.getElementById("<%Response.Write(txtNumero.ClientID);%>").value, true);
+                xmlhttp.send();
             }
 
         </script>

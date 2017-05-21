@@ -4,6 +4,7 @@ using ClassUtilitario;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -79,6 +80,17 @@ namespace WebApplication
                         //txtNumero.Text = sEndereco[0].ToString();
                         //txtComplemento.Text = u.Complemento;
                         //dpArea.SelectedValue = Convert.ToString(u.AreaAtuacao);
+
+                        string caminho = string.Format("~/Imagens/{0}/Perfil/", u.Id);
+
+                        if (Directory.Exists(Server.MapPath(caminho)))
+                        {
+                            var diretorio = new DirectoryInfo(Server.MapPath(caminho));
+                            var arquivos = diretorio.GetFiles();
+                            string img = arquivos.Last().Name;
+                            userImage.ImageUrl = ResolveUrl(Path.Combine(caminho, img));
+                        }
+
                     }
                     else
                     {
@@ -114,6 +126,16 @@ namespace WebApplication
                         //txtNumero.Text = sEndereco[0].ToString();
                         //txtComplemento.Text = u.Complemento;
                         //dpArea.SelectedValue = Convert.ToString(u.AreaAtuacao);
+
+                        string caminho = string.Format("~/Imagens/{0}/Perfil/", u.Id);
+
+                        if (Directory.Exists(Server.MapPath(caminho)))
+                        {
+                            var diretorio = new DirectoryInfo(Server.MapPath(caminho));
+                            var arquivos = diretorio.GetFiles();
+                            string img = arquivos.Last().Name;
+                            userImage.ImageUrl = ResolveUrl(Path.Combine(caminho, img));
+                        }
                     }
                     else
                     {
