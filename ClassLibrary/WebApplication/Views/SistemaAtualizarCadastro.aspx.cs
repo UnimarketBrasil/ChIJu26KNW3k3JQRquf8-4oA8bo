@@ -65,11 +65,13 @@ namespace WebApplication
                         if (u.Tipousuario.Id == 2)
                         {
                             rdComprar.Checked = true;
+                            lbComprar.Attributes.Add("class", "btn btn-primary active");
                             rdVender.Checked = false;
                         }
                         else if (u.Tipousuario.Id == 3)
                         {
                             rdVender.Checked = true;
+                            lbVender.Attributes.Add("class", "btn btn-primary active");
                             rdComprar.Checked = false;
                         }
 
@@ -111,11 +113,13 @@ namespace WebApplication
                         if (u.Tipousuario.Id == 2)
                         {
                             rdComprar.Checked = true;
+                            lbComprar.Attributes.Add("class", "btn btn-primary active");
                             rdVender.Checked = false;
                         }
                         else if (u.Tipousuario.Id == 3)
                         {
                             rdVender.Checked = true;
+                            lbVender.Attributes.Add("class", "btn btn-primary active");
                             rdComprar.Checked = false;
                         }
 
