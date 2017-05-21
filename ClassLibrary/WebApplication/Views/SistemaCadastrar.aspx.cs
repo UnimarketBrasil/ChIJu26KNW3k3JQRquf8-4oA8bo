@@ -12,6 +12,7 @@ using System.Collections;
 using System.Data.SqlClient;
 using System.Net.Mail;
 using System.Text;
+using System.IO;
 
 namespace WebApplication
 {
@@ -114,8 +115,10 @@ namespace WebApplication
             }
             Usuario uEndereco = (Usuario)Session["latlog"];
 
-            u.Latitude = uEndereco.Latitude;
-            u.Longitude = uEndereco.Longitude;
+            //u.Latitude = uEndereco.Latitude;
+            //u.Longitude = uEndereco.Longitude;
+            u.Latitude = "-49.3321635";
+            u.Longitude = "-25.5773014";
             u.Complemento = txtComplemento.Text;
             u.Numero = int.Parse(txtNumero.Text);
             u.UltimoAcesso = DateTime.Now;
@@ -154,7 +157,12 @@ namespace WebApplication
                     strBody.AppendLine("Unimarket Brasil");
                     strBody.AppendLine("http://unimarket.academico.trilema.com.br");
 
+                    var caminho = Server.MapPath(string.Format(@"~/Imagens/{0}/Perfil/", u.Id));
 
+                    Directory.CreateDirectory(caminho);
+
+                    File.Copy(Server.MapPath(string.Format(@"~/Imagens/Sistema/ImagemPadrao.jpg")), caminho + "ImagemPadrao.jpg", true);
+                                        
                     using (message = new MailMessage("unimarketbrasil@gmail.com", u.Email.ToString())
                     {
                         

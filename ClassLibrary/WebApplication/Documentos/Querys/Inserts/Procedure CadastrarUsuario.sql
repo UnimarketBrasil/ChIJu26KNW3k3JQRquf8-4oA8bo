@@ -39,8 +39,7 @@ begin
 			 AreaAtuacao,
 			 IdTipoUsuario,
 			 UltimoAcesso
-			 ) 
-			 values(
+			 ) output inserted.Id values(
 			 @Email,
 			 @Nome,
 			 @Sobrenome,

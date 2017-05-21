@@ -33,33 +33,36 @@ namespace ClassLibrary.Repositorio
                     Cmd.Parameters.AddWithValue("@AreaAtuacao", user.AreaAtuacao);
                     Cmd.Parameters.AddWithValue("@IdTipoUsuario", user.Tipousuario.Id);
                     Cmd.Parameters.AddWithValue("@UltimoAcesso", user.UltimoAcesso);
-                    Cmd.ExecuteNonQuery();
+                    user.Id = int.Parse(Cmd.ExecuteScalar().ToString());
 
-                    Cmd = new SqlCommand("ValidaEmailCpfCnpj", Con);
 
-                    Cmd.CommandType = CommandType.StoredProcedure;
-                    Cmd.Parameters.AddWithValue("@Email", user.Email);
-                    Cmd.Parameters.AddWithValue("@CpfCnpj", user.CpfCnpj);
-                    Cmd.ExecuteNonQuery();
+                    //Cmd = new SqlCommand("ValidaEmailCpfCnpj", Con);
 
-                    Dr = Cmd.ExecuteReader();
+                    //Cmd.CommandType = CommandType.StoredProcedure;
+                    //Cmd.Parameters.AddWithValue("@Email", user.Email);
+                    //Cmd.Parameters.AddWithValue("@CpfCnpj", user.CpfCnpj);
+                    //Cmd.ExecuteNonQuery();
 
-                    if (Dr.HasRows)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
+                    //Dr = Cmd.ExecuteReader();
+
+                    //if (Dr.HasRows)
+                    //{
+                    //    return true;
+                    //}
+                    //else
+                    //{
+                    //    return false;
+                    //}
+                    return true;
                 }
                 catch (Exception ex)
                 {
                     throw new Exception(ex.Message);
+                    return false;
                 }
                 finally
                 {
-                    Dr.Close();
+                    //Dr.Close();
 
                     FecharConexao();
                 }

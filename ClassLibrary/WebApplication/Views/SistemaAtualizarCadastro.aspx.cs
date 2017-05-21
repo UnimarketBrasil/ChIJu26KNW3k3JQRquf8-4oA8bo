@@ -233,6 +233,18 @@ namespace WebApplication
                 u.Numero = Convert.ToInt32(txtNumero.Text);
                 u.AreaAtuacao = Convert.ToDouble(dpArea.SelectedValue);
 
+                if (InputFoto.HasFile)
+                {
+                    var caminho = Server.MapPath(string.Format(@"~/Imagens/{0}/Perfil/", u.Id));
+
+                    Directory.CreateDirectory(caminho);
+
+                    DirectoryInfo dir = new DirectoryInfo((caminho));
+                    dir.GetFiles("*", SearchOption.AllDirectories).ToList().ForEach(file => file.Delete());
+
+                    InputFoto.PostedFile.SaveAs(Path.Combine(caminho, InputFoto.FileName));
+                }
+
                 UsuarioRepositorio atulizarCadastro = new UsuarioRepositorio();
                 if (atulizarCadastro.AtualizarUsuario(u))
                 {

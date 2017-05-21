@@ -12,9 +12,10 @@
         <!--Atualizar Cadastro-->
         <div id="dvSegundaEtapa" class="row" runat="server">
             <div>
+                <form class="form-horizontal" runat="server">
                 <div class="col-md-6">
                     <div class="sm-m-top-50">
-                        <form class="form-horizontal" runat="server">
+                        
                             <!--Pessoa Fisica-->
                             <div class="row">
                                 <div id="dvPessoaFisica" runat="server">
@@ -54,7 +55,7 @@
                                     </div>
                                 </div>
                              </div>
-
+                        </div>
                             <!--Email / Tel / Senha / Botão -->
                             <div class="form-group">
                                 <label for="<% =txtEmail.ClientID %>"" class="col-lg-2 control-label">Email</label>
@@ -136,21 +137,21 @@
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                        
                     </div>
                 </div>
-            </div>
-             <div class="col-md-1"></div>
+                <div class="col-md-1"></div>
                 <div class="form-group col-md-3" runat="server">
                     <div>
-                        <asp:Image ID="userImage" CssClass="img-circle img-responsive" width="236" height="236" runat="server" />
+                        <asp:Image ID="userImage" CssClass="img-circle img-responsive" runat="server" />
                     </div>
-                    <%--<div class="form-group" runat="server">
+                    <div class="form-group" runat="server">
                         <asp:FileUpload ID="InputFoto" CssClass="file" runat="server" />
-                    </div>--%>
+                    </div>
                 </div>
-            </div>
-        </div>
+            </form>
+            </div>          
+       
         <!--Scripts-->
         <!--googleMaps-->
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAErShX6RRNkCAj2d3E9bxaEEGKSpIHZ1A&callback=initMap"
@@ -255,5 +256,5 @@
 
                 })(jQuery);
         </script>
-    </div>
+            </div>
 </asp:Content>
