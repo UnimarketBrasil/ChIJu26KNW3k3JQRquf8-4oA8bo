@@ -1,7 +1,5 @@
 use unimarket
 go
---Excluir AtualizarUsuarioPJ
-go
 create  procedure AtualizarUsuario(
 	@IdUsuario int,
 	@Email varchar(50),
@@ -11,6 +9,7 @@ create  procedure AtualizarUsuario(
 	@Latitude varchar(20),
 	@Longitude varchar(20),
 	@Complemento text,
+	@Numero int,
 	@AreaAtuacao real,
 	@IdTipoUsuario int
 	)
@@ -26,6 +25,7 @@ begin
 			Latitude = @Latitude,
 			Longitude = @Longitude,
 			Complemento = @Complemento,
+			Numero = @Numero,
 			AreaAtuacao = @AreaAtuacao,
 			IdTipoUsuario = @IdTipoUsuario
 			where ( Id = @IdUsuario )

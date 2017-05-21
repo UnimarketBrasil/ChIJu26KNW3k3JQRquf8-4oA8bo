@@ -149,32 +149,6 @@ namespace WebApplication
             }
         }
 
-        protected void txtNumero_TextChanged(object sender, EventArgs e)
-        {
-
-            try
-            {
-                Usuario u = new Usuario();
-                GeoCodificacao g = new GeoCodificacao();
-
-                u = g.ObterCoordenadas(u, txtEndereco.Text, txtNumero.Text);
-
-                Session["latlog"] = u;
-
-                //ArrayList sEndereco = new ArrayList();
-                //sEndereco = g.ObterEndereco(u);
-                //lbEndereco.Visible = true;
-                //lbEndereco.Text = sEndereco[1].ToString();
-            }
-            catch
-            {
-                dvMsg.Visible = true;
-                dvEnderecoCompleto.Visible = false;
-                dvMsg.Attributes["class"] = "alert alert-warning alert-dismissible";
-                lbMsg.Text = "Desculpe, não localizamos o seu endereço.";
-            }
-        }
-
         protected void btSalvar_Click(object sender, EventArgs e)
         {
             Usuario u = (Usuario)Session["sistema"];
@@ -207,6 +181,7 @@ namespace WebApplication
                     u.Longitude = uEndereco.Longitude;
                 }
                 u.Complemento = txtComplemento.Text;
+                u.Numero = Convert.ToInt32(txtNumero.Text);
 
                 UsuarioRepositorio atualizarCadastro = new UsuarioRepositorio();
                 if (atualizarCadastro.AtualizarUsuario(u))
@@ -252,6 +227,7 @@ namespace WebApplication
                     u.Longitude = uEndereco.Longitude;
                 }
                 u.Complemento = txtComplemento.Text;
+                u.Numero = Convert.ToInt32(txtNumero.Text);
                 u.AreaAtuacao = Convert.ToDouble(dpArea.SelectedValue);
 
                 UsuarioRepositorio atulizarCadastro = new UsuarioRepositorio();

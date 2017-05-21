@@ -83,6 +83,7 @@ namespace ClassLibrary.Repositorio
                     Cmd.Parameters.AddWithValue("@Latitude", user.Latitude);
                     Cmd.Parameters.AddWithValue("@Longitude", user.Longitude);
                     Cmd.Parameters.AddWithValue("@Complemento", user.Complemento);
+                    Cmd.Parameters.AddWithValue("@Numero", user.Numero);
                     Cmd.Parameters.AddWithValue("@AreaAtuacao", user.AreaAtuacao);
                     Cmd.Parameters.AddWithValue("@IdTipoUsuario", user.Tipousuario.Id);
                     Cmd.ExecuteNonQuery();
