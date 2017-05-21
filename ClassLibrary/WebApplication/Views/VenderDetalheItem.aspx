@@ -78,7 +78,7 @@
                     <div runat="server" id="dvBtnNovo" class="row">
                         <div class="form-group">
                             <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 form-group">
-                                <asp:LinkButton ID="btnLixeira" runat="server" CssClass="btn btn-danger"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></asp:LinkButton>
+                                <asp:LinkButton ID="btnLixeira" runat="server" CssClass="btn btn-danger" OnClick="btnLixeira_Click"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></asp:LinkButton>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1 form-group">
                                 <button type="reset" class="btn btn-default">Cancelar</button>
@@ -113,5 +113,73 @@
             tot = tot.replace(".", ",");
             document.getElementById('<% Response.Write(lbValorTotal.ClientID);%>').innerHTML = tot;
         }
+    </script>
+    <script>
+        function chamaModal() {
+            waitingDialog.show('ITEM EXCLUÍDO');
+        }
+    </script>
+    <script>
+        var waitingDialog = waitingDialog || (function ($) {
+            'use strict';
+
+            // Creating modal dialog's DOM
+            var $dialog = $(
+                '<div class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top:8%; overflow-y:visible;">' +
+                '<div class="modal-dialog modal-m">' +
+                '<div class="modal-content">' +
+                '<div class="modal-header"><h3 style="margin:0;"></h3></div>' +
+                '<div class="modal-body"><p>Item excluído com sucesso.</p></div>' +
+                '<div class="modal-footer"><a runat="server" href="~/Views/VenderItem.aspx" class="btn btn-primary">Ok</a></div>' +
+                '</div>' +
+                '</div></div></div>');
+
+            return {
+                /**
+                 * Opens our dialog
+                 * @param message Custom message
+                 * @param options Custom options:
+                 * 				  options.dialogSize - bootstrap postfix for dialog size, e.g. "sm", "m";
+                 * 				  options.progressType - bootstrap postfix for progress bar type, e.g. "success", "warning".
+                 */
+                show: function (message, options) {
+                    // Assigning defaults
+                    if (typeof options === 'undefined') {
+                        options = {};
+                    }
+                    if (typeof message === 'undefined') {
+                        message = 'Loading';
+                    }
+                    var settings = $.extend({
+                        dialogSize: 'm',
+                        progressType: '',
+                        onHide: null // This callback runs after the dialog was hidden
+                    }, options);
+
+                    // Configuring dialog
+                    $dialog.find('.modal-dialog').attr('class', 'modal-dialog').addClass('modal-' + settings.dialogSize);
+                    $dialog.find('.progress-bar').attr('class', 'progress-bar');
+                    if (settings.progressType) {
+                        $dialog.find('.progress-bar').addClass('progress-bar-' + settings.progressType);
+                    }
+                    $dialog.find('h3').text(message);
+                    // Adding callbacks
+                    if (typeof settings.onHide === 'function') {
+                        $dialog.off('hidden.bs.modal').on('hidden.bs.modal', function (e) {
+                            settings.onHide.call($dialog);
+                        });
+                    }
+                    // Opening dialog
+                    $dialog.modal();
+                },
+                /**
+                 * Closes dialog
+                 */
+                hide: function () {
+                    $dialog.modal('hide');
+                }
+            };
+
+        })(jQuery);
     </script>
 </asp:Content>

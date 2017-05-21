@@ -6,6 +6,7 @@ using System.Data;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.UI;
 
 namespace WebApplication
 {
@@ -168,6 +169,17 @@ namespace WebApplication
                 dvMsg.Visible = true;
                 dvMsg.Attributes["class"] = "alert alert-warning alert-dismissible";
                 lbMsg.Text = "Erro ao cadastrar o item. Verifique as informações digitadas e tente novamente.";
+            }
+        }
+
+        protected void btnLixeira_Click(object sender, EventArgs e)
+        {
+            int idItem = Convert.ToInt32(Request.QueryString["idItem"]);
+            ItemRepositorio deleteItem = new ItemRepositorio();
+
+            if (deleteItem.DesabilitarItemPorId(idItem))
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "script", "$(function () { chamaModal(); });", true);
             }
         }
     }

@@ -77,7 +77,7 @@ namespace ClassLibrary.Repositorio
             }
         }
         //ESSE MÉTODO DASABILITA (EXCLUI) UM ITEM NO BANDO DE DADOS
-        public void DesabilitarItemPorId(int idItem)
+        public bool DesabilitarItemPorId(int idItem)
         {
             Abrirconexao();
 
@@ -88,9 +88,11 @@ namespace ClassLibrary.Repositorio
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.AddWithValue("@IdItem", idItem);
                     Cmd.ExecuteNonQuery();
+                    return true;
                 }
                 catch (Exception ex)
                 {
+                    return false;
                     throw new Exception("Erro ao desabilitar item: " + ex.Message);
                 }
                 finally

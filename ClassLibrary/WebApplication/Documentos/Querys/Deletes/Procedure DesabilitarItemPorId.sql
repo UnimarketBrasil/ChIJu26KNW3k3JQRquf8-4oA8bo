@@ -1,7 +1,5 @@
 use unimarket
 go
-Excluir DesabilitarItemPorId
-go
 create procedure DesabilitarItemPorId(
 	@IdItem int
 	)
