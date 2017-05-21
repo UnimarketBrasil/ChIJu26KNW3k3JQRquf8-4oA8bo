@@ -53,7 +53,7 @@
                 '<div class="modal-content">' +
                 '<div class="modal-header"><h3 style="margin:0;"></h3></div>' +
                 '<div class="modal-body"><label class="control-label" for="inputSuccess">CEP</label><input type="number" class="form-control" id="txtCep"><label class="control-label" for="inputSuccess">Número</label><input type="number" class="form-control" id="txtNumero"></div>' +
-                '<div class="modal-footer"><button runat="server" onclick="chamarAjax();" type="button" class="btn btn-primary">Save changes</button></div>' +
+                '<div class="modal-footer"><button runat="server" onclick="chamarAjax();" type="button" class="btn btn-primary">Continuar...</button></div>' +
                 '</div>' +
                 '</div></div></div>');
 
