@@ -1,5 +1,6 @@
 ﻿using ClassLibrary;
 using ClassLibrary.Repositorio;
+using ClassUtilitario;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -85,6 +86,18 @@ namespace WebApplication
             }
             Response.Redirect(Request.RawUrl);
 
+        }
+
+        protected void PDF_Click(object sender, EventArgs e)
+        {
+            UsuarioRepositorio l = new UsuarioRepositorio();                 
+            MemoryStream m = new MemoryStream();
+            Pdf pdf = new Pdf();
+            pdf.PdfUsuario(l.ListarUsuario(), m);
+            Response.ContentType = "Application/pdf";
+            Response.BinaryWrite(m.GetBuffer());
+            Response.End();
+           
         }
     }
 }
