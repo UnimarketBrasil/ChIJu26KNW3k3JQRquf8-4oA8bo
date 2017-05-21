@@ -489,6 +489,57 @@ namespace ClassLibrary.Repositorio
                 }
             }
         }
+
+        //
+        public List<Item> MecanismoDeBuscaCategoria(int IdCategoria, Usuario comprador)
+        {
+            Abrirconexao();
+
+            using (Cmd = new SqlCommand("MecanismoDeBuscaCategoria", Con))
+            {
+                try
+                {
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@IdCategoria", IdCategoria);
+                    Cmd.Parameters.AddWithValue("@LatitudeComprador", comprador.Latitude);
+                    Cmd.Parameters.AddWithValue("@LongitudeComprador", comprador.Longitude);
+                    Cmd.ExecuteNonQuery();
+
+                    Dr = Cmd.ExecuteReader();
+
+                    List<Item> itemList = new List<Item>();
+                    TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
+
+                    if (Dr.HasRows)
+                    {
+                        while (Dr.Read())
+                        {
+                            Item item = new Item();
+                            item.Id = Convert.ToInt32(Dr["Id"]);
+                            item.Nome = ti.ToTitleCase(Convert.ToString(Dr["Nome"]));
+                            item.ValorUnitario = Math.Round(Convert.ToDouble(Dr["ValorUnitario"]), 2);
+                            item.Vendedor = new Usuario();
+                            item.Vendedor.Id = Convert.ToInt32(Dr["IdVendendor"]);
+                            item.Vendedor.Nome = ti.ToTitleCase(Convert.ToString(Dr["Vendedor"]));
+
+                            itemList.Add(item);
+                        }
+                    }
+
+                    return itemList;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Erro ao buscar Item: " + ex.Message);
+                }
+                finally
+                {
+                    Dr.Close();
+
+                    FecharConexao();
+                }
+            }
+        }
     }
 }
 

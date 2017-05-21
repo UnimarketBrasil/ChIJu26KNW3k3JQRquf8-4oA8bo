@@ -10,7 +10,7 @@
 namespace WebApplication {
     
     
-    public partial class WebForm5 {
+    public partial class SistemaCategoria {
         
         /// <summary>
         /// Controle divMsg.
