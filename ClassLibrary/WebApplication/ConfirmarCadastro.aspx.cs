@@ -16,10 +16,10 @@ namespace WebApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["sistema"] != null)
-                Response.Redirect("~/Views/Sistema.aspx");
+            string hash = Request.QueryString["Hash"];
 
-            string hash = hash = Request.QueryString["Hash"];
+            if (Session["sistema"] != null || hash == null)
+                Response.Redirect("~/Views/Sistema.aspx");
 
             Usuario u = new Usuario();
             UsuarioRepositorio conf = new UsuarioRepositorio();
