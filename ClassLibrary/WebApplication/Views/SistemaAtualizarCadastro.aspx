@@ -53,15 +53,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xs-offset-2">
-                                    <div class="form-group">
-                                        <asp:Image ID="userImage" CssClass="img-circle" width="236" height="236" runat="server" />
-                                    </div>
-                                    <div>
-                                        <asp:FileUpload ID="InputFoto" CssClass="file" runat="server" />
-                                    </div>
-                                </div>
-                            </div>
+                             </div>
 
                             <!--Email / Tel / Senha / Botão -->
                             <div class="form-group">
@@ -146,6 +138,16 @@
                             </div>
                         </form>
                     </div>
+                </div>
+            </div>
+             <div class="col-md-1"></div>
+                <div class="form-group col-md-3" runat="server">
+                    <div>
+                        <asp:Image ID="userImage" CssClass="img-circle img-responsive" width="236" height="236" runat="server" />
+                    </div>
+                    <%--<div class="form-group" runat="server">
+                        <asp:FileUpload ID="InputFoto" CssClass="file" runat="server" />
+                    </div>--%>
                 </div>
             </div>
         </div>

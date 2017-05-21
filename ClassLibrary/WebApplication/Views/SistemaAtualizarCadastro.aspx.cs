@@ -62,6 +62,17 @@ namespace WebApplication
 
                         txtEmail.Text = u.Email;
                         txtTel.Text = u.Telefone;
+
+                        string caminho = string.Format("~/Imagens/{0}/Perfil/", u.Id);
+
+                        if (Directory.Exists(Server.MapPath(caminho)))
+                        {
+                            var diretorio = new DirectoryInfo(Server.MapPath(caminho));
+                            var arquivos = diretorio.GetFiles();
+                            string img = arquivos.Last().Name;
+                            userImage.ImageUrl = ResolveUrl(Path.Combine(caminho, img));
+                        }
+
                         if (u.Tipousuario.Id == 2)
                         {
                             rdComprar.Checked = true;
@@ -80,17 +91,7 @@ namespace WebApplication
                         txtNumero.Text = u.Numero.ToString();
                         txtComplemento.Text = u.Complemento;
                         dpArea.SelectedValue = Convert.ToString(u.AreaAtuacao);
-
-                        string caminho = string.Format("~/Imagens/{0}/Perfil/", u.Id);
-
-                        if (Directory.Exists(Server.MapPath(caminho)))
-                        {
-                            var diretorio = new DirectoryInfo(Server.MapPath(caminho));
-                            var arquivos = diretorio.GetFiles();
-                            string img = arquivos.Last().Name;
-                            userImage.ImageUrl = ResolveUrl(Path.Combine(caminho, img));
-                        }
-
+                        
                     }
                     else
                     {
@@ -108,6 +109,17 @@ namespace WebApplication
                         txtRazaoSocial.Text = u.Nome;
                         txtEmail.Text = u.Email;
                         txtTel.Text = u.Telefone;
+
+                        string caminho = string.Format("~/Imagens/{0}/Perfil/", u.Id);
+
+                        if (Directory.Exists(Server.MapPath(caminho)))
+                        {
+                            var diretorio = new DirectoryInfo(Server.MapPath(caminho));
+                            var arquivos = diretorio.GetFiles();
+                            string img = arquivos.Last().Name;
+                            userImage.ImageUrl = ResolveUrl(Path.Combine(caminho, img));
+                        }
+
                         if (u.Tipousuario.Id == 2)
                         {
                             rdComprar.Checked = true;
@@ -126,16 +138,7 @@ namespace WebApplication
                         txtNumero.Text = u.Numero.ToString();
                         txtComplemento.Text = u.Complemento;
                         dpArea.SelectedValue = Convert.ToString(u.AreaAtuacao);
-
-                        string caminho = string.Format("~/Imagens/{0}/Perfil/", u.Id);
-
-                        if (Directory.Exists(Server.MapPath(caminho)))
-                        {
-                            var diretorio = new DirectoryInfo(Server.MapPath(caminho));
-                            var arquivos = diretorio.GetFiles();
-                            string img = arquivos.Last().Name;
-                            userImage.ImageUrl = ResolveUrl(Path.Combine(caminho, img));
-                        }
+                                                
                     }
                     else
                     {
