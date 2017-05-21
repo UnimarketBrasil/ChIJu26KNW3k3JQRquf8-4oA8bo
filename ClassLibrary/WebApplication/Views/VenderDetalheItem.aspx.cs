@@ -41,7 +41,7 @@ namespace WebApplication
                     carregaItem.DetalheItemVendedor(idItem, user.Id) != null)
                 {
                     dvHeadNovo.Visible = false;
-                    dvBtnNovo.Visible = false;
+                    dvBtnAlterar.Visible = false;
                     i = carregaItem.DetalheItemVendedor(idItem, user.Id);
                     txtNome.Text = i.Nome;
                     txtCod.Text = i.Codigo;
@@ -65,7 +65,7 @@ namespace WebApplication
                 else
                 {
                     dvHeadAlterar.Visible = false;
-                    dvBtnAlterar.Visible = false;
+                    dvBtnNovo.Visible = false;
                 }
             }
         }
