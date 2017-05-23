@@ -78,7 +78,9 @@
                     <div runat="server" id="dvBtnNovo" class="row">
                         <div class="form-group">
                             <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 form-group">
-                                <asp:LinkButton ID="btnLixeira" runat="server" CssClass="btn btn-danger" OnClick="btnLixeira_Click"><span aria-hidden="true" class="glyphicon glyphicon-trash"></span></asp:LinkButton>
+                                <div class="btn btn-danger glyphicon glyphicon-trash">
+                                    <asp:Button ID="btnLixeira" runat="server" BackColor="Transparent" BorderWidth="0" Text="Excluir" OnClick="btnLixeira_Click"></asp:Button>
+                                </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1 form-group">
                                 <button type="reset" class="btn btn-default">Cancelar</button>
