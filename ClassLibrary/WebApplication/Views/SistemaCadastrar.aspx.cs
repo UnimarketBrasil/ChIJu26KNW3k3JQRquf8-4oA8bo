@@ -136,41 +136,41 @@ namespace WebApplication
                 {
                     MailMessage message = null;
                     IsEmail enviarConf = new IsEmail();
-                    HttpApplication serve = new HttpApplication();
                     string urlConf = null;
-                    //if (serve.Request.IsLocal)
-                    //{
-                    //    urlConf = "http://localhost:49756/ConfirmarCadastro.aspx?Hash=" + u.HashConfirmacao;
-                    //}
-                    //else
-                    //{
-                    //    urlConf = "http://unimarket.academico.trilema.com.br/ConfirmarCadastro.aspx?Hash=" + u.HashConfirmacao;
-                    //}
-                    urlConf = "http://localhost:49756/ConfirmarCadastro.aspx?Hash=" + u.HashConfirmacao;
+                    if (HttpContext.Current.Request.IsLocal)
+                    {
+                        urlConf = "http://localhost:49756/ConfirmarCadastro.aspx?Hash=" + u.HashConfirmacao;
+                    }
+                    else
+                    {
+                        urlConf = "http://unimarket.academico.trilema.com.br/ConfirmarCadastro.aspx?Hash=" + u.HashConfirmacao;
+                    }
 
                     StringBuilder strBody = new StringBuilder();
-                    strBody.AppendLine("Seja bem vindo(a) ao Unimarket, "+u.Nome+"!");
+                    strBody.AppendLine("Seja bem vindo(a) ao Unimarket, " + u.Nome + "!");
                     strBody.AppendLine("Complete seu cadastro clicando no link abaixo, para começar a usar o sistema:");
                     strBody.AppendLine("");
-                    strBody.AppendLine(""+urlConf+"");
+                    strBody.AppendLine("" + urlConf + "");
                     strBody.AppendLine("");
                     strBody.AppendLine("Unimarket Brasil");
                     strBody.AppendLine("http://unimarket.academico.trilema.com.br");
 
+                    using (message = new MailMessage("unimarketbrasil@gmail.com", u.Email.ToString())
+                    {
+
+                        Subject = "Confirmação de Cadastro",
+                        Body = strBody.ToString()
+
+                    })
+
+                        enviarConf.Enviar(message);
+
+                    //Imagem
                     var caminho = Server.MapPath(string.Format(@"~/Imagens/{0}/Perfil/", u.Id));
 
                     Directory.CreateDirectory(caminho);
 
                     File.Copy(Server.MapPath(string.Format(@"~/Imagens/Sistema/ImagemPadrao.jpg")), caminho + "ImagemPadrao.jpg", true);
-                                        
-                    using (message = new MailMessage("unimarketbrasil@gmail.com", u.Email.ToString())
-                    {
-                        
-                        Subject = "Confirmação de Cadastro",
-                        Body = strBody.ToString()
-
-                    })
-                        enviarConf.Enviar(message);
 
                     dvMsg.Visible = true;
                     dvMsg.Attributes["class"] = "alert alert-success alert-dismissible";

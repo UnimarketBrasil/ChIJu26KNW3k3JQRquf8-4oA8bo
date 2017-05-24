@@ -201,6 +201,7 @@
     <Content Include="Scripts\locales\bootstrap-datepicker.zh-CN.min.js" />
     <Content Include="Scripts\locales\bootstrap-datepicker.zh-TW.min.js" />
     <Content Include="Scripts\Mascara.js" />
+    <Content Include="Style\Emails\ConfCadastro.html" />
     <Content Include="Views\Ajax\BuscaEndereco.aspx" />
     <Content Include="Views\SistemaAjuda.aspx" />
     <Content Include="Views\SistemaErro.aspx" />
@@ -434,7 +435,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Style\images\" />
-    <Folder Include="Style\template_mail\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ClassLibrary\ClassLibrary.csproj">
