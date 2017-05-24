@@ -119,7 +119,7 @@
                                 <div class="form-group">
                                     <label for="<% =txtDtNasc.ClientID %>"" class="col-lg-2 control-label">Data de Nasc.</label>
                                     <div class="col-lg-10">
-                                        <asp:TextBox ID="txtDtNasc" runat="server" CssClass="form-control" placeholder="dd/mm/aaaa" required="true"></asp:TextBox>
+                                        <asp:TextBox ID="txtDtNasc" runat="server" CssClass="form-control" placeholder="dd/mm/aaaa" onkeyup="formataData(this, event);" onchange="formataData(this,event);" required="true"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="form-group">

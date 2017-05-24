@@ -26,6 +26,11 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <div class="col-xs-10 col-xs-offset-2">
+                            <asp:CheckBox ID="lembrarLogin" runat="server" Text="Lembrar de mim" CssClass="checkbox-inline"></asp:CheckBox>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <div class="col-lg-10 col-lg-offset-2">
                             <div>
                                 <asp:Button ID="btLogin" runat="server" Text="Entrar" CssClass="btn btn-primary" OnClick="btLogin_Click" />
