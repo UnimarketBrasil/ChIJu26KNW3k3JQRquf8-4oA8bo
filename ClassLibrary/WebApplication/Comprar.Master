@@ -77,7 +77,7 @@
                             <a href="#" draggable="false" class="dropdown-toggle btn btn-primary glyphicon glyphicon-user" data-toggle="dropdown" role="button" aria-expanded="false"></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a draggable="false" runat="server" href="~/Views/SistemaAtualizarCadastro.aspx">Atualizar Cadastro</a></li>
-                                <li><a draggable="false" runat="server" href="~/Views/ComprarPedido.aspx">Meus Pedidos</a></li>
+                                <li><a draggable="false" runat="server" href="~/Views/Comprador/ComprarPedido.aspx">Meus Pedidos</a></li>
                             </ul>
                         </li>
                         <li><a draggable="false" id="LinkButton2" runat="server" href="~/Views/Logout.aspx" class="btn btn-primary glyphicon glyphicon-log-out"></a></li>

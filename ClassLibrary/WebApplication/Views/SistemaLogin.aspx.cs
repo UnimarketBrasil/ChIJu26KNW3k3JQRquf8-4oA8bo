@@ -29,11 +29,11 @@ namespace WebApplication
                 Usuario u = (Usuario)Session["sistema"];
                 if (u.Tipousuario.Id == 1)
                 {
-                    Response.Redirect("~/Views/AdminListar.aspx");
+                    Response.Redirect("~/Views/Administrado/AdminListar.aspx");
                 }
                 else if (u.Tipousuario.Id == 3)
                 {
-                    Response.Redirect("~/Views/VenderItem.aspx");
+                    Response.Redirect("~/Views/Vendedor/VenderItem.aspx");
                 }
                 else
                 {
@@ -92,7 +92,7 @@ namespace WebApplication
 
                     if (usuario.Tipousuario.Id == 3)//Tipo de usuário vendedor
                     {
-                        Response.Redirect("~/Views/VenderItem.aspx");
+                        Response.Redirect("~/Views/Vendedor/VenderItem.aspx");
                     }
                     else if (usuario.Tipousuario.Id == 2)//Tipo de usuário comprador
                     {
@@ -100,7 +100,7 @@ namespace WebApplication
                     }
                     else if (usuario.Tipousuario.Id == 1)//Tipo de usuário administrador
                     {
-                        Response.Redirect("~/Views/AdminListar.aspx");
+                        Response.Redirect("~/Views/Administrador/AdminListar.aspx");
                     }
                     else
                     {
