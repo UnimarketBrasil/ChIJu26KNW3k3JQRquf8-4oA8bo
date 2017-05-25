@@ -28,6 +28,7 @@ create table Usuario(
 	Telefone varchar(15) not null,
 	Longitude varchar(20),
 	Latitude varchar(20),
+	CEP varchar(8) not null,
 	Numero int not null,
 	Complemento varchar(50) null,
 	AreaAtuacao real null check (AreaAtuacao > 0),

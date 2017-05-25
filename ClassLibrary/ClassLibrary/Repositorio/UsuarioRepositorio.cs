@@ -28,6 +28,7 @@ namespace ClassLibrary.Repositorio
                     Cmd.Parameters.AddWithValue("@Telefone", user.Telefone);
                     Cmd.Parameters.AddWithValue("@Longitude", user.Longitude);
                     Cmd.Parameters.AddWithValue("@Latitude", user.Latitude);
+                    Cmd.Parameters.AddWithValue("@CEP", user.CEP);
                     Cmd.Parameters.AddWithValue("@Numero", user.Numero);
                     Cmd.Parameters.AddWithValue("@Complemento", user.Complemento);
                     Cmd.Parameters.AddWithValue("@AreaAtuacao", user.AreaAtuacao);
@@ -55,9 +56,8 @@ namespace ClassLibrary.Repositorio
                     //}
                     return true;
                 }
-                catch (Exception ex)
+                catch
                 {
-                    throw new Exception(ex.Message);
                     return false;
                 }
                 finally

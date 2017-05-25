@@ -1,4 +1,6 @@
 use unimarket
+if OBJECT_ID('CadastrarUsuario') is not null
+drop procedure CadastrarUsuario
 go
 create procedure CadastrarUsuario(
 	@Email varchar (50),
@@ -12,8 +14,9 @@ create procedure CadastrarUsuario(
 	@Telefone varchar(15),
 	@Longitude varchar(20),
 	@Latitude varchar(20),
-	@Complemento varchar(20) = null,
+	@CEP varchar(8),
 	@Numero int,
+	@Complemento varchar(20) = null,
 	@AreaAtuacao real =null,
 	@IdTipoUsuario int,
 	@UltimoAcesso datetime
@@ -34,6 +37,7 @@ begin
 			 Telefone,
 			 Longitude,
 			 Latitude,
+			 CEP,
 			 Numero,
 			 Complemento,
 			 AreaAtuacao,
@@ -51,6 +55,7 @@ begin
 			 @Telefone,
 			 @Longitude,
 			 @Latitude,
+			 @CEP,
 			 @Numero,
 			 @Complemento,
 			 @AreaAtuacao,

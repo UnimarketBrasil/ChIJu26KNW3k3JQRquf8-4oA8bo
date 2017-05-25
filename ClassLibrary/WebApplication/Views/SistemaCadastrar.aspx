@@ -156,7 +156,7 @@
                             <div class="form-group">
                                 <label for="<% =txtEndereco.ClientID %>" class="col-lg-2 control-label">Endereço</label>
                                 <div class="col-lg-4">
-                                    <asp:TextBox ID="txtEndereco" runat="server" CssClass="form-control" OnKeyUp="formataCEP(this,event);" onchange="formataCEP(this,event);" placeholder="CEP" required="true" MaxLength="9"></asp:TextBox>
+                                    <asp:TextBox ID="txtEndereco" runat="server" CssClass="form-control" OnKeyUp="formataCEP(this,event);" onchange="formataCEP(this,event);" placeholder="CEP" required="true" MaxLength="9"  data-toggle="tooltip" title="Informe o CEP do seu endereço, número e clique na lupa. Vamos te localizar!"></asp:TextBox>
                                 </div>
                                 <div class="col-lg-3">
                                     <asp:TextBox ID="txtNumero" runat="server" CssClass="form-control" TextMode="Number"  placeholder="N°" required="true"></asp:TextBox>
@@ -170,7 +170,7 @@
                             </div>
                             <div id="dvEnderecoCompleto" runat="server" class="form-group">
                                 <div class="col-lg-10 col-lg-offset-2">
-                                    <asp:Label runat="server" ID="lbEndereco" Text="" Font-Bold="True"></asp:Label>
+                                    <asp:Label runat="server" ID="lbEndereco" Text="" Font-Bold="True" CssClass="form-control well well-sm"></asp:Label>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -262,6 +262,11 @@
             });
 
         </script>
+        <script>
+            function cadastroConcluido() {
+                fimCadastroDialog.show('Cadastro Concluído!');
+            }
+        </script>
         <script type="text/javascript">
             function chamarAjax() {
                 waitingDialog.show('Buscando...');
@@ -285,7 +290,7 @@
                 'use strict';
 
                 // Creating modal dialog's DOM
-                var $dialog = $(
+                var $dialogProgres = $(
                     '<div class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top:15%; overflow-y:visible;">' +
                     '<div class="modal-dialog modal-m">' +
                     '<div class="modal-content">' +
@@ -318,31 +323,99 @@
                         }, options);
 
                         // Configuring dialog
-                        $dialog.find('.modal-dialog').attr('class', 'modal-dialog').addClass('modal-' + settings.dialogSize);
-                        $dialog.find('.progress-bar').attr('class', 'progress-bar');
+                        $dialogProgres.find('.modal-dialog').attr('class', 'modal-dialog').addClass('modal-' + settings.dialogSize);
+                        $dialogProgres.find('.progress-bar').attr('class', 'progress-bar');
                         if (settings.progressType) {
-                            $dialog.find('.progress-bar').addClass('progress-bar-' + settings.progressType);
+                            $dialogProgres.find('.progress-bar').addClass('progress-bar-' + settings.progressType);
                         }
-                        $dialog.find('h3').text(message);
+                        $dialogProgres.find('h3').text(message);
                         // Adding callbacks
                         if (typeof settings.onHide === 'function') {
-                            $dialog.off('hidden.bs.modal').on('hidden.bs.modal', function (e) {
-                                settings.onHide.call($dialog);
+                            $dialogProgres.off('hidden.bs.modal').on('hidden.bs.modal', function (e) {
+                                settings.onHide.call($dialogProgres);
                             });
                         }
                         // Opening dialog
-                        $dialog.modal();
+                        $dialogProgres.modal();
                     },
                     /**
                      * Closes dialog
                      */
                     hide: function () {
-                        $dialog.modal('hide');
+                        $dialogProgres.modal('hide');
                     }
                 };
 
             })(jQuery);
         </script>
-    </div>
+               <script>
+                   var fimCadastroDialog = fimCadastroDialog || (function ($) {
+                       'use strict';
 
+                       // Creating modal dialog's DOM
+                       var $dialogFimCadastro = $(
+                           '<div class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top:15%; overflow-y:visible;">' +
+                           '<div class="modal-dialog modal-m">' +
+                           '<div class="modal-content">' +
+                           '<div class="modal-header"><h3>A</3></div>' +
+                           '<div class="modal-body">Para completar seu cadastro, confirme seu e-mail clicando no link que acabamos de enviar para você...' +
+                           '<div class="modal-footer"><button runat="server" onclick="fimCadastroDialog.hide();" type="button" class="btn btn-success" data-dismiss="modal" >Concordo</button>'+
+                           '</div></div>' +
+                           '</div></div></div>');
+
+                       return {
+                           /**
+                            * Opens our dialog
+                            * @param message Custom message
+                            * @param options Custom options:
+                            * 				  options.dialogSize - bootstrap postfix for dialog size, e.g. "sm", "m";
+                            * 				  options.progressType - bootstrap postfix for progress bar type, e.g. "success", "warning".
+                            */
+                           show: function (message, options) {
+                               // Assigning defaults
+                               if (typeof options === 'undefined') {
+                                   options = {};
+                               }
+                               if (typeof message === 'undefined') {
+                                   message = 'Loading';
+                               }
+                               var settings = $.extend({
+                                   dialogSize: 'm',
+                                   progressType: '',
+                                   onHide: null // This callback runs after the dialog was hidden
+                               }, options);
+
+                               // Configuring dialog
+                               $dialogFimCadastro.find('.modal-dialog').attr('class', 'modal-dialog').addClass('modal-' + settings.dialogSize);
+                               $dialogFimCadastro.find('.progress-bar').attr('class', 'progress-bar');
+                               if (settings.progressType) {
+                                   $dialogProgres.find('.progress-bar').addClass('progress-bar-' + settings.progressType);
+                               }
+                               $dialogFimCadastro.find('h3').text(message);
+                               // Adding callbacks
+                               if (typeof settings.onHide === 'function') {
+                                   $dialogFimCadastro.off('hidden.bs.modal').on('hidden.bs.modal', function (e) {
+                                       settings.onHide.call($dialogProgres);
+                                   });
+                               }
+                               // Opening dialog
+                               $dialogFimCadastro.modal();
+                           },
+                           /**
+                            * Closes dialog
+                            */
+                           hide: function () {
+                               $dialogFimCadastro.modal('hide');
+                               window.location.replace("/Views/Sistema.aspx");
+                           }
+                       };
+
+                   })(jQuery);
+        </script>
+        <script>
+            $(document).ready(function () {
+                $('[data-toggle="tooltip"]').tooltip();
+            });
+        </script>
+    </div>
 </asp:Content>

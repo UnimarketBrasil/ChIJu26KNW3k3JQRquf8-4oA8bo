@@ -115,10 +115,12 @@ namespace WebApplication
             }
             Usuario uEndereco = (Usuario)Session["latlog"];
 
-            //u.Latitude = uEndereco.Latitude;
-            //u.Longitude = uEndereco.Longitude;
-            u.Latitude = "-49.3321635";
-            u.Longitude = "-25.5773014";
+            u.Latitude = uEndereco.Latitude;
+            u.Longitude = uEndereco.Longitude;
+            //u.Latitude = "-49.3321635";
+            //u.Longitude = "-25.5773014";
+            txtEndereco.Text = txtEndereco.Text.Replace("-", "");
+            u.CEP = txtEndereco.Text;
             u.Complemento = txtComplemento.Text;
             u.Numero = int.Parse(txtNumero.Text);
             u.UltimoAcesso = DateTime.Now;
@@ -172,9 +174,14 @@ namespace WebApplication
 
                     File.Copy(Server.MapPath(string.Format(@"~/Imagens/Sistema/ImagemPadrao.jpg")), caminho + "ImagemPadrao.jpg", true);
 
-                    dvMsg.Visible = true;
-                    dvMsg.Attributes["class"] = "alert alert-success alert-dismissible";
-                    lbMsg.Text = "Cadastro realizado com sucesso!";
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "script", "$(function () { cadastroConcluido(); });", true);
+                    return;
+
+                    //SERÁ EXIBIDO UM MODAL APÓS FINALIZAR O CADASTRO.
+                    //ASSIM O USUÁRIO SERÁ DIRECIONADO PARA TELA DE LOGIN/PRINCIPAL
+                    //dvMsg.Visible = true;
+                    //dvMsg.Attributes["class"] = "alert alert-success alert-dismissible";
+                    //lbMsg.Text = "Cadastro realizado com sucesso!";
                 }
                 else
                 {
