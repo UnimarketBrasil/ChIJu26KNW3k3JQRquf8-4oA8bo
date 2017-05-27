@@ -33,12 +33,12 @@ namespace WebApplication
 
             ItemRepositorio itemPesquisa = new ItemRepositorio();
 
-            //CASO NÃO SEJA DIGITADO NADA NA PESQUISA, O SISTEMA APRESENTA A MENSAGEM INFORMANDO QUE O CAMPO PESQUISA ESTÁ VAZIO
+            //CASO O CAMPO PESQUISAR ESTIVER VAZIO, APARECERÁ UM MENSAGEM INFORMANDO QUE NÃO ENCOMTRAMOS NENHUM ITEM.
             if (String.IsNullOrWhiteSpace(pesquisa) == true)
             {
                 divMsg.Visible = true;
                 divMsg.Attributes["class"] = "alert alert-dismissible alert-info";
-                msgPesquisa.Text = "<strong>Pesquisa Inválida</strong>. O campo de pesquisa está vazio.";
+                msgPesquisa.Text = "Não encontramos nenhum item com o nome pesquisado.";
             }
             //CASO SEJA DIGITADO ALGO NA PESQUISA, O SISTEMA RETORNA O RESULTADO DA MESMA
             else
@@ -68,13 +68,13 @@ namespace WebApplication
                     }
 
                 }
-                //CASO O USUARIO PROCURE POR UM PRODUTO NÃO CADASTRADO NO SISTEMA, O MESMO RETORNA A MENSAGEM INFORMANDO
-                //A INEXISTENCIA DO PRODUTO.
+                //CASO O USUARIO PROCURE POR UM ITEM NÃO CADASTRADO NO SISTEMA, O MESMO RETORNA A MENSAGEM INFORMANDO
+                //A INEXISTENCIA DO ITEM.
                 if (lst.Count == 0)
                 {
                     divMsg.Visible = true;
                     divMsg.Attributes["class"] = "alert alert-dismissible alert-info";
-                    msgPesquisa.Text = "<strong>Pesquisa Inválida</strong>. Nenhum produto encontrado com esse critério de pesquisa. Tente novamente com outro termo para busca...";
+                    msgPesquisa.Text = "Não encontramos nenhum item com o nome pesquisado.";
                 }
                 //CASO O PRODUTO EXISTA NO SISTEMA, A GRID VIEW É PREENCHIDA
                 else
