@@ -3,10 +3,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <h2 class="text-uppercase"><strong>Meus Itens</strong></h2>
-    <hr />
     <form runat="server">
         <div class="container-fluid">
+            <h2><strong>MEUS ITENS</strong><a onclick="ajudaModal.show('MEUS ITENS',4);" class='glyphicon glyphicon-question-sign small' style="color: #2780e3"></a></h2>
+            <hr />
             <div class="row fade active in" id="produtos">
                 <div class="form-group">
                     <a href="VenderDetalheItem.aspx" draggable="false" class="col-lg-2 col-md-2 col-sm-2 col-xs-3 btn btn-success"><strong>+</strong>Novo Item</a>

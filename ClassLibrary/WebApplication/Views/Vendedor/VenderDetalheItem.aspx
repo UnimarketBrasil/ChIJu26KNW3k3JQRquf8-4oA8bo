@@ -11,10 +11,10 @@
         </div>
         <div class="panel panel-default">
             <div id="dvHeadNovo" runat="server" class="panel-heading">
-                <h4>Novo Produto</h4>
+                <h4>Novo Item<a onclick="ajudaModal.show('NOVO ITEM',5);" class='glyphicon glyphicon-question-sign small' style="color:#2780e3"></a></h4>
             </div>
             <div id="dvHeadAlterar" runat="server" class="panel-heading">
-                <h4>Alterar Produto</h4>
+                <h4>Alterar Item</h4>
             </div>
             <div class="panel-body">
                 <form runat="server">

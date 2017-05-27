@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <h2 class="text-uppercase"><strong>Meus Pedidos</strong></h2>
+    <h2><strong>MEUS PEDIDOS</strong><a onclick="ajudaModal.show('MEUS PEDIDOS',6);" class='glyphicon glyphicon-question-sign small' style="color: #2780e3"></a></h2>
     <hr />
     <form runat="server">
         <div class="row container-fluid">
@@ -37,4 +37,13 @@
             </asp:GridView>
         </div>
     </form>
+    <!--Script-->
+    <script src="../../Scripts/bootstrap.js"></script>
+    <script src="../../Scripts/bootstrap.min.js"></script>
+    <script src="../../Scripts/jquery-3.1.1.js"></script>
+    <script src="../../Scripts/jquery-3.1.1.min.js"></script>
+
+    <script src='http://code.jquery.com/jquery-2.1.3.min.js'></script>
+    <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js'></script>
+    <script type="text/javascript" src="../../Scripts/ajudamodal.js"></script>
 </asp:Content>

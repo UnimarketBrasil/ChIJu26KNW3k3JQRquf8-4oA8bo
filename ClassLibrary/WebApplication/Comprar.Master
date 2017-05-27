@@ -8,16 +8,13 @@
     <link rel="icon" runat="server" href="~/Content/App_Data/Uni.ico">
 
     <!--Styles-->
-    <link href="Content/bootstrap.cosmo.css" rel="stylesheet" />
-    <link href="Content/bootstrap.cosmo.min.css" rel="stylesheet" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/bootstrap.united.min.css" rel="stylesheet" />
     <link href="Content/GridPager.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!--Script-->
-    <script src="Scripts/bootstrap.js"></script>
-    <script src="Scripts/bootstrap.min.js"></script>
-    <script src="Scripts/jquery-3.1.1.js"></script>
-    <script src="Scripts/jquery-3.1.1.min.js"></script>
 
+    <script src="../Scripts/bootstrap.min.js"></script>
+    <script src="../Scripts/jquery-3.1.1.min.js"></script>
     <script src='http://code.jquery.com/jquery-2.1.3.min.js'></script>
     <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js'></script>
 
@@ -96,7 +93,7 @@
     </div>
 
     <div class="container-fluid">
-        <footer class="modal-footer" >
+        <footer class="modal-footer">
             <a runat="server" href="Views/SistemaCadastrar.aspx#" class="w3-button w3-light-grey">Clieque aqui e venda -alguma coisa-</a>
             <div class="w3-xlarge w3-section">
                 <i class="fa fa-facebook-official w3-hover-opacity"></i>
@@ -112,10 +109,9 @@
 </body>
 </html>
 <!--Script-->
-<script src="Scripts/jquery-1.9.1.min.js"></script>
-<script src="Scripts/bootstrap.min.js"></script>
 <script>
     $(function () {
         $('.dropdown-toggle').dropdown();
     });
 </script>
+<script src="../Scripts/ajudamodal.js"></script>

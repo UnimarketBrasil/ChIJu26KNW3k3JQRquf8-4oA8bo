@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Comprar.Master" AutoEventWireup="true"  EnableEventValidation="false" CodeBehind="SistemaCarrinho.aspx.cs" Inherits="WebApplication.SistemaCarrinho" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Comprar.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="SistemaCarrinho.aspx.cs" Inherits="WebApplication.SistemaCarrinho" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -6,9 +6,14 @@
     <h2 class="text-uppercase"><strong>Carrinho de compra</strong></h2>
     <form runat="server">
         <div class="row container-fluid">
-            <div id="dvMsg" runat="server" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <div id="dvMsg" runat="server" role="alert" visible="false">
                 <asp:Label ID="lbMsg" runat="server"></asp:Label>
+            </div>
+            <div id="dvCarrinhoVazio" runat="server" role="alert" visible="false">
+                <asp:Label ID="lbCarrinhoVazio" runat="server">Seu carrinho de compras está vazio...<a onclick="ajudaModal.show('CARRINHO DE COMPRA',8);" class="glyphicon glyphicon-question-sign"></a></asp:Label>
+            </div>
+            <div id="dvFaltaLogin" runat="server" role="alert" visible="false">
+                <asp:Label ID="lbFaltaLogin" runat="server"> Realize login para confirmar o pedido.<a onclick="ajudaModal.show('CARRINHO DE COMPRA',9);" class="glyphicon glyphicon-question-sign"></a></asp:Label>
             </div>
         </div>
         <div class="row container-fluid">

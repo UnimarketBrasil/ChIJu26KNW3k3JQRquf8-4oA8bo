@@ -37,8 +37,8 @@ namespace WebApplication
             }
             else if (Session["carinho"] == null)
             {
-                dvMsg.Attributes["class"] = "info";
-                lbMsg.Text = "Seu carrinho de compras está vazio...<a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=6' target='_blank'></a>";
+                dvCarrinhoVazio.Visible = true;
+                dvCarrinhoVazio.Attributes["class"] = "info";
             }
         }
 
@@ -75,8 +75,8 @@ namespace WebApplication
 
             if (Session["sistema"] == null)
             {
-                dvMsg.Attributes["class"] = "info";
-                lbMsg.Text = "Realize login para confirmar o pedido.<a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=6' target='_blank'></a>";
+                dvFaltaLogin.Attributes["class"] = "info";
+                dvFaltaLogin.Visible = true;
                 return;
             }
 

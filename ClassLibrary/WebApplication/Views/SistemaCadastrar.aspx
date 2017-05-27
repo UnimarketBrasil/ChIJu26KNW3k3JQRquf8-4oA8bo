@@ -51,23 +51,7 @@
                                     </label>
                                 </div>
                                 <div class="col-lg-1">
-                                    <a href="#dvAjudaAtividade" data-toggle="modal" class='glyphicon glyphicon-question-sign' target='_blank'></a>
-                                </div>
-                                <div id="dvAjudaAtividade" class="modal">
-                                  <div class="modal-dialog">
-                                    <div class="modal-content">
-                                      <div class="modal-header">
-                                        <button onclick="document.getElementById('dvAjudaAtividade').style.display='none'" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                        <h4 class="modal-title">ATIVIDADE PRINCIPAL</h4>
-                                      </div>
-                                      <div class="modal-body">
-                                        <p>No Unimarket você pode comprar ou vender produtos e/ou serviços...</p>
-                                        <p>Só precisamos saber qual a sua principal intenção, assim vamos preparar o melhor ambiente para você!</p>
-                                      </div>
-                                      <div class="modal-footer">
-                                      </div>
-                                    </div>
-                                  </div>
+                                    <a onclick="ajudaModal.show('ATIVIDADE PRINCIPAL',1);" class='glyphicon glyphicon-question-sign'></a>
                                 </div>
                             </div>
                             <!--Selecionar Tipo Pessoa-->
@@ -165,7 +149,7 @@
                                     <button type="button" draggable="false" class="btn btn-primary" onclick="chamarAjax();" formmethod="put"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                                 </div>
                                 <div class="col-lg-1">
-                                    <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=11' target='_blank'></a>
+                                    <a onclick="ajudaModal.show('SEU ENDEREÇO',2);" class='glyphicon glyphicon-question-sign'></a>
                                 </div>
                             </div>
                             <div id="dvEnderecoCompleto" runat="server" class="form-group">
@@ -193,7 +177,7 @@
                                     </asp:DropDownList>
                                 </div>
                                 <div class="col-lg-1">
-                                    <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=12' target='_blank'></a>
+                                    <a onclick="ajudaModal.show('ÁREA DE ATUAÇÃO',3);" class='glyphicon glyphicon-question-sign'></a>
                                 </div>
                             </div>
                             <!--GOOGLE MAPS
@@ -419,4 +403,5 @@
             });
         </script>
     </div>
+    <script src="Scripts/ajudamodal.js"></script>
 </asp:Content>

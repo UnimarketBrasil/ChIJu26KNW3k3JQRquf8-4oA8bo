@@ -31,6 +31,42 @@ namespace WebApplication {
         protected global::System.Web.UI.WebControls.Label lbMsg;
         
         /// <summary>
+        /// Controle dvCarrinhoVazio.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvCarrinhoVazio;
+        
+        /// <summary>
+        /// Controle lbCarrinhoVazio.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbCarrinhoVazio;
+        
+        /// <summary>
+        /// Controle dvFaltaLogin.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvFaltaLogin;
+        
+        /// <summary>
+        /// Controle lbFaltaLogin.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbFaltaLogin;
+        
+        /// <summary>
         /// Controle grdCarrinhoDeCompra.
         /// </summary>
         /// <remarks>

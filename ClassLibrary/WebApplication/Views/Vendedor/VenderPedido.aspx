@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <h2 class="text-uppercase"><strong>Meus Pedidos</strong></h2>
+    <h2><strong>MEUS PEDIDOS</strong><a onclick="ajudaModal.show('MEUS PEDIDOS',7);" class='glyphicon glyphicon-question-sign small' style="color: #2780e3"></a></h2>
     <hr />
     <form runat="server">
         <div class="row container-fluid">
