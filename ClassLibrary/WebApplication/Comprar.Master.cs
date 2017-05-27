@@ -14,6 +14,13 @@ namespace WebApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            List<Item> lst = (List<Item>)Session["carrinho"];
+            if (lst != null)
+            {
+                notificacao.Text = lst.Count().ToString();
+            }
+            
+
             if (Session["sistema"] != null)
             {
                 Usuario u = (Usuario)Session["sistema"];

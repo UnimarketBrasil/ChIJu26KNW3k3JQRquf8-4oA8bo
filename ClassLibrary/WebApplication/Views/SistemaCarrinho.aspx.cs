@@ -96,7 +96,6 @@ namespace WebApplication
                     {
                         if (pedidoLista.Vendedor.Id == item.Vendedor.Id)
                         {
-                            pedidoLista.Item = new List<Item>();
                             pedidoLista.Item.Add(item);
                         }
                     }

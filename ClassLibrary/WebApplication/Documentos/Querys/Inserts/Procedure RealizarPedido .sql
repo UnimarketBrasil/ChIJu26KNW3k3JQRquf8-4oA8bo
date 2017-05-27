@@ -5,8 +5,7 @@ go
 create procedure RealizarPedido(
 	@CodigoPedido varchar(50),
 	@IdVendedor int,
-	@IdComprador int,
-	@IdStatusPedido int = 1
+	@IdComprador int
 	)
 as begin
 	begin try
@@ -14,13 +13,11 @@ as begin
 			insert into Pedido(
 			Codigo,
 			IdVendedor,
-			IdComprador,
-			IdStatusPedido
+			IdComprador
 			)  output inserted.Id values (
 			@CodigoPedido,
 			@IdVendedor,
-			@IdComprador,
-			@IdStatusPedido
+			@IdComprador
 			)
 		commit tran
 	end try

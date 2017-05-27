@@ -235,14 +235,18 @@ namespace WebApplication
 
                 if (InputFoto.HasFile)
                 {
-                    var caminho = Server.MapPath(string.Format(@"~/Imagens/{0}/Perfil/", u.Id));
+                    string formato = System.IO.Path.GetExtension(InputFoto.FileName);
+                    if (formato == ".png" || formato == ".jpg" || formato == ".gif" || formato == ".jpeg")
+                    {
+                        var caminho = Server.MapPath(string.Format(@"~/Imagens/{0}/Perfil/", u.Id));
 
-                    Directory.CreateDirectory(caminho);
+                        Directory.CreateDirectory(caminho);
 
-                    DirectoryInfo dir = new DirectoryInfo((caminho));
-                    dir.GetFiles("*", SearchOption.AllDirectories).ToList().ForEach(file => file.Delete());
+                        DirectoryInfo dir = new DirectoryInfo((caminho));
+                        dir.GetFiles("*", SearchOption.AllDirectories).ToList().ForEach(file => file.Delete());
 
-                    InputFoto.PostedFile.SaveAs(Path.Combine(caminho, InputFoto.FileName));
+                        InputFoto.PostedFile.SaveAs(Path.Combine(caminho, InputFoto.FileName));
+                    }
                 }
 
                 UsuarioRepositorio atulizarCadastro = new UsuarioRepositorio();

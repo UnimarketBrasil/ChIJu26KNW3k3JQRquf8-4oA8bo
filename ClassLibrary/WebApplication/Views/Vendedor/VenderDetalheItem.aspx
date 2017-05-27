@@ -25,7 +25,7 @@
                                 <asp:Image ID="imItem" CssClass="img-responsive" runat="server" />
                             </div>
                             <div>
-                                <asp:FileUpload ID="InputFoto" CssClass="file" runat="server" />
+                                <asp:FileUpload ID="InputFoto" CssClass="file" accept="image/*" runat="server" />
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7 form-group">

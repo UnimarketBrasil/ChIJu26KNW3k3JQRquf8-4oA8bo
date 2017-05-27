@@ -10,57 +10,40 @@ namespace ClassLibrary.Repositorio
         //ESSE MÉTODO CADASTRA UM NOVO PEDIDO NO BANCO DE DADOS
         public void RealizarPedido(Pedido pedido)
         {
-            Abrirconexao();
-
-            using (Cmd = new SqlCommand("RealizarPedido", Con))
+            try
             {
-                try
+                Abrirconexao();
+
+                using (Cmd = new SqlCommand("RealizarPedido", Con))
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.AddWithValue("@CodigoPedido", pedido.Codigo);
                     Cmd.Parameters.AddWithValue("@IdVendedor", pedido.Vendedor.Id);
                     Cmd.Parameters.AddWithValue("@IdComprador", pedido.Comprador.Id);
 
-                    //Cmd.Parameters.AddWithValue("@IdStatusPedido", pedido.StatusPedido.Id);
-
                     pedido.Id = int.Parse(Cmd.ExecuteScalar().ToString());
-
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("Erro ao realizar pedido : " + ex.Message);
-                }
-               
-            }
-
-            //ESTE METODO CADASTRA UM NOVO ITEM AO PEDIDO E RETORNA "TRUE" CASO O ITEM SEJA CADASTRADO NO PEDIDO
- 
-            using (Cmd = new SqlCommand("CadastrarItemPedido", Con))
-            {
-                try
-                {
-                    Cmd.CommandType = CommandType.StoredProcedure;
-
 
                     foreach (var i in pedido.Item)
                     {
+                        Cmd = new SqlCommand("CadastrarItemPedido", Con);
+                        Cmd.CommandType = CommandType.StoredProcedure;
+
                         Cmd.Parameters.AddWithValue("@IdPedido", pedido.Id);
                         Cmd.Parameters.AddWithValue("@IdItem", i.Id);
                         Cmd.Parameters.AddWithValue("@Quantidade", i.Quantidade);
                         Cmd.Parameters.AddWithValue("@ValorUnitario", i.ValorUnitario);
                         Cmd.ExecuteNonQuery();
+
                     }
 
                 }
-                catch (Exception ex)
-                {
-                    throw new Exception("Erro ao cadastrar item pedido : " + ex.Message);
-                }
-                finally
-                {
-                    FecharConexao();
-                }
             }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Erro ao realizar pedido : " + ex.Message);
+            }
+
         }
 
         //ESTE METODO FINALIZA O PEDIDO DO USUARIO COMPRADOR E RETORNA "TRUE" CASO SEJA REALIZADO COM SUCESSO
