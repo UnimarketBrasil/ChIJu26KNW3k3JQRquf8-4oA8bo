@@ -129,7 +129,10 @@ namespace ClassLibrary.Repositorio
                         item.Nome = ti.ToTitleCase(Convert.ToString(Dr["Nome"]));
                         item.ValorUnitario = Math.Round(Convert.ToDouble(Dr["Valorunitario"]), 2);
                         item.Quantidade = Convert.ToDouble(Dr["Quantidade"]);
-                        item.Descricao = char.ToUpper(Convert.ToString(Dr["Descricao"])[0]) + Convert.ToString(Dr["Descricao"]).Substring(1); //Teste
+                        if (!string.IsNullOrEmpty(Dr["Descricao"].ToString()))
+                        {
+                            item.Descricao = char.ToUpper(Convert.ToString(Dr["Descricao"])[0]) + Convert.ToString(Dr["Descricao"]).Substring(1);
+                        }
                         item.Categoria = new Categoria();
                         item.Categoria.Nome = Convert.ToString(Dr["Categoria"]);
                         item.Vendedor = new Usuario();
