@@ -108,13 +108,13 @@ namespace WebApplication
                     }
                 }
 
-                else
-                {
-                    //Caso o e-mail e a senha estiverem errados, o sistema informa através da mensagem
-                    dvMsg.Visible = true;
-                    dvMsg.Attributes["class"] = "alert alert-warning alert-dismissible";
-                    lbMsg.Text = "Email ou senha inválidos. <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=3' target='_blank'></a>";
-                }
+            }
+            else
+            {
+                //Caso o e-mail e a senha estiverem errados, o sistema informa através da mensagem
+                dvMsg.Visible = true;
+                dvMsg.Attributes["class"] = "alert alert-warning alert-dismissible";
+                lbMsg.Text = "Email ou senha inválidos. <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=3' target='_blank'></a>";
             }
         }
     }

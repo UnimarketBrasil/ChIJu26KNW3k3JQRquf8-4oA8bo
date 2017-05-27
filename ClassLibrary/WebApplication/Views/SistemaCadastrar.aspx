@@ -275,6 +275,7 @@
                 xmlhttp.onreadystatechange = function () {
                     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                         document.getElementById('<%Response.Write(lbEndereco.ClientID);%>').innerHTML = xmlhttp.response;
+                        setTimeout(function () { waitingDialog.hide(); }, 500);
                     }
                 }
 
@@ -282,7 +283,7 @@
                     document.getElementById("<%Response.Write(txtEndereco.ClientID);%>").value +
                     "&num=" + document.getElementById("<%Response.Write(txtNumero.ClientID);%>").value, true);
                 xmlhttp.send();
-                setTimeout(function () { waitingDialog.hide(); }, 900);
+                
             }
         </script>
         <script>
