@@ -130,13 +130,13 @@ namespace WebApplication {
         protected global::System.Web.UI.WebControls.Label lbValorTotal;
         
         /// <summary>
-        /// Controle dvBtnNovo.
+        /// Controle dvBtnAlterar.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvBtnNovo;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvBtnAlterar;
         
         /// <summary>
         /// Controle btnLixeira.
@@ -157,13 +157,13 @@ namespace WebApplication {
         protected global::System.Web.UI.WebControls.Button btSalvarrItem;
         
         /// <summary>
-        /// Controle dvBtnAlterar.
+        /// Controle dvBtnNovo.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvBtnAlterar;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvBtnNovo;
         
         /// <summary>
         /// Controle btAtualizarItem.

@@ -75,7 +75,7 @@
                             </div>
                         </div>
                     </div>
-                    <div runat="server" id="dvBtnNovo" class="row">
+                    <div runat="server" id="dvBtnAlterar" class="row">
                         <div class="form-group">
                             <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 form-group">
                                 <div class="btn btn-danger glyphicon glyphicon-trash">
@@ -86,11 +86,11 @@
                                 <button type="reset" class="btn btn-default">Cancelar</button>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1 form-group">
-                                <asp:Button runat="server" ID="btSalvarrItem" Text="Salvar" CssClass="btn btn-primary" OnClick="bt_CadastrarItem"></asp:Button>
+                                <asp:Button runat="server" ID="btSalvarrItem" Text="Salvar" CssClass="btn btn-primary" OnClick="btAtualizarItem_Click"></asp:Button>
                             </div>
                         </div>
                     </div>
-                    <div runat="server" id="dvBtnAlterar" class="row">
+                    <div runat="server" id="dvBtnNovo" class="row">
                         <div class="form-group">
                             <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 form-group">
                             </div>
@@ -98,7 +98,7 @@
                                 <button type="reset" class="btn btn-default">Cancelar</button>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1 form-group">
-                                <asp:Button runat="server" ID="btAtualizarItem" Text="Salvar" CssClass="btn btn-primary" OnClick="btAtualizarItem_Click"></asp:Button>
+                                <asp:Button runat="server" ID="btAtualizarItem" Text="Salvar" CssClass="btn btn-primary" OnClick="bt_CadastrarItem"></asp:Button>
                             </div>
                         </div>
                     </div>

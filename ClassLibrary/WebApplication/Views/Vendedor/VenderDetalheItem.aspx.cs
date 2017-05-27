@@ -42,13 +42,13 @@ namespace WebApplication
                     carregaItem.DetalheItemVendedor(idItem, user.Id) != null)
                 {
                     dvHeadNovo.Visible = false;
-                    dvBtnAlterar.Visible = false;
+                    dvBtnNovo.Visible = false;
                     i = carregaItem.DetalheItemVendedor(idItem, user.Id);
                     txtNome.Text = i.Nome;
                     txtCod.Text = i.Codigo;
                     txtQuantidade.Text = i.Quantidade.ToString();
                     txtValorUnitario.Text = i.ValorUnitario.ToString();
-                    txtDescricao.Value = i.Descricao + i.Id.ToString();
+                    txtDescricao.Value = i.Descricao.ToString();
                     lbValorTotal.Text = (i.Quantidade * i.ValorUnitario).ToString();
                     dpCategoria.SelectedValue = i.Categoria.Id.ToString();
 
@@ -66,7 +66,7 @@ namespace WebApplication
                 else
                 {
                     dvHeadAlterar.Visible = false;
-                    dvBtnNovo.Visible = false;
+                    dvBtnAlterar.Visible = false;
                 }
             }
         }
@@ -111,7 +111,7 @@ namespace WebApplication
                 dvMsg.Visible = true;
                 dvMsg.Attributes["class"] = "alert alert-success alert-dismissible";
                 lbMsg.Text = "Cadastro realizado com sucesso!";
-                Response.Redirect("~/Views/VenderItem.aspx");
+                Response.Redirect("~/Views/Vendedor/VenderItem.aspx");
             }
             else
             {
@@ -162,7 +162,7 @@ namespace WebApplication
                 dvMsg.Visible = true;
                 dvMsg.Attributes["class"] = "alert alert-success alert-dismissible";
                 lbMsg.Text = "Cadastro realizado com sucesso!";
-                Response.Redirect("~/Views/VenderItem.aspx");
+                Response.Redirect("~/Views/Vendedor/VenderItem.aspx");
             }
             else
             {
