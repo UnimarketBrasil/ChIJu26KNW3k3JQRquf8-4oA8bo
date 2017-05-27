@@ -66,6 +66,7 @@
                 </div>
                 <div id="dvLogin" runat="server">
                     <ul class="nav navbar-nav navbar-right">
+                        <li><a href="SistemaCarrinho.aspx" draggable="false" id="LinkButton3" class="btn btn-primary glyphicon glyphicon-shopping-cart"></a></li>
                         <li>
                             <asp:Label ID="lbNomeUsuario" CssClass="navbar-brand" runat="server" Text="Meu nome aqui"></asp:Label>
                         </li>
@@ -78,11 +79,6 @@
                             </ul>
                         </li>
                         <li><a draggable="false" id="LinkButton2" runat="server" href="~/Views/Logout.aspx" class="btn btn-primary glyphicon glyphicon-log-out"></a></li>
-                    </ul>
-                </div>
-                <div id="dvCarrinho" runat="server">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="SistemaCarrinho.aspx" draggable="false" id="LinkButton3" class="btn btn-primary glyphicon glyphicon-shopping-cart"></a></li>
                     </ul>
                 </div>
             </div>

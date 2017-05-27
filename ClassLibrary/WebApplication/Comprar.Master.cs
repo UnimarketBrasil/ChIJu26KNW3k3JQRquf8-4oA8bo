@@ -41,7 +41,6 @@ namespace WebApplication
                 lbNomeUsuario.Text = u.Nome;
                 dvSemLogin.Visible = false;
                 dvLogin.Visible = true;
-                dvCarrinho.Visible = true;
             }
             else
             {
