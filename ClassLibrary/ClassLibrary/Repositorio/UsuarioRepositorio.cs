@@ -8,6 +8,8 @@ namespace ClassLibrary.Repositorio
 {
     public class UsuarioRepositorio : Conexao
     {
+        TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
+
         public bool CadastrarUsuario(Usuario user)
         {
             Abrirconexao();
@@ -36,24 +38,6 @@ namespace ClassLibrary.Repositorio
                     Cmd.Parameters.AddWithValue("@UltimoAcesso", user.UltimoAcesso);
                     user.Id = int.Parse(Cmd.ExecuteScalar().ToString());
 
-
-                    //Cmd = new SqlCommand("ValidaEmailCpfCnpj", Con);
-
-                    //Cmd.CommandType = CommandType.StoredProcedure;
-                    //Cmd.Parameters.AddWithValue("@Email", user.Email);
-                    //Cmd.Parameters.AddWithValue("@CpfCnpj", user.CpfCnpj);
-                    //Cmd.ExecuteNonQuery();
-
-                    //Dr = Cmd.ExecuteReader();
-
-                    //if (Dr.HasRows)
-                    //{
-                    //    return true;
-                    //}
-                    //else
-                    //{
-                    //    return false;
-                    //}
                     return true;
                 }
                 catch
@@ -145,7 +129,7 @@ namespace ClassLibrary.Repositorio
                     {
                         Dr.Read();
                         user.Id = Convert.ToInt32(Dr["Id"]);
-                        user.Nome = Convert.ToString(Dr["Nome"]);
+                        user.Nome = ti.ToTitleCase(Convert.ToString(Dr["Nome"]));
                         user.Email = Convert.ToString(Dr["Email"]);
                         user.CpfCnpj = Convert.ToString(Dr["CpfCnpj"]);
                         user.Latitude = Convert.ToString(Dr["Latitude"]);
@@ -338,7 +322,7 @@ namespace ClassLibrary.Repositorio
                     {
                         Dr.Read();
                         user.Id = Convert.ToInt32(Dr["Id"]);
-                        user.Nome = Convert.ToString(Dr["Nome"]);
+                        user.Nome = ti.ToTitleCase(Convert.ToString(Dr["Nome"]));
                         user.Email = Convert.ToString(Dr["Email"]);
                         user.CpfCnpj = Convert.ToString(Dr["CpfCnpj"]);
                         user.Latitude = Convert.ToString(Dr["Latitude"]);
@@ -390,8 +374,8 @@ namespace ClassLibrary.Repositorio
                         Dr.Read();
 
                         user.Id = Convert.ToInt32(Dr["Id"]);
-                        user.Nome = Convert.ToString(Dr["Nome"]);
-                        user.Sobrenome = Convert.ToString(Dr["Sobrenome"]);
+                        user.Nome = ti.ToTitleCase(Convert.ToString(Dr["Nome"]));
+                        user.Sobrenome = ti.ToTitleCase(Convert.ToString(Dr["Sobrenome"]));
                         user.Email = Convert.ToString(Dr["Email"]);
                         user.CpfCnpj = Convert.ToString(Dr["CpfCnpj"]);
                         user.Nascimento = Convert.ToDateTime(Dr["Nascimento"]);
@@ -445,8 +429,8 @@ namespace ClassLibrary.Repositorio
                         user = new Usuario();
                         Dr.Read();
                         user.CpfCnpj = Convert.ToString(Dr["CpfCnpj"]);
-                        user.Nome = Convert.ToString(Dr["Nome"]);
-                        user.Sobrenome = Convert.ToString(Dr["Sobrenome"]);
+                        user.Nome = ti.ToTitleCase(Convert.ToString(Dr["Nome"]));
+                        user.Sobrenome = ti.ToTitleCase(Convert.ToString(Dr["Sobrenome"]));
                         user.Email = Convert.ToString(Dr["Email"]);
                         user.Nascimento = Convert.ToDateTime(Dr["Nascimento"]);
                         user.Genero = Convert.ToInt32(Dr["Genero"]);
