@@ -8,8 +8,7 @@
     <link rel="icon" href="~/Content/App_Data/Uni.ico">
 
     <!--Styles-->
-    <link href="Content/bootstrap.cosmo.css" rel="stylesheet" />
-    <link href="Content/bootstrap.cosmo.min.css" rel="stylesheet" />
+    <link href="Content/bootstrap.slate.min.css" rel="stylesheet" />
     <link href="Content/GridPager.css" rel="stylesheet" />
 
     <!--Script-->
@@ -26,7 +25,7 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <nav class="navbar navbar-grey ">
+    <nav class="navbar navbar-inverse ">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
@@ -39,7 +38,7 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a runat="server" href="~/Views/Administrador/AdminListar.aspx">Início <span class="sr-only">(current)</span></a></li>
+                    <li class="active"><a runat="server" href="~/Views/Administrador/AdminListar.aspx">Início<span class="sr-only">(current)</span></a></li>
                 </ul>
                 <div id="dvLogin" runat="server">
                     <ul class="nav navbar-nav navbar-right">
@@ -78,90 +77,3 @@
     </div>
 </body>
 </html>
-
-<style type="text/css">
-    .navbar-grey {
-        background-color: #c7ccc8;
-        border-color: #23a70c;
-    }
-
-        .navbar-grey .navbar-brand {
-            color: #23a70c;
-        }
-
-            .navbar-grey .navbar-brand:hover,
-            .navbar-grey .navbar-brand:focus {
-                color: #f4f3f6;
-            }
-
-        .navbar-grey .navbar-text {
-            color: #23a70c;
-        }
-
-        .navbar-grey .navbar-nav > li > a {
-            color: #23a70c;
-        }
-
-            .navbar-grey .navbar-nav > li > a:hover,
-            .navbar-grey .navbar-nav > li > a:focus {
-                color: #f4f3f6;
-            }
-
-        .navbar-grey .navbar-nav > .active > a,
-        .navbar-grey .navbar-nav > .active > a:hover,
-        .navbar-grey .navbar-nav > .active > a:focus {
-            color: #f4f3f6;
-            background-color: #23a70c;
-        }
-
-        .navbar-grey .navbar-nav > .open > a,
-        .navbar-grey .navbar-nav > .open > a:hover,
-        .navbar-grey .navbar-nav > .open > a:focus {
-            color: #f4f3f6;
-            background-color: #23a70c;
-        }
-
-        .navbar-grey .navbar-toggle {
-            border-color: #23a70c;
-        }
-
-            .navbar-grey .navbar-toggle:hover,
-            .navbar-grey .navbar-toggle:focus {
-                background-color: #23a70c;
-            }
-
-            .navbar-grey .navbar-toggle .icon-bar {
-                background-color: #23a70c;
-            }
-
-        .navbar-grey .navbar-collapse,
-        .navbar-grey .navbar-form {
-            border-color: #23a70c;
-        }
-
-        .navbar-grey .navbar-link {
-            color: #23a70c;
-        }
-
-            .navbar-grey .navbar-link:hover {
-                color: #f4f3f6;
-            }
-
-    @media (max-width: 767px) {
-        .navbar-grey .navbar-nav .open .dropdown-menu > li > a {
-            color: #23a70c;
-        }
-
-            .navbar-grey .navbar-nav .open .dropdown-menu > li > a:hover,
-            .navbar-grey .navbar-nav .open .dropdown-menu > li > a:focus {
-                color: #f4f3f6;
-            }
-
-        .navbar-grey .navbar-nav .open .dropdown-menu > .active > a,
-        .navbar-grey .navbar-nav .open .dropdown-menu > .active > a:hover,
-        .navbar-grey .navbar-nav .open .dropdown-menu > .active > a:focus {
-            color: #f4f3f6;
-            background-color: #23a70c;
-        }
-    }
-</style>

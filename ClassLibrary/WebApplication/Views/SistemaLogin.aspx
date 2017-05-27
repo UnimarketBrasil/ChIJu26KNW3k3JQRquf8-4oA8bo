@@ -41,9 +41,4 @@
             </div>
         </div>
     </div>
-    <script>
-        $('<% %>').on('closed.bs.alert', function () {
-            // do something…
-        })
-    </script>
 </asp:Content>
