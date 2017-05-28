@@ -15,7 +15,52 @@
             </div>
             <div class="row">
                 <div role="main" class="col-sm-8">
-                    teste
+                    <div id="Banner" class="carousel slide" data-ride="carousel" style="width: 400px; margin: 0 auto">
+                        <!-- Banner Rotativo -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#Banner" data-slide-to="0" class="active"></li>
+                            <li data-target="#Banner" data-slide-to="1"></li>
+                            <li data-target="#Banner" data-slide-to="2"></li>
+                        </ol>
+
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <asp:Image ID="imgTop1" runat="server" CssClass="img-responsive" width="100%"/>
+                                <div class="carousel-caption">
+                                    <h3><a runat="server" id="nomeTop1"><asp:Label runat="server" ID="nomeItem1"></asp:Label></a></h3>
+                                    <p><asp:Label runat="server" ID="precoItem1"></asp:Label></p>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <asp:Image ID="imgTop2" runat="server" CssClass="img-responsive" width="100%"/>
+                                <div class="carousel-caption">
+                                    <h3><a runat="server" id="nomeTop2"><asp:Label runat="server" ID="nomeItem2"></asp:Label></a></h3>
+                                    <p><asp:Label runat="server" ID="precoItem2"></asp:Label></p>
+                                </div>
+                            </div>
+
+                            <div class="item">
+                                <asp:Image ID="imgTop3" runat="server" CssClass="img-responsive" width="100%"/>
+                                <div class="carousel-caption">
+                                    <h3><a runat="server" id="nomeTop3"><asp:Label runat="server" ID="nomeItem3"></asp:Label></a></h3>
+                                    <p><asp:Label runat="server" ID="precoItem3"></asp:Label></p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Left and right controls -->
+                        <a class="left carousel-control" href="#Banner" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#Banner" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
                 </div>
                 <aside runat="server" id="sdLogin" role="complementary" class="col-sm-4">
                     <h2 class="text-uppercase"><strong>Login</strong></h2>

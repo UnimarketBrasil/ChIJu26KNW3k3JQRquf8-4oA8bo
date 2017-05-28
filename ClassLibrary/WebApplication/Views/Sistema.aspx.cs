@@ -3,6 +3,7 @@ using ClassLibrary.Repositorio;
 using ClassUtilitario;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -18,6 +19,40 @@ namespace WebApplication
             {
                 sdLogin.Visible = false;
             }
+
+            List<Item> listItens = new List<Item>();
+            ItemRepositorio carregaItem = new ItemRepositorio();
+
+            listItens = carregaItem.ListarTop3Itens();
+
+            foreach (var item in listItens)
+            {
+                string caminho = string.Format("~/Imagens/{0}/{1}/", item.Vendedor.Id, item.Id);
+
+                if (Directory.Exists(Server.MapPath(caminho)))
+                {
+                    var diretorio = new DirectoryInfo(Server.MapPath(caminho));
+                    var arquivos = diretorio.GetFiles();
+                    string i = arquivos.Last().Name;
+                    item.Imagem = ResolveUrl(Path.Combine(caminho, i));
+                }
+            }
+
+            imgTop1.ImageUrl = listItens[0].Imagem;
+            nomeTop1.HRef = "~/Views/SistemaDetalheItem.aspx?id="+listItens[0].Id;
+            nomeItem1.Text = listItens[0].Nome;
+            precoItem1.Text = "R$" + listItens[0].ValorUnitario;
+
+            imgTop2.ImageUrl = listItens[1].Imagem;
+            nomeTop2.HRef = "~/Views/SistemaDetalheItem.aspx?id=" + listItens[1].Id;
+            nomeItem2.Text = listItens[1].Nome;
+            precoItem2.Text = "R$" + listItens[1].ValorUnitario;
+
+            imgTop3.ImageUrl = listItens[2].Imagem;
+            nomeTop3.HRef = "~/Views/SistemaDetalheItem.aspx?id=" + listItens[2].Id;
+            nomeItem3.Text = listItens[2].Nome;
+            precoItem3.Text = "R$" + listItens[2].ValorUnitario;
+
         }
 
         protected void btLogin_Click(object sender, EventArgs e)

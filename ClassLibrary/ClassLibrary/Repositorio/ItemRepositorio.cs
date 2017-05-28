@@ -353,6 +353,53 @@ namespace ClassLibrary.Repositorio
             }
         }
 
+        //ESSE MÉTODO LISTA OS 3 ITENS MAIS VENDIDOS
+        public List<Item> ListarTop3Itens()
+        {
+            Abrirconexao();
+
+            using (Cmd = new SqlCommand("Top3Itens", Con))
+            {
+                try
+                {
+                    Cmd.CommandType = CommandType.StoredProcedure;
+
+                    Dr = Cmd.ExecuteReader();
+
+                    List<Item> itemList = new List<Item>();
+                    TextInfo ti = CultureInfo.CurrentCulture.TextInfo;
+
+                    if (Dr.HasRows)
+                    {
+                        while (Dr.Read())
+                        {
+                            Item item = new Item();
+                            item.Id = Convert.ToInt32(Dr["Id"]);
+                            item.Nome = ti.ToTitleCase(Convert.ToString(Dr["Nome"]));
+                            item.ValorUnitario = Math.Round(Convert.ToDouble(Dr["Valorunitario"]), 2);
+                            item.Vendedor = new Usuario();
+                            item.Vendedor.Id = Convert.ToInt32(Dr["IdUsuario"]);
+
+                            itemList.Add(item);
+                        }
+
+                    }
+
+                    return itemList;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Ao Listar Item: " + ex.Message);
+                }
+                finally
+                {
+                    Dr.Close();
+
+                    FecharConexao();
+                }
+            }
+        }
+
         //ESSE MÉTODO LISTA OS ITENS CONFORME SUA CATEGORIA
         public List<Item> ListarItemPorCategoria(Usuario user, int idCategoria)
         {
