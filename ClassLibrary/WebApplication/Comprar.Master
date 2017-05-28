@@ -111,17 +111,15 @@
         <asp:ContentPlaceHolder ID="MainContent" runat="server" />
     </div>
     <div class="container-fluid">
-        <footer class="modal-footer">
-            <a runat="server" href="Views/SistemaCadastrar.aspx#" class="w3-button w3-light-grey">Clieque aqui e venda -alguma coisa-</a>
-            <div class="w3-xlarge w3-section">
-                <i class="fa fa-facebook-official w3-hover-opacity"></i>
-                <i class="fa fa-instagram w3-hover-opacity"></i>
-                <i class="fa fa-snapchat w3-hover-opacity"></i>
-                <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-                <i class="fa fa-twitter w3-hover-opacity"></i>
-                <i class="fa fa-linkedin w3-hover-opacity"></i>
+        <footer class="modal-foote">
+            <div class="center-block">
+                <hr />
+                <a href="#" class="fa fa-facebook-official w3-hover-opacity"></a>
+                <a href="#" class="fa fa-instagram w3-hover-opacity"></a>
+                <a href="#" class="fa fa-twitter w3-hover-opacity"></a>
+                <a href="#" class="fa fa-linkedin w3-hover-opacity"></a>
+                <p><%: DateTime.Now.Year %> - Unimarket Brasil</p>
             </div>
-            <p><%: DateTime.Now.Year %> - Unimarket Brasil</p>
         </footer>
     </div>
 </body>
