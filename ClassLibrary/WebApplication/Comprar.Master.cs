@@ -17,7 +17,7 @@ namespace WebApplication
             List<Item> lst = (List<Item>)Session["carrinho"];
             if (lst != null)
             {
-                notificacao.Text = lst.Count().ToString();
+                lbQuantidadeCarrinho.Text = lst.Count().ToString();
             }
             
 

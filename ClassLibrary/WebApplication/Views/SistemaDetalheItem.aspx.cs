@@ -99,6 +99,8 @@ namespace WebApplication
 
                 Session["carrinho"] = lst;
             }
+
+            Response.Redirect("/Views/SistemaCarrinho.aspx");
         }
     }
 }

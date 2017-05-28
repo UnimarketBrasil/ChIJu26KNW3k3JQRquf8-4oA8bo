@@ -36,7 +36,7 @@
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
@@ -79,10 +79,6 @@
                 </div>
                 <div id="dvLogin" runat="server">
                     <ul class="nav navbar-nav navbar-right">
-                        <li id="noti_Container">
-                            <div id="noti_Counter"><asp:Label ID="notificacao" runat="server"></asp:Label></div>
-                            <div id="noti_Button"><a href="SistemaCarrinho.aspx" draggable="false" id="LinkButton3" class="btn btn-primary glyphicon glyphicon-shopping-cart"></a><</div>
-                        </li>
                         <li>
                             <asp:Label ID="lbNomeUsuario" CssClass="navbar-brand" runat="server" Text="Meu nome aqui"></asp:Label>
                         </li>
@@ -97,13 +93,23 @@
                         <li><a draggable="false" id="LinkButton2" runat="server" href="~/Views/Logout.aspx" class="btn btn-primary glyphicon glyphicon-log-out"></a></li>
                     </ul>
                 </div>
+                <div>
+                    <ul class="nav navbar-nav navbar-right navbar-collapse">
+                        <li id="noti_Container">
+                            <a href="SistemaCarrinho.aspx" draggable="false" id="LinkButton3" class="btn btn-primary glyphicon glyphicon-shopping-cart">
+                                <span class="badge">
+                                    <asp:Label runat="server" ID="lbQuantidadeCarrinho" Text="0"></asp:Label>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </nav>
     <div class="container-fluid">
         <asp:ContentPlaceHolder ID="MainContent" runat="server" />
     </div>
-
     <div class="container-fluid">
         <footer class="modal-footer">
             <a runat="server" href="Views/SistemaCadastrar.aspx#" class="w3-button w3-light-grey">Clieque aqui e venda -alguma coisa-</a>
