@@ -53,7 +53,7 @@
         </div>
         <div class="row container-fluid">
              <asp:LinkButton runat="server" ID="lkContinuarCOmprando" Text="Continuar Comprando" CssClass="btn btn-default pull-left" PostBackUrl="~/Views/Sistema.aspx" />
-            <asp:Button runat="server" ID="btConfirmarPedido" Text="Confirmar Pedido" CssClass="btn btn-success pull-right" OnClick="btConfirmarPedido_Click" />
+            <asp:Button runat="server" ID="btConfirmarPedido" Text="Confirmar Pedido" CssClass="btn btn-success pull-right" OnClick="btConfirmarPedido_Click" Visible="false"/>
         </div>
     </form>
 </asp:Content>

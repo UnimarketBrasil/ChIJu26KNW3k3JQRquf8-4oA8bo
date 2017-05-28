@@ -34,9 +34,11 @@ namespace WebApplication
 
                 grdCarrinhoDeCompra.DataSource = lst;
                 grdCarrinhoDeCompra.DataBind();
+                btConfirmarPedido.Visible = true;
             }
             else if (Session["carinho"] == null)
             {
+                btConfirmarPedido.Visible = false;
                 dvCarrinhoVazio.Visible = true;
                 dvCarrinhoVazio.Attributes["class"] = "info";
             }

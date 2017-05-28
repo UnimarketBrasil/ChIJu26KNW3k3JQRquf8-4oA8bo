@@ -15,6 +15,11 @@ namespace WebApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["latlog"] == null & Session["sistema"] == null)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "script", "$(function () { chamaModal(); });", true);
+                return;
+            }
             if (!IsPostBack)
             {
                 int idItem = 0;
