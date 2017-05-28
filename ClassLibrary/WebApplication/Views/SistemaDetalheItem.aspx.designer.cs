@@ -67,13 +67,13 @@ namespace WebApplication {
         protected global::System.Web.UI.WebControls.Label lbIdItem;
         
         /// <summary>
-        /// Controle btLixeira.
+        /// Controle btVoltar.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btLixeira;
+        protected global::System.Web.UI.WebControls.LinkButton btVoltar;
         
         /// <summary>
         /// Controle btAdicionaCarrinho.

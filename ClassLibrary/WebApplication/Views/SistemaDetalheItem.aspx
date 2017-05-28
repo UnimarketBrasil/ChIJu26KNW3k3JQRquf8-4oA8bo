@@ -31,7 +31,7 @@
                         </div>
                         <div class="form-group">
                             <asp:Label runat="server" ID="lbIdItem" Visible="false"></asp:Label>
-                            <asp:LinkButton ID="btLixeira" runat="server" CssClass="btn btn-default" PostBackUrl="~/Views/SistemaPesquisa.aspx"><span aria-hidden="true" class="glyphicon glyphicon-arrow-left"></span></asp:LinkButton>
+                            <asp:LinkButton ID="btVoltar" runat="server" CssClass="btn btn-default" OnClientClick="javascript:window.history.go(-1);"><span aria-hidden="true" class="glyphicon glyphicon-arrow-left"></span></asp:LinkButton>
                             <asp:LinkButton ID="btAdicionaCarrinho" OnClick="btAdicionaCarrinho_Click" runat="server" CssClass="btn btn-success"><span aria-hidden="true" class="glyphicon glyphicon-plus-sign"></span>&nbsp;COMPRAR</asp:LinkButton>
                         </div>
                     </div>
