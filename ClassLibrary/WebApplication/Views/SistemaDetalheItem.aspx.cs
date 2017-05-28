@@ -63,6 +63,10 @@ namespace WebApplication
                         imProduto.ImageUrl = ResolveUrl(Path.Combine(caminho, img));
                     }
                 }
+                else
+                {
+                    Response.Redirect("~/Views/Sistema.aspx");
+                }
             }
         }
 

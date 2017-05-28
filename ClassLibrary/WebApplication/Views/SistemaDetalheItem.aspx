@@ -7,7 +7,7 @@
         <div class="panel panel-default">
             <!-- Default panel contents -->
             <div class="panel-heading text-center">
-                <asp:Label runat="server" ID="lbNomeProduto" Text="Nome Do Seu Produto"></asp:Label>
+                <asp:Label runat="server" ID="lbNomeProduto" Text=""></asp:Label>
             </div>
             <div class="panel-body">
                 <div class="row">
@@ -19,7 +19,7 @@
                     <div class="col-md-4 col-sm-6">
                         <div class="form-group well well-sm">
                             <asp:Label runat="server" Text="Preço: R$ "></asp:Label>
-                            <asp:Label runat="server" ID="lbValorUnitario" Text="R$ 190.00"></asp:Label>
+                            <asp:Label runat="server" ID="lbValorUnitario" Text=""></asp:Label>
                         </div>
                         <div class="form-group">
                             <asp:Label runat="server" Text="Quantidade:"></asp:Label>
@@ -38,19 +38,19 @@
                     <div class="col-md-4 col-sm-6">
                         <div class="form-group">
                             <asp:Label runat="server" Text="Vendedor:"></asp:Label>
-                            <asp:Label runat="server" ID="lbNomeVendedor" Text="Jão da Silva"></asp:Label>
+                            <asp:Label runat="server" ID="lbNomeVendedor" Text=""></asp:Label>
                         </div>
                         <div class="form-group">
                             <asp:Label runat="server" Text="Endereço:"></asp:Label>
-                            <asp:Label runat="server" ID="lbEndereco" Text="Rua blá blá"></asp:Label>
+                            <asp:Label runat="server" ID="lbEndereco" Text=""></asp:Label>
                         </div>
                         <div class="form-group">
                             <asp:Label runat="server" Text="Telefone:"></asp:Label>
-                            <asp:Label runat="server" ID="lbTelefone" Text="(41) 1234-5678"></asp:Label>
+                            <asp:Label runat="server" ID="lbTelefone" Text=""></asp:Label>
                         </div>
                         <div class="form-group">
                             <asp:Label runat="server" Text="E-mail:"></asp:Label>
-                            <asp:Label runat="server" ID="lbEmailVendedor" Text="jose@jose.com"></asp:Label>
+                            <asp:Label runat="server" ID="lbEmailVendedor" Text=""></asp:Label>
                         </div>
                     </div>
                 </div>
@@ -58,7 +58,7 @@
                 <div class="row">
                     <div class="col-md-8">
                         <div class="form-group">
-                            <asp:Label runat="server" ID="lbDescricao" Text="Um produto muito bom"></asp:Label>
+                            <asp:Label runat="server" ID="lbDescricao" Text=""></asp:Label>
                         </div>
                     </div>
                 </div>
