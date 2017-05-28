@@ -21,6 +21,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+    <style>
+        #noti_Counter {
+            position: absolute;
+            background: #E1141E;
+            color: #FFF;
+            padding: 1px 3px;
+            border-radius: 2px;
+            -moz-border-radius: 2px;
+            -moz-border-radius: 2px;
+            -webkit-border-radius: 2px;
+            z-index: 1;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-inverse">
@@ -66,7 +79,10 @@
                 </div>
                 <div id="dvLogin" runat="server">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="SistemaCarrinho.aspx" draggable="false" id="LinkButton3" class="btn btn-primary glyphicon glyphicon-shopping-cart"></a></li>
+                        <li id="noti_Container">
+                            <div id="noti_Counter"><asp:Label ID="notificacao" runat="server"></asp:Label></div>
+                            <div id="noti_Button"><a href="SistemaCarrinho.aspx" draggable="false" id="LinkButton3" class="btn btn-primary glyphicon glyphicon-shopping-cart"></a><</div>
+                        </li>
                         <li>
                             <asp:Label ID="lbNomeUsuario" CssClass="navbar-brand" runat="server" Text="Meu nome aqui"></asp:Label>
                         </li>

@@ -101,7 +101,11 @@ namespace WebApplication
 
                 if (InputFoto.HasFile)
                 {
-                   InputFoto.PostedFile.SaveAs(Path.Combine(caminho, InputFoto.FileName));
+                    string formato = System.IO.Path.GetExtension(InputFoto.FileName);
+                    if (formato == ".png" || formato == ".jpg" || formato == ".gif" || formato == ".jpeg")
+                    {
+                        InputFoto.PostedFile.SaveAs(Path.Combine(caminho, InputFoto.FileName));
+                    }
                 }
                 else
                 {

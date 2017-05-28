@@ -146,7 +146,7 @@
                         <asp:Image ID="userImage" CssClass="img-circle img-responsive" runat="server" />
                     </div>
                     <div class="form-group" runat="server">
-                        <asp:FileUpload ID="InputFoto" CssClass="file" runat="server" />
+                        <asp:FileUpload ID="InputFoto" CssClass="file" accept="image/*" runat="server" />
                     </div>
                 </div>
             </form>
