@@ -140,6 +140,8 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Views\Vendedor\DetalhePedido.aspx" />
+    <Content Include="Views\Comprador\DetalhePedido.aspx" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
@@ -297,6 +299,13 @@
     <Compile Include="Views\Ajax\BuscaEndereco.aspx.designer.cs">
       <DependentUpon>BuscaEndereco.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Vendedor\DetalhePedido.aspx.cs">
+      <DependentUpon>DetalhePedido.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Vendedor\DetalhePedido.aspx.designer.cs">
+      <DependentUpon>DetalhePedido.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\SistemaErro.aspx.cs">
       <DependentUpon>SistemaErro.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -429,6 +438,13 @@
     </Compile>
     <Compile Include="Views\Administrador\AdminDetalheUsuario.aspx.designer.cs">
       <DependentUpon>AdminDetalheUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Comprador\DetalhePedido.aspx.cs">
+      <DependentUpon>DetalhePedido.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Comprador\DetalhePedido.aspx.designer.cs">
+      <DependentUpon>DetalhePedido.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

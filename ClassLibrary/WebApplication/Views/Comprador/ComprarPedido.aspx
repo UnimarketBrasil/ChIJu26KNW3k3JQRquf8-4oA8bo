@@ -32,7 +32,7 @@
                     <asp:BoundField DataField="Valor" HeaderText="Valor" ItemStyle-CssClass="col-sm-2" />
                     <asp:TemplateField ItemStyle-CssClass="col-sm-2">
                         <ItemTemplate>
-                            <asp:LinkButton ID="detalhePedido" CssClass="btn btn-primary btn-xs" runat="server" PostBackUrl='<%# Page.ResolveUrl("~/Views/SistemaDetalheItem.aspx")%>' Text="Detalhes" />
+                            <asp:LinkButton ID="detalhePedido" CssClass="btn btn-primary btn-xs" runat="server" PostBackUrl='<%# Page.ResolveUrl("~/Views/Comprador/DetalhePedido.aspx?idPedido=") + DataBinder.Eval(Container.DataItem, "Id" )%>'  Text="Detalhes" />
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField ItemStyle-CssClass="col-sm-1">

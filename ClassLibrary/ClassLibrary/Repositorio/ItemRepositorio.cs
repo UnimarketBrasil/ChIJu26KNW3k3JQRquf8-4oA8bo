@@ -67,8 +67,6 @@ namespace ClassLibrary.Repositorio
                 catch (Exception ex)
                 {
                     throw new Exception("Erro ao atualizar item: " + ex.Message);
-
-                    return false;
                 }
                 finally
                 {

@@ -5,7 +5,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <form runat="server" oninput="calc_total();">
         <div class="panel panel-default">
-            <!-- Default panel contents -->
             <div class="panel-heading text-center">
                 <asp:Label runat="server" ID="lbNomeProduto" Text=""></asp:Label>
             </div>

@@ -77,7 +77,7 @@ namespace WebApplication
                 Pedido pedido = new Pedido();
                 pedido.Id = Convert.ToInt32(IdPedido);
                 PedidoRepositorio p = new PedidoRepositorio();
-                pedido = p.CarregarPedido(pedido);
+                pedido = p.CarregarPedidoVendedor(pedido); //Perrengue
                 MemoryStream m = new MemoryStream();
                 Pdf pdf = new Pdf();
                 pdf.PedidoPdf(pedido, m);

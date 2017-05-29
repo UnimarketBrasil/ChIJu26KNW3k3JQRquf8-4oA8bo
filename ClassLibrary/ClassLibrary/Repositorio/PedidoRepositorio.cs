@@ -95,17 +95,19 @@ namespace ClassLibrary.Repositorio
             }
         }
 
-        //ESTE METODO CARREGA TODOS OS PEDIDOS RECEBIDOS PELO USUARIO VENDEDOR
-        public Pedido CarregarPedido(Pedido pedido)
+        //ESTE METODO CARREGA UM PEDIDO PELO ID
+        //SERÁ MOSTRADO NAS TELAS DETALHE DE PEDIDO (VENDEDOR/COMPRADOR)
+        public Pedido CarregarPedidoComprador(Pedido pedido)
         {
             Abrirconexao();
             try
             {
 
-                using (Cmd = new SqlCommand("CarregarPedido", Con))
+                using (Cmd = new SqlCommand("CarregarPedidoComprador", Con))
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.AddWithValue("@IdPedido", pedido.Id);
+                    Cmd.Parameters.AddWithValue("@IdComprador", pedido.Comprador.Id);
                     Cmd.ExecuteNonQuery();
 
                     Dr = Cmd.ExecuteReader();
@@ -113,15 +115,23 @@ namespace ClassLibrary.Repositorio
                     if (Dr.HasRows)
                     {
                         Dr.Read();
-                        pedido.Data = Convert.ToDateTime(Dr["Data"]);
+                        pedido.Id = Convert.ToInt32(Dr["Id"]);
+                        pedido.Codigo = Convert.ToString(Dr["Codigo"]);
+                        pedido.Valor = Convert.ToDouble(Dr["Valor"]);
+
                         pedido.Vendedor = new Usuario();
+                        pedido.Vendedor.Id = Convert.ToInt32(Dr["IdVendedor"]);
                         pedido.Vendedor.Nome = Convert.ToString(Dr["Vendedor"]);
-                        pedido.Comprador = new Usuario();
-                        pedido.Comprador.Nome = Convert.ToString(Dr["Comprador"]);
-                        pedido.Comprador.Latitude = Convert.ToString(Dr["Latitude"]);
-                        pedido.Comprador.Longitude = Convert.ToString(Dr["Longitude"]);
-                        pedido.Comprador.Numero = Convert.ToInt32(Dr["Numero"]);
-                        pedido.Comprador.Complemento = Convert.ToString(Dr["Complemento"]);
+                        pedido.Vendedor.Latitude = Convert.ToString(Dr["LatVendedor"]);
+                        pedido.Vendedor.Longitude = Convert.ToString(Dr["LongVendedor"]);
+                        pedido.Vendedor.Numero = Convert.ToInt32(Dr["NumVendedor"]);
+                        pedido.Vendedor.Complemento = Convert.ToString(Dr["ComplVendedor"]);
+                        pedido.Vendedor.Telefone = Convert.ToString(Dr["Telefone"]);
+                        pedido.Vendedor.Email = Convert.ToString(Dr["Email"]);
+
+                        pedido.Data = Convert.ToDateTime(Dr["Data"]);
+                        pedido.StatusPedido = new StatusPedido();
+                        pedido.StatusPedido.Nome = Convert.ToString(Dr["Status"]);
 
                         Dr.Close();
                     }
@@ -144,9 +154,93 @@ namespace ClassLibrary.Repositorio
                         {
                             Item item = new Item();
 
+                            item.Id = Convert.ToInt32(Dr["Id"]);
                             item.Nome = Convert.ToString(Dr["Nome"]);
                             item.Quantidade = Convert.ToDouble(Dr["Quantidade"]);
                             item.ValorUnitario = Convert.ToDouble(Dr["ValorUnitario"]);
+                            item.ValorTotal = Convert.ToDouble(Dr["ValorTotal"]);
+
+                            pedido.Item.Add(item);
+                        }
+                    }
+
+                    Dr.Close();
+
+                    return pedido;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ao carregar pedido: " + ex.Message);
+            }
+            finally
+            {
+                FecharConexao();
+            }
+        }
+
+        //ESTE METODO CARREGA UM PEDIDO PELO ID
+        //SERÁ MOSTRADO NAS TELAS DETALHE DE PEDIDO (VENDEDOR/COMPRADOR)
+        public Pedido CarregarPedidoVendedor(Pedido pedido)
+        {
+            Abrirconexao();
+            try
+            {
+
+                using (Cmd = new SqlCommand("CarregarPedidoVendedor", Con))
+                {
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@IdPedido", pedido.Id);
+                    Cmd.Parameters.AddWithValue("@IdVendedor", pedido.Vendedor.Id);
+                    Cmd.ExecuteNonQuery();
+
+                    Dr = Cmd.ExecuteReader();
+
+                    if (Dr.HasRows)
+                    {
+                        Dr.Read();
+                        pedido.Id = Convert.ToInt32(Dr["Id"]);
+                        pedido.Codigo = Convert.ToString(Dr["Codigo"]);
+
+                        pedido.Comprador = new Usuario();
+                        pedido.Comprador.Nome = Convert.ToString(Dr["Comprador"]);
+                        pedido.Comprador.Latitude = Convert.ToString(Dr["LatComprador"]);
+                        pedido.Comprador.Longitude = Convert.ToString(Dr["LongComprador"]);
+                        pedido.Comprador.Numero = Convert.ToInt32(Dr["NumComprador"]);
+                        pedido.Comprador.Complemento = Convert.ToString(Dr["ComplComprador"]);
+                        pedido.Comprador.Telefone = Convert.ToString(Dr["Telefone"]);
+                        pedido.Comprador.Email = Convert.ToString(Dr["Email"]);
+
+                        pedido.Data = Convert.ToDateTime(Dr["Data"]);
+                        pedido.StatusPedido = new StatusPedido();
+                        pedido.StatusPedido.Nome = Convert.ToString(Dr["Status"]);
+
+                        Dr.Close();
+                    }
+                }
+
+                using (Cmd = new SqlCommand("CarregarItemPedido", Con))
+                {
+
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@IdPedido", pedido.Id);
+                    Cmd.ExecuteNonQuery();
+
+                    Dr = Cmd.ExecuteReader();
+
+                    pedido.Item = new List<Item>();
+
+                    if (Dr.HasRows)
+                    {
+                        while (Dr.Read())
+                        {
+                            Item item = new Item();
+
+                            item.Id = Convert.ToInt32(Dr["Id"]);
+                            item.Nome = Convert.ToString(Dr["Nome"]);
+                            item.Quantidade = Convert.ToDouble(Dr["Quantidade"]);
+                            item.ValorUnitario = Convert.ToDouble(Dr["ValorUnitario"]);
+                            item.ValorTotal = Convert.ToDouble(Dr["ValorTotal"]);
 
                             pedido.Item.Add(item);
                         }
