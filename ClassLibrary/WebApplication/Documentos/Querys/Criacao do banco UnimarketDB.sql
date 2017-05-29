@@ -64,7 +64,8 @@ create table Pedido(
 	IdVendedor int not null foreign key references Usuario(Id),
 	IdComprador int not null foreign key references Usuario(Id),
 	IdStatusPedido int not null foreign key references StatusPedido(Id) default 1,
-	Data DateTime not null default getdate()
+	Data DateTime not null default getdate(),
+	DateFinalizadoOuCancelado DateTime null
 )
 go
 create table Item(

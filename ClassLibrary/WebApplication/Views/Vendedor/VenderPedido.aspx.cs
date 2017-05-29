@@ -71,7 +71,7 @@ namespace WebApplication
         //Este metodo gera um relatorio em PDF do pedidos do usuario vendedor
         protected void pdfPedido_Command(object sender, CommandEventArgs e)
         {
-             if (e.CommandName == "Pedido")
+            if (e.CommandName == "Pedido")
             {
                 string IdPedido = e.CommandArgument.ToString();
                 Pedido pedido = new Pedido();
@@ -85,6 +85,49 @@ namespace WebApplication
                 Response.BinaryWrite(m.GetBuffer());
                 Response.End();
             }
+        }
+
+        protected void grdPedido_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            Label status = null;
+            Button cancelar = null;
+            Button finalizar = null;
+
+            for (int i = 0; i < grdPedido.Rows.Count; i++)
+            {
+                status = (Label)grdPedido.Rows[i].FindControl("lbStatus");
+                String state = status.Text.ToString();
+
+                cancelar = (Button)grdPedido.Rows[i].FindControl("btcancelar");
+                finalizar = (Button)grdPedido.Rows[i].FindControl("btfinalizar");
+                if (state.Equals("Finalizado") | state.Equals("Cancelado"))
+                {
+                    cancelar.Enabled = false;
+                    finalizar.Enabled = false;
+                }
+            }
+        }
+
+        protected void btfinalizar_Command(object sender, CommandEventArgs e)
+        {
+            int id = int.Parse(e.CommandArgument.ToString());
+
+            PedidoRepositorio finalizarPedido = new PedidoRepositorio();
+
+            finalizarPedido.FinalizarPedido(id);
+
+            Response.Redirect(Request.RawUrl);
+        }
+
+        protected void btcancelar_Command(object sender, CommandEventArgs e)
+        {
+            int id = int.Parse(e.CommandArgument.ToString());
+
+            PedidoRepositorio cancelarPedido = new PedidoRepositorio();
+
+            cancelarPedido.CancelarPedido(id);
+
+            Response.Redirect(Request.RawUrl);
         }
     }
 }

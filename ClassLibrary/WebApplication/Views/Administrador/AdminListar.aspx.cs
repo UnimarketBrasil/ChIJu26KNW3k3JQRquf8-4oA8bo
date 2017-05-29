@@ -34,7 +34,7 @@ namespace WebApplication
             grdAdmin.DataBind();
         }
 
-        //Este metodo altera o botão na grid view conforme o status do usuario
+        //Este metodo altera o botão na gridview conforme o status do usuario
         protected void grdAdmin_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             Button status = null;

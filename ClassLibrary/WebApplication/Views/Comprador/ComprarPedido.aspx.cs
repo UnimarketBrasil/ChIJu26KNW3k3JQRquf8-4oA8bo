@@ -29,7 +29,6 @@ namespace WebApplication
             Usuario user = (Usuario)Session["sistema"];
             PedidoRepositorio consulta = new PedidoRepositorio();
 
-
             switch (e.Index)
             {
                 case 0:

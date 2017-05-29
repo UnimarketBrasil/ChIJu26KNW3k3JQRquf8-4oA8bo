@@ -31,7 +31,7 @@ namespace WebApplication
                 Session["sistema"] = u;
                 if (u.Tipousuario.Id == 3)//Tipo de usuário vendedor
                 {
-                    Response.Redirect("~/Views/VenderItem.aspx");
+                    Response.Redirect("~/Views/Vendedor/VenderItem.aspx");
                 }
                 else if (u.Tipousuario.Id == 2)//Tipo de usuário comprador
                 {
@@ -39,7 +39,7 @@ namespace WebApplication
                 }
                 else if (u.Tipousuario.Id == 1)//Tipo de usuário administrador
                 {
-                    Response.Redirect("~/Views/AdminListar.aspx");
+                    Response.Redirect("~/Views/Administrador/AdminListar.aspx");
                 }
             }
             else

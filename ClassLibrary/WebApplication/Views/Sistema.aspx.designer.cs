@@ -31,6 +31,15 @@ namespace WebApplication {
         protected global::System.Web.UI.WebControls.Label lbMsg;
         
         /// <summary>
+        /// Controle dvBanner.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvBanner;
+        
+        /// <summary>
         /// Controle imgTop1.
         /// </summary>
         /// <remarks>

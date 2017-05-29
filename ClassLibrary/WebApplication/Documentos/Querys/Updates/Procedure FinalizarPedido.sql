@@ -1,6 +1,6 @@
 use unimarket
-go
-Excluir FinalizarPedido
+if OBJECT_ID('FinalizarPedido') is not null
+drop procedure FinalizarPedido
 go
 create procedure FinalizarPedido(
 	@IdPedido int
@@ -9,11 +9,8 @@ as
 begin
 	begin try
 		begin tran
-			update Item set 
-			Item.Quantidade = (select ItemPedido.Quantidade from ItemPedido 
-			where (ItemPedido.IdPedido = @IdPedido)and(ItemPedido.IdItem = Item.Id))
 			update Pedido set
-			Pedido.IdStatusPedido = 2
+			Pedido.IdStatusPedido = 2, DateFinalizadoOuCancelado=GETDATE()
 			where (Pedido.Id = @IdPedido)
 		commit tran
 	end try

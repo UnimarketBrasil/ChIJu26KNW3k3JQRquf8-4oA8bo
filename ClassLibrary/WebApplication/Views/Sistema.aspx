@@ -15,7 +15,7 @@
             </div>
             <div class="row">
                 <div role="main" class="col-sm-8">
-                    <div id="Banner" class="carousel slide" data-ride="carousel" style="width: 400px; margin: 0 auto">
+                    <div runat="server" id="dvBanner" class="carousel slide" data-ride="carousel" style="width: 400px; margin: 0 auto">
                         <!-- Banner Rotativo -->
                         <ol class="carousel-indicators">
                             <li data-target="#Banner" data-slide-to="0" class="active"></li>

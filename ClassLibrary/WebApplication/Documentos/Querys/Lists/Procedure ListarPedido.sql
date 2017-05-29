@@ -1,17 +1,22 @@
 use unimarket
+if OBJECT_ID('ListarPedidoComprador') is not null
+drop procedure ListarPedidoComprador
 go
-Excluir ListarPedidoComprador
+if OBJECT_ID('ListarPedidoVendedor') is not null
+drop procedure ListarPedidoVendedor
 go
 create procedure ListarPedidoComprador(
 	@IdUsuario int
 	)
 as
 begin
-	Select Pedido.Id, Pedido.Codigo, Vendedor.Nome as 'Vendedor', ItemPedido.Quantidade * ItemPedido.ValorUnitario as 'Valor' from Pedido
+	Select Pedido.Id, Pedido.Codigo, Pedido.Data, Vendedor.Nome as 'Vendedor',(
+	select SUM(ValorUnitario) from ItemPedido where IdPedido=Pedido.Id) as Valor, StatusPedido.Nome as Status 
+	from Pedido
 	inner join Usuario as Vendedor on Pedido.IdVendedor = Vendedor.Id
 	inner join Usuario as Comprador on Pedido.IdComprador = Comprador.Id
-	inner join ItemPedido on Pedido.Id = ItemPedido.IdPedido
-	where (Comprador.Id = @IdUsuario)
+	inner join StatusPedido on Pedido.IdStatusPedido = StatusPedido.Id
+	where (Comprador.Id = 1)
 	order by Pedido.Id desc
 end
 go
@@ -20,10 +25,12 @@ create procedure ListarPedidoVendedor(
 	)
 as
 begin
-	Select Pedido.Id, Pedido.Codigo, Comprador.Nome as 'Comprador', ItemPedido.Quantidade * ItemPedido.ValorUnitario as 'Valor' from Pedido
+	Select Pedido.Id, Pedido.Codigo, Pedido.Data, Comprador.Nome as 'Comprador',(
+	select SUM(ValorUnitario) from ItemPedido where IdPedido=Pedido.Id) as Valor, StatusPedido.Nome as Status 
+	from Pedido
 	inner join Usuario as Vendedor on Pedido.IdVendedor = Vendedor.Id
 	inner join Usuario as Comprador on Pedido.IdComprador = Comprador.Id
-	inner join ItemPedido on Pedido.Id = ItemPedido.IdPedido
+	inner join StatusPedido on Pedido.IdStatusPedido = StatusPedido.Id
 	where (Vendedor.Id = @IdUsuario)
 	order by Pedido.Id desc
 end
