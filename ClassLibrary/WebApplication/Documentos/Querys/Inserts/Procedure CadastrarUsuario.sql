@@ -9,7 +9,6 @@ create procedure CadastrarUsuario(
 	@Senha varchar(50),
 	@HashConfirmacao varchar(50),
 	@CpfCnpj varchar(20),
-	@Nascimento datetime,
 	@Genero smallint = null,
 	@Telefone varchar(15),
 	@Longitude varchar(20),
@@ -18,8 +17,7 @@ create procedure CadastrarUsuario(
 	@Numero int,
 	@Complemento varchar(20) = null,
 	@AreaAtuacao real =null,
-	@IdTipoUsuario int,
-	@UltimoAcesso datetime
+	@IdTipoUsuario int
 	)
 as 
 begin
@@ -32,7 +30,6 @@ begin
 			 Senha,
 			 HashConfirmacao,
 			 CpfCnpj,
-			 Nascimento, 
 			 Genero, 
 			 Telefone,
 			 Longitude,
@@ -50,7 +47,6 @@ begin
 			 @Senha,
 			 @HashConfirmacao,
 			 @CpfCnpj,
-			 @Nascimento,
 			 @Genero,
 			 @Telefone,
 			 @Longitude,
@@ -60,7 +56,7 @@ begin
 			 @Complemento,
 			 @AreaAtuacao,
 			 @IdTipoUsuario,
-			 @UltimoAcesso
+			 getdate()
 			 )
 			 select Usuario.Email from Usuario where Email=@Email
 		commit tran

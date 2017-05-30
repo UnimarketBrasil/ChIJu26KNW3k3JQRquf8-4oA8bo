@@ -99,13 +99,7 @@
                                     <div class="col-lg-10">
                                         <asp:TextBox ID="txtSobrenome" runat="server" CssClass="form-control" placeholder="Sobrenome" required="true"></asp:TextBox>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="<% =txtDtNasc.ClientID %>"" class="col-lg-2 control-label">Data de Nasc.</label>
-                                    <div class="col-lg-10">
-                                        <asp:TextBox ID="txtDtNasc" runat="server" CssClass="form-control" placeholder="dd/mm/aaaa" onkeyup="formataData(this, event);" onchange="formataData(this,event);" required="true"></asp:TextBox>
-                                    </div>
-                                </div>
+                                </div>                                
                                 <div class="form-group">
                                     <label for="<% =dpGenero.ClientID %>"" class="col-lg-2 control-label">Genero</label>
                                     <div class="col-lg-10">
@@ -154,13 +148,13 @@
                             </div>
                             <div id="dvEnderecoCompleto" runat="server" class="form-group">
                                 <div class="col-lg-10 col-lg-offset-2">
-                                    <asp:Label runat="server" ID="lbEndereco" Text="" Font-Bold="True" CssClass="form-control well well-sm"></asp:Label>
+                                    <asp:Label runat="server" ID="lbEndereco" Text="Informe o CEP do seu endereço, número e clique na lupa. Vamos te localizar!" Font-Bold="True" CssClass="form-control well well-sm"></asp:Label>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="<% =txtComplemento.ClientID %>" class="col-lg-2 control-label">Complemento</label>
                                 <div class="col-lg-9">
-                                    <asp:TextBox ID="txtComplemento" runat="server" CssClass="form-control" placeholder="Complemento" required="true"></asp:TextBox>
+                                    <asp:TextBox ID="txtComplemento" runat="server" CssClass="form-control" placeholder="Complemento"></asp:TextBox>
                                 </div>
                             </div>
                             <div id="dvAreaAtuacao" class="form-group" runat="server">
@@ -240,10 +234,6 @@
 
             }
 
-            $('#<% Response.Write(txtDtNasc.ClientID);%>').datepicker({
-                language: "pt-BR",
-                format: "dd/mm/yyyy"
-            });
 
         </script>
         <script>

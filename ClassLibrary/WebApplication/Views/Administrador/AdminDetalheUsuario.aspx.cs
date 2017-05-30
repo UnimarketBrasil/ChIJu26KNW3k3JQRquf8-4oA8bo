@@ -29,7 +29,6 @@ namespace WebApplication
                         //USUÁRIO PESSOA FISICA
                         lbNome.Text = user.Nome + ", " + user.Sobrenome;
                         lbCpf.Text = FormatarCnpjCpf.FormatCPF(user.CpfCnpj);
-                        lbDtNasc.Text = user.Nascimento.ToString();
                         if (user.Genero == 1)
                         {
                             lbGenero.Text = "Masculino";

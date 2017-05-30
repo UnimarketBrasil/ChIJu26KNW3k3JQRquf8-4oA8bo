@@ -25,7 +25,6 @@ namespace ClassLibrary.Repositorio
                     Cmd.Parameters.AddWithValue("@Senha", user.Senha);
                     Cmd.Parameters.AddWithValue("@HashConfirmacao", user.HashConfirmacao);
                     Cmd.Parameters.AddWithValue("@CpfCnpj", user.CpfCnpj);
-                    Cmd.Parameters.AddWithValue("@Nascimento", user.Nascimento);
                     Cmd.Parameters.AddWithValue("@Genero", user.Genero);
                     Cmd.Parameters.AddWithValue("@Telefone", user.Telefone);
                     Cmd.Parameters.AddWithValue("@Longitude", user.Longitude);
@@ -35,7 +34,6 @@ namespace ClassLibrary.Repositorio
                     Cmd.Parameters.AddWithValue("@Complemento", user.Complemento);
                     Cmd.Parameters.AddWithValue("@AreaAtuacao", user.AreaAtuacao);
                     Cmd.Parameters.AddWithValue("@IdTipoUsuario", user.Tipousuario.Id);
-                    Cmd.Parameters.AddWithValue("@UltimoAcesso", user.UltimoAcesso);
                     user.Id = int.Parse(Cmd.ExecuteScalar().ToString());
 
                     return true;
@@ -88,9 +86,11 @@ namespace ClassLibrary.Repositorio
             }
         }
 
-        public SqlDataReader ValidarEmailCpfCnpj(Usuario user)
+        public string ValidarEmailCpfCnpj(Usuario user)
         {
             Abrirconexao();
+
+            String existe = null;
 
             using (Cmd = new SqlCommand("ValidaEmailCpfCnpj", Con))
             {
@@ -99,15 +99,20 @@ namespace ClassLibrary.Repositorio
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.AddWithValue("@Email", user.Email);
                     Cmd.Parameters.AddWithValue("@CpfCnpj", user.CpfCnpj);
-                    Cmd.ExecuteNonQuery();
 
                     Dr = Cmd.ExecuteReader();
 
-                    return Dr;
+                    if (Dr.HasRows)
+                    {
+                        Dr.Read();
+                        existe = Convert.ToString(Dr["Existe"]);
+                    }
+
+                    return existe;
                 }
-                catch
+                catch(Exception ex)
                 {
-                    return Dr;
+                    throw new Exception("Erro ao atualizar usuario: " + ex.Message);
                 }
             }
         }
@@ -378,7 +383,6 @@ namespace ClassLibrary.Repositorio
                         user.Sobrenome = ti.ToTitleCase(Convert.ToString(Dr["Sobrenome"]));
                         user.Email = Convert.ToString(Dr["Email"]);
                         user.CpfCnpj = Convert.ToString(Dr["CpfCnpj"]);
-                        user.Nascimento = Convert.ToDateTime(Dr["Nascimento"]);
                         user.Genero = Convert.ToInt32(Dr["Genero"]);
                         user.Telefone = Convert.ToString(Dr["Telefone"]);
                         user.Latitude = Convert.ToString(Dr["Latitude"]);
@@ -432,7 +436,6 @@ namespace ClassLibrary.Repositorio
                         user.Nome = ti.ToTitleCase(Convert.ToString(Dr["Nome"]));
                         user.Sobrenome = ti.ToTitleCase(Convert.ToString(Dr["Sobrenome"]));
                         user.Email = Convert.ToString(Dr["Email"]);
-                        user.Nascimento = Convert.ToDateTime(Dr["Nascimento"]);
                         user.Genero = Convert.ToInt32(Dr["Genero"]);
                         user.Telefone = Convert.ToString(Dr["Telefone"]);
                         user.DataCadastro = Convert.ToDateTime(Dr["DataCadastro"]);

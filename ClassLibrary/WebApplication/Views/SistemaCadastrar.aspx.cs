@@ -60,7 +60,7 @@ namespace WebApplication
                     return;
                 }
                 u.Nome = txtRazaoSocial.Text;
-                u.Nascimento = DateTime.Today;//Falta arrumar a data de nascimento.
+
             }
             else if (dpTipoPessoa.SelectedValue == "1")//PESSOA FÍSICA
             {
@@ -78,7 +78,6 @@ namespace WebApplication
                 }
                 u.Nome = txtNome.Text;
                 u.Sobrenome = txtSobrenome.Text;
-                u.Nascimento = Convert.ToDateTime(txtDtNasc.Text);
                 u.Genero = int.Parse(dpGenero.SelectedValue);
             }
             IsEmail mail = new IsEmail();
@@ -123,16 +122,15 @@ namespace WebApplication
             u.CEP = txtEndereco.Text;
             u.Complemento = txtComplemento.Text;
             u.Numero = int.Parse(txtNumero.Text);
-            u.UltimoAcesso = DateTime.Now;
 
             HashConfirmacao hc = new HashConfirmacao();
             u.HashConfirmacao = hc.GerarHash(30);
 
             UsuarioRepositorio cadastrar = new UsuarioRepositorio();
 
-            SqlDataReader Dr = cadastrar.ValidarEmailCpfCnpj(u);
+            string existe = cadastrar.ValidarEmailCpfCnpj(u);
 
-            if (!Dr.HasRows)
+            if (existe==null)
             {
                 if (cadastrar.CadastrarUsuario(u))
                 {
@@ -190,10 +188,8 @@ namespace WebApplication
                     lbMsg.Text = "Não foi possível atender sua solicitação, tente novamente mais tarde.";
                 }
             }
-            else if (Dr.HasRows)
+            else if (existe!=null)
             {
-                Dr.Read();
-                string existe = Convert.ToString(Dr["Existe"]);
                 if (existe.Equals("Email_CpfCnpj"))
                 {
                     dvMsg.Visible = true;
@@ -204,21 +200,21 @@ namespace WebApplication
                 {
                     dvMsg.Visible = true;
                     dvMsg.Attributes["class"] = "alert alert-info alert-dismissible";
-                    lbMsg.Text = "O E-mail " + u.Email.ToString() + " já está cadastrado no sistema.<a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=7' target='_blank'></a>";
+                    lbMsg.Text = "E-mail já está cadastrado no sistema.<a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=7' target='_blank'></a>";
                 }
                 else if (existe.Equals("CpfCnpj"))
                 {
-                    if (existe.Length == 11)
+                    if (u.CpfCnpj.Length == 11)
                     {
                         dvMsg.Visible = true;
                         dvMsg.Attributes["class"] = "alert alert-info alert-dismissible";
-                        lbMsg.Text = "O CPF: " + u.CpfCnpj.ToString() + ", já cadastrado. <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=8' target='_blank'></a>";
+                        lbMsg.Text = "CPF já cadastrado. <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=8' target='_blank'></a>";
                     }
-                    else if (existe.Length == 14)
+                    else if (u.CpfCnpj.Length == 14)
                     {
                         dvMsg.Visible = true;
                         dvMsg.Attributes["class"] = "alert alert-info alert-dismissible";
-                        lbMsg.Text = "CNPJ: " + u.CpfCnpj + ", já cadastrado. <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=9' target='_blank'></a>";
+                        lbMsg.Text = "CNPJ já cadastrado. <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=9' target='_blank'></a>";
                     }
                 }
             }

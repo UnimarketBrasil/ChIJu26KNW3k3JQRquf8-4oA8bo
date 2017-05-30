@@ -18,8 +18,6 @@ namespace ClassLibrary
 
         public string CpfCnpj { get; set; }
 
-        public DateTime Nascimento { get; set; }
-
         public int Genero { get; set; }
 
         public string Telefone { get; set; }
