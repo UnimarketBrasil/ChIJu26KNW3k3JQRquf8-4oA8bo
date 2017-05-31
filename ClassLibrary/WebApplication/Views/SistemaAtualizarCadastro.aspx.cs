@@ -88,10 +88,11 @@ namespace WebApplication
 
                         GeoCodificacao g = new GeoCodificacao();
                         lbEndereco.Text = g.ObterEndereco(u.Latitude, u.Longitude);
+                        txtEndereco.Text = u.CEP;
                         txtNumero.Text = u.Numero.ToString();
                         txtComplemento.Text = u.Complemento;
                         dpArea.SelectedValue = Convert.ToString(u.AreaAtuacao);
-                        
+
                     }
                     else
                     {
@@ -135,10 +136,11 @@ namespace WebApplication
 
                         GeoCodificacao g = new GeoCodificacao();
                         lbEndereco.Text = g.ObterEndereco(u.Latitude, u.Longitude);
+                        txtEndereco.Text = u.CEP;
                         txtNumero.Text = u.Numero.ToString();
                         txtComplemento.Text = u.Complemento;
                         dpArea.SelectedValue = Convert.ToString(u.AreaAtuacao);
-                                                
+
                     }
                     else
                     {
@@ -171,6 +173,7 @@ namespace WebApplication
                     u.Tipousuario = new TipoUsuario();
                     u.Tipousuario.Id = 3;
                 }
+
                 try
                 {
                     Usuario uEndereco = (Usuario)Session["latlog"];
@@ -183,8 +186,26 @@ namespace WebApplication
                     u.Latitude = uEndereco.Latitude;
                     u.Longitude = uEndereco.Longitude;
                 }
+
                 u.Complemento = txtComplemento.Text;
                 u.Numero = Convert.ToInt32(txtNumero.Text);
+                u.AreaAtuacao = Convert.ToDouble(dpArea.SelectedValue);
+
+                if (InputFoto.HasFile)
+                {
+                    string formato = System.IO.Path.GetExtension(InputFoto.FileName);
+                    if (formato == ".png" || formato == ".jpg" || formato == ".gif" || formato == ".jpeg")
+                    {
+                        var caminho = Server.MapPath(string.Format(@"~/Imagens/{0}/Perfil/", u.Id));
+
+                        Directory.CreateDirectory(caminho);
+
+                        DirectoryInfo dir = new DirectoryInfo((caminho));
+                        dir.GetFiles("*", SearchOption.AllDirectories).ToList().ForEach(file => file.Delete());
+
+                        InputFoto.PostedFile.SaveAs(Path.Combine(caminho, InputFoto.FileName));
+                    }
+                }
 
                 UsuarioRepositorio atualizarCadastro = new UsuarioRepositorio();
                 if (atualizarCadastro.AtualizarUsuario(u))
@@ -263,7 +284,7 @@ namespace WebApplication
                     lbMsg.Text = "Não foi possível atender sua solicitação.";
                 }
             }
-
+            Response.Redirect(Request.RawUrl);
         }
     }
 }

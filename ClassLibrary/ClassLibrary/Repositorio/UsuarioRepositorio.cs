@@ -387,6 +387,7 @@ namespace ClassLibrary.Repositorio
                         user.Telefone = Convert.ToString(Dr["Telefone"]);
                         user.Latitude = Convert.ToString(Dr["Latitude"]);
                         user.Longitude = Convert.ToString(Dr["Longitude"]);
+                        user.CEP = Convert.ToString(Dr["CEP"]);
                         user.Complemento = Convert.ToString(Dr["Complemento"]);
                         user.Numero = Convert.ToInt32(Dr["Numero"]);
                         user.AreaAtuacao = Convert.ToDouble(Dr["AreaAtuacao"]);

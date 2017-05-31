@@ -40,12 +40,12 @@
                             <div class="form-group">
                                 <label class="col-lg-2 control-label">Atividade principal</label>
                                 <div class="btn-group col-lg-5" data-toggle="buttons">
-                                    <label id="lbComprar" runat="server" onclick="areAtuacaoDisplay('c');" class="btn btn-primary">
+                                    <label id="lbComprar" runat="server" onclick="areAtuacaoDisplay('c');" class="btn btn-default">
                                         <input type="radio" name="rdAtividade" id="rdComprar" runat="server" value="2" required="required"/>
                                         Comprar
                                     </label>
                                     &nbsp;
-                                    <label id="lbVender" runat="server" onclick="areAtuacaoDisplay('v');" class="btn btn-primary">
+                                    <label id="lbVender" runat="server" onclick="areAtuacaoDisplay('v');" class="btn btn-default">
                                         <input type="radio" name="rdAtividade" id="rdVender" runat="server" value="3" />
                                         Vender
                                     </label>
@@ -148,7 +148,7 @@
                             </div>
                             <div id="dvEnderecoCompleto" runat="server" class="form-group">
                                 <div class="col-lg-10 col-lg-offset-2">
-                                    <asp:Label runat="server" ID="lbEndereco" Text="Informe o CEP do seu endereço, número e clique na lupa. Vamos te localizar!" Font-Bold="True" CssClass="form-control well well-sm"></asp:Label>
+                                    <asp:Label runat="server" ID="lbEndereco" Text="Informe o CEP do seu endereço, número e clique na lupa..." Font-Bold="True" CssClass="form-control well well-sm"></asp:Label>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -334,7 +334,7 @@
                            '<div class="modal-content">' +
                            '<div class="modal-header"><h3>A</3></div>' +
                            '<div class="modal-body">Para completar seu cadastro, confirme seu e-mail clicando no link que acabamos de enviar para você...' +
-                           '<div class="modal-footer"><button runat="server" onclick="fimCadastroDialog.hide();" type="button" class="btn btn-success" data-dismiss="modal" >Concordo</button>'+
+                           '<div class="modal-footer"><button runat="server" onclick="fimCadastroDialog.hide();redirecionarPrincial();" type="button" class="btn btn-success" data-dismiss="modal" >Concordo</button>'+
                            '</div></div>' +
                            '</div></div></div>');
 
@@ -381,7 +381,7 @@
                             */
                            hide: function () {
                                $dialogFimCadastro.modal('hide');
-                               window.location.replace("/Views/Sistema.aspx");
+                               
                            }
                        };
 
@@ -391,6 +391,11 @@
             $(document).ready(function () {
                 $('[data-toggle="tooltip"]').tooltip();
             });
+        </script>
+        <script>
+            function redirecionarPrincial() {
+                window.location.replace("/Views/Sistema.aspx");
+            }
         </script>
     </div>
     <script src="Scripts/ajudamodal.js"></script>

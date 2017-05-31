@@ -14,7 +14,3 @@ begin
 	return sqrt( power(convert(float, @LatitudeVendedor) - convert(float, @LatitudeComprador), 2) + power( convert(float, @LongitudeVendedor) -  convert(float, @LongitudeComprador), 2))
 end
 
-
-
-
-

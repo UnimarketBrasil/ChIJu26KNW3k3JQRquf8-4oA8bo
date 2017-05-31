@@ -105,7 +105,7 @@
                     <div class="form-group">
                         <label for="" class="col-lg-2 control-label">Complemento</label>
                         <div class="col-lg-10">
-                            <asp:TextBox ID="txtComplemento" runat="server" CssClass="form-control" placeholder="Complemento" required="true"></asp:TextBox>
+                            <asp:TextBox ID="txtComplemento" runat="server" CssClass="form-control" placeholder="Complemento" ></asp:TextBox>
                         </div>
                     </div>
                     <div id="dvAreaAtuacao" class="form-group" runat="server">
