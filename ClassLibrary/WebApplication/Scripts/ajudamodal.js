@@ -53,7 +53,7 @@
                         '<div class="modal-dialog modal-m">' +
                         '<div class="modal-content">' +
                         '<div class="modal-header"><h3>' + mensagem + '</3><button runat="server" onclick="fimCadastroDialog.hide();" type="button" class="close" data-dismiss="modal" >&times;</button></div>' +
-                        '<div class="modal-body">É nesta tela que aparecerá todos itens que você tem cadastro no sistema, aqui você pode selecionar o item clicando no nome para atualizar o cadastro ou até mesmo exlcuir.' +
+                        '<div class="modal-body">É nesta tela que aparecerá todos itens que você tem cadastrado no sistema, aqui você pode selecionar o item clicando no nome para atualizar o cadastro ou até mesmo excluir.' +
                         '<div class="modal-footer">' +
                         '</div></div>' +
                         '</div></div></div>');

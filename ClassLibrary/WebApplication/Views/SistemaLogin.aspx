@@ -27,7 +27,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-xs-10 col-xs-offset-2">
-                            <asp:CheckBox ID="lembrarLogin" runat="server" Text="Lembrar de mim" CssClass="checkbox-inline"></asp:CheckBox>
+                            <asp:CheckBox ID="ManterLogado" runat="server" Text="Me mantenha logado" CssClass="checkbox-inline"></asp:CheckBox>
                         </div>
                     </div>
                     <div class="form-group">
