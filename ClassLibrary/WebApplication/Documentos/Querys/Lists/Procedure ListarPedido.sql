@@ -16,7 +16,7 @@ begin
 	inner join Usuario as Vendedor on Pedido.IdVendedor = Vendedor.Id
 	inner join Usuario as Comprador on Pedido.IdComprador = Comprador.Id
 	inner join StatusPedido on Pedido.IdStatusPedido = StatusPedido.Id
-	where (Comprador.Id = 1)
+	where (Comprador.Id = @IdUsuario)
 	order by Pedido.Id desc
 end
 go
