@@ -16,10 +16,39 @@ namespace WebApplication
         {
             if (!IsPostBack)
             {
-                if (Request.Cookies["EmailUsuario"] != null && Request.Cookies["SenhaUsuario"] != null)
+                //Recupera o ID do usuario gravado no cookie
+                if (Request.Cookies["idUsuario"] != null)
                 {
-                    txtEmail.Text = Request.Cookies["EmailUsuario"].Value;
-                    txtSenha.Attributes["value"] = Request.Cookies["SenhaUsuario"].Value;
+                    //Joga o valor do cookie na variavel
+                    int valorCookie = int.Parse(Request.Cookies["idUsuario"].Value);
+
+                    //Cria um novo usuario
+                    Usuario usuario = new Usuario();
+                    UsuarioRepositorio usuarioRepos = new UsuarioRepositorio();
+
+                    //Atribui o valor do cookie a variavel usuario 
+                    usuario.Id = valorCookie;
+
+                    //Carrega o usuario através do metodo CarregarUsuario
+                    if (usuarioRepos.CarregarUsuario(usuario))
+                    {
+                        //Após carregar o usuario, o mesmo é jogado na session
+                        Session["sistema"] = usuario;
+
+                        //Após o usuario ser colocado na session, ele é redirecionado para sua tela inicial
+                        if (usuario.Tipousuario.Id == 1)
+                        {
+                            Response.Redirect("~/Views/Administrador/AdminListar.aspx");
+                        }
+                        else if (usuario.Tipousuario.Id == 3)
+                        {
+                            Response.Redirect("~/Views/Vendedor/VenderItem.aspx");
+                        }
+                        else
+                        {
+                            Response.Redirect("~/Views/Sistema.aspx");
+                        }
+                    }
                 }
             }
 
@@ -29,7 +58,7 @@ namespace WebApplication
                 Usuario u = (Usuario)Session["sistema"];
                 if (u.Tipousuario.Id == 1)
                 {
-                    Response.Redirect("~/Views/Administrado/AdminListar.aspx");
+                    Response.Redirect("~/Views/Administrador/AdminListar.aspx");
                 }
                 else if (u.Tipousuario.Id == 3)
                 {
@@ -52,25 +81,23 @@ namespace WebApplication
             //Comparados os hashs da criptografia
             usuario.Senha = criptografia.CriptografarSenha(txtSenha.Text);
 
-            if (lembrarLogin.Checked)
+            if (ManterLogado.Checked)
             {
-
-                Response.Cookies["EmailUsuario"].Expires = DateTime.Now.AddDays(30);
-                Response.Cookies["SenhaUsuario"].Expires = DateTime.Now.AddDays(30);
+                //Cria um Cookie com validade de 30 dias
+                HttpContext.Current.Response.Cookies["idUsuario"].Expires = DateTime.Now.AddDays(30);
             }
             else
             {
-
-                Response.Cookies["EmailUsuario"].Expires = DateTime.Now.AddDays(-1);
-                Response.Cookies["SenhaUsuario"].Expires = DateTime.Now.AddDays(-1);
+                //Caso o cookie não seja necessario, é atribuido um dia negativo de validade causando sua destruição
+                HttpContext.Current.Response.Cookies["idUsuario"].Expires = DateTime.Now.AddDays(-1);
             }
-
-            Response.Cookies["EmailUsuario"].Value = txtEmail.Text.Trim();
-            Response.Cookies["SenhaUsuario"].Value = txtSenha.Text.Trim();
 
             UsuarioRepositorio login = new UsuarioRepositorio();
             if (login.LoginUsuario(usuario))
             {
+                //O ID do usuario carregado é adicionado ao Cookie
+                HttpContext.Current.Response.Cookies["idUsuario"].Value = Convert.ToString(usuario.Id);
+
                 //Caso o usuario ainda não tenha confirmado seu cadastro via e-mail
                 if (usuario.StatusUsuario.Id == 2)
                 {

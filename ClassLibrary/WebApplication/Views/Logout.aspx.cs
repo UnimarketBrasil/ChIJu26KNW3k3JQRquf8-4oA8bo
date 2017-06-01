@@ -15,6 +15,7 @@ namespace WebApplication
             Session["sistema"] = null;
             Session["latlog"] = null;
             Session["carrinho"] = null;
+            HttpContext.Current.Response.Cookies["idUsuario"].Expires = DateTime.Now.AddDays(-1);
             Response.Redirect("~/Default.aspx");
         }
     }
