@@ -19,6 +19,8 @@ namespace WebApplication
             {
                 List<Item> lst = (List<Item>)Session["carrinho"];
 
+                double totalCarrinho=0;
+
                 foreach (var item in lst)
                 {
                     string caminho = string.Format("~/Imagens/{0}/{1}/", item.Vendedor.Id, item.Id);
@@ -30,7 +32,12 @@ namespace WebApplication
                         string i = arquivos.Last().Name;
                         item.Imagem = ResolveUrl(Path.Combine(caminho, i));
                     }
+
+                    totalCarrinho += item.Quantidade * item.ValorUnitario;
                 }
+
+                lbTotalCarrinho.Text = "Total: R$ " + totalCarrinho;
+
 
                 grdCarrinhoDeCompra.DataSource = lst;
                 grdCarrinhoDeCompra.DataBind();
@@ -125,6 +132,9 @@ namespace WebApplication
                 realizarPedido.RealizarPedido(pedidoRealizar);
             }
             Session["carrinho"] = null;
+
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "script", "$(function () { realizaPedido.show('CONFIRMAÇÃO DE PEDIDO'); });", true);
         }
+
     }
 }

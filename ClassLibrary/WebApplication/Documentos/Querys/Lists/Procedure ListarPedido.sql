@@ -17,7 +17,7 @@ begin
 	inner join Usuario as Comprador on Pedido.IdComprador = Comprador.Id
 	inner join StatusPedido on Pedido.IdStatusPedido = StatusPedido.Id
 	where (Comprador.Id = @IdUsuario)
-	order by Pedido.Id desc
+	order by Pedido.Id desc 
 end
 go
 create procedure ListarPedidoVendedor(
