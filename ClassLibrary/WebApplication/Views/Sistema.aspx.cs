@@ -15,6 +15,44 @@ namespace WebApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                //Recupera o ID do usuario gravado no cookie
+                if (Request.Cookies["idUsuario"] != null)
+                {
+                    //Joga o valor do cookie na variavel
+                    int valorCookie = int.Parse(Request.Cookies["idUsuario"].Value);
+
+                    //Cria um novo usuario
+                    Usuario usuario = new Usuario();
+                    UsuarioRepositorio usuarioRepos = new UsuarioRepositorio();
+
+                    //Atribui o valor do cookie a variavel usuario 
+                    usuario.Id = valorCookie;
+
+                    //Carrega o usuario através do metodo CarregarUsuario
+                    if (usuarioRepos.CarregarUsuario(usuario))
+                    {
+                        //Após carregar o usuario, o mesmo é jogado na session
+                        Session["sistema"] = usuario;
+
+                        //Após o usuario ser colocado na session, ele é redirecionado para sua tela inicial
+                        if (usuario.Tipousuario.Id == 1)
+                        {
+                            Response.Redirect("~/Views/Administrador/AdminListar.aspx");
+                        }
+                        else if (usuario.Tipousuario.Id == 3)
+                        {
+                            Response.Redirect("~/Views/Vendedor/VenderItem.aspx");
+                        }
+                        else
+                        {
+                            Response.Redirect("~/Views/Sistema.aspx");
+                        }
+                    }
+                }
+            }
+
             if (Session["sistema"] != null)
             {
                 Usuario u = (Usuario)Session["sistema"];
@@ -82,9 +120,20 @@ namespace WebApplication
             //Comparados os hashs da criptografia
             usuario.Senha = criptografia.CriptografarSenha(txtSenha.Text);
 
+            if (manterLogado.Checked)
+            {
+                HttpContext.Current.Response.Cookies["idUsuario"].Expires = DateTime.Now.AddDays(30);
+            }
+            else
+            {
+                HttpContext.Current.Response.Cookies["idUsuario"].Expires = DateTime.Now.AddDays(-1);
+            }
+
             UsuarioRepositorio login = new UsuarioRepositorio();
             if (login.LoginUsuario(usuario))
             {
+                HttpContext.Current.Response.Cookies["idUsuario"].Value = Convert.ToString(usuario.Id);
+
                 //Caso o usuario ainda não tenha confirmado seu cadastro via e-mail
                 if (usuario.StatusUsuario.Id == 2)
                 {

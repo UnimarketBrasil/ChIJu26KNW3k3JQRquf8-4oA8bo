@@ -53,7 +53,6 @@ namespace WebApplication
                 }
             }
 
-
             if (Session["sistema"] != null)
             {
                 Usuario u = (Usuario)Session["sistema"];
@@ -82,8 +81,13 @@ namespace WebApplication
             //Comparados os hashs da criptografia
             usuario.Senha = criptografia.CriptografarSenha(txtSenha.Text);
 
-
-            HttpContext.Current.Response.Cookies["idUsuario"].Expires = DateTime.Now.AddDays(30);
+            if (manterLogado.Checked)
+            {
+                HttpContext.Current.Response.Cookies["idUsuario"].Expires = DateTime.Now.AddDays(30);
+            }else
+            {
+                HttpContext.Current.Response.Cookies["idUsuario"].Expires = DateTime.Now.AddDays(-1);
+            }
 
             UsuarioRepositorio login = new UsuarioRepositorio();
             if (login.LoginUsuario(usuario))
