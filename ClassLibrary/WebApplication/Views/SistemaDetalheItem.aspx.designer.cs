@@ -13,6 +13,24 @@ namespace WebApplication {
     public partial class SistemaDetalheItem {
         
         /// <summary>
+        /// Controle dvMsg.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMsg;
+        
+        /// <summary>
+        /// Controle lbMsg.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbMsg;
+        
+        /// <summary>
         /// Controle lbNomeProduto.
         /// </summary>
         /// <remarks>

@@ -26,26 +26,35 @@
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner">
                             <div class="item active">
-                                <asp:Image ID="imgTop1" runat="server" CssClass="img-responsive" width="100%"/>
+                                <asp:Image ID="imgTop1" runat="server" CssClass="img-responsive" Width="100%" />
                                 <div class="carousel-caption">
-                                    <h3><a runat="server" id="nomeTop1"><asp:Label runat="server" ID="nomeItem1"></asp:Label></a></h3>
-                                    <p><asp:Label runat="server" ID="precoItem1"></asp:Label></p>
+                                    <h3><a runat="server" id="nomeTop1">
+                                        <asp:Label runat="server" ID="nomeItem1"></asp:Label></a></h3>
+                                    <p>
+                                        <asp:Label runat="server" ID="precoItem1"></asp:Label>
+                                    </p>
                                 </div>
                             </div>
 
                             <div class="item">
-                                <asp:Image ID="imgTop2" runat="server" CssClass="img-responsive" width="100%"/>
+                                <asp:Image ID="imgTop2" runat="server" CssClass="img-responsive" Width="100%" />
                                 <div class="carousel-caption">
-                                    <h3><a runat="server" id="nomeTop2"><asp:Label runat="server" ID="nomeItem2"></asp:Label></a></h3>
-                                    <p><asp:Label runat="server" ID="precoItem2"></asp:Label></p>
+                                    <h3><a runat="server" id="nomeTop2">
+                                        <asp:Label runat="server" ID="nomeItem2"></asp:Label></a></h3>
+                                    <p>
+                                        <asp:Label runat="server" ID="precoItem2"></asp:Label>
+                                    </p>
                                 </div>
                             </div>
 
                             <div class="item">
-                                <asp:Image ID="imgTop3" runat="server" CssClass="img-responsive" width="100%"/>
+                                <asp:Image ID="imgTop3" runat="server" CssClass="img-responsive" Width="100%" />
                                 <div class="carousel-caption">
-                                    <h3><a runat="server" id="nomeTop3"><asp:Label runat="server" ID="nomeItem3"></asp:Label></a></h3>
-                                    <p><asp:Label runat="server" ID="precoItem3"></asp:Label></p>
+                                    <h3><a runat="server" id="nomeTop3">
+                                        <asp:Label runat="server" ID="nomeItem3"></asp:Label></a></h3>
+                                    <p>
+                                        <asp:Label runat="server" ID="precoItem3"></asp:Label>
+                                    </p>
                                 </div>
                             </div>
 
@@ -94,4 +103,68 @@
             </div>
         </div>
     </form>
+    <script>
+        var primeiroAcesso = primeiroAcesso || (function ($) {
+            'use strict';
+
+            // Creating modal dialog's DOM
+            var $dialogacesso1 = $(
+                '<div class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top:15%; overflow-y:visible;">' +
+                '<div class="modal-dialog modal-m">' +
+                '<div class="modal-content">' +
+                '<div class="modal-header"><h3>A</3></div>' +
+                '<div class="modal-body">Para completar seu cadastro, confirme seu e-mail clicando no link que acabamos de enviar para você...' +
+                '<div class="modal-footer"><button runat="server" onclick="fimCadastroDialog.hide();redirecionarPrincial();" type="button" class="btn btn-success" data-dismiss="modal" >Concordo</button>' +
+                '</div></div>' +
+                '</div></div></div>');
+
+            return {
+                /**
+                 * Opens our dialog
+                 * @param message Custom message
+                 * @param options Custom options:
+                 * 				  options.dialogSize - bootstrap postfix for dialog size, e.g. "sm", "m";
+                 * 				  options.progressType - bootstrap postfix for progress bar type, e.g. "success", "warning".
+                 */
+                show: function (message, options) {
+                    // Assigning defaults
+                    if (typeof options === 'undefined') {
+                        options = {};
+                    }
+                    if (typeof message === 'undefined') {
+                        message = 'SEJA BEM VINDO';
+                    }
+                    var settings = $.extend({
+                        dialogSize: 'm',
+                        progressType: '',
+                        onHide: null // This callback runs after the dialog was hidden
+                    }, options);
+
+                    // Configuring dialog
+                    $dialogacesso1.find('.modal-dialog').attr('class', 'modal-dialog').addClass('modal-' + settings.dialogSize);
+                    $dialogacesso1.find('.progress-bar').attr('class', 'progress-bar');
+                    if (settings.progressType) {
+                        $dialogProgres.find('.progress-bar').addClass('progress-bar-' + settings.progressType);
+                    }
+                    $dialogacesso1.find('h3').text(message);
+                    // Adding callbacks
+                    if (typeof settings.onHide === 'function') {
+                        $dialogacesso1.off('hidden.bs.modal').on('hidden.bs.modal', function (e) {
+                            settings.onHide.call($dialogProgres);
+                        });
+                    }
+                    // Opening dialog
+                    $dialogacesso1.modal();
+                },
+                /**
+                 * Closes dialog
+                 */
+                hide: function () {
+                    $dialogacesso1.modal('hide');
+
+                }
+            };
+
+        })(jQuery);
+    </script>
 </asp:Content>

@@ -21,7 +21,7 @@
                 <Columns>
                     <asp:BoundField DataField="Id" HeaderText="Id" Visible="false" />
                     <asp:ImageField DataImageUrlField="Imagem" ControlStyle-Width="100" ControlStyle-Height="100" ItemStyle-CssClass="col-md-2 col-sm-2 img-responsive" />
-                    <asp:HyperLinkField DataNavigateUrlFields="Nome" DataTextField="Nome" HeaderText="Nome do Item" DataNavigateUrlFormatString="SistemaDetalheItem.aspx?item={0}" ItemStyle-CssClass="col-md-4 col-sm-4" />
+                    <asp:HyperLinkField DataNavigateUrlFields="Id" DataTextField="Nome" HeaderText="Nome do Item" DataNavigateUrlFormatString="SistemaDetalheItem.aspx?id={0}" ItemStyle-CssClass="col-md-4 col-sm-4" />
                     <asp:BoundField DataField="Quantidade" HeaderText="Quantidade" ItemStyle-Width="100" ItemStyle-CssClass="col-md-2 col-sm-1" />
                     <asp:BoundField DataField="ValorUnitario" HeaderText="Valor Unitário" ItemStyle-Width="100" ItemStyle-CssClass="col-md-2 col-sm-1" />
                     <asp:TemplateField ItemStyle-CssClass="col-md-2 col-sm-2">

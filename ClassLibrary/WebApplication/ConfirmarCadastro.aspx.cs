@@ -27,20 +27,28 @@ namespace WebApplication
             u.HashConfirmacao = hash;
             if (conf.ConfirmarCadastro(u))
             {
-                Response.Write("<script>alerta("+u.Tipousuario.Id.ToString() +")</script>");
                 Session["sistema"] = u;
-                if (u.Tipousuario.Id == 3)//Tipo de usuário vendedor
+      
+                if (Session["carrinho"] != null)
                 {
-                    Response.Redirect("~/Views/Vendedor/VenderItem.aspx");
+                    Response.Redirect("~/Views/SistemaCarrinho.aspx");
                 }
-                else if (u.Tipousuario.Id == 2)//Tipo de usuário comprador
+                else
                 {
-                    Response.Redirect("~/Views/Sistema.aspx");
+                    if (u.Tipousuario.Id == 3)//Tipo de usuário vendedor
+                    {
+                        Response.Redirect("~/Views/Vendedor/VenderItem.aspx");
+                    }
+                    else if (u.Tipousuario.Id == 2)//Tipo de usuário comprador
+                    {
+                        Response.Redirect("~/Views/Sistema.aspx");
+                    }
+                    else if (u.Tipousuario.Id == 1)//Tipo de usuário administrador
+                    {
+                        Response.Redirect("~/Views/Administrador/AdminListar.aspx");
+                    }
                 }
-                else if (u.Tipousuario.Id == 1)//Tipo de usuário administrador
-                {
-                    Response.Redirect("~/Views/Administrador/AdminListar.aspx");
-                }
+                
             }
             else
             {

@@ -107,9 +107,12 @@ insert into StatusPedido values ('Pendente')
 insert into StatusPedido values ('Finalizado')
 insert into StatusPedido values ('Cancelado')
 go
-insert into StatusUsuario values ('Ativo')
-insert into StatusUsuario values ('Pendente')
-insert into StatusUsuario values ('Bloqueado')
+insert into StatusUsuario values ('Ativo')--1
+insert into StatusUsuario values ('Pendente')--2
+insert into StatusUsuario values ('Bloqueado')--3
+insert into StatusUsuario values ('Desabilitado')--4
+insert into StatusUsuario values ('1° Acesso comprador')--5
+insert into StatusUsuario values ('1° Acesso vendedor')--6
 go
 insert into TipoUsuario values ('Admin')
 insert into TipoUsuario values ('Comprador')

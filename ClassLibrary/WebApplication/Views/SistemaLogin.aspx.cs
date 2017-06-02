@@ -14,6 +14,7 @@ namespace WebApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            dvMsg.Visible = false;
             if (!IsPostBack)
             {
                 //Recupera o ID do usuario gravado no cookie
@@ -52,7 +53,7 @@ namespace WebApplication
                 }
             }
 
-            dvMsg.Visible = false;
+
             if (Session["sistema"] != null)
             {
                 Usuario u = (Usuario)Session["sistema"];
@@ -81,16 +82,8 @@ namespace WebApplication
             //Comparados os hashs da criptografia
             usuario.Senha = criptografia.CriptografarSenha(txtSenha.Text);
 
-            if (ManterLogado.Checked)
-            {
-                //Cria um Cookie com validade de 30 dias
-                HttpContext.Current.Response.Cookies["idUsuario"].Expires = DateTime.Now.AddDays(30);
-            }
-            else
-            {
-                //Caso o cookie não seja necessario, é atribuido um dia negativo de validade causando sua destruição
-                HttpContext.Current.Response.Cookies["idUsuario"].Expires = DateTime.Now.AddDays(-1);
-            }
+
+            HttpContext.Current.Response.Cookies["idUsuario"].Expires = DateTime.Now.AddDays(30);
 
             UsuarioRepositorio login = new UsuarioRepositorio();
             if (login.LoginUsuario(usuario))
@@ -112,7 +105,7 @@ namespace WebApplication
                     dvMsg.Attributes["class"] = "alert alert-danger alert-dismissible";
                     lbMsg.Text = "<strong>Conta bloqueada</strong>, entre em contato com o administrador do sistema. <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=2' target='_blank'></a>";
                 }
-                else if (usuario.StatusUsuario.Id == 1)
+                else if (usuario.StatusUsuario.Id == 1 | usuario.StatusUsuario.Id == 5 | usuario.StatusUsuario.Id == 6)
                 {
                     //A tela inicial depende do tipo do usuario que estiver fazendo login
                     Session["sistema"] = usuario;

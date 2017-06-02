@@ -15,6 +15,7 @@ namespace WebApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            dvMsg.Visible = false;
             if (Session["latlog"] == null & Session["sistema"] == null)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "script", "$(function () { chamaModal(); });", true);
@@ -73,6 +74,26 @@ namespace WebApplication
         //Este metodo adiciona um item ao carrinho de compras
         protected void btAdicionaCarrinho_Click(object sender, EventArgs e)
         {
+            int quantidade;
+            if (!int.TryParse(txtQuantidade.Text, out quantidade))
+            {
+                txtQuantidade.Text = 1.ToString();
+                return;
+            }
+            else if (int.TryParse(txtQuantidade.Text, out quantidade))
+            {
+                if (quantidade < 1)
+                {
+                    dvMsg.Visible = true;
+                    dvMsg.Attributes["class"] = "alert alert-danger alert-dismissible";
+                    lbMsg.Text = "Não foi possível atender sua solicitação.";
+
+                    txtQuantidade.Text = 1.ToString();
+
+                    return;
+                }
+            }
+
             Item i = new Item();
             ItemRepositorio carregaItem = new ItemRepositorio();
             List<Item> lst = new List<Item>();
@@ -94,7 +115,7 @@ namespace WebApplication
                 {
                     if (item.Id == int.Parse(lbIdItem.Text))
                     {
-                        item.Quantidade += int.Parse(txtQuantidade.Text);
+                        item.Quantidade = int.Parse(txtQuantidade.Text);
                         achei = true;
                     }
                 }

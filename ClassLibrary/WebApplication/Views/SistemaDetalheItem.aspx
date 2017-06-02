@@ -3,6 +3,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <div id="dvMsg" runat="server" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <asp:Label ID="lbMsg" runat="server"></asp:Label>
+    </div>
     <form runat="server" oninput="calc_total();">
         <div class="panel panel-default">
             <div class="panel-heading text-center">
@@ -31,7 +35,7 @@
                         <div class="form-group">
                             <asp:Label runat="server" ID="lbIdItem" Visible="false"></asp:Label>
                             <asp:LinkButton ID="btVoltar" runat="server" CssClass="btn btn-default" OnClientClick="javascript:window.history.go(-1);"><span aria-hidden="true" class="glyphicon glyphicon-arrow-left"></span></asp:LinkButton>
-                            <asp:LinkButton ID="btAdicionaCarrinho" OnClick="btAdicionaCarrinho_Click" runat="server" CssClass="btn btn-success"><span aria-hidden="true" class="glyphicon glyphicon-plus-sign"></span>&nbsp;COMPRAR</asp:LinkButton>
+                            <asp:LinkButton ID="btAdicionaCarrinho" OnClick="btAdicionaCarrinho_Click" runat="server" CssClass="btn btn-success"><span aria-hidden="true" class="glyphicon glyphicon-plus-sign"></span>&nbsp;Adicionar ao carrinho</asp:LinkButton>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-6">
@@ -73,7 +77,7 @@
             tot = tot.replace(".", ",");
             document.getElementById('<% Response.Write(lbTotal.ClientID);%>').innerHTML = tot;
         }
-	</script>
+    </script>
     <script>
         function chamaModal() {
             waitingDialog.show('Ops! Antes precisamos de alguns dados...');

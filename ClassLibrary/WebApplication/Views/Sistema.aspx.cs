@@ -17,8 +17,15 @@ namespace WebApplication
         {
             if (Session["sistema"] != null)
             {
+                Usuario u = (Usuario)Session["sistema"];
+                if (u.StatusUsuario.Id == 5)
+                {
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "script", "$(function () { fimCadastroDialog.show(); });", true);
+                }
                 sdLogin.Visible = false;
             }
+
+
 
             List<Item> listItens = new List<Item>();
             ItemRepositorio carregaItem = new ItemRepositorio();
@@ -92,7 +99,7 @@ namespace WebApplication
                     dvMsg.Attributes["class"] = "alert alert-danger alert-dismissible";
                     lbMsg.Text = "<strong>Conta bloqueada</strong>, entre em contato com o administrador do sistema. <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=2' target='_blank'></a>";
                 }
-                else if (usuario.StatusUsuario.Id == 1)
+                else if (usuario.StatusUsuario.Id == 1 | usuario.StatusUsuario.Id == 5 | usuario.StatusUsuario.Id == 6)
                 {
                     //A tela inicial depende do tipo do usuario que estiver fazendo login
                     Session["sistema"] = usuario;
