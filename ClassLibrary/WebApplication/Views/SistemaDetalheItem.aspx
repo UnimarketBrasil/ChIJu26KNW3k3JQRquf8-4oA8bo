@@ -82,6 +82,12 @@
                             <asp:Label runat="server" Text="E-mail:"></asp:Label>
                             <asp:Label runat="server" ID="lbEmailVendedor" Text=""></asp:Label>
                         </div>
+                        <div id="dvDuvidaEmail" class="input-group" runat="server">
+                            <asp:TextBox runat="server" ID="txtDuvidaEmail" CssClass="form-control" placeholder="Envie suas dúvidas ao vendedor" />
+                            <span class="input-group-btn">
+                                <asp:Button Text="ENVIAR" ID="btDuvidaEmail" CssClass="btn btn-default input-group-addon" runat="server" OnClick="btDuvidaEmail_Click" />
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
