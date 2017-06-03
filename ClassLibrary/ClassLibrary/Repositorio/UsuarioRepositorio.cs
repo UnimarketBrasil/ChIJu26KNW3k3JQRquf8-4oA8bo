@@ -401,6 +401,13 @@ namespace ClassLibrary.Repositorio
                         user.StatusUsuario = new StatusUsuario();
                         user.StatusUsuario.Id = Convert.ToInt32(Dr["IdStatusUsuario"]);
                         user.Tipousuario = new TipoUsuario(Convert.ToInt32(Dr["IdTipoUsuario"]));
+
+                        Cmd = new SqlCommand("CarregarUsuario", Con);
+                        Cmd.CommandType = CommandType.StoredProcedure;
+                        Cmd.Parameters.AddWithValue("@IdUsuario", user.Id);
+                        Cmd.ExecuteNonQuery();
+
+                        Dr = Cmd.ExecuteReader();
                     }
 
                     return true;
