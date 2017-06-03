@@ -17,7 +17,7 @@ namespace ClassLibrary.Repositorio
                 using (Cmd = new SqlCommand("RealizarPedido", Con))
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
-                    Cmd.Parameters.AddWithValue("@CodigoPedido", pedido.Codigo);
+                    
                     Cmd.Parameters.AddWithValue("@IdVendedor", pedido.Vendedor.Id);
                     Cmd.Parameters.AddWithValue("@IdComprador", pedido.Comprador.Id);
 

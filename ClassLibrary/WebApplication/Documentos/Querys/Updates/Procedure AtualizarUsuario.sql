@@ -10,8 +10,7 @@ create  procedure AtualizarUsuario(
 	@Longitude varchar(20),
 	@Complemento text,
 	@Numero int,
-	@AreaAtuacao real,
-	@IdTipoUsuario int
+	@AreaAtuacao real
 	)
 as
 begin
@@ -26,8 +25,7 @@ begin
 			Longitude = @Longitude,
 			Complemento = @Complemento,
 			Numero = @Numero,
-			AreaAtuacao = @AreaAtuacao,
-			IdTipoUsuario = @IdTipoUsuario
+			AreaAtuacao = @AreaAtuacao
 			where ( Id = @IdUsuario )
 		commit tran
 	end try

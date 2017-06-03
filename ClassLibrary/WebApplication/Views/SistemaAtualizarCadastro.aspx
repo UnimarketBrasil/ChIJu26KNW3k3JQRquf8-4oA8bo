@@ -66,20 +66,7 @@
                         <div class="col-lg-10">
                             <asp:TextBox ID="txtTel" runat="server" CssClass="form-control" placeholder="Telefone" MaxLength="15" onkeyup="formataTelefone(this,event);" required="true"></asp:TextBox>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-lg-2 control-label">Atividade principal</label>
-                        <div class="btn-group col-lg-10" data-toggle="buttons">
-                            <label id="lbComprar" runat="server" class="btn btn-primary">
-                                <input type="radio" name="rdAtividade" id="rdComprar" onchange="areAtuacaoDisplay('c');" runat="server" value="1" required="required" />
-                                Comprar
-                            </label>
-                            <label id="lbVender" runat="server" class="btn btn-primary">
-                                <input type="radio" name="rdAtividade" id="rdVender" onchange="areAtuacaoDisplay('v');" runat="server" value="2" />
-                                Vender
-                            </label>
-                        </div>
-                    </div>
+                    </div>                   
                     <div class="form-group">
                         <label for="" class="col-lg-2 control-label">Endereço</label>
                         <div class="col-lg-5">
@@ -149,21 +136,7 @@
     <!--Outros-->
     <script src="../Scripts/bootstrap-datepicker.js"></script>
     <script src="../Scripts/locales/bootstrap-datepicker.pt-BR.min.js"></script>
-    <script type="text/javascript" src="../Scripts/Mascara.js"></script>
-    <script>
-        function areAtuacaoDisplay(s) {
-
-            if (s == 'c') {
-                document.getElementById('<% =dvAreaAtuacao.ClientID%>').style.display = "none";
-                document.getElementById('<% =lbComprar.ClientID%>').className = "btn btn-primary active";
-                document.getElementById('<% =lbVender.ClientID%>').className = "btn btn-primary";
-            } else {
-                document.getElementById('<% =dvAreaAtuacao.ClientID%>').style.display = "block";
-                document.getElementById('<% =lbVender.ClientID%>').className = "btn btn-primary active";
-                document.getElementById('<% =lbComprar.ClientID%>').className = "btn btn-primary";
-            }
-        }
-    </script>
+    <script type="text/javascript" src="../Scripts/Mascara.js"></script>   
     <script type="text/javascript">
         function chamarAjax() {
             waitingDialog.show('Buscando...');

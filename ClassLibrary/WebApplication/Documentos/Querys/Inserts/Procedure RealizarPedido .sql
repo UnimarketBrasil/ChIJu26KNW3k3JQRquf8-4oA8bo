@@ -3,7 +3,6 @@ go
 Excluir RealizarPedido
 go
 create procedure RealizarPedido(
-	@CodigoPedido varchar(50),
 	@IdVendedor int,
 	@IdComprador int
 	)
@@ -15,7 +14,7 @@ as begin
 			IdVendedor,
 			IdComprador
 			)  output inserted.Id values (
-			@CodigoPedido,
+			convert(int,(select top(1) codigo from Pedido where idVendedor = @IdVendedor order by Data desc)) + 1,
 			@IdVendedor,
 			@IdComprador
 			)
