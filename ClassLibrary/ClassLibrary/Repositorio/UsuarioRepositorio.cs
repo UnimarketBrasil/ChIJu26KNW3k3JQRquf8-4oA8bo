@@ -36,6 +36,13 @@ namespace ClassLibrary.Repositorio
                     Cmd.Parameters.AddWithValue("@IdTipoUsuario", user.Tipousuario.Id);
                     user.Id = int.Parse(Cmd.ExecuteScalar().ToString());
 
+                    Cmd = new SqlCommand("CadastrarMetodosPagamento", Con);
+                    Cmd.CommandType = CommandType.StoredProcedure;
+
+                    Cmd.Parameters.AddWithValue("@IdUsuario", user.Id);
+
+                    Cmd.ExecuteNonQuery();
+
                     return true;
                 }
                 catch

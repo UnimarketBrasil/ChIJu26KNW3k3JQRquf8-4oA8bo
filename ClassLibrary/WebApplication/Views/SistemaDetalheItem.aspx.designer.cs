@@ -49,6 +49,33 @@ namespace WebApplication {
         protected global::System.Web.UI.WebControls.Image imProduto;
         
         /// <summary>
+        /// Controle lbDescricao.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbDescricao;
+        
+        /// <summary>
+        /// Controle lbCartaoDebito.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbCartaoDebito;
+        
+        /// <summary>
+        /// Controle lbCartaoCredito.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbCartaoCredito;
+        
+        /// <summary>
         /// Controle lbValorUnitario.
         /// </summary>
         /// <remarks>
@@ -137,14 +164,5 @@ namespace WebApplication {
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbEmailVendedor;
-        
-        /// <summary>
-        /// Controle lbDescricao.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbDescricao;
     }
 }

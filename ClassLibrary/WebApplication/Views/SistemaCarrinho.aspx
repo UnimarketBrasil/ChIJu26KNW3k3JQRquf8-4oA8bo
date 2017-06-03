@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <form runat="server">
+    <form runat="server" class="table-responsive">
         <h2 class="text-uppercase"><strong>Carrinho de compra</strong></h2>
         <div class="row container-fluid">
             <div id="dvMsg" runat="server" role="alert" visible="false">
@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="row container-fluid">
-            <asp:GridView ID="grdCarrinhoDeCompra" ShowFooter="true" OnPageIndexChanging="grdCarrinhoDeCompra_PageIndexChanging" CssClass="table table-hover table-striped" GridLines="None" runat="server" AutoGenerateColumns="false" AllowPaging="True">
+            <asp:GridView ID="grdCarrinhoDeCompra" ShowFooter="true" OnPageIndexChanging="grdCarrinhoDeCompra_PageIndexChanging" CssClass="table table-hover table-striped table-responsive" GridLines="None" runat="server" AutoGenerateColumns="false" AllowPaging="True">
                 <Columns>
                     <asp:BoundField DataField="Id" HeaderText="Id" Visible="false" />
                     <asp:ImageField DataImageUrlField="Imagem" ControlStyle-Width="100" ControlStyle-Height="100" ItemStyle-CssClass="col-md-2 col-sm-2 img-responsive" />

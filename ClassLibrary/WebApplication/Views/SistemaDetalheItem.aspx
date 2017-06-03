@@ -14,12 +14,36 @@
             </div>
             <div class="panel-body">
                 <div class="row">
-                    <div class="col-md-4 col-sm-6">
+                    <div class="col-xs-4">
                         <div class="form-group">
                             <asp:Image ID="imProduto" class="img-responsive" runat="server" />
                         </div>
                     </div>
-                    <div class="col-md-4 col-sm-6">
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <asp:Label runat="server" CssClass="h4" Text="Caracteristicas"></asp:Label>
+                        </div>
+                        <div class="form-group">
+                            <asp:Label runat="server" ID="lbDescricao" Text=""></asp:Label>
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <asp:Label runat="server" CssClass="h4" Text="Métodos de Pagamento"></asp:Label>
+                        </div>
+                        <div class="form-group">
+                            <asp:Label runat="server" Text="Dinheiro:"></asp:Label>
+                            <asp:Label runat="server" Text="Sim"></asp:Label>
+                        </div>
+                        <div class="form-group">
+                            <asp:Label runat="server" Text="Cartão de Débito:"></asp:Label>
+                            <asp:Label runat="server" ID="lbCartaoDebito" Text=""></asp:Label>
+                        </div>
+                        <div class="form-group">
+                            <asp:Label runat="server" Text="Cartão de Crédito:"></asp:Label>
+                            <asp:Label runat="server" ID="lbCartaoCredito" Text=""></asp:Label>
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
                         <div class="form-group well well-sm">
                             <asp:Label runat="server" Text="Preço: R$ "></asp:Label>
                             <asp:Label runat="server" ID="lbValorUnitario" Text=""></asp:Label>
@@ -38,7 +62,10 @@
                             <asp:LinkButton ID="btAdicionaCarrinho" OnClick="btAdicionaCarrinho_Click" runat="server" CssClass="btn btn-success"><span aria-hidden="true" class="glyphicon glyphicon-plus-sign"></span>&nbsp;Adicionar ao carrinho</asp:LinkButton>
                         </div>
                     </div>
-                    <div class="col-md-4 col-sm-6">
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-xs-4">
                         <div class="form-group">
                             <asp:Label runat="server" Text="Vendedor:"></asp:Label>
                             <asp:Label runat="server" ID="lbNomeVendedor" Text=""></asp:Label>
@@ -54,14 +81,6 @@
                         <div class="form-group">
                             <asp:Label runat="server" Text="E-mail:"></asp:Label>
                             <asp:Label runat="server" ID="lbEmailVendedor" Text=""></asp:Label>
-                        </div>
-                    </div>
-                </div>
-                <hr />
-                <div class="row">
-                    <div class="col-md-8">
-                        <div class="form-group">
-                            <asp:Label runat="server" ID="lbDescricao" Text=""></asp:Label>
                         </div>
                     </div>
                 </div>
