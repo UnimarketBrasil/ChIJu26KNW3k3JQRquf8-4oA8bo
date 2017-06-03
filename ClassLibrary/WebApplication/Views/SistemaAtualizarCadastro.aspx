@@ -66,7 +66,7 @@
                         <div class="col-lg-10">
                             <asp:TextBox ID="txtTel" runat="server" CssClass="form-control" placeholder="Telefone" MaxLength="15" onkeyup="formataTelefone(this,event);" required="true"></asp:TextBox>
                         </div>
-                    </div>                   
+                    </div>
                     <div class="form-group">
                         <label for="" class="col-lg-2 control-label">Endereço</label>
                         <div class="col-lg-5">
@@ -92,7 +92,7 @@
                     <div class="form-group">
                         <label for="" class="col-lg-2 control-label">Complemento</label>
                         <div class="col-lg-10">
-                            <asp:TextBox ID="txtComplemento" runat="server" CssClass="form-control" placeholder="Complemento" ></asp:TextBox>
+                            <asp:TextBox ID="txtComplemento" runat="server" CssClass="form-control" placeholder="Complemento"></asp:TextBox>
                         </div>
                     </div>
                     <div id="dvAreaAtuacao" class="form-group" runat="server">
@@ -126,6 +126,16 @@
                         <asp:FileUpload ID="InputFoto" CssClass="file" accept="image/*" runat="server" />
                     </div>
                 </div>
+                <div class="form-group col-md-3" runat="server">
+                    <asp:CheckBoxList ID="cbMetodosPagamento" runat="server">
+                        <asp:ListItem Value="TGJU"> TG </asp:ListItem>
+                        <asp:ListItem Value="GOLDOZ"> Gold </asp:ListItem>
+                        <asp:ListItem Value="SILVEROZ"> Silver </asp:ListItem>
+                        <asp:ListItem Value="NERKH"> NE </asp:ListItem>
+                        <asp:ListItem Value="TALA"> Tala </asp:ListItem>
+                        <asp:ListItem Value="YARAN"> Sekeh </asp:ListItem>
+                    </asp:CheckBoxList>
+                </div>
             </form>
         </div>
     </div>
@@ -136,7 +146,7 @@
     <!--Outros-->
     <script src="../Scripts/bootstrap-datepicker.js"></script>
     <script src="../Scripts/locales/bootstrap-datepicker.pt-BR.min.js"></script>
-    <script type="text/javascript" src="../Scripts/Mascara.js"></script>   
+    <script type="text/javascript" src="../Scripts/Mascara.js"></script>
     <script type="text/javascript">
         function chamarAjax() {
             waitingDialog.show('Buscando...');
