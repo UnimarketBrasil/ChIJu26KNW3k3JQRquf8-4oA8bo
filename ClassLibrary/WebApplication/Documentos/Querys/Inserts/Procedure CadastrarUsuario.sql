@@ -58,7 +58,6 @@ begin
 			 @IdTipoUsuario,
 			 getdate()
 			 )
-			 select Usuario.Email from Usuario where Email=@Email
 		commit tran
 	end try
 	begin catch

@@ -86,6 +86,7 @@
     <Content Include="Content\GridPager.css" />
     <Content Include="Documentos\Criptografia.js" />
     <Content Include="Documentos\Querys\Criacao do banco UnimarketDB.sql" />
+    <Content Include="Documentos\Querys\Inserts\Procedure CadastrarMetodosPagamento.sql" />
     <Content Include="Documentos\Querys\Inserts\Procedure RealizarPedido .sql" />
     <Content Include="Documentos\Querys\Lists\Procedure Top3Itens .sql" />
     <Content Include="Documentos\Querys\Updates\Procedure DesbloquearUsuario .sql" />

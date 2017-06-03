@@ -36,6 +36,8 @@ namespace ClassLibrary.Repositorio
                     Cmd.Parameters.AddWithValue("@IdTipoUsuario", user.Tipousuario.Id);
                     user.Id = int.Parse(Cmd.ExecuteScalar().ToString());
 
+
+
                     return true;
                 }
                 catch

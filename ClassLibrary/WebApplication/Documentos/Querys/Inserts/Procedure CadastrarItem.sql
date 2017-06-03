@@ -1,6 +1,6 @@
 use unimarket
-go
-Excluir CadastrarItem
+if OBJECT_ID('CadastrarItem') is not null
+drop procedure CadastrarItem
 go
 create procedure CadastrarItem(
 	@Codigo varchar(50),
