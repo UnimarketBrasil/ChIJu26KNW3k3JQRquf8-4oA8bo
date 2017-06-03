@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ClassLibrary
 {
@@ -33,6 +34,8 @@ namespace ClassLibrary
         public string Complemento { get; set; }
 
         public double AreaAtuacao { get; set; }
+
+        public List<MetodoPagamento> MetodoPagamento { get; set; }
 
         public TipoUsuario Tipousuario { get; set; }
 
