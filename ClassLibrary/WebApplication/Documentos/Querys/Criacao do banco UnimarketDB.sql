@@ -10,11 +10,11 @@ create table TipoUsuario(
 	Nome varchar(50) not null
 )
 go
-/*
-
-É necessário incluir a coluna ultimo acesso.
-
-*/
+create table MetodosPagamento(
+	Id int Not null primary key identity(1,1),
+	Nome varchar(50) not null
+)
+go
 create table Usuario( 
 	Id int Not null primary key identity(1,1),
 	Email varchar(50) not null unique,
@@ -37,14 +37,10 @@ create table Usuario(
 	UltimoAcesso DateTime not null
 )
 go
-create table SubUsuario(
-	Id int not null primary key identity(1,1),
-	Nome varchar(50) not null,
-	Email varchar(50) not null,
-	Senha varchar(50) not null,
-	IdUsuario int foreign key references Usuario(Id),
-	DataCadastro dateTime not null default getdate(),
-	Desabilitado bit not null default 'false'
+create table MetodosPagamentoUsuario(
+	IdMetodo int not null foreign key references MetodosPagamento(Id),
+	IdVendedor int not null foreign key references Usuario(Id),
+	Desabilitado bit not null
 )
 go
 create table StatusPedido(
@@ -88,11 +84,13 @@ create table ItemPedido(
 	IdPedido int not null foreign key references Pedido(Id),
 	Desabilitado bit not null default 'false'
 )
+go
 create table MensagemPadrao
 (
 	Id int not null primary key identity(1,1),
 	Mensagem varchar(800) not null
 )
+go
 create table HistoricoMensagem
 (
 	Id int not null primary key identity(1,1),
@@ -101,7 +99,6 @@ create table HistoricoMensagem
 	IdDestinatario int not null foreign key references Usuario(Id),
 	DataEnvio dateTime not null default getdate()
 )
-
 go
 insert into StatusPedido values ('Pendente')
 insert into StatusPedido values ('Finalizado')
@@ -117,7 +114,14 @@ go
 insert into TipoUsuario values ('Admin')
 insert into TipoUsuario values ('Comprador')
 insert into TipoUsuario values ('Vendedor')
-
+go
+insert into MetodosPagamento values ('Dinheiro')
+insert into MetodosPagamento values ('Cartão de Débito')
+insert into MetodosPagamento values ('Cartão de Crédio - Elo')
+insert into MetodosPagamento values ('Cartão de Crédio - MasterCard')
+insert into MetodosPagamento values ('Cartão de Crédio - Visa')
+insert into MetodosPagamento values ('Cartão de Crédio - HiperCard')
+insert into MetodosPagamento values ('Cartão de Crédio - Diners')
 go
 insert into Categoria values ('Eletrônicos')
 insert into Categoria values ('Informática')

@@ -101,6 +101,9 @@
                     </div>
                 </aside>
             </div>
+            <div class="canva-embed" data-height-ratio="0.8" data-design-id="DACXOTYdFIU" style="padding: 80% 5px 5px 5px; background: rgba(0,0,0,0.03); border-radius: 8px;"></div>
+            <script async src="https://sdk.canva.com/v1/embed.js"></script>
+            <a href="https://www.canva.com/design/DACXOTYdFIU/view?utm_content=DACXOTYdFIU&utm_campaign=designshare&utm_medium=embeds&utm_source=link" target="_blank">Desafío para principiantes</a> de <a href="https://www.canva.com/josefilhosilva?utm_campaign=designshare&utm_medium=embeds&utm_source=link" target="_blank">José Filho</a>
         </div>
     </form>
     <script>
