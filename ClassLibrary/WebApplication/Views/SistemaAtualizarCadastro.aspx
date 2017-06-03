@@ -126,7 +126,7 @@
                         <asp:FileUpload ID="InputFoto" CssClass="file" accept="image/*" runat="server" />
                     </div>
                 </div>
-                <div class="form-group col-md-3" runat="server">
+                <div id="dvMetodo" class="form-group col-md-3" runat="server" visible="false">
                     <asp:CheckBoxList ID="cbMetodosPagamento" runat="server">                                            
                     </asp:CheckBoxList>
                 </div>

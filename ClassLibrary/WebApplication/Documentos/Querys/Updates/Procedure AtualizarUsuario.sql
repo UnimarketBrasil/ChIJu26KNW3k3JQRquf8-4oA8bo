@@ -1,4 +1,9 @@
 use unimarket
+if OBJECT_ID('AtualizarUsuario') is not null
+drop procedure AtualizarUsuario
+go
+if OBJECT_ID('AtualizarMetodosPagamento') is not null
+drop procedure AtualizarMetodosPagamento
 go
 create  procedure AtualizarUsuario(
 	@IdUsuario int,
@@ -44,7 +49,7 @@ as begin
 		begin tran		
 			update MetodosPagamentoUsuario set
 			Desabilitado = @Desabilitado
-			where (IdMetodo = @IdMetodo) and (@IdVendedor = @IdVendedor)			
+			where (IdMetodo = @IdMetodo) and (IdVendedor = @IdVendedor)			
 		commit tran
 	end try
 	begin catch

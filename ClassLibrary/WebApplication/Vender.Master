@@ -40,7 +40,7 @@
                         <li class="dropdown">
                             <a href="#" draggable="false" class="dropdown-toggle glyphicon glyphicon-user" data-toggle="dropdown" role="button" aria-expanded="false"></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a draggable="false" runat="server" href="~/Views/SistemaAtualizarCadastro.aspx">Atualizar Cadastro</a></li>
+                                <li><a draggable="false" runat="server" href="~/Views/SistemaAtualizarCadastro.aspx?TipoUsuario=2">Atualizar Cadastro</a></li>
                                 <li><a draggable="false" runat="server" href="~/Views/Vendedor/VenderPedido.aspx">Meus Pedidos</a></li>
                             </ul>
                         </li>

@@ -16,6 +16,10 @@ namespace WebApplication
     {
         protected void Page_PreInit(object sender, EventArgs e)
         {
+            int idtpousuario;
+
+            int.TryParse(Request.QueryString["TipoUsuario"], out idtpousuario);
+
             if (Session["sistema"] != null)
             {
                 Usuario u = (Usuario)Session["sistema"];
@@ -23,11 +27,11 @@ namespace WebApplication
                 {
                     this.Page.MasterPageFile = "~/Admin.Master";
                 }
-                else if (u.Tipousuario.Id == 2)
+                else if (u.Tipousuario.Id == 2 && !idtpousuario.Equals(2))
                 {
                     this.Page.MasterPageFile = "~/Comprar.Master";
                 }
-                else if (u.Tipousuario.Id == 3)
+                else if (u.Tipousuario.Id == 3 || idtpousuario.Equals(2))
                 {
                     this.Page.MasterPageFile = "~/Vender.Master";
                 }
@@ -44,6 +48,15 @@ namespace WebApplication
         //ESTE METODO CARREGA AS INFORMAÇOES DO USUARIO PARA ALTERAÇÃO
         protected void Page_Load(object sender, EventArgs e)
         {
+            int idtpousuario;
+
+            int.TryParse(Request.QueryString["TipoUsuario"], out idtpousuario);
+
+            if (idtpousuario.Equals(2))
+            {
+                dvMetodo.Visible = true;
+            }
+
             if (!IsPostBack)
             {
                 Usuario u = (Usuario)Session["sistema"];
@@ -84,7 +97,7 @@ namespace WebApplication
                         {
                             cbMetodosPagamento.Items.Add(new ListItem(u.MetodoPagamento[i].Nome, u.MetodoPagamento[i].Id.ToString()));
                             cbMetodosPagamento.Items[i].Selected = u.MetodoPagamento[i].Desabilitado;
-                        }                        
+                        }
 
                     }
                     else
@@ -148,7 +161,7 @@ namespace WebApplication
             {
                 u.Nome = txtRazaoSocial.Text;
                 u.Email = txtEmail.Text;
-                u.Telefone = txtTel.Text;               
+                u.Telefone = txtTel.Text;
 
                 try
                 {
@@ -176,7 +189,7 @@ namespace WebApplication
                     m.Id = Convert.ToInt32(i.Value);
                     m.Desabilitado = i.Selected;
                     u.MetodoPagamento.Add(m);
-                }               
+                }
 
                 if (InputFoto.HasFile)
                 {
@@ -215,7 +228,7 @@ namespace WebApplication
                 u.Sobrenome = txtSobrenome.Text;
                 u.Email = txtEmail.Text;
                 u.Telefone = txtTel.Text;
-               
+
                 try
                 {
                     Usuario uEndereco = (Usuario)Session["latlog"];
