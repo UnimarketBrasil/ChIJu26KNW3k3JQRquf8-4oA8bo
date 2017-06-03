@@ -80,6 +80,12 @@ namespace WebApplication
                         txtComplemento.Text = u.Complemento;
                         dpArea.SelectedValue = Convert.ToString(u.AreaAtuacao);
 
+                        for (int i = 0; i < u.MetodoPagamento.Count; i++)
+                        {
+                            cbMetodosPagamento.Items.Add(new ListItem(u.MetodoPagamento[i].Nome, u.MetodoPagamento[i].Id.ToString()));
+                            cbMetodosPagamento.Items[i].Selected = u.MetodoPagamento[i].Desabilitado;
+                        }                        
+
                     }
                     else
                     {
@@ -114,6 +120,12 @@ namespace WebApplication
                         txtNumero.Text = u.Numero.ToString();
                         txtComplemento.Text = u.Complemento;
                         dpArea.SelectedValue = Convert.ToString(u.AreaAtuacao);
+
+                        for (int i = 0; i < u.MetodoPagamento.Count; i++)
+                        {
+                            cbMetodosPagamento.Items.Add(new ListItem(u.MetodoPagamento[i].Nome, u.MetodoPagamento[i].Id.ToString()));
+                            cbMetodosPagamento.Items[i].Selected = u.MetodoPagamento[i].Desabilitado;
+                        }
 
                     }
                     else
@@ -154,6 +166,17 @@ namespace WebApplication
                 u.Complemento = txtComplemento.Text;
                 u.Numero = Convert.ToInt32(txtNumero.Text);
                 u.AreaAtuacao = Convert.ToDouble(dpArea.SelectedValue);
+
+                u.MetodoPagamento = new List<MetodoPagamento>();
+                MetodoPagamento m = null;
+
+                foreach (var i in cbMetodosPagamento.Items.Cast<ListItem>())
+                {
+                    m = new MetodoPagamento();
+                    m.Id = Convert.ToInt32(i.Value);
+                    m.Desabilitado = i.Selected;
+                    u.MetodoPagamento.Add(m);
+                }               
 
                 if (InputFoto.HasFile)
                 {
@@ -208,6 +231,17 @@ namespace WebApplication
                 u.Complemento = txtComplemento.Text;
                 u.Numero = Convert.ToInt32(txtNumero.Text);
                 u.AreaAtuacao = Convert.ToDouble(dpArea.SelectedValue);
+
+                u.MetodoPagamento = new List<MetodoPagamento>();
+                MetodoPagamento m = null;
+
+                foreach (var i in cbMetodosPagamento.Items.Cast<ListItem>())
+                {
+                    m = new MetodoPagamento();
+                    m.Id = Convert.ToInt32(i.Value);
+                    m.Desabilitado = i.Selected;
+                    u.MetodoPagamento.Add(m);
+                }
 
                 if (InputFoto.HasFile)
                 {

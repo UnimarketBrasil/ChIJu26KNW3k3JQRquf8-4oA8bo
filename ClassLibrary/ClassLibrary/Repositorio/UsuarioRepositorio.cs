@@ -34,6 +34,7 @@ namespace ClassLibrary.Repositorio
                     Cmd.Parameters.AddWithValue("@Complemento", user.Complemento);
                     Cmd.Parameters.AddWithValue("@AreaAtuacao", user.AreaAtuacao);
                     Cmd.Parameters.AddWithValue("@IdTipoUsuario", user.Tipousuario.Id);
+
                     user.Id = int.Parse(Cmd.ExecuteScalar().ToString());
 
                     Cmd = new SqlCommand("CadastrarMetodosPagamento", Con);
@@ -76,14 +77,26 @@ namespace ClassLibrary.Repositorio
                     Cmd.Parameters.AddWithValue("@Longitude", user.Longitude);
                     Cmd.Parameters.AddWithValue("@Complemento", user.Complemento);
                     Cmd.Parameters.AddWithValue("@Numero", user.Numero);
-                    Cmd.Parameters.AddWithValue("@AreaAtuacao", user.AreaAtuacao);
-                    Cmd.Parameters.AddWithValue("@IdTipoUsuario", user.Tipousuario.Id);
+                    Cmd.Parameters.AddWithValue("@AreaAtuacao", user.AreaAtuacao);                    
                     Cmd.ExecuteNonQuery();
+
+                    foreach (var i in user.MetodoPagamento)
+                    {
+                        Cmd = new SqlCommand("AtualizarMetodosPagamento", Con);
+                        Cmd.CommandType = CommandType.StoredProcedure;
+
+                        Cmd.Parameters.AddWithValue("@IdVendedor", user.Id);
+                        Cmd.Parameters.AddWithValue("@IdMetodo", i.Id);
+                        Cmd.Parameters.AddWithValue("@Desabilitado", i.Desabilitado);
+                        Cmd.ExecuteNonQuery();
+
+                    }
+
                     return true;
                 }
                 catch (Exception ex)
                 {
-                    return false;
+                    //return false;
                     throw new Exception("Erro ao atualizar usuario: " + ex.Message);
                 }
                 finally
@@ -117,7 +130,7 @@ namespace ClassLibrary.Repositorio
 
                     return existe;
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     throw new Exception("Erro ao atualizar usuario: " + ex.Message);
                 }
@@ -172,7 +185,6 @@ namespace ClassLibrary.Repositorio
                 }
             }
         }
-
 
         public void IncluirEndereco(Usuario user)
         {
@@ -373,6 +385,8 @@ namespace ClassLibrary.Repositorio
 
             using (Cmd = new SqlCommand("CarregarUsuario", Con))
             {
+                user.MetodoPagamento = new List<MetodoPagamento>();
+                MetodoPagamento pagamento = null;
                 try
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
@@ -402,19 +416,34 @@ namespace ClassLibrary.Repositorio
                         user.StatusUsuario.Id = Convert.ToInt32(Dr["IdStatusUsuario"]);
                         user.Tipousuario = new TipoUsuario(Convert.ToInt32(Dr["IdTipoUsuario"]));
 
-                        Cmd = new SqlCommand("CarregarUsuario", Con);
+                    }
+
+                    Dr.Close();
+
+                    using (Cmd = new SqlCommand("CarregarMetodosPagamento", Con))
+                    {
                         Cmd.CommandType = CommandType.StoredProcedure;
-                        Cmd.Parameters.AddWithValue("@IdUsuario", user.Id);
-                        Cmd.ExecuteNonQuery();
+                        Cmd.Parameters.AddWithValue("@IdVendedor", user.Id);
 
                         Dr = Cmd.ExecuteReader();
+
+                        while (Dr.Read())
+                        {
+                            pagamento = new MetodoPagamento();
+                            pagamento.Id = Convert.ToInt32(Dr["IdMetodo"]);
+                            pagamento.Nome = Convert.ToString(Dr["Nome"]);
+                            pagamento.Desabilitado = Convert.ToBoolean(Dr["Desabilitado"]);
+
+                            user.MetodoPagamento.Add(pagamento);
+
+                        }
                     }
 
                     return true;
                 }
                 catch (Exception ex)
                 {
-                    return false;
+                    //return false;
                     throw new Exception("Erro ao Carregar usuario: " + ex.Message);
                 }
                 finally

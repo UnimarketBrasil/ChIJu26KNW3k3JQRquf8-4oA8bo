@@ -127,13 +127,7 @@
                     </div>
                 </div>
                 <div class="form-group col-md-3" runat="server">
-                    <asp:CheckBoxList ID="cbMetodosPagamento" runat="server">
-                        <asp:ListItem Value="TGJU"> TG </asp:ListItem>
-                        <asp:ListItem Value="GOLDOZ"> Gold </asp:ListItem>
-                        <asp:ListItem Value="SILVEROZ"> Silver </asp:ListItem>
-                        <asp:ListItem Value="NERKH"> NE </asp:ListItem>
-                        <asp:ListItem Value="TALA"> Tala </asp:ListItem>
-                        <asp:ListItem Value="YARAN"> Sekeh </asp:ListItem>
+                    <asp:CheckBoxList ID="cbMetodosPagamento" runat="server">                                            
                     </asp:CheckBoxList>
                 </div>
             </form>
