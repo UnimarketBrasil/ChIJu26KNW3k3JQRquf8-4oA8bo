@@ -87,6 +87,11 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <div class="col-xs-10 col-xs-offset-2">
+                                <asp:CheckBox ID="manterLogado" CssClass="checkbox-inline" runat="server" Text="Me mantenha logado" />
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <div class="col-sm-10 col-sm-offset-2">
                                 <asp:Label runat="server">Ainda não possui cadastro? <a href="SistemaCadastrar.aspx">Crie uma conta!</a></asp:Label>
                             </div>
