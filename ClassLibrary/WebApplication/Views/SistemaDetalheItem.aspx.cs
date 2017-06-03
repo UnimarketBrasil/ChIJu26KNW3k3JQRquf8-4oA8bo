@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -15,7 +17,12 @@ namespace WebApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["sistema"] == null)
+                dvDuvidaEmail.Visible = false;            
+           
+            
             dvMsg.Visible = false;
+           
             if (Session["latlog"] == null & Session["sistema"] == null)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "script", "$(function () { chamaModal(); });", true);
@@ -131,6 +138,23 @@ namespace WebApplication
             }
 
             Response.Redirect("/Views/SistemaCarrinho.aspx");
+        }
+
+        protected void btDuvidaEmail_Click(object sender, EventArgs e)
+        {
+            Usuario u = (Usuario)Session["sistema"];
+            IsEmail duvida = new IsEmail();
+            MailMessage message = new MailMessage();
+            
+            StringBuilder strBody = new StringBuilder();
+            strBody.AppendLine(txtDuvidaEmail.Text);
+
+            message = new MailMessage("unimarketbrasil@gmail.com", u.Email.ToString());
+            message.Subject = "Duvida";
+            message.Body = strBody.ToString();
+            message.To.Add(lbEmailVendedor.Text);
+
+            duvida.Enviar(message);
         }
     }
 }
