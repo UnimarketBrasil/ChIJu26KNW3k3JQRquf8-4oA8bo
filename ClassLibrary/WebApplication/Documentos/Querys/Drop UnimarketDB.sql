@@ -1,5 +1,9 @@
 use unimarket
 go
+drop table MetodosPagamentoUsuario
+go
+drop table MetodosPagamento
+go
 drop table HistoricoMensagem
 go
 drop table MensagemPadrao
@@ -11,8 +15,6 @@ go
 drop table StatusPedido
 go
 drop table Item
-go
-drop table SubUsuario
 go
 drop table Usuario
 go
