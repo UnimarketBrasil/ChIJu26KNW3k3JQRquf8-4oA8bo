@@ -111,8 +111,7 @@ namespace WebApplication
                 }
                 else
                 {
-                    pedido = new Pedido();
-                    pedido.Codigo = "1";
+                    pedido = new Pedido();                    
                     pedido.Vendedor = new Usuario();
                     pedido.Comprador = new Usuario();
                     pedido.Comprador = comprador;
