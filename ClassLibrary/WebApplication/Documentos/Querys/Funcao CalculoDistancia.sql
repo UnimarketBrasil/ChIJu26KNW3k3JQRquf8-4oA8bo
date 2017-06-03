@@ -11,6 +11,6 @@ create function CalculoDistancia(
 returns real
 as
 begin 
-	return sqrt( power(convert(float, @LatitudeVendedor) - convert(float, @LatitudeComprador), 2) + power( convert(float, @LongitudeVendedor) -  convert(float, @LongitudeComprador), 2))
+	return sqrt( power(convert(float, @LatitudeComprador) - convert(float, @LatitudeVendedor), 2) + power( convert(float, @LongitudeComprador) -  convert(float, @LongitudeVendedor), 2))
 end
 

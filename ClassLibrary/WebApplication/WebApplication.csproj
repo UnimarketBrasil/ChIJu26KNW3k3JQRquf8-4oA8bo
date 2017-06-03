@@ -94,7 +94,6 @@
     <Content Include="Documentos\Querys\Drop UnimarketDB.sql" />
     <Content Include="Documentos\Querys\Funcao CalculoDistancia.sql" />
     <Content Include="Documentos\Querys\Inserts\Procedure CadastrarItem.sql" />
-    <Content Include="Documentos\Querys\Inserts\Procedure CadastrarSubUsuario.sql" />
     <Content Include="Documentos\Querys\Inserts\Procedure CadastrarUsuario.sql" />
     <Content Include="Documentos\Querys\Inserts\Procedure IncluirEndereco.sql" />
     <Content Include="Documentos\Querys\Inserts\Procedure ConfirmarCadastro.sql" />
@@ -105,7 +104,6 @@
     <Content Include="Documentos\Querys\Lists\Procedure ListarPedidoPeloStatus.sql" />
     <Content Include="Documentos\Querys\Lists\Procedure ListarUsuario.sql" />
     <Content Include="Documentos\Querys\Selects\Procedure CarregarPedido.sql" />
-    <Content Include="Documentos\Querys\Selects\Procedure CarregarSubUsuario.sql" />
     <Content Include="Documentos\Querys\Selects\Procedure CarregarUsuario.sql" />
     <Content Include="Documentos\Querys\Selects\Procedure CarregarCategoria.sql" />
     <Content Include="Documentos\Querys\Selects\Procedure DetalheItemComprador.sql" />
@@ -118,10 +116,8 @@
     <Content Include="Documentos\Querys\Selects\Procedure RecuperarSenha.sql" />
     <Content Include="Documentos\Querys\Updates\Procedure AtualizarItem.sql" />
     <Content Include="Documentos\Querys\Updates\Procedure AtualizarSenha.sql" />
-    <Content Include="Documentos\Querys\Updates\Procedure AtualizarSenhaSubUsuario.sql" />
     <Content Include="Documentos\Querys\Updates\Procedure AtualizarUsuario.sql" />
     <Content Include="Documentos\Querys\Deletes\Procedure CancelarPedido.sql" />
-    <Content Include="Documentos\Querys\Updates\Procedure AtualizarSubUsuario.sql" />
     <Content Include="Documentos\Querys\Updates\Procedure FinalizarPedido.sql" />
     <Content Include="Default.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
