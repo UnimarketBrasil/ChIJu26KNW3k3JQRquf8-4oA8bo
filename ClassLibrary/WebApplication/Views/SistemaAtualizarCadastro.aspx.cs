@@ -73,19 +73,6 @@ namespace WebApplication
                             userImage.ImageUrl = ResolveUrl(Path.Combine(caminho, img));
                         }
 
-                        if (u.Tipousuario.Id == 2)
-                        {
-                            rdComprar.Checked = true;
-                            lbComprar.Attributes.Add("class", "btn btn-primary active");
-                            rdVender.Checked = false;
-                        }
-                        else if (u.Tipousuario.Id == 3)
-                        {
-                            rdVender.Checked = true;
-                            lbVender.Attributes.Add("class", "btn btn-primary active");
-                            rdComprar.Checked = false;
-                        }
-
                         GeoCodificacao g = new GeoCodificacao();
                         lbEndereco.Text = g.ObterEndereco(u.Latitude, u.Longitude);
                         txtEndereco.Text = u.CEP;
@@ -121,19 +108,6 @@ namespace WebApplication
                             userImage.ImageUrl = ResolveUrl(Path.Combine(caminho, img));
                         }
 
-                        if (u.Tipousuario.Id == 2)
-                        {
-                            rdComprar.Checked = true;
-                            lbComprar.Attributes.Add("class", "btn btn-primary active");
-                            rdVender.Checked = false;
-                        }
-                        else if (u.Tipousuario.Id == 3)
-                        {
-                            rdVender.Checked = true;
-                            lbVender.Attributes.Add("class", "btn btn-primary active");
-                            rdComprar.Checked = false;
-                        }
-
                         GeoCodificacao g = new GeoCodificacao();
                         lbEndereco.Text = g.ObterEndereco(u.Latitude, u.Longitude);
                         txtEndereco.Text = u.CEP;
@@ -162,17 +136,7 @@ namespace WebApplication
             {
                 u.Nome = txtRazaoSocial.Text;
                 u.Email = txtEmail.Text;
-                u.Telefone = txtTel.Text;
-                if (rdComprar.Checked == true)
-                {
-                    u.Tipousuario = new TipoUsuario();
-                    u.Tipousuario.Id = 2;
-                }
-                else if (rdVender.Checked == true)
-                {
-                    u.Tipousuario = new TipoUsuario();
-                    u.Tipousuario.Id = 3;
-                }
+                u.Telefone = txtTel.Text;               
 
                 try
                 {
@@ -228,16 +192,7 @@ namespace WebApplication
                 u.Sobrenome = txtSobrenome.Text;
                 u.Email = txtEmail.Text;
                 u.Telefone = txtTel.Text;
-                if (rdComprar.Checked == true)
-                {
-                    u.Tipousuario = new TipoUsuario();
-                    u.Tipousuario.Id = 2;
-                }
-                else if (rdVender.Checked == true)
-                {
-                    u.Tipousuario = new TipoUsuario();
-                    u.Tipousuario.Id = 3;
-                }
+               
                 try
                 {
                     Usuario uEndereco = (Usuario)Session["latlog"];
