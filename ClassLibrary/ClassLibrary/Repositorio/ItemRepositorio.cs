@@ -500,6 +500,7 @@ namespace ClassLibrary.Repositorio
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.AddWithValue("@Pesquisa", pesquisa);
+                    Cmd.Parameters.AddWithValue("@IdComprador", comprador.Id);
                     Cmd.Parameters.AddWithValue("@LatitudeComprador", comprador.Latitude);
                     Cmd.Parameters.AddWithValue("@LongitudeComprador", comprador.Longitude);
                     Cmd.ExecuteNonQuery();
@@ -551,6 +552,7 @@ namespace ClassLibrary.Repositorio
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.AddWithValue("@IdCategoria", IdCategoria);
+                    Cmd.Parameters.AddWithValue("@IdComprador", comprador.Id);
                     Cmd.Parameters.AddWithValue("@LatitudeComprador", comprador.Latitude);
                     Cmd.Parameters.AddWithValue("@LongitudeComprador", comprador.Longitude);
                     Cmd.ExecuteNonQuery();
