@@ -33,21 +33,57 @@ namespace WebApplication
                     //Carrega o usuario através do metodo CarregarUsuario
                     if (usuarioRepos.CarregarUsuario(usuario))
                     {
-                        //Após carregar o usuario, o mesmo é jogado na session
-                        Session["sistema"] = usuario;
+                        //Verifica se a variavel é diferente de nulo
+                        if (usuario != null)
+                        {
+                            //Caso o usuario ainda não tenha confirmado seu cadastro via e-mail
+                            if (usuario.StatusUsuario.Id == 2)
+                            {
+                                dvMsg.Visible = true;
+                                dvMsg.Attributes["class"] = "alert alert-warning alert-dismissible";
+                                lbMsg.Text = "<strong>Confirme seu cadastro</strong>, enviamos um link de confirmação para <a href='/Views/SistemaAjuda.aspx?help=1' target='_blank'><u>" + usuario.Email.ToString() + "</u></a>!";
+                                HttpContext.Current.Response.Cookies["idUsuario"].Expires = DateTime.Now.AddDays(-1);
+                                txtEmail.Text = usuario.Email;
+                                manterLogado.Checked = true;                              
+                            }
+                            //Caso sua conta esteja bloqueada
+                            else if (usuario.StatusUsuario.Id == 3)
+                            {
+                                dvMsg.Visible = true;
+                                dvMsg.Attributes["class"] = "alert alert-danger alert-dismissible";
+                                lbMsg.Text = "<strong>Conta bloqueada</strong>, entre em contato com o administrador do sistema. <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=2' target='_blank'></a>";
+                                HttpContext.Current.Response.Cookies["idUsuario"].Expires = DateTime.Now.AddDays(-1);
+                                txtEmail.Text = usuario.Email;
+                                manterLogado.Checked = true;
+                            }
+                            //Após as validações, o usuario é redirecionado para sua tela
+                            else if (usuario.StatusUsuario.Id == 1 | usuario.StatusUsuario.Id == 5 | usuario.StatusUsuario.Id == 6)
+                            {
+                                //A tela inicial depende do tipo do usuario que estiver fazendo login
+                                Session["sistema"] = usuario;
 
-                        //Após o usuario ser colocado na session, ele é redirecionado para sua tela inicial
-                        if (usuario.Tipousuario.Id == 1)
-                        {
-                            Response.Redirect("~/Views/Administrador/AdminListar.aspx");
-                        }
-                        else if (usuario.Tipousuario.Id == 3)
-                        {
-                            Response.Redirect("~/Views/Vendedor/VenderItem.aspx");
+                                if (usuario.Tipousuario.Id == 3)//Tipo de usuário vendedor
+                                {
+                                    Response.Redirect("~/Views/Vendedor/VenderItem.aspx");
+                                }
+                                else if (usuario.Tipousuario.Id == 2)//Tipo de usuário comprador
+                                {
+                                    Response.Redirect("~/Views/Sistema.aspx");
+                                }
+                                else if (usuario.Tipousuario.Id == 1)//Tipo de usuário administrador
+                                {
+                                    Response.Redirect("~/Views/Administrador/AdminListar.aspx");
+                                }
+                                else
+                                {
+                                    Response.Redirect("~/Views/SistemaErro.aspx");
+                                }
+                            }
                         }
                         else
                         {
-                            Response.Redirect("~/Views/Sistema.aspx");
+                            //Caso o usuario seja nulo, ele destroí o Cookie.
+                            HttpContext.Current.Response.Cookies["idUsuario"].Expires = DateTime.Now.AddDays(-1);
                         }
                     }
                 }
@@ -81,18 +117,22 @@ namespace WebApplication
             //Comparados os hashs da criptografia
             usuario.Senha = criptografia.CriptografarSenha(txtSenha.Text);
 
-            if (manterLogado.Checked)
-            {
-                HttpContext.Current.Response.Cookies["idUsuario"].Expires = DateTime.Now.AddDays(30);
-            }else
-            {
-                HttpContext.Current.Response.Cookies["idUsuario"].Expires = DateTime.Now.AddDays(-1);
-            }
-
+         
             UsuarioRepositorio login = new UsuarioRepositorio();
             if (login.LoginUsuario(usuario))
             {
-                //O ID do usuario carregado é adicionado ao Cookie
+                if (manterLogado.Checked)
+                {
+                    //É criado um cookie com validade de 30 dias
+                    HttpContext.Current.Response.Cookies["idUsuario"].Expires = DateTime.Now.AddDays(30);
+                }
+                else
+                {
+                    //Caso não seja necessario, é atribuido uma data de validade negativa fazendo o cookie ser destruido
+                    HttpContext.Current.Response.Cookies["idUsuario"].Expires = DateTime.Now.AddDays(-1);
+                }
+
+                //O ID do usuario carregado é adicionado ao Cookie caso tenha marcado o checked
                 HttpContext.Current.Response.Cookies["idUsuario"].Value = Convert.ToString(usuario.Id);
 
                 //Caso o usuario ainda não tenha confirmado seu cadastro via e-mail
@@ -107,7 +147,7 @@ namespace WebApplication
                 {
                     dvMsg.Visible = true;
                     dvMsg.Attributes["class"] = "alert alert-danger alert-dismissible";
-                    lbMsg.Text = "<strong>Conta bloqueada</strong>, entre em contato com o administrador do sistema. <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=2' target='_blank'></a>";
+                    lbMsg.Text = "<strong>Conta bloqueada</strong>, entre em contato com o administrador do sistema. <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=2' target='_blank'></a>";                   
                 }
                 else if (usuario.StatusUsuario.Id == 1 | usuario.StatusUsuario.Id == 5 | usuario.StatusUsuario.Id == 6)
                 {
