@@ -112,6 +112,10 @@
                     <div class="form-group">
                         <div class="col-lg-10 col-lg-offset-2">
                             <div>
+                                <a onclick="cancelarContaDialog.show()">Cancelar Conta</a>
+                            </div>
+                            <p></p>
+                            <div>
                                 <asp:Button runat="server" ID="btSalvar" Text="Salvar" CssClass="btn btn-primary" OnClick="btSalvar_Click"></asp:Button>
                             </div>
                         </div>
@@ -127,7 +131,7 @@
                     </div>
                 </div>
                 <div id="dvMetodo" class="form-group col-md-3" runat="server" visible="false">
-                    <asp:CheckBoxList ID="cbMetodosPagamento" runat="server">                                            
+                    <asp:CheckBoxList ID="cbMetodosPagamento" runat="server">
                     </asp:CheckBoxList>
                 </div>
             </form>
@@ -222,5 +226,87 @@
             };
 
         })(jQuery);
+    </script>
+    <script>
+        var cancelarContaDialog = cancelarContaDialog || (function ($) {
+            'use strict';
+
+            // Creating modal dialog's DOM
+            var $dialogCancela = $(
+                '<div class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top:15%; overflow-y:visible;">' +
+                '<div class="modal-dialog modal-m">' +
+                '<div class="modal-content">' +
+                '<div class="modal-header"><h3>A</3></div>' +
+                '<div class="modal-body">Tem certeza que deseja cancelar sua conta? Esta operação não pode ser desfeita!' +
+                '<div class="modal-footer"><button runat="server" onclick="cancelarContaDialog.hide();" type="button" class="btn btn-success" data-dismiss="modal" >NÃO CANCELAR</button>' +
+                '<button runat="server" onclick="cancelarContaDialog.hide();cancelarConta();" type="button" class="btn btn-danger" data-dismiss="modal" >SIM</button>' +
+                '</div></div>' +
+                '</div></div></div>');
+
+            return {
+                /**
+                 * Opens our dialog
+                 * @param message Custom message
+                 * @param options Custom options:
+                 * 				  options.dialogSize - bootstrap postfix for dialog size, e.g. "sm", "m";
+                 * 				  options.progressType - bootstrap postfix for progress bar type, e.g. "success", "warning".
+                 */
+                show: function (message, options) {
+                    // Assigning defaults
+                    if (typeof options === 'undefined') {
+                        options = {};
+                    }
+                    if (typeof message === 'undefined') {
+                        message = 'Cancelar Conta';
+                    }
+                    var settings = $.extend({
+                        dialogSize: 'm',
+                        progressType: '',
+                        onHide: null // This callback runs after the dialog was hidden
+                    }, options);
+
+                    // Configuring dialog
+                    $dialogCancela.find('.modal-dialog').attr('class', 'modal-dialog').addClass('modal-' + settings.dialogSize);
+                    $dialogCancela.find('.progress-bar').attr('class', 'progress-bar');
+                    if (settings.progressType) {
+                        $dialogCancela.find('.progress-bar').addClass('progress-bar-' + settings.progressType);
+                    }
+                    $dialogCancela.find('h3').text(message);
+                    // Adding callbacks
+                    if (typeof settings.onHide === 'function') {
+                        $dialogCancela.off('hidden.bs.modal').on('hidden.bs.modal', function (e) {
+                            settings.onHide.call($dialog);
+                        });
+                    }
+                    // Opening dialog
+                    $dialogCancela.modal();
+                },
+                /**
+                 * Closes dialog
+                 */
+                hide: function () {
+                    $dialogCancela.modal('hide');
+                }
+            };
+
+        })(jQuery);
+    </script>
+    <script type="text/javascript">
+        function cancelarConta() {
+            var xmlhttp = window.XMLHttpRequest ? new XMLHttpRequest : new ActiveXObject("Microsoft.XMLHTTP");
+
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    document.getElementById('<%Response.Write(lbEndereco.ClientID);%>').innerHTML = xmlhttp.response;
+                    setTimeout(function () { cancelarContaDialog.hide(); }, 500);
+                }
+            }
+
+
+            xmlhttp.open("GET", "<%Response.Write(ResolveUrl("~/Views/Ajax/CancelarConta.aspx"));%>", true);
+
+            xmlhttp.send();
+
+        }
     </script>
 </asp:Content>
