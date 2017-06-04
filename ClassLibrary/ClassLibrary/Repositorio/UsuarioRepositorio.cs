@@ -77,7 +77,7 @@ namespace ClassLibrary.Repositorio
                     Cmd.Parameters.AddWithValue("@Longitude", user.Longitude);
                     Cmd.Parameters.AddWithValue("@Complemento", user.Complemento);
                     Cmd.Parameters.AddWithValue("@Numero", user.Numero);
-                    Cmd.Parameters.AddWithValue("@AreaAtuacao", user.AreaAtuacao);                    
+                    Cmd.Parameters.AddWithValue("@AreaAtuacao", user.AreaAtuacao);
                     Cmd.ExecuteNonQuery();
 
                     foreach (var i in user.MetodoPagamento)
@@ -260,7 +260,30 @@ namespace ClassLibrary.Repositorio
                 }
             }
         }
+        public bool CancelarConta(int idUsuario)
+        {
+            Abrirconexao();
 
+            using (Cmd = new SqlCommand("CancelarConta", Con))
+            {
+                try
+                {
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@IdUsuario", idUsuario);
+                    Cmd.ExecuteNonQuery();
+
+                    return true;
+                }
+                catch
+                {
+                    return false; ;
+                }
+                finally
+                {
+                    FecharConexao();
+                }
+            }
+        }
         public void AtualizarSenha(Usuario user, string novaSenha)
         {
             Abrirconexao();

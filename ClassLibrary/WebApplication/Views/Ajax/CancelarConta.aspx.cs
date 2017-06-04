@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ClassLibrary;
+using ClassLibrary.Repositorio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +13,19 @@ namespace WebApplication.Views.Ajax
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Response.Write("chamou");
+            Usuario u = (Usuario)Session["sistema"];
+
+            UsuarioRepositorio cancelar = new UsuarioRepositorio();
+
+            if (cancelar.CancelarConta(u.Id))
+            {
+                Response.Redirect("~/Views/Logout.aspx");
+            }
+            else
+            {
+                Response.Write("erro");
+            }
+
         }
     }
 }

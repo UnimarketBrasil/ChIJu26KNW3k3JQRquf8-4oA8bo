@@ -151,7 +151,7 @@
             var xmlhttp = window.XMLHttpRequest ? new XMLHttpRequest : new ActiveXObject("Microsoft.XMLHTTP");
 
             xmlhttp.onreadystatechange = function () {
-                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                if (xmlhttp.readyState == 400 && xmlhttp.status == 200) {
                     document.getElementById('<%Response.Write(lbEndereco.ClientID);%>').innerHTML = xmlhttp.response;
                 }
             }
@@ -297,8 +297,7 @@
 
             xmlhttp.onreadystatechange = function () {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                    document.getElementById('<%Response.Write(lbEndereco.ClientID);%>').innerHTML = xmlhttp.response;
-                    setTimeout(function () { cancelarContaDialog.hide(); }, 500);
+                    document.location.href = '/Views/Logout.aspx'
                 }
             }
 
