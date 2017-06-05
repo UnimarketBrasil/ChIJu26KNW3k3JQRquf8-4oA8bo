@@ -1,6 +1,9 @@
 use unimarket
+if OBJECT_ID('RealizarPedido') is not null
+drop procedure RealizarPedido
 go
-Excluir RealizarPedido
+if OBJECT_ID('CadastrarItemPedido') is not null
+drop procedure CadastrarItemPedido
 go
 create procedure RealizarPedido(
 	@IdVendedor int,
@@ -21,12 +24,19 @@ as begin
 		commit tran
 	end try
 	begin catch
-		rollback tran
+		begin tran
+			insert into Pedido(
+			Codigo,
+			IdVendedor,
+			IdComprador
+			)  output inserted.Id values (
+			1,
+			@IdVendedor,
+			@IdComprador
+			)
+		commit tran
 	end catch 
 end
-
-go
-Excluir CadastrarItemPedido
 go
 create procedure CadastrarItemPedido(
 	@IdPedido int,

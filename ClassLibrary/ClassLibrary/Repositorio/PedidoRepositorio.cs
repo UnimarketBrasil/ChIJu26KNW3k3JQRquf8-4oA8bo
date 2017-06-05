@@ -20,6 +20,7 @@ namespace ClassLibrary.Repositorio
                     
                     Cmd.Parameters.AddWithValue("@IdVendedor", pedido.Vendedor.Id);
                     Cmd.Parameters.AddWithValue("@IdComprador", pedido.Comprador.Id);
+                    Cmd.Parameters.AddWithValue("@IdComprador", pedido.Comprador.Id);
 
                     pedido.Id = int.Parse(Cmd.ExecuteScalar().ToString());
 
