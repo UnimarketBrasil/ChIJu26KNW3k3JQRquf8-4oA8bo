@@ -9,32 +9,36 @@ create procedure RealizarPedido(
 	@IdVendedor int,
 	@IdComprador int
 	)
-as begin
+as 
+begin
 	begin try
 		begin tran
-			insert into Pedido(
-			Codigo,
-			IdVendedor,
-			IdComprador
-			)  output inserted.Id values (
-			convert(int,(select top(1) codigo from Pedido where idVendedor = @IdVendedor order by Data desc)) + 1,
-			@IdVendedor,
-			@IdComprador
-			)
+			if ((select top(1) codigo from Pedido where (idVendedor = @IdVendedor)) >= (1))
+			  begin
+				insert into Pedido(
+				Codigo,
+				IdVendedor,
+				IdComprador
+				)  output inserted.Id values (
+				convert(int,(select top(1) codigo from Pedido where idVendedor = @IdVendedor order by Data desc)) + 1,
+				@IdVendedor,
+				@IdComprador
+				)
+			  end
+			else
+				insert into Pedido(
+				Codigo,
+				IdVendedor,
+				IdComprador
+				)  output inserted.Id values (
+				1,
+				@IdVendedor,
+				@IdComprador
+				)
 		commit tran
 	end try
 	begin catch
-		begin tran
-			insert into Pedido(
-			Codigo,
-			IdVendedor,
-			IdComprador
-			)  output inserted.Id values (
-			1,
-			@IdVendedor,
-			@IdComprador
-			)
-		commit tran
+		rollback tran
 	end catch 
 end
 go
