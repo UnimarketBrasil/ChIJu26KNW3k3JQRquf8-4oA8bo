@@ -10,37 +10,30 @@ create procedure RealizarPedido(
 	@IdComprador int
 	)
 as 
-begin
-	begin try
-		begin tran
-			if ((select top(1) codigo from Pedido where (idVendedor = @IdVendedor)) >= (1))
-			  begin
-				insert into Pedido(
-				Codigo,
-				IdVendedor,
-				IdComprador
-				)  output inserted.Id values (
-				convert(int,(select top(1) codigo from Pedido where idVendedor = @IdVendedor order by Data desc)) + 1,
-				@IdVendedor,
-				@IdComprador
-				)
-			  end
-			else
-				insert into Pedido(
-				Codigo,
-				IdVendedor,
-				IdComprador
-				)  output inserted.Id values (
-				1,
-				@IdVendedor,
-				@IdComprador
-				)
-		commit tran
-	end try
-	begin catch
-		rollback tran
-	end catch 
-end
+if ((select top(1) codigo from Pedido where (idVendedor = @IdVendedor)) >= (1))
+	begin
+		insert into Pedido(
+		Codigo,
+		IdVendedor,
+		IdComprador
+		)  output inserted.Id values (
+		convert(int,(select top(1) codigo from Pedido where idVendedor = @IdVendedor order by Data desc)) + 1,
+		@IdVendedor,
+		@IdComprador
+		)
+	end
+else
+	begin
+		insert into Pedido(
+		Codigo,
+		IdVendedor,
+		IdComprador
+		)  output inserted.Id values (
+		1,
+		@IdVendedor,
+		@IdComprador
+		)
+	end
 go
 create procedure CadastrarItemPedido(
 	@IdPedido int,

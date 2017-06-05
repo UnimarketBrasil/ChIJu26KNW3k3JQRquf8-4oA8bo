@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <h2><strong>MEUS PEDIDOS</strong><a onclick="ajudaModal.show('MEUS PEDIDOS',6);" class='glyphicon glyphicon-question-sign small' style="color: #2780e3"></a></h2>
     <hr />
-    <form runat="server">
+    <form runat="server" class="table-responsive">
         <div class="row container-fluid">
             <asp:BulletedList ID="blTabs" DisplayMode="LinkButton" runat="server" CssClass="nav nav-tabs" OnClick="blTabs_Click">
                 <asp:ListItem>Todos</asp:ListItem>

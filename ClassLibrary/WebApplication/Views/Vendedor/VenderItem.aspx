@@ -19,7 +19,7 @@
                 </div>
             </div>
             <p>&nbsp;</p>
-            <div class="row">
+            <div class="row table-responsive">
                 <asp:GridView ID="grdDetalheVendedor" OnPageIndexChanging="grdDetalheVendedor_PageIndexChanging" CssClass="table table-hover table-striped" GridLines="None" runat="server" AutoGenerateColumns="false" AllowPaging="True">
                     <Columns>
                         <asp:BoundField DataField="Id" HeaderText="Id" ItemStyle-Width="100" Visible="false" />

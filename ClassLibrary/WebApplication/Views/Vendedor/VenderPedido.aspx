@@ -14,7 +14,7 @@
                 <asp:ListItem>Finalizados</asp:ListItem>
             </asp:BulletedList>
         </div>
-        <div class="row container-fluid">
+        <div class="row container-fluid table-responsive"">
             <asp:GridView ID="grdPedido" OnRowDataBound="grdPedido_RowDataBound" OnPageIndexChanging="grdPedido_PageIndexChanging" CssClass="table table-hover table-striped" GridLines="None" runat="server" AutoGenerateColumns="false" AllowPaging="True">
                 <Columns>
                     <asp:BoundField DataField="Id" HeaderText="Id" Visible="False" />
