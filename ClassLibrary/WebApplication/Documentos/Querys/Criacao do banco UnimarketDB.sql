@@ -22,6 +22,7 @@ create table Usuario(
 	Sobrenome varchar (50) null,
 	Senha varchar(50) not null,
 	HashConfirmacao varchar(50) not null,
+	HashNovaSenha varchar(50) null,
 	CpfCnpj varchar(20) not null unique,
 	Genero smallint null,
 	Telefone varchar(15) not null,
