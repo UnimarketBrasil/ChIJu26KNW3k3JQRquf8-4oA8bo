@@ -139,6 +139,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Views\Ajax\CancelarConta.aspx" />
+    <Content Include="Views\Ajax\RecuperarSenha.aspx" />
     <Content Include="Views\Vendedor\DetalhePedido.aspx" />
     <Content Include="Views\Comprador\DetalhePedido.aspx" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
@@ -304,6 +305,13 @@
     </Compile>
     <Compile Include="Views\Ajax\CancelarConta.aspx.designer.cs">
       <DependentUpon>CancelarConta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Ajax\RecuperarSenha.aspx.cs">
+      <DependentUpon>RecuperarSenha.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Ajax\RecuperarSenha.aspx.designer.cs">
+      <DependentUpon>RecuperarSenha.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Vendedor\DetalhePedido.aspx.cs">
       <DependentUpon>DetalhePedido.aspx</DependentUpon>

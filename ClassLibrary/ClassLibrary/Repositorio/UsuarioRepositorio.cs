@@ -310,7 +310,7 @@ namespace ClassLibrary.Repositorio
             }
         }
 
-        public bool RecuperarSenha(string email)
+        public bool RecuperarSenha(string email, string hashNovaSenha)
         {
             Abrirconexao();
 
@@ -320,21 +320,19 @@ namespace ClassLibrary.Repositorio
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.AddWithValue("@Email", email);
-                    Cmd.ExecuteNonQuery();
+                    Cmd.Parameters.AddWithValue("@hashNovaSenha", hashNovaSenha);
 
                     Dr = Cmd.ExecuteReader();
 
-                    bool retorno = false;
-
                     if (Dr.HasRows)
                     {
-                        Dr.Read();
-                        retorno = Convert.ToBoolean(Dr["@Retorno"]);
+                        return true;
+
                     }
-
-                    Dr.Close();
-
-                    return retorno;
+                    else
+                    {
+                        return false;
+                    }
 
                 }
                 catch (Exception ex)
@@ -343,6 +341,8 @@ namespace ClassLibrary.Repositorio
                 }
                 finally
                 {
+                    Dr.Close();
+
                     FecharConexao();
                 }
             }

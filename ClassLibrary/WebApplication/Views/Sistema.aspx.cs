@@ -44,7 +44,6 @@ namespace WebApplication
                                 lbMsg.Text = "<strong>Confirme seu cadastro</strong>, enviamos um link de confirmação para <a href='/Views/SistemaAjuda.aspx?help=1' target='_blank'><u>" + usuario.Email.ToString() + "</u></a>!";
                                 HttpContext.Current.Response.Cookies["idUsuario"].Expires = DateTime.Now.AddDays(-1);
                                 txtEmail.Text = usuario.Email;
-                                manterLogado.Checked = true;
                             }
                             //Caso sua conta esteja bloqueada
                             else if (usuario.StatusUsuario.Id == 3)
@@ -54,7 +53,6 @@ namespace WebApplication
                                 lbMsg.Text = "<strong>Conta bloqueada</strong>, entre em contato com o administrador do sistema. <a class='glyphicon glyphicon-question-sign' href='/Views/SistemaAjuda.aspx?help=2' target='_blank'></a>";
                                 HttpContext.Current.Response.Cookies["idUsuario"].Expires = DateTime.Now.AddDays(-1);
                                 txtEmail.Text = usuario.Email;
-                                manterLogado.Checked = true;
                             }
                             //Após as validações, o usuario é redirecionado para sua tela
                             else if (usuario.StatusUsuario.Id == 1 | usuario.StatusUsuario.Id == 5 | usuario.StatusUsuario.Id == 6)
@@ -156,16 +154,11 @@ namespace WebApplication
             UsuarioRepositorio login = new UsuarioRepositorio();
             if (login.LoginUsuario(usuario))
             {
-                if (manterLogado.Checked)
-                {
-                    //É criado um cookie com validade de 30 dias
-                    HttpContext.Current.Response.Cookies["idUsuario"].Expires = DateTime.Now.AddDays(30);
-                }
-                else
-                {
-                    //Caso não seja necessario, é atribuido uma data de validade negativa fazendo o cookie ser destruido
-                    HttpContext.Current.Response.Cookies["idUsuario"].Expires = DateTime.Now.AddDays(-1);
-                }
+                //É criado um cookie com validade de 30 dias
+                HttpContext.Current.Response.Cookies["idUsuario"].Expires = DateTime.Now.AddDays(30);
+
+                //Caso não seja necessario, é atribuido uma data de validade negativa fazendo o cookie ser destruido
+                HttpContext.Current.Response.Cookies["idUsuario"].Expires = DateTime.Now.AddDays(-1);
 
                 //O ID do usuario carregado é adicionado ao Cookie caso tenha marcado o checked
                 HttpContext.Current.Response.Cookies["idUsuario"].Value = Convert.ToString(usuario.Id);

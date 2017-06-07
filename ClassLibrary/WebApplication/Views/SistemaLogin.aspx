@@ -25,9 +25,10 @@
                             <asp:TextBox ID="txtSenha" runat="server" CssClass="form-control" TextMode="Password" placeholder="Senha"></asp:TextBox>
                         </div>
                     </div>
-                    <div class="col-xs-10 col-xs-offset-2">
-                        <asp:Checkbox ID="manterLogado" CssClass="checkbox-inline" runat="server" Text="Me mantenha logado" />
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <asp:Label runat="server" Text="Para recuperar sua senha, "><asp:LinkButton runat="server">clique aqui</asp:LinkButton></asp:Label>
                     </div>
+                    <p></p>
                     <div class="form-group">
                         <div class="col-lg-10 col-lg-offset-2">
                             <div>
