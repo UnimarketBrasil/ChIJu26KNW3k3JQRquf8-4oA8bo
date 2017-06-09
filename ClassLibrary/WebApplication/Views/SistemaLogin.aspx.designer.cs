@@ -58,6 +58,15 @@ namespace WebApplication {
         protected global::System.Web.UI.WebControls.TextBox txtSenha;
         
         /// <summary>
+        /// Controle ldMsgRecuperar.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ldMsgRecuperar;
+        
+        /// <summary>
         /// Controle btLogin.
         /// </summary>
         /// <remarks>

@@ -25,8 +25,21 @@
                             <asp:TextBox ID="txtSenha" runat="server" CssClass="form-control" TextMode="Password" placeholder="Senha"></asp:TextBox>
                         </div>
                     </div>
-                    <div class="col-lg-10 col-lg-offset-2">
-                        <asp:Label runat="server" Text="Para recuperar sua senha, "><asp:LinkButton runat="server">clique aqui</asp:LinkButton></asp:Label>
+                    <!--Recuperar Senha-->
+                    <div class="form-group">
+                        <div class="col-sm-10 col-sm-offset-2">
+                            <asp:Label runat="server" Text="">Esqueceu sua senha? <a href="#demo" class="btn btn-link" data-toggle="collapse">clique aqui</a></asp:Label>
+                        </div>
+                        <div id="demo" class="collapse col-sm-10 col-sm-offset-2">
+                            <asp:Label runat="server" Text="Insira seu email abaixo, você receberá um link para criar uma nova senha."></asp:Label>
+                            <div class="input-group">
+                                <input id="txtEmailRecuperar" type="text" class="form-control" placeholder="E-mail">
+                                <span class="input-group-btn">
+                                    <button id="btRecuperar" onclick="" class="btn btn-default" data-loading-text="Enviando" type="button">Enviar</button>
+                                </span>
+                            </div>
+                            <asp:Label runat="server" ID="ldMsgRecuperar"></asp:Label>
+                        </div>
                     </div>
                     <p></p>
                     <div class="form-group">
@@ -40,4 +53,34 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        $('#btRecuperar').on('click', function () {
+
+            var $btn = $(this).button('loading')
+
+            var xmlhttp = window.XMLHttpRequest ? new XMLHttpRequest : new ActiveXObject("Microsoft.XMLHTTP");
+
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    document.getElementById('<% Response.Write(ldMsgRecuperar.ClientID);%>').innerHTML = xmlhttp.response;
+                    $btn.button('reset')
+
+                    if (xmlhttp.response == 'E-mail não localizado...') {
+                        document.getElementById('<% Response.Write(ldMsgRecuperar.ClientID);%>').className = "label label-danger";
+                    }
+                    else if (xmlhttp.response == 'E-mail enviado com sucesso') {
+                        document.getElementById('<% Response.Write(ldMsgRecuperar.ClientID);%>').className = "label label-success";
+                        $("#txtEmailRecuperar").val('');
+                    }
+                }
+            }
+
+            xmlhttp.open("GET", "<%Response.Write(ResolveUrl("~/Views/Ajax/RecuperarSenha.aspx"));%>?email=" +
+                document.getElementById('txtEmailRecuperar').value, true);
+
+
+            xmlhttp.send();
+
+        })
+    </script>
 </asp:Content>

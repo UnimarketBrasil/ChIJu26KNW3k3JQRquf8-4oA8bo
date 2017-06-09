@@ -86,6 +86,7 @@
                                 <asp:TextBox ID="txtSenha" runat="server" CssClass="form-control" TextMode="Password" placeholder="Senha"></asp:TextBox>
                             </div>
                         </div>
+                        <!--Recuperar Senha-->
                         <div class="form-group">
                             <div class="col-sm-10 col-sm-offset-2">
                                 <asp:Label runat="server" Text="">Esqueceu sua senha? <a href="#demo" class="btn btn-link" data-toggle="collapse">clique aqui</a></asp:Label>
@@ -100,7 +101,6 @@
                                 </div>
                                 <asp:Label runat="server" id="ldMsgRecuperar"></asp:Label>
                             </div>
-
                         </div>
                         <div class="form-group">
                             <div class="col-sm-10 col-sm-offset-2">
