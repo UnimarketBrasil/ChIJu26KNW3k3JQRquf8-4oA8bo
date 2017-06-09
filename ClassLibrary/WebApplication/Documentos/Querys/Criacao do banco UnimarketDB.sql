@@ -86,21 +86,6 @@ create table ItemPedido(
 	Desabilitado bit not null default 'false'
 )
 go
-create table MensagemPadrao
-(
-	Id int not null primary key identity(1,1),
-	Mensagem varchar(800) not null
-)
-go
-create table HistoricoMensagem
-(
-	Id int not null primary key identity(1,1),
-	IdMensagem int not null foreign key references MensagemPadrao(Id),
-	IdRemetente int not null foreign key references Usuario(Id),
-	IdDestinatario int not null foreign key references Usuario(Id),
-	DataEnvio dateTime not null default getdate()
-)
-go
 insert into StatusPedido values ('Pendente')
 insert into StatusPedido values ('Finalizado')
 insert into StatusPedido values ('Cancelado')

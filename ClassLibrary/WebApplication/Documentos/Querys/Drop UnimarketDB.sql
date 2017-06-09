@@ -4,10 +4,6 @@ drop table MetodosPagamentoUsuario
 go
 drop table MetodosPagamento
 go
-drop table HistoricoMensagem
-go
-drop table MensagemPadrao
-go
 drop table ItemPedido
 go
 drop table Pedido
