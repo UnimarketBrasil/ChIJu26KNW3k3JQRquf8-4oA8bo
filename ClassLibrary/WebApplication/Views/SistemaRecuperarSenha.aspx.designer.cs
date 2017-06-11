@@ -10,7 +10,7 @@
 namespace WebApplication {
     
     
-    public partial class WebForm2 {
+    public partial class SistemaRecuperarSenha {
         
         /// <summary>
         /// Controle dvMsg.
@@ -40,6 +40,24 @@ namespace WebApplication {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvPrimeiraEtapa;
         
         /// <summary>
+        /// Controle dvAlterarSenhaAntiga.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvAlterarSenhaAntiga;
+        
+        /// <summary>
+        /// Controle txtSenhaAntiga.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSenhaAntiga;
+        
+        /// <summary>
         /// Controle txtSenha.
         /// </summary>
         /// <remarks>
@@ -47,6 +65,15 @@ namespace WebApplication {
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSenha;
+        
+        /// <summary>
+        /// Controle RegularExpressionValidator1.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
         
         /// <summary>
         /// Controle txtConfSenha.
@@ -58,12 +85,21 @@ namespace WebApplication {
         protected global::System.Web.UI.WebControls.TextBox txtConfSenha;
         
         /// <summary>
-        /// Controle btLogin.
+        /// Controle txtSenhaRegular.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btLogin;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator txtSenhaRegular;
+        
+        /// <summary>
+        /// Controle btSalvar.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btSalvar;
     }
 }
