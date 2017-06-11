@@ -32,4 +32,19 @@ namespace ClassLibrary
         public bool Desabilitado { get; set; }
 
     }
+
+    public struct RelatorioItem
+    {
+        public int Id, Quantidade;
+        public string Nome;
+
+        public RelatorioItem(int id, int quantidade, string nome)
+        {
+            Id = id;
+            Quantidade = quantidade;
+            Nome = nome;
+        }
+
+
+    }
 }
