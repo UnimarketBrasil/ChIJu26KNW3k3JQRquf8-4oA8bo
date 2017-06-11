@@ -284,7 +284,8 @@ namespace ClassLibrary.Repositorio
                 }
             }
         }
-        public void AtualizarSenha(Usuario user, string novaSenha)
+
+        public bool AtualizarSenha(Usuario user, string novaSenha)
         {
             Abrirconexao();
 
@@ -294,9 +295,20 @@ namespace ClassLibrary.Repositorio
                 {
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.AddWithValue("@IdUsuario", user.Id);
-                    Cmd.Parameters.AddWithValue("@SenhaAtual", user.Senha);
+                    Cmd.Parameters.AddWithValue("@SenhaAntiga", user.Senha);
                     Cmd.Parameters.AddWithValue("@NovaSenha", novaSenha);
-                    Cmd.ExecuteNonQuery();
+
+                    Dr = Cmd.ExecuteReader();
+
+                    if (Dr.HasRows)
+                    {
+                        return true;
+
+                    }
+                    else
+                    {
+                        return false;
+                    }
 
                 }
                 catch (Exception ex)
@@ -343,6 +355,70 @@ namespace ClassLibrary.Repositorio
                 {
                     Dr.Close();
 
+                    FecharConexao();
+                }
+            }
+        }
+
+        public bool ValidarHashNovaSenha(string hashNovaSenha)
+        {
+            Abrirconexao();
+
+            using (Cmd = new SqlCommand("ValidarHashNovaSenha", Con))
+            {
+                try
+                {
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@hashNovaSenha", hashNovaSenha);
+
+                    Dr = Cmd.ExecuteReader();
+
+                    if (Dr.HasRows)
+                    {
+                        return true;
+
+                    }
+                    else
+                    {
+                        return false;
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Erro ao atualizar usuario: " + ex.Message);
+                }
+                finally
+                {
+                    Dr.Close();
+
+                    FecharConexao();
+                }
+            }
+        }
+
+        public bool NovaSenha(string hash, string novaSenha)
+        {
+            Abrirconexao();
+
+            using (Cmd = new SqlCommand("NovaSenha", Con))
+            {
+                try
+                {
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@hashNovaSenha", hash);
+                    Cmd.Parameters.AddWithValue("@Senha", novaSenha);
+                    Cmd.ExecuteNonQuery();
+
+                    return true;
+
+                }
+                catch
+                {
+                    return false;
+                }
+                finally
+                {
                     FecharConexao();
                 }
             }

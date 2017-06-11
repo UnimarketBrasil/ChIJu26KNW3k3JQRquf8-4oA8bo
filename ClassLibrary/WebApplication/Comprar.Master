@@ -88,6 +88,7 @@
                             <ul class="dropdown-menu" role="menu">
                                 <li><a draggable="false" runat="server" href="~/Views/SistemaAtualizarCadastro.aspx">Atualizar Cadastro</a></li>
                                 <li><a draggable="false" runat="server" href="~/Views/Comprador/ComprarPedido.aspx">Meus Pedidos</a></li>
+                                <li><a draggable="false" runat="server" href="~/Views/SistemaRecuperarSenha.aspx">Alterar Senha</a></li>
                             </ul>
                         </li>
                         <li><a draggable="false" id="LinkButton2" runat="server" href="~/Views/Logout.aspx" class="btn btn-primary glyphicon glyphicon-log-out"></a></li>
