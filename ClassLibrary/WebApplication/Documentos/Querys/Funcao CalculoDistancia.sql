@@ -8,9 +8,8 @@ create function CalculoDistancia(
 	 @LatitudeComprador varchar(20),
 	 @LongitudeComprador varchar(20)
 	 )
-returns real
+returns float
 as
-begin 
-	return sqrt( power(convert(float, @LatitudeComprador) - convert(float, @LatitudeVendedor), 2) + power( convert(float, @LongitudeComprador) -  convert(float, @LongitudeVendedor), 2))
+begin
+return ( sqrt( exp((convert(float, @LatitudeComprador)) - (convert(float, @LatitudeVendedor))) + exp((convert(float, @LongitudeComprador)) - (convert(float, @LongitudeVendedor)))))
 end
-
