@@ -1,6 +1,6 @@
 use unimarket
-go
-Excluir AtualizarItem
+if OBJECT_ID('AtualizarItem') is not null
+drop procedure AtualizarItem
 go
 create procedure AtualizarItem(
 	@IdItem int,

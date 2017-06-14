@@ -1,6 +1,6 @@
 use unimarket
-go
-Excluir ValidaEmailCpfCnpj
+if OBJECT_ID('ValidaEmailCpfCnpj') is not null
+drop procedure ValidaEmailCpfCnpj
 go
 create procedure ValidaEmailCpfCnpj (
 	@Email varchar(50),

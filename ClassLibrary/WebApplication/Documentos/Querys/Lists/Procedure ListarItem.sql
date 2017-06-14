@@ -1,6 +1,6 @@
 use unimarket
-go
-Excluir ListarItem
+if OBJECT_ID('CadastrarUsuario') is not null
+drop procedure CadastrarUsuario
 go
 create procedure ListarItem(
 	@IdUsuario int

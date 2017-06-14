@@ -1,6 +1,6 @@
 use unimarket
-go
-Excluir IncluirEndereco
+if OBJECT_ID('IncluirEndereco') is not null
+drop procedure IncluirEndereco
 go
 create procedure IncluirEndereco(
 	@IdUsuario int,

@@ -1,13 +1,13 @@
 use unimarket
-go
-Excluir DetalheUsuario
+if OBJECT_ID('DetalheUsuario') is not null
+drop procedure DetalheUsuario
 go
 create procedure DetalheUsuario(
 	@IdUsuario int
 	)
 as	
 begin
-	select Usuario.Email, Usuario.Nome, Usuario.Sobrenome, Usuario.CpfCnpj, Usuario.Nascimento, Usuario.Genero, 
+	select Usuario.Email, Usuario.Nome, Usuario.Sobrenome, Usuario.CpfCnpj, Usuario.Genero, 
 	Usuario.Telefone, Usuario.DataCadastro, TipoUsuario.Nome as TipoUsuario, StatusUsuario.Nome as StatusUsuario,  
 	Usuario.Latitude, Usuario.Longitude, Usuario.Complemento, Usuario.AreaAtuacao, (
 	select COUNT(*) from Item where IdUsuario=@IdUsuario and Desabilitado=0) as QtdadeItens, (

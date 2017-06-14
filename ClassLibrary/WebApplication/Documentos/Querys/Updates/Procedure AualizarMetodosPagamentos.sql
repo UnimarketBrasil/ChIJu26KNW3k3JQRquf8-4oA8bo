@@ -1,4 +1,6 @@
 use unimarket
+if OBJECT_ID('AtualizarMetodosPagamento') is not null
+drop procedure AtualizarMetodosPagamento
 go
 create procedure AtualizarMetodosPagamento(
 	@IdMetodo int,

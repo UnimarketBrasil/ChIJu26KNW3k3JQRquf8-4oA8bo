@@ -1,6 +1,6 @@
 use unimarket
-go
-Excluir ListarItemPorNomeOuCodigo
+if OBJECT_ID('ListarItemPorNomeOuCodigo') is not null
+drop procedure ListarItemPorNomeOuCodigo
 go
 create procedure ListarItemPorNomeOuCodigo(
 	@IdUsuario int,

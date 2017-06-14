@@ -1,6 +1,6 @@
 use unimarket
-go
-Excluir BloquearUsuario
+if OBJECT_ID('BloquearUsuario') is not null
+drop procedure BloquearUsuario
 go
 create procedure BloquearUsuario(
 	@IdUsuario int

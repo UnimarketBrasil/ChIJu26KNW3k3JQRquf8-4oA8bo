@@ -1,6 +1,6 @@
 use unimarket
-go
-Excluir LoginUsuario
+if OBJECT_ID('LoginUsuario') is not null
+drop procedure LoginUsuario
 go
 create procedure LoginUsuario (
 	@Email varchar(50),
