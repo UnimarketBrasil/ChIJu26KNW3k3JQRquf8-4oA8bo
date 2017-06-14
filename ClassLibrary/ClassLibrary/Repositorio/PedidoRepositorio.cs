@@ -1,4 +1,6 @@
-﻿using System;
+﻿using System.Data.SqlClient;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -465,6 +467,53 @@ namespace ClassLibrary.Repositorio
             }
 
         }
+                
+        public List<RelatorioPedido> RelatorioPedido(Usuario usuario, DateTime inicio, DateTime fim)
+        {
+            Abrirconexao();
 
+            using (Cmd = new SqlCommand("RelatorioPedidos", Con))
+            {
+                try
+                {                  
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@IdVendedor", usuario.Id);
+                    Cmd.Parameters.AddWithValue("@DataInicio", inicio);
+                    Cmd.Parameters.AddWithValue("@DataFinal", fim);
+                    
+                    Dr = Cmd.ExecuteReader();
+
+                    List<RelatorioPedido> relatorio = new List<RelatorioPedido>();
+                                        
+                    if (Dr.HasRows)
+                    {
+                        while (Dr.Read())
+                        {
+                            RelatorioPedido rel = new RelatorioPedido(
+                                Convert.ToString(Dr["ValorTotal"]),
+                                Convert.ToDateTime(Dr["Data"])
+                            );
+                            
+                            relatorio.Add(rel);
+                        }
+                    }
+
+                    Dr.Close();
+
+                    return relatorio;
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Erro executar relatorio: " + ex.Message);
+                }
+                finally
+                {
+                    FecharConexao();
+                }
+            }         
+           
+        }
+       
     }
 }

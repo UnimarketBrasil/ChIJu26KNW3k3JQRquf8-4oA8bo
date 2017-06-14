@@ -81,6 +81,7 @@
     <Content Include="Documentos\Querys\Inserts\Procedure CadastrarMetodosPagamento.sql" />
     <Content Include="Documentos\Querys\Inserts\Procedure RealizarPedido .sql" />
     <Content Include="Documentos\Querys\Lists\Procedure Top3Itens .sql" />
+    <Content Include="Documentos\Querys\Selects\Procedure Relatorio.sql" />
     <Content Include="Documentos\Querys\Updates\Procedure CancelarConta .sql" />
     <Content Include="Documentos\Querys\Updates\Procedure DesbloquearUsuario .sql" />
     <Content Include="Documentos\Querys\Updates\Procedure BloquearUsuario.sql" />

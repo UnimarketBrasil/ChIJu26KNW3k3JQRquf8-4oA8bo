@@ -21,4 +21,18 @@ namespace ClassLibrary
 
         public DateTime Data { get; set; }
     }
+
+    public struct RelatorioPedido
+    {
+        public string Valor;
+        public DateTime Data;
+
+        public RelatorioPedido(string valor, DateTime data)
+        {
+            Valor = valor;
+            Data = data;
+
+        }
+
+    }
 }

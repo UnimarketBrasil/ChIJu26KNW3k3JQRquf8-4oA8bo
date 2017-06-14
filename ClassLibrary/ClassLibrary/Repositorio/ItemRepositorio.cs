@@ -592,6 +592,52 @@ namespace ClassLibrary.Repositorio
                 }
             }
         }
+
+        public List<RelatorioItem> RelatorioItem(Usuario usuario)
+        {
+            Abrirconexao();
+
+            using (Cmd = new SqlCommand("RelatorioPedidos", Con))
+            {
+                try
+                {
+                    Cmd.CommandType = CommandType.StoredProcedure;
+                    Cmd.Parameters.AddWithValue("@IdVendedor", usuario.Id);
+
+                    Dr = Cmd.ExecuteReader();
+
+                    List<RelatorioItem> relatorio = new List<RelatorioItem>();
+
+                    if (Dr.HasRows)
+                    {
+                        while (Dr.Read())
+                        {
+                            RelatorioItem rel = new RelatorioItem(
+                                Convert.ToInt32(Dr["IdItem"]),
+                                Convert.ToInt32(Dr["QuantidadeItens"]),
+                                Convert.ToString(Dr["Nome"])
+                            );
+
+                            relatorio.Add(rel);
+                        }
+                    }
+
+                    Dr.Close();
+
+                    return relatorio;
+
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Erro executar relatorio: " + ex.Message);
+                }
+                finally
+                {
+                    FecharConexao();
+                }
+            }
+
+        }
     }
 }
 
