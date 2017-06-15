@@ -1,4 +1,9 @@
 use unimarket
+if OBJECT_ID('MecanismoDeBusca') is not null
+drop procedure MecanismoDeBusca
+go
+if OBJECT_ID('MecanismoDeBuscaCategoria') is not null
+drop procedure MecanismoDeBuscaCategoria
 go
 create procedure MecanismoDeBusca(
 	@Pesquisa varchar(50),

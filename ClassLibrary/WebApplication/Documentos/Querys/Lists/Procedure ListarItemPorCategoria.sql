@@ -1,6 +1,6 @@
 use unimarket
-go
-Excluir ListarItemPorCategoria
+if OBJECT_ID('ListarItemPorCategoria') is not null
+drop procedure ListarItemPorCategoria
 go
 create procedure ListarItemPorCategoria(
 	@IdCategoria varchar(50),

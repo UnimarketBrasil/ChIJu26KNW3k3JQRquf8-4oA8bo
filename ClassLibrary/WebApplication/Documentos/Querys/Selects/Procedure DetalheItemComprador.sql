@@ -1,6 +1,6 @@
 use unimarket
-go
-Excluir DetalheItemComprador
+if OBJECT_ID('DetalheItemComprador') is not null
+drop procedure DetalheItemComprador
 go
 create procedure DetalheItemComprador(
 	@IdItem int
