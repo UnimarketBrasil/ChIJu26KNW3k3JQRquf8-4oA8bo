@@ -32,7 +32,7 @@ namespace ClassUtilitario
                 EnableSsl = true,
                 DeliveryMethod = SmtpDeliveryMethod.Network,
                 UseDefaultCredentials = false,
-                Credentials = new NetworkCredential("unimarketbrasil@gmail.com", "Unimarket2017")
+                Credentials = new NetworkCredential("unimarketbrasil@gmail.com", "un1market")
 
             };
 
