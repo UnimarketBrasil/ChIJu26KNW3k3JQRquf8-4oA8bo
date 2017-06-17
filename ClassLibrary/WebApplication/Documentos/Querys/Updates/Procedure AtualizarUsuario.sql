@@ -11,8 +11,8 @@ create  procedure AtualizarUsuario(
 	@Nome varchar(50),
 	@Sobrenome varchar(50) = null,
 	@Telefone varchar(15),
-	@Latitude varchar(20),
-	@Longitude varchar(20),
+	@Latitude float,
+	@Longitude float,
 	@Complemento text = null,
 	@Numero int,
 	@AreaAtuacao real
