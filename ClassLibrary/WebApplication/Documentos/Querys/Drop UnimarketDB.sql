@@ -4,6 +4,8 @@ drop table MetodosPagamentoUsuario
 go
 drop table MetodosPagamento
 go
+drop table TipoMetodosPagamento
+go
 drop table ItemPedido
 go
 drop table Pedido

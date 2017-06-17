@@ -1,6 +1,6 @@
 use unimarket
-if OBJECT_ID('CadastrarUsuario') is not null
-drop procedure CadastrarUsuario
+if OBJECT_ID('ListarItem') is not null
+drop procedure ListarItem
 go
 create procedure ListarItem(
 	@IdUsuario int

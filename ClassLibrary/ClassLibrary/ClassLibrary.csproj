@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Categoria.cs" />
     <Compile Include="MetodoPagamento.cs" />
+    <Compile Include="Repositorio\MetodoPagamentoRepositorio.cs" />
     <Compile Include="Repositorio\CategoriaRepositorio.cs" />
     <Compile Include="Repositorio\Conexao.cs" />
     <Compile Include="Item.cs" />
@@ -53,6 +54,7 @@
     <Compile Include="Repositorio\UsuarioRepositorio.cs" />
     <Compile Include="StatusPedido.cs" />
     <Compile Include="StatusUsuario.cs" />
+    <Compile Include="TipoMetodosPagamento.cs" />
     <Compile Include="TipoUsuario.cs" />
     <Compile Include="Usuario.cs" />
   </ItemGroup>

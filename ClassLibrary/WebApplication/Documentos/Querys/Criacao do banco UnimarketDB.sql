@@ -10,8 +10,14 @@ create table TipoUsuario(
 	Nome varchar(50) not null
 )
 go
+create table TipoMetodosPagamento(
+	Id int Not null primary key identity(1,1),
+	Nome varchar(50) not null
+)
+go
 create table MetodosPagamento(
 	Id int Not null primary key identity(1,1),
+	IdTipoMetodo int foreign key references TipoMetodosPagamento(Id),
 	Nome varchar(50) not null
 )
 go
@@ -101,17 +107,21 @@ insert into TipoUsuario values ('Admin')
 insert into TipoUsuario values ('Comprador')
 insert into TipoUsuario values ('Vendedor')
 go
-insert into MetodosPagamento values ('Dinheiro')
-insert into MetodosPagamento values ('Cartão de Débito - Elo')
-insert into MetodosPagamento values ('Cartão de Débito - MasterCard')
-insert into MetodosPagamento values ('Cartão de Débito - Visa')
-insert into MetodosPagamento values ('Cartão de Débito - HiperCard')
-insert into MetodosPagamento values ('Cartão de Débito - Diners')
-insert into MetodosPagamento values ('Cartão de Crédio - Elo')
-insert into MetodosPagamento values ('Cartão de Crédio - MasterCard')
-insert into MetodosPagamento values ('Cartão de Crédio - Visa')
-insert into MetodosPagamento values ('Cartão de Crédio - HiperCard')
-insert into MetodosPagamento values ('Cartão de Crédio - Diners')
+insert into TipoMetodosPagamento values ('À vista')
+insert into TipoMetodosPagamento values ('Débito')
+insert into TipoMetodosPagamento values ('Crédito')
+go
+insert into MetodosPagamento values (1,'Dinheiro')
+insert into MetodosPagamento values (2,'Elo')
+insert into MetodosPagamento values (2,'MasterCard')
+insert into MetodosPagamento values (2,'Visa')
+insert into MetodosPagamento values (2,'HiperCard')
+insert into MetodosPagamento values (2,'Diners')
+insert into MetodosPagamento values (3,'Elo')
+insert into MetodosPagamento values (3,'MasterCard')
+insert into MetodosPagamento values (3,'Visa')
+insert into MetodosPagamento values (3,'HiperCard')
+insert into MetodosPagamento values (3,'Diners')
 go
 insert into Categoria values ('Eletrônicos')
 insert into Categoria values ('Informática')

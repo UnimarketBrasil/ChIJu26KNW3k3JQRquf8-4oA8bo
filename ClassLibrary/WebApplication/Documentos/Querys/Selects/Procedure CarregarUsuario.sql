@@ -22,7 +22,7 @@ create procedure CarregarMetodosPagamento(
 	)
 as	
 begin
-	select MetodosPagamentoUsuario.IdMetodo, MetodosPagamento.Nome, MetodosPagamentoUsuario.Desabilitado from MetodosPagamentoUsuario
+	select MetodosPagamentoUsuario.IdMetodo, MetodosPagamento.Nome, MetodosPagamento.IdTipoMetodo , MetodosPagamentoUsuario.Desabilitado from MetodosPagamentoUsuario
 	inner join MetodosPagamento on MetodosPagamento.Id = MetodosPagamentoUsuario.IdMetodo
 	where (IdVendedor = @IdVendedor)
 end

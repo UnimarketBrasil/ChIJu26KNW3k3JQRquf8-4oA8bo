@@ -31,16 +31,34 @@
                             <asp:Label runat="server" CssClass="h4" Text="Métodos de Pagamento"></asp:Label>
                         </div>
                         <div class="form-group">
-                            <asp:Label runat="server" Text="Dinheiro:"></asp:Label>
-                            <asp:Label runat="server" Text="Sim"></asp:Label>
+                            <div>
+                                <asp:Label runat="server" Text=""><a href="#Dinheiro" class="btn btn-link" data-toggle="collapse">Dinheiro</a></asp:Label>
+                            </div>
+                            <div id="Dinheiro" class="collapse">
+                                <div class="input-group">
+                                    <asp:Label runat="server" Text="Sim"></asp:Label>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <asp:Label runat="server" Text="Cartão de Débito:"></asp:Label>
-                            <asp:Label runat="server" ID="lbCartaoDebito" Text=""></asp:Label>
+                            <div>
+                                <asp:Label runat="server" Text=""><a href="#cDebito" class="btn btn-link" data-toggle="collapse">Cartão de Débito</a></asp:Label>
+                            </div>
+                            <div id="cDebito" class="collapse">
+                                <div class="input-group">
+                                    <asp:Label runat="server" ID="lbCartaoDebito" Text=""></asp:Label>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <asp:Label runat="server" Text="Cartão de Crédito:"></asp:Label>
-                            <asp:Label runat="server" ID="lbCartaoCredito" Text=""></asp:Label>
+                            <div>
+                                <a href="#cCredito" class="btn btn-link" data-toggle="collapse">Cartão de Crédito</a>
+                            </div>
+                            <div id="cCredito" class="collapse">
+                                <div class="input-group">
+                                    <asp:Label runat="server" ID="lbCartaoCredito" Text=""></asp:Label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-xs-4">

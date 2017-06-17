@@ -12,6 +12,8 @@ namespace ClassLibrary
 
         public string Nome { get; set; }
 
+        public TipoMetodosPagamento tMetodoPgto { get; set; }
+
         public bool Desabilitado { get; set; }
     }
 }

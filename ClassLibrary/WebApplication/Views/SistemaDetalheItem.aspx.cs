@@ -18,11 +18,11 @@ namespace WebApplication
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["sistema"] == null)
-                dvDuvida.Visible = false;            
-           
-            
+                dvDuvida.Visible = false;
+
+
             dvMsg.Visible = false;
-           
+
             if (Session["latlog"] == null & Session["sistema"] == null)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "script", "$(function () { chamaModal(); });", true);
@@ -54,12 +54,11 @@ namespace WebApplication
                     lbValorUnitario.Text = i.ValorUnitario.ToString();
                     lbTotal.Text = i.ValorUnitario.ToString();
                     lbNomeVendedor.Text = i.Vendedor.Nome;
-                    lbEndereco.Text = "Falta buscar endereco";
                     lbTelefone.Text = i.Vendedor.Telefone;
                     lbEmailVendedor.Text = i.Vendedor.Email;
                     lbDescricao.Text = i.Descricao;
                     lbEndereco.Text = g.ObterEndereco(i.Vendedor.Latitude, i.Vendedor.Longitude);
-                    txtQuantidade.MaxLength = 2; // = Convert.ToInt32(i.Quantidade);
+                    txtQuantidade.MaxLength = Convert.ToInt32(i.Quantidade);
 
                     string caminho = string.Format("~/Imagens/{0}/{1}/", i.Vendedor.Id, i.Id);
 
@@ -69,6 +68,38 @@ namespace WebApplication
                         var arquivos = diretorio.GetFiles();
                         string img = arquivos.Last().Name;
                         imProduto.ImageUrl = ResolveUrl(Path.Combine(caminho, img));
+                    }
+
+                    //MÉTODOS DE PAGAMENTO DO VENDEDOR
+                    MetodoPagamentoRepositorio carregaMetodos = new MetodoPagamentoRepositorio();
+                    List<MetodoPagamento> mPagamentoList = new List<MetodoPagamento>();
+
+                    mPagamentoList = carregaMetodos.ListarMetodoPagamento(i.Vendedor.Id);
+
+                    foreach (var item in mPagamentoList)
+                    {
+                        if (item.tMetodoPgto.Id.Equals(2))
+                        {
+                            if (String.IsNullOrEmpty(lbCartaoDebito.Text))
+                            {
+                                lbCartaoDebito.Text = item.Nome;
+                            }
+                            else
+                            {
+                                lbCartaoDebito.Text += " - " + item.Nome;
+                            }
+                        }
+                        else if (item.tMetodoPgto.Id.Equals(3))
+                        {
+                            if (String.IsNullOrEmpty(lbCartaoCredito.Text))
+                            {
+                                lbCartaoCredito.Text = item.Nome;
+                            }
+                            else
+                            {
+                                lbCartaoCredito.Text += " - " + item.Nome;
+                            }
+                        }
                     }
                 }
                 else
@@ -154,17 +185,17 @@ namespace WebApplication
             }
             else
             {
-                urlItem = "http://unimarket.academico.trilema.com.br/Views/SistemaDetalheItem.aspx?id=" +lbIdItem;
+                urlItem = "http://unimarket.academico.trilema.com.br/Views/SistemaDetalheItem.aspx?id=" + lbIdItem;
             }
 
             StringBuilder strBody;
             strBody = new StringBuilder();
-            strBody.AppendLine("Olá "+lbNomeVendedor+"!");
+            strBody.AppendLine("Olá " + lbNomeVendedor + "!");
             strBody.AppendLine("Registri uma dúvida referente ao seu item...");
             strBody.AppendLine("");
-            strBody.AppendLine("Nome do item: " +lbNomeProduto);
-            strBody.AppendLine("Descrição do item: " +lbDescricao);
-            strBody.AppendLine("Link do item:" +urlItem);
+            strBody.AppendLine("Nome do item: " + lbNomeProduto);
+            strBody.AppendLine("Descrição do item: " + lbDescricao);
+            strBody.AppendLine("Link do item:" + urlItem);
             strBody.AppendLine("");
             strBody.AppendLine("MINHA DÚVIDAS:");
             strBody.AppendLine(txtDuvida.Value);

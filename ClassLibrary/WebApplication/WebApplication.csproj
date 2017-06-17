@@ -80,6 +80,7 @@
     <Content Include="Documentos\Querys\Criacao do banco UnimarketDB.sql" />
     <Content Include="Documentos\Querys\Inserts\Procedure CadastrarMetodosPagamento.sql" />
     <Content Include="Documentos\Querys\Inserts\Procedure RealizarPedido .sql" />
+    <Content Include="Documentos\Querys\Lists\Procedure ListarMetPgtoVendedor .sql" />
     <Content Include="Documentos\Querys\Lists\Procedure Top3Itens .sql" />
     <Content Include="Documentos\Querys\Selects\Procedure Relatorio.sql" />
     <Content Include="Documentos\Querys\Updates\Procedure CancelarConta .sql" />

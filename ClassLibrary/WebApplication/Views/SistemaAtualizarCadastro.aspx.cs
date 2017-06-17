@@ -95,8 +95,21 @@ namespace WebApplication
 
                         for (int i = 0; i < u.MetodoPagamento.Count; i++)
                         {
-                            cbMetodosPagamento.Items.Add(new ListItem(u.MetodoPagamento[i].Nome, u.MetodoPagamento[i].Id.ToString()));
-                            cbMetodosPagamento.Items[i].Selected = u.MetodoPagamento[i].Desabilitado;
+                            if (u.MetodoPagamento[i].tMetodoPgto.Id.Equals(2))
+                            {
+                                cbMetodosPagamento.Items.Add(new ListItem("Cartão de Débito - " + u.MetodoPagamento[i].Nome, u.MetodoPagamento[i].Id.ToString()));
+                                cbMetodosPagamento.Items[i].Selected = u.MetodoPagamento[i].Desabilitado;
+                            }
+                            else if (u.MetodoPagamento[i].tMetodoPgto.Id.Equals(3))
+                            {
+                                cbMetodosPagamento.Items.Add(new ListItem("Cartão de Crédito - " + u.MetodoPagamento[i].Nome, u.MetodoPagamento[i].Id.ToString()));
+                                cbMetodosPagamento.Items[i].Selected = u.MetodoPagamento[i].Desabilitado;
+                            }
+                            else
+                            {
+                                cbMetodosPagamento.Items.Add(new ListItem(u.MetodoPagamento[i].Nome, u.MetodoPagamento[i].Id.ToString()));
+                                cbMetodosPagamento.Items[i].Selected = u.MetodoPagamento[i].Desabilitado;
+                            }
                         }
 
                     }
@@ -136,8 +149,22 @@ namespace WebApplication
 
                         for (int i = 0; i < u.MetodoPagamento.Count; i++)
                         {
-                            cbMetodosPagamento.Items.Add(new ListItem(u.MetodoPagamento[i].Nome, u.MetodoPagamento[i].Id.ToString()));
-                            cbMetodosPagamento.Items[i].Selected = u.MetodoPagamento[i].Desabilitado;
+                            if (u.MetodoPagamento[i].tMetodoPgto.Id.Equals(2))
+                            {
+                                cbMetodosPagamento.Items.Add(new ListItem("Cartão de Débito - " + u.MetodoPagamento[i].Nome, u.MetodoPagamento[i].Id.ToString()));
+                                cbMetodosPagamento.Items[i].Selected = u.MetodoPagamento[i].Desabilitado;
+                            }
+                            else if (u.MetodoPagamento[i].tMetodoPgto.Id.Equals(3))
+                            {
+                                cbMetodosPagamento.Items.Add(new ListItem("Cartão de Crédito - " + u.MetodoPagamento[i].Nome, u.MetodoPagamento[i].Id.ToString()));
+                                cbMetodosPagamento.Items[i].Selected = u.MetodoPagamento[i].Desabilitado;
+                            }
+                            else
+                            {
+                                cbMetodosPagamento.Items.Add(new ListItem(u.MetodoPagamento[i].Nome, u.MetodoPagamento[i].Id.ToString()));
+                                cbMetodosPagamento.Items[i].Selected = u.MetodoPagamento[i].Desabilitado;
+                            }
+
                         }
 
                     }

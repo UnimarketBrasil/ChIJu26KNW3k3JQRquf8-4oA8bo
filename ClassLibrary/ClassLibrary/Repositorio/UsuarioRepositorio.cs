@@ -533,6 +533,8 @@ namespace ClassLibrary.Repositorio
                             pagamento = new MetodoPagamento();
                             pagamento.Id = Convert.ToInt32(Dr["IdMetodo"]);
                             pagamento.Nome = Convert.ToString(Dr["Nome"]);
+                            pagamento.tMetodoPgto = new TipoMetodosPagamento();
+                            pagamento.tMetodoPgto.Id = Convert.ToInt32(Dr["IdTipoMetodo"]);
                             pagamento.Desabilitado = Convert.ToBoolean(Dr["Desabilitado"]);
 
                             user.MetodoPagamento.Add(pagamento);
