@@ -82,17 +82,56 @@
                             <asp:Label runat="server" Text="E-mail:"></asp:Label>
                             <asp:Label runat="server" ID="lbEmailVendedor" Text=""></asp:Label>
                         </div>
-                        <div id="dvDuvidaEmail" class="input-group" runat="server">
-                            <asp:TextBox runat="server" ID="txtDuvidaEmail" CssClass="form-control" placeholder="Envie suas dúvidas ao vendedor" />
-                            <span class="input-group-btn">
-                                <asp:Button Text="ENVIAR" ID="btDuvidaEmail" CssClass="btn btn-default input-group-addon" runat="server" OnClick="btDuvidaEmail_Click" />
-                            </span>
+                        <div id="dvDuvida" runat="server" class="form-group">
+                            <div>
+                                <asp:Label runat="server" Text="">Dúvidas sobre este item? <a href="#demo" class="btn btn-link" data-toggle="collapse">clique aqui</a></asp:Label>
+                            </div>
+                            <div id="demo" class="collapse">
+                                <asp:Label runat="server" Text="Descreva sua dúvida no campo abaixo, o vendedor receberá por e-mail..."></asp:Label>
+                                <div class="input-group">
+                                    <input id="txtDuvida" runat="server" type="text" class="form-control">
+                                    <span class="input-group-btn">
+                                        <button id="btEnviar" onclick="" class="btn btn-default" data-loading-text="Enviando" type="button">Enviar</button>
+                                    </span>
+                                </div>
+                                <asp:Label runat="server" ID="ldMsgEnvio"></asp:Label>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </form>
+    <script type="text/javascript">
+        $('#btEnviar').on('click', function () {
+
+            var $btn = $(this).button('loading')
+
+            var xmlhttp = window.XMLHttpRequest ? new XMLHttpRequest : new ActiveXObject("Microsoft.XMLHTTP");
+
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    document.getElementById('<% Response.Write(ldMsgEnvio.ClientID);%>').innerHTML = xmlhttp.response;
+                    $btn.button('reset')
+
+                    if (xmlhttp.response == 'E-mail enviado com sucesso') {
+                        document.getElementById('<% Response.Write(ldMsgEnvio.ClientID);%>').className = "label label-success";
+                        $("#txtDuvida").val('');
+                    }
+                }
+            }
+
+            xmlhttp.open("GET", "<%Response.Write(ResolveUrl("~/Views/Ajax/EnviarDuvidaP_Vendedor.aspx"));%>?idItem=" +
+                location.search.split('id')[1] + "&NomeVendedor=" +
+                document.getElementById("<%Response.Write(lbNomeVendedor.ClientID);%>").innerHTML + "&NomeItem=" +
+                document.getElementById("<%Response.Write(lbNomeProduto.ClientID);%>").innerHTML + "&DescricaoItem=" +
+                document.getElementById("<%Response.Write(lbDescricao.ClientID);%>").innerHTML + "&Duvida=" +
+                document.getElementById("<%Response.Write(txtDuvida.ClientID);%>").value + "&EmailVendedor=" +
+                document.getElementById("<%Response.Write(lbEmailVendedor.ClientID);%>").innerHTML, true);
+            xmlhttp.send();
+
+        })
+    </script>
     <script type="text/javascript">
         function calc_total() {
             var qtd = parseInt(document.getElementById('<% Response.Write(txtQuantidade.ClientID); %>').value);

@@ -41,11 +41,11 @@ namespace WebApplication
 
                 //GERAR MENSAGEM PARA ENVIAR POR E-MAIL PARA O USUÁRIO
                 strBody = new StringBuilder();
-                strBody.AppendLine("cONFIRMAÇÃO DE CADASTRO");
+                strBody.AppendLine("CONFIRMAÇÃO DE CADASTRO");
                 strBody.AppendLine("Id: " + u.Id);
                 strBody.AppendLine("Nome: " + u.Nome + " " + u.Sobrenome);
                 strBody.AppendLine("E-mail: " + u.Email);
-                strBody.AppendLine("Dt. Cadastro: " + DateTime.Now);
+                strBody.AppendLine("Dt. Confirmação: " + DateTime.Now);
                 strBody.AppendLine("");
                 strBody.AppendLine("Unimarket Brasil");
 

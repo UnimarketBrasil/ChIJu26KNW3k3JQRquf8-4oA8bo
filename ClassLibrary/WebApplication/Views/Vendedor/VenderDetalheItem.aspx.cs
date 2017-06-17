@@ -7,6 +7,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.UI;
+using System.Globalization;
 
 namespace WebApplication
 {
@@ -47,9 +48,9 @@ namespace WebApplication
                     txtNome.Text = i.Nome;
                     txtCod.Text = i.Codigo;
                     txtQuantidade.Text = i.Quantidade.ToString();
-                    txtValorUnitario.Text = i.ValorUnitario.ToString();
+                    txtValorUnitario.Text = Math.Round(i.ValorUnitario,2).ToString();
                     txtDescricao.Value = i.Descricao.ToString();
-                    lbValorTotal.Text = (i.Quantidade * i.ValorUnitario).ToString();
+                    lbValorTotal.Text = Math.Round((i.Quantidade * i.ValorUnitario), 2).ToString();
                     dpCategoria.SelectedValue = i.Categoria.Id.ToString();
 
                     
@@ -136,7 +137,7 @@ namespace WebApplication
             txtNome.Text = txtNome.Text.Replace(">", "");
             item.Nome = txtNome.Text;
             item.Descricao = txtDescricao.InnerText;
-            item.ValorUnitario = Convert.ToDouble(txtValorUnitario.Text);
+            item.ValorUnitario = Math.Round(Convert.ToDouble(txtValorUnitario.Text),2);
             item.Quantidade = Convert.ToInt64(txtQuantidade.Text);
 
             item.Categoria = new Categoria(Convert.ToInt32(dpCategoria.SelectedValue));

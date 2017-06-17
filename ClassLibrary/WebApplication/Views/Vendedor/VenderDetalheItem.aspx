@@ -57,7 +57,7 @@
                         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 form-group">
                             <label for="<%=txtValorUnitario.ClientID%>">Valor Unitário</label>
                             <div class="input-group">
-                                <asp:TextBox runat="server" ID="txtValorUnitario" onKeyUp="calc_total(this, event);" CssClass="form-control" placeholder="Valor Unitário" required="true"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txtValorUnitario" onchange="formataValor(this,event);"  onKeyUp="calc_total(this, event); formataValor(this,event);" CssClass="form-control" placeholder="Valor Unitário" required="true"></asp:TextBox>
                             </div>
                         </div>
                     </div>
@@ -83,7 +83,7 @@
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1 form-group">
-                                <button type="reset" class="btn btn-default">Cancelar</button>
+                                <button onclick="javascript:window.history.go(-1);" type="reset" class="btn btn-default">Cancelar</button>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1 form-group">
                                 <asp:Button runat="server" ID="btSalvarrItem" Text="Salvar" CssClass="btn btn-primary" OnClick="btAtualizarItem_Click"></asp:Button>
@@ -95,7 +95,7 @@
                             <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 form-group">
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1 form-group">
-                                <button type="reset" class="btn btn-default">Cancelar</button>
+                                <button type="reset" onclick="javascript:window.history.go(-1);" class="btn btn-default">Cancelar</button>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-1 col-lg-1 form-group">
                                 <asp:Button runat="server" ID="btAtualizarItem" Text="Salvar" CssClass="btn btn-primary" OnClick="bt_CadastrarItem"></asp:Button>
@@ -184,4 +184,5 @@
 
         })(jQuery);
     </script>
+    <script src="../../Scripts/Mascara.js"></script>
 </asp:Content>

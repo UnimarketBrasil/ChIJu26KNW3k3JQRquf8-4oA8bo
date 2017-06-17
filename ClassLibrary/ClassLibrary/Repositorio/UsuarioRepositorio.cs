@@ -446,8 +446,10 @@ namespace ClassLibrary.Repositorio
                         Dr.Read();
                         user.Id = Convert.ToInt32(Dr["Id"]);
                         user.Nome = ti.ToTitleCase(Convert.ToString(Dr["Nome"]));
+                        user.Sobrenome = ti.ToTitleCase(Convert.ToString(Dr["Sobrenome"]));
                         user.Email = Convert.ToString(Dr["Email"]);
                         user.CpfCnpj = Convert.ToString(Dr["CpfCnpj"]);
+                        user.Telefone = Convert.ToString(Dr["Telefone"]);
                         user.Latitude = Convert.ToString(Dr["Latitude"]);
                         user.Longitude = Convert.ToString(Dr["Longitude"]);
                         user.AreaAtuacao = Convert.ToDouble(Dr["AreaAtuacao"]);

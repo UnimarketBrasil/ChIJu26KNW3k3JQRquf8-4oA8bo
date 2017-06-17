@@ -18,7 +18,7 @@ namespace WebApplication
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["sistema"] == null)
-                dvDuvidaEmail.Visible = false;            
+                dvDuvida.Visible = false;            
            
             
             dvMsg.Visible = false;
@@ -143,18 +143,40 @@ namespace WebApplication
         protected void btDuvidaEmail_Click(object sender, EventArgs e)
         {
             Usuario u = (Usuario)Session["sistema"];
-            IsEmail duvida = new IsEmail();
+            IsEmail enviarDuvida = new IsEmail();
             MailMessage message = new MailMessage();
-            
-            StringBuilder strBody = new StringBuilder();
-            strBody.AppendLine(txtDuvidaEmail.Text);
+            string urlItem = null;
+
+
+            if (HttpContext.Current.Request.IsLocal)
+            {
+                urlItem = "http://localhost:49756/Views/SistemaDetalheItem.aspx?id=" + lbIdItem;
+            }
+            else
+            {
+                urlItem = "http://unimarket.academico.trilema.com.br/Views/SistemaDetalheItem.aspx?id=" +lbIdItem;
+            }
+
+            StringBuilder strBody;
+            strBody = new StringBuilder();
+            strBody.AppendLine("Olá "+lbNomeVendedor+"!");
+            strBody.AppendLine("Registri uma dúvida referente ao seu item...");
+            strBody.AppendLine("");
+            strBody.AppendLine("Nome do item: " +lbNomeProduto);
+            strBody.AppendLine("Descrição do item: " +lbDescricao);
+            strBody.AppendLine("Link do item:" +urlItem);
+            strBody.AppendLine("");
+            strBody.AppendLine("MINHA DÚVIDAS:");
+            strBody.AppendLine(txtDuvida.Value);
+            strBody.AppendLine("Unimarket Brasil");
+            strBody.AppendLine("http://unimarket.academico.trilema.com.br");
 
             message = new MailMessage("unimarketbrasil@gmail.com", u.Email.ToString());
-            message.Subject = "Duvida";
+            message.Subject = "Unimarket Brasil - Dúvida";
             message.Body = strBody.ToString();
             message.To.Add(lbEmailVendedor.Text);
 
-            duvida.Enviar(message);
+            enviarDuvida.Enviar(message);
         }
     }
 }

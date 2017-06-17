@@ -9,6 +9,6 @@ create procedure LoginUsuario (
 as
 	declare @IdUsuario int
 begin
-	select Usuario.Id as Id, Usuario.Nome, Usuario.Email, Usuario.CpfCnpj, Usuario.Latitude, Usuario.Longitude, Usuario.AreaAtuacao, Usuario.IdStatusUsuario, Usuario.IdTipoUsuario
+	select Usuario.Id as Id, Usuario.Nome, Usuario.Sobrenome, Usuario.Email, Usuario.CpfCnpj, Usuario.Telefone, Usuario.Latitude, Usuario.Longitude, Usuario.AreaAtuacao, Usuario.IdStatusUsuario, Usuario.IdTipoUsuario
 	from Usuario where (Usuario.Email = @Email) and (Usuario.Senha = @Senha)
 end
