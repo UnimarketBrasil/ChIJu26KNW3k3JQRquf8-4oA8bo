@@ -501,8 +501,8 @@ namespace ClassLibrary.Repositorio
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.AddWithValue("@Pesquisa", pesquisa);
                     Cmd.Parameters.AddWithValue("@IdComprador", comprador.Id);
-                    Cmd.Parameters.AddWithValue("@LatitudeComprador", comprador.Latitude);
-                    Cmd.Parameters.AddWithValue("@LongitudeComprador", comprador.Longitude);
+                    Cmd.Parameters.AddWithValue("@LatitudeComprador", Convert.ToDouble(comprador.Latitude));
+                    Cmd.Parameters.AddWithValue("@LongitudeComprador", Convert.ToDouble(comprador.Longitude));
                     Cmd.ExecuteNonQuery();
 
                     Dr = Cmd.ExecuteReader();
@@ -553,8 +553,8 @@ namespace ClassLibrary.Repositorio
                     Cmd.CommandType = CommandType.StoredProcedure;
                     Cmd.Parameters.AddWithValue("@IdCategoria", IdCategoria);
                     Cmd.Parameters.AddWithValue("@IdComprador", comprador.Id);
-                    Cmd.Parameters.AddWithValue("@LatitudeComprador", comprador.Latitude);
-                    Cmd.Parameters.AddWithValue("@LongitudeComprador", comprador.Longitude);
+                    Cmd.Parameters.AddWithValue("@LatitudeComprador", Convert.ToDouble(comprador.Latitude));
+                    Cmd.Parameters.AddWithValue("@LongitudeComprador", Convert.ToDouble(comprador.Longitude));
                     Cmd.ExecuteNonQuery();
 
                     Dr = Cmd.ExecuteReader();

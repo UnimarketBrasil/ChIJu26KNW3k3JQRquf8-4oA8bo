@@ -11,12 +11,11 @@ create  procedure AtualizarUsuario(
 	@Nome varchar(50),
 	@Sobrenome varchar(50) = null,
 	@Telefone varchar(15),
-	@Longitude varchar(20),
-	@Latitude varchar(20),
-	@CEP varchar(8),
+	@Latitude float,
+	@Longitude float,
+	@Complemento text = null,
 	@Numero int,
-	@Complemento varchar(20) = null,
-	@AreaAtuacao real =null
+	@AreaAtuacao real
 	)
 as
 begin
@@ -29,9 +28,8 @@ begin
 			Telefone = @Telefone,
 			Latitude = @Latitude,
 			Longitude = @Longitude,
-			CEP = @CEP,
-			Numero = @Numero,
 			Complemento = @Complemento,
+			Numero = @Numero,
 			AreaAtuacao = @AreaAtuacao
 			where ( Id = @IdUsuario )
 		commit tran
