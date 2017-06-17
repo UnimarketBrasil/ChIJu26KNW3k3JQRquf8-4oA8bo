@@ -76,6 +76,9 @@ namespace WebApplication
 
                     mPagamentoList = carregaMetodos.ListarMetodoPagamento(i.Vendedor.Id);
 
+                    
+                    
+
                     foreach (var item in mPagamentoList)
                     {
                         if (item.tMetodoPgto.Id.Equals(2))
@@ -100,6 +103,14 @@ namespace WebApplication
                                 lbCartaoCredito.Text += " - " + item.Nome;
                             }
                         }
+                    }
+                    if (String.IsNullOrEmpty(lbCartaoDebito.Text))
+                    {
+                        lbCartaoDebito.Text = "Não aceita.";
+                    }
+                    if (String.IsNullOrEmpty(lbCartaoCredito.Text))
+                    {
+                        lbCartaoCredito.Text = "Não aceita.";
                     }
                 }
                 else
