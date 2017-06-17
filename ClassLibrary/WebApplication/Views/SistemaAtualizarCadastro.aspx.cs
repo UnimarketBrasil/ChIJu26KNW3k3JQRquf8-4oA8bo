@@ -51,16 +51,17 @@ namespace WebApplication
         //ESTE METODO CARREGA AS INFORMAÇOES DO USUARIO PARA ALTERAÇÃO
         protected void Page_Load(object sender, EventArgs e)
         {
+            int idtpousuario;
+
+            int.TryParse(Request.QueryString["TipoUsuario"], out idtpousuario);
+
+            if (idtpousuario.Equals(2))
+            {
+                dvMetodo.Visible = true;
+            }
+
             if (!IsPostBack)
             {
-                int idtpousuario;
-
-                int.TryParse(Request.QueryString["TipoUsuario"], out idtpousuario);
-
-                if (idtpousuario.Equals(2))
-                {
-                    dvMetodo.Visible = true;
-                }
 
                 Usuario u = (Usuario)Session["sistema"];
                 UsuarioRepositorio carregaUsuario = new UsuarioRepositorio();

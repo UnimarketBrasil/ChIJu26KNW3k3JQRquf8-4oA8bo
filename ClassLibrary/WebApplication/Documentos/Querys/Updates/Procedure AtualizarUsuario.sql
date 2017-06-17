@@ -13,6 +13,7 @@ create  procedure AtualizarUsuario(
 	@Telefone varchar(15),
 	@Latitude float,
 	@Longitude float,
+	@CEP varchar(8),
 	@Complemento text = null,
 	@Numero int,
 	@AreaAtuacao real
@@ -28,6 +29,7 @@ begin
 			Telefone = @Telefone,
 			Latitude = @Latitude,
 			Longitude = @Longitude,
+			CEP = @CEP,
 			Complemento = @Complemento,
 			Numero = @Numero,
 			AreaAtuacao = @AreaAtuacao
