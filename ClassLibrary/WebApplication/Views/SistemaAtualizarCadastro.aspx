@@ -1,13 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Comprar.Master" AutoEventWireup="true" CodeBehind="SistemaAtualizarCadastro.aspx.cs" Inherits="WebApplication.SistemaAtualizarCadastro" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link href="../Content/bootstrap-datepicker.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
         <div id="dvMsg" runat="server" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close" formmethod="put"><span aria-hidden="true">&times;</span></button>
-            <strong>!</strong>
             <asp:Label ID="lbMsg" runat="server"></asp:Label>
         </div>
         <h2 class="text-uppercase"><strong>Atualizar Cadastro</strong></h2>
@@ -76,17 +74,12 @@
                             <asp:TextBox ID="txtNumero" runat="server" CssClass="form-control" TextMode="Number" placeholder="N°" required="true"></asp:TextBox>
                         </div>
                         <div class="col-lg-2">
-                            <button draggable="false" class="btn btn-primary" onclick="chamarAjax();"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                            <button type="button" draggable="false" class="btn btn-primary" onclick="chamarAjax();" formmethod="put"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                         </div>
                     </div>
-                    <div id="Div1" runat="server" class="form-group">
+                    <div id="dvEndereco" runat="server" class="form-group">
                         <div class="col-lg-10 col-lg-offset-2">
-                            <asp:Label runat="server" ID="Label1" Text=""></asp:Label>
-                        </div>
-                    </div>
-                    <div id="dvEnderecoCompleto" runat="server" class="form-group">
-                        <div class="col-lg-10 col-lg-offset-2">
-                            <asp:Label runat="server" ID="lbEndereco"></asp:Label>
+                            <asp:Label runat="server" ID="lbEndereco_" Text="Informe o CEP do seu endereço, número e clique na lupa..." Font-Bold="True" CssClass="form-control well well-sm"></asp:Label>
                         </div>
                     </div>
                     <div class="form-group">
@@ -142,8 +135,6 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAErShX6RRNkCAj2d3E9bxaEEGKSpIHZ1A&callback=initMap"
         async defer></script>
     <!--Outros-->
-    <script src="../Scripts/bootstrap-datepicker.js"></script>
-    <script src="../Scripts/locales/bootstrap-datepicker.pt-BR.min.js"></script>
     <script type="text/javascript" src="../Scripts/Mascara.js"></script>
     <script type="text/javascript">
         function chamarAjax() {
@@ -152,7 +143,7 @@
 
             xmlhttp.onreadystatechange = function () {
                 if (xmlhttp.readyState == 400 && xmlhttp.status == 200) {
-                    document.getElementById('<%Response.Write(lbEndereco.ClientID);%>').innerHTML = xmlhttp.response;
+                    document.getElementById('<%Response.Write(lbEndereco_.ClientID);%>').innerHTML = xmlhttp.response;
                 }
             }
 

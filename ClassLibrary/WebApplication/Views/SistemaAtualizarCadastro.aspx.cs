@@ -16,49 +16,52 @@ namespace WebApplication
     {
         protected void Page_PreInit(object sender, EventArgs e)
         {
-            int idtpousuario;
-
-            int.TryParse(Request.QueryString["TipoUsuario"], out idtpousuario);
-
-            if (Session["sistema"] != null)
+            if (!IsPostBack)
             {
-                Usuario u = (Usuario)Session["sistema"];
-                if (u.Tipousuario.Id == 1)
+                int idtpousuario;
+
+                int.TryParse(Request.QueryString["TipoUsuario"], out idtpousuario);
+
+                if (Session["sistema"] != null)
                 {
-                    this.Page.MasterPageFile = "~/Admin.Master";
-                }
-                else if (u.Tipousuario.Id == 2 && !idtpousuario.Equals(2))
-                {
-                    this.Page.MasterPageFile = "~/Comprar.Master";
-                }
-                else if (u.Tipousuario.Id == 3 || idtpousuario.Equals(2))
-                {
-                    this.Page.MasterPageFile = "~/Vender.Master";
+                    Usuario u = (Usuario)Session["sistema"];
+                    if (u.Tipousuario.Id == 1)
+                    {
+                        this.Page.MasterPageFile = "~/Admin.Master";
+                    }
+                    else if (u.Tipousuario.Id == 2 && !idtpousuario.Equals(2))
+                    {
+                        this.Page.MasterPageFile = "~/Comprar.Master";
+                    }
+                    else if (u.Tipousuario.Id == 3 || idtpousuario.Equals(2))
+                    {
+                        this.Page.MasterPageFile = "~/Vender.Master";
+                    }
+                    else
+                    {
+                        Response.Redirect("~/Views/SistemaErro.aspx");
+                    }
                 }
                 else
                 {
-                    Response.Redirect("~/Views/SistemaErro.aspx");
+                    Response.Redirect("~/Views/SistemaLogin.aspx");
                 }
-            }
-            else
-            {
-                Response.Redirect("~/Views/SistemaLogin.aspx");
             }
         }
         //ESTE METODO CARREGA AS INFORMAÇOES DO USUARIO PARA ALTERAÇÃO
         protected void Page_Load(object sender, EventArgs e)
         {
-            int idtpousuario;
-
-            int.TryParse(Request.QueryString["TipoUsuario"], out idtpousuario);
-
-            if (idtpousuario.Equals(2))
-            {
-                dvMetodo.Visible = true;
-            }
-
             if (!IsPostBack)
             {
+                int idtpousuario;
+
+                int.TryParse(Request.QueryString["TipoUsuario"], out idtpousuario);
+
+                if (idtpousuario.Equals(2))
+                {
+                    dvMetodo.Visible = true;
+                }
+
                 Usuario u = (Usuario)Session["sistema"];
                 UsuarioRepositorio carregaUsuario = new UsuarioRepositorio();
 
@@ -87,7 +90,7 @@ namespace WebApplication
                         }
 
                         GeoCodificacao g = new GeoCodificacao();
-                        lbEndereco.Text = g.ObterEndereco(u.Latitude, u.Longitude);
+                        lbEndereco_.Text = g.ObterEndereco(u.Latitude, u.Longitude);
                         txtEndereco.Text = u.CEP;
                         txtNumero.Text = u.Numero.ToString();
                         txtComplemento.Text = u.Complemento;
@@ -141,7 +144,7 @@ namespace WebApplication
                         }
 
                         GeoCodificacao g = new GeoCodificacao();
-                        lbEndereco.Text = g.ObterEndereco(u.Latitude, u.Longitude);
+                        lbEndereco_.Text = g.ObterEndereco(u.Latitude, u.Longitude);
                         txtEndereco.Text = u.CEP;
                         txtNumero.Text = u.Numero.ToString();
                         txtComplemento.Text = u.Complemento;
@@ -190,22 +193,7 @@ namespace WebApplication
                 u.Email = txtEmail.Text;
                 u.Telefone = txtTel.Text;
 
-                try
-                {
-                    Usuario uEndereco = (Usuario)Session["latlog"];
-                    u.Latitude = uEndereco.Latitude;
-                    u.Longitude = uEndereco.Longitude;
-                }
-                catch
-                {
-                    Usuario uEndereco = (Usuario)Session["sistema"];
-                    u.Latitude = uEndereco.Latitude;
-                    u.Longitude = uEndereco.Longitude;
-                }
-
-                u.Complemento = txtComplemento.Text;
-                u.Numero = Convert.ToInt32(txtNumero.Text);
-                u.AreaAtuacao = Convert.ToDouble(dpArea.SelectedValue);
+                
 
                 u.MetodoPagamento = new List<MetodoPagamento>();
                 MetodoPagamento m = null;
@@ -256,22 +244,6 @@ namespace WebApplication
                 u.Email = txtEmail.Text;
                 u.Telefone = txtTel.Text;
 
-                try
-                {
-                    Usuario uEndereco = (Usuario)Session["latlog"];
-                    u.Latitude = uEndereco.Latitude;
-                    u.Longitude = uEndereco.Longitude;
-                }
-                catch
-                {
-                    Usuario uEndereco = (Usuario)Session["sistema"];
-                    u.Latitude = uEndereco.Latitude;
-                    u.Longitude = uEndereco.Longitude;
-                }
-                u.Complemento = txtComplemento.Text;
-                u.Numero = Convert.ToInt32(txtNumero.Text);
-                u.AreaAtuacao = Convert.ToDouble(dpArea.SelectedValue);
-
                 u.MetodoPagamento = new List<MetodoPagamento>();
                 MetodoPagamento m = null;
 
@@ -299,12 +271,31 @@ namespace WebApplication
                     }
                 }
 
+
+                try
+                {
+                    Usuario uEndereco = (Usuario)Session["latlog"];
+                    u.Latitude = uEndereco.Latitude;
+                    u.Longitude = uEndereco.Longitude;
+                }
+                catch
+                {
+                    Usuario uEndereco = (Usuario)Session["sistema"];
+                    u.Latitude = uEndereco.Latitude;
+                    u.Longitude = uEndereco.Longitude;
+                }
+
+                u.CEP = txtEndereco.Text.Replace("-","");
+                u.Complemento = txtComplemento.Text;
+                u.Numero = Convert.ToInt32(txtNumero.Text);
+                u.AreaAtuacao = Convert.ToDouble(dpArea.SelectedValue);
+
                 UsuarioRepositorio atulizarCadastro = new UsuarioRepositorio();
                 if (atulizarCadastro.AtualizarUsuario(u))
                 {
                     dvMsg.Visible = true;
                     dvMsg.Attributes["class"] = "alert alert-success alert-dismissible";
-                    lbMsg.Text = "Cadastro realizado com sucesso!";
+                    lbMsg.Text = "Da!";
                 }
                 else
                 {
@@ -313,7 +304,9 @@ namespace WebApplication
                     lbMsg.Text = "Não foi possível atender sua solicitação.";
                 }
             }
-            Response.Redirect(Request.RawUrl);
+
+            
+
         }
     }
 }

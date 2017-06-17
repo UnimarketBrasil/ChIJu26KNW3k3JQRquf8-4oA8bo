@@ -5,9 +5,10 @@
 <html>
 <head runat="server">
     <title>Unimarket Brasil</title>
-    <link rel="icon" href="~/Content/App_Data/Uni.ico">
 
     <!--Styles-->
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+
     <link href="Content/bootstrap.sandstone.min.css" rel="stylesheet" />
     <link href="Content/GridPager.css" rel="stylesheet" />
 
@@ -25,7 +26,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Unimarket BR</a>
+                <a class="navbar-brand" draggable="false" href="#">Unimarket BR</a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
                 <ul class="nav navbar-nav">

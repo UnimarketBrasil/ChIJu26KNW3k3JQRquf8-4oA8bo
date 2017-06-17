@@ -5,7 +5,6 @@
 <html>
 <head runat="server">
     <title>Unimarket Brasil</title>
-    <link rel="icon" runat="server" href="~/Content/App_Data/Uni.ico">
 
     <!--Styles-->
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
@@ -21,19 +20,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
-    <style>
-        #noti_Counter {
-            position: absolute;
-            background: #E1141E;
-            color: #FFF;
-            padding: 1px 3px;
-            border-radius: 2px;
-            -moz-border-radius: 2px;
-            -moz-border-radius: 2px;
-            -webkit-border-radius: 2px;
-            z-index: 1;
-        }
-    </style>
 </head>
 <body>
     <nav class="navbar navbar-default">
