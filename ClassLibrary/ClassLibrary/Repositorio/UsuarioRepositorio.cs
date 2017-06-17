@@ -27,8 +27,8 @@ namespace ClassLibrary.Repositorio
                     Cmd.Parameters.AddWithValue("@CpfCnpj", user.CpfCnpj);
                     Cmd.Parameters.AddWithValue("@Genero", user.Genero);
                     Cmd.Parameters.AddWithValue("@Telefone", user.Telefone);
-                    Cmd.Parameters.AddWithValue("@Longitude", user.Longitude);
-                    Cmd.Parameters.AddWithValue("@Latitude", user.Latitude);
+                    Cmd.Parameters.AddWithValue("@Latitude", Convert.ToDouble(user.Latitude));
+                    Cmd.Parameters.AddWithValue("@Longitude", Convert.ToDouble(user.Longitude));
                     Cmd.Parameters.AddWithValue("@CEP", user.CEP);
                     Cmd.Parameters.AddWithValue("@Numero", user.Numero);
                     Cmd.Parameters.AddWithValue("@Complemento", user.Complemento);
@@ -73,8 +73,8 @@ namespace ClassLibrary.Repositorio
                     Cmd.Parameters.AddWithValue("@Nome", user.Nome);
                     Cmd.Parameters.AddWithValue("@Sobrenome", user.Sobrenome);
                     Cmd.Parameters.AddWithValue("@Telefone", user.Telefone);
-                    Cmd.Parameters.AddWithValue("@Latitude", user.Latitude);
-                    Cmd.Parameters.AddWithValue("@Longitude", user.Longitude);
+                    Cmd.Parameters.AddWithValue("@Latitude", Convert.ToDouble(user.Latitude));
+                    Cmd.Parameters.AddWithValue("@Longitude", Convert.ToDouble(user.Longitude));
                     Cmd.Parameters.AddWithValue("@Complemento", user.Complemento);
                     Cmd.Parameters.AddWithValue("@Numero", user.Numero);
                     Cmd.Parameters.AddWithValue("@AreaAtuacao", user.AreaAtuacao);
