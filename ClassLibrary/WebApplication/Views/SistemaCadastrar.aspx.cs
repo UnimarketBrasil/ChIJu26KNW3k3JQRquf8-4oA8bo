@@ -189,7 +189,7 @@ namespace WebApplication
 
                     using (message = new MailMessage("unimarketbrasil@gmail.com", "unimarketbrasil@gmail.com")
                     {
-                        Subject = "Novo usuário",
+                        Subject = "NOVO USUÁRIO",
                         Body = strBody.ToString()
                     })
 
