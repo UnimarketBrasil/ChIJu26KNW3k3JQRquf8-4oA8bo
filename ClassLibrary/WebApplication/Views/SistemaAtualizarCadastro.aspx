@@ -79,7 +79,7 @@
                     </div>
                     <div id="dvEndereco" runat="server" class="form-group">
                         <div class="col-lg-10 col-lg-offset-2">
-                            <asp:Label runat="server" ID="lbEndereco_" Text="Informe o CEP do seu endereço, número e clique na lupa..." Font-Bold="True" CssClass="form-control well well-sm"></asp:Label>
+                            <asp:Label runat="server" ID="lbEndereco_" Font-Bold="True" CssClass="form-control well well-sm"></asp:Label>
                         </div>
                     </div>
                     <div class="form-group">

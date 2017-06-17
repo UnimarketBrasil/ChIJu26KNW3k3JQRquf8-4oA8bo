@@ -70,25 +70,25 @@ namespace ClassUtilitario
 
         //MÉTODO RECEBE LATITUDE E LONGITUDE
         //RETORNA O ENDERECO COMPLETO
-        public string ObterEndereco(string lat, string lng)
-        {
-            string resposta = null;
+        //public string ObterEndereco(string lat, string lng)
+        //{
+        //    string resposta = null;
 
-            try
-            {
-                using (DataSet ds = new DataSet())
-                {
+        //    try
+        //    {
+        //        using (DataSet ds = new DataSet())
+        //        {
 
-                    string endereco = string.Format("https://maps.googleapis.com/maps/api/geocode/xml?latlng={0},{1}&key=AIzaSyDPNFOUPna4dnTRtQ806ST8G9Vj6WEK32Y", lat, lng);
-                    ds.ReadXml(endereco);
-                    return ds.Tables["address_component"].Rows[1]["long_name"].ToString() + ", " + ds.Tables["address_component"].Rows[2]["long_name"].ToString() + ", " + ds.Tables["address_component"].Rows[3]["short_name"].ToString();
-                }
-            }
-            catch
-            {
-                return resposta;
-            }
-        }
+        //            string endereco = string.Format("https://maps.googleapis.com/maps/api/geocode/xml?latlng={0},{1}&key=AIzaSyDPNFOUPna4dnTRtQ806ST8G9Vj6WEK32Y", lat, lng);
+        //            ds.ReadXml(endereco);
+        //            return ds.Tables["address_component"].Rows[1]["long_name"].ToString() + ", " + ds.Tables["address_component"].Rows[2]["long_name"].ToString() + ", " + ds.Tables["address_component"].Rows[3]["short_name"].ToString();
+        //        }
+        //    }
+        //    catch
+        //    {
+        //        return resposta;
+        //    }
+        //}
 
     }
 }

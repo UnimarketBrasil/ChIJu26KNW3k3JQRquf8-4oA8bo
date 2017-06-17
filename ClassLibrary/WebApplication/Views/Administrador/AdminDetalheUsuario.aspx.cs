@@ -71,7 +71,6 @@ namespace WebApplication
                     //CARREGAR ENDEREÇO
                     GeoCodificacao g = new GeoCodificacao();
                     lbEndereco.Text = g.ObterEndereco(user);
-                    lbEndereco.Text = g.ObterEndereco(user.Latitude, user.Longitude);
                     lbComplemento.Text = user.Complemento;
                     lbAreaAtuacao.Text = user.AreaAtuacao.ToString();
                 }

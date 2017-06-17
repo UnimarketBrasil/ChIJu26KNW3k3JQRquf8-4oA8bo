@@ -57,7 +57,12 @@ namespace WebApplication
                     lbTelefone.Text = i.Vendedor.Telefone;
                     lbEmailVendedor.Text = i.Vendedor.Email;
                     lbDescricao.Text = i.Descricao;
-                    lbEndereco.Text = g.ObterEndereco(i.Vendedor.Latitude, i.Vendedor.Longitude);
+
+                    Usuario u = new Usuario();
+                    u.Latitude = i.Vendedor.Latitude;
+                    u.Longitude = i.Vendedor.Longitude;
+
+                    lbEndereco.Text = g.ObterEndereco(u);
                     txtQuantidade.MaxLength = Convert.ToInt32(i.Quantidade);
 
                     string caminho = string.Format("~/Imagens/{0}/{1}/", i.Vendedor.Id, i.Id);

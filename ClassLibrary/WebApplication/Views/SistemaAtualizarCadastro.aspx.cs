@@ -91,7 +91,8 @@ namespace WebApplication
                         }
 
                         GeoCodificacao g = new GeoCodificacao();
-                        lbEndereco_.Text = g.ObterEndereco(u.Latitude, u.Longitude);
+                        string endereco = g.ObterEndereco(u);
+                        lbEndereco_.Text = endereco;
                         txtEndereco.Text = u.CEP;
                         txtNumero.Text = u.Numero.ToString();
                         txtComplemento.Text = u.Complemento;
@@ -145,7 +146,8 @@ namespace WebApplication
                         }
 
                         GeoCodificacao g = new GeoCodificacao();
-                        lbEndereco_.Text = g.ObterEndereco(u.Latitude, u.Longitude);
+                        string endereco = g.ObterEndereco(u);
+                        lbEndereco_.Text = endereco;
                         txtEndereco.Text = u.CEP;
                         txtNumero.Text = u.Numero.ToString();
                         txtComplemento.Text = u.Complemento;
@@ -194,7 +196,7 @@ namespace WebApplication
                 u.Email = txtEmail.Text;
                 u.Telefone = txtTel.Text;
 
-                
+
 
                 u.MetodoPagamento = new List<MetodoPagamento>();
                 MetodoPagamento m = null;
@@ -286,7 +288,7 @@ namespace WebApplication
                     u.Longitude = uEndereco.Longitude;
                 }
 
-                u.CEP = txtEndereco.Text.Replace("-","");
+                u.CEP = txtEndereco.Text.Replace("-", "");
                 u.Complemento = txtComplemento.Text;
                 u.Numero = Convert.ToInt32(txtNumero.Text);
                 u.AreaAtuacao = Convert.ToDouble(dpArea.SelectedValue);
@@ -306,7 +308,7 @@ namespace WebApplication
                 }
             }
 
-            
+
 
         }
     }

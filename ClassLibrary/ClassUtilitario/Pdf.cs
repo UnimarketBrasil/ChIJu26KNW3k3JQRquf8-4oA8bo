@@ -58,7 +58,12 @@ namespace ClassUtilitario
                     documento.AddSubject(Titulo);
                     
                     var endereco = new GeoCodificacao();
-                    string e = endereco.ObterEndereco(pedido.Comprador.Latitude, pedido.Comprador.Longitude);
+
+                    Usuario u = new Usuario();
+                    u.Latitude = pedido.Comprador.Latitude;
+                    u.Longitude = pedido.Comprador.Longitude;
+
+                    string e = endereco.ObterEndereco(u);
 
                     documento.Open();
 
