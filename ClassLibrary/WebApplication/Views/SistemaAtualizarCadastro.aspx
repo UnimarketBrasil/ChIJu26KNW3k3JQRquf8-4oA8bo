@@ -142,8 +142,9 @@
             var xmlhttp = window.XMLHttpRequest ? new XMLHttpRequest : new ActiveXObject("Microsoft.XMLHTTP");
 
             xmlhttp.onreadystatechange = function () {
-                if (xmlhttp.readyState == 400 && xmlhttp.status == 200) {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                     document.getElementById('<%Response.Write(lbEndereco_.ClientID);%>').innerHTML = xmlhttp.response;
+                    setTimeout(function () { waitingDialog.hide(); }, 500);
                 }
             }
 
