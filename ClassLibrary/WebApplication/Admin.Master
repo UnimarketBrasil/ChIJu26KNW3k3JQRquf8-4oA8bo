@@ -8,7 +8,7 @@
     <link rel="icon" href="~/Content/App_Data/Uni.ico">
 
     <!--Styles-->
-    <link href="Content/bootstrap.slate.min.css" rel="stylesheet" />
+    <link href="Content/bootstrap.cosmo.min.css" rel="stylesheet" />
     <link href="Content/GridPager.css" rel="stylesheet" />
 
     <!--Script-->
