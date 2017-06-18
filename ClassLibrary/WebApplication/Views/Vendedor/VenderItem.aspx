@@ -5,7 +5,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <form runat="server">
         <div class="container-fluid">
-            <h2><strong>MEUS ITENS</strong><a onclick="ajudaModal.show('MEUS ITENS',4);" class='glyphicon glyphicon-question-sign small' style="color: #2780e3"></a></h2>
+            <div class="row">
+                <label class="h2 col-sm-2"><strong>MEUS ITENS</strong></label><a onclick="ajudaModal.show('MEUS ITENS',4);" class='col-sm-1 btn btn-info btn-sm glyphicon glyphicon-question-sign small'>AJUDA</a>
+            </div>
             <hr />
             <div class="row fade active in" id="produtos">
                 <div class="form-group">
