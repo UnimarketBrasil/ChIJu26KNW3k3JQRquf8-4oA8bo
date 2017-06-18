@@ -49,7 +49,7 @@ create procedure CarregarItemPedido(
 	)
 as 
 begin
-	select Item.Id, Item.Nome, ItemPedido.Quantidade, Item.ValorUnitario, ItemPedido.Quantidade * ItemPedido.ValorUnitario as ValorTotal
+	select Item.Id, Item.Nome, ItemPedido.Quantidade, ItemPedido.ValorUnitario, ItemPedido.Quantidade * ItemPedido.ValorUnitario as ValorTotal
 	from ItemPedido
 	inner join Item on Item.Id = ItemPedido.IdItem
 	where (ItemPedido.IdPedido = @IdPedido) 

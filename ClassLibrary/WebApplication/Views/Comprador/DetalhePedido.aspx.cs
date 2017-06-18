@@ -14,6 +14,9 @@ namespace WebApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["sistema"] == null)
+                Response.Redirect("~/Views/SistemaLogin.aspx");
+
             int idPedido = 0;
 
             idPedido = int.Parse(Request.QueryString["idPedido"]);
@@ -27,9 +30,9 @@ namespace WebApplication
 
             pedido = carregaPedido.CarregarPedidoComprador(pedido);
 
-            lbNumPedido.Text = pedido.Codigo;
+            lbNumPedido.Text = "Pedido" + pedido.Codigo;
             lbVendedor.Text = pedido.Vendedor.Nome;
-            lbValorTotal.Text = pedido.Valor.ToString();
+            lbValorTotal.Text = Math.Round(pedido.Valor, 2).ToString();
             lbStatus.Text = pedido.StatusPedido.Nome;
             lbTelefone.Text = pedido.Vendedor.Telefone;
             lbEmailVendedor.Text = pedido.Vendedor.Email;

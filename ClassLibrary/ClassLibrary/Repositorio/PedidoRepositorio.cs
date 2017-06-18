@@ -159,8 +159,8 @@ namespace ClassLibrary.Repositorio
                             item.Id = Convert.ToInt32(Dr["Id"]);
                             item.Nome = Convert.ToString(Dr["Nome"]);
                             item.Quantidade = Convert.ToDouble(Dr["Quantidade"]);
-                            item.ValorUnitario = Convert.ToDouble(Dr["ValorUnitario"]);
-                            item.ValorTotal = Convert.ToDouble(Dr["ValorTotal"]);
+                            item.ValorUnitario = Math.Round(Convert.ToDouble(Dr["ValorUnitario"]),2);
+                            item.ValorTotal = Math.Round(Convert.ToDouble(Dr["ValorTotal"]),2);
 
                             pedido.Item.Add(item);
                         }
@@ -203,6 +203,7 @@ namespace ClassLibrary.Repositorio
                         Dr.Read();
                         pedido.Id = Convert.ToInt32(Dr["Id"]);
                         pedido.Codigo = Convert.ToString(Dr["Codigo"]);
+                        pedido.Valor = Convert.ToDouble(Dr["Valor"]);
 
                         pedido.Comprador = new Usuario();
                         pedido.Comprador.Nome = Convert.ToString(Dr["Comprador"]);
@@ -241,8 +242,8 @@ namespace ClassLibrary.Repositorio
                             item.Id = Convert.ToInt32(Dr["Id"]);
                             item.Nome = Convert.ToString(Dr["Nome"]);
                             item.Quantidade = Convert.ToDouble(Dr["Quantidade"]);
-                            item.ValorUnitario = Convert.ToDouble(Dr["ValorUnitario"]);
-                            item.ValorTotal = Convert.ToDouble(Dr["ValorTotal"]);
+                            item.ValorUnitario = Math.Round(Convert.ToDouble(Dr["ValorUnitario"]), 2);
+                            item.ValorTotal = Math.Round(Convert.ToDouble(Dr["ValorTotal"]), 2);
 
                             pedido.Item.Add(item);
                         }
