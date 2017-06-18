@@ -81,9 +81,6 @@ namespace WebApplication
 
                     mPagamentoList = carregaMetodos.ListarMetodoPagamento(i.Vendedor.Id);
 
-                    
-                    
-
                     foreach (var item in mPagamentoList)
                     {
                         if (item.tMetodoPgto.Id.Equals(2))
@@ -156,6 +153,7 @@ namespace WebApplication
             {
                 i = carregaItem.DetalheItemCarrinho(int.Parse(lbIdItem.Text));
                 i.Quantidade = int.Parse(txtQuantidade.Text);
+                i.Vendedor.Email = lbEmailVendedor.Text;
                 lst.Add(i);
                 Session["carrinho"] = lst;
             }
@@ -178,6 +176,7 @@ namespace WebApplication
                 {
                     i = carregaItem.DetalheItemCarrinho(int.Parse(lbIdItem.Text));
                     i.Quantidade = int.Parse(txtQuantidade.Text);
+                    i.Vendedor.Email = lbEmailVendedor.Text;
                     lst.Add(i);
                 }
 

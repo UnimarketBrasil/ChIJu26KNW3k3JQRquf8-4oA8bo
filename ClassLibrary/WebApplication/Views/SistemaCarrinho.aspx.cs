@@ -1,9 +1,12 @@
 ﻿using ClassLibrary;
 using ClassLibrary.Repositorio;
+using ClassUtilitario;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -84,8 +87,7 @@ namespace WebApplication
 
             if (Session["sistema"] == null)
             {
-                dvFaltaLogin.Attributes["class"] = "info";
-                dvFaltaLogin.Visible = true;
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "script", "$(function () { faltaLogin(); });", true);
                 return;
             }
 
@@ -116,6 +118,7 @@ namespace WebApplication
                     pedido.Comprador = new Usuario();
                     pedido.Comprador = comprador;
                     pedido.Vendedor.Id = item.Vendedor.Id;
+                    pedido.Vendedor.Email = item.Vendedor.Email;
                     pedido.Item = new List<Item>();
                     pedido.Item.Add(item);
                     lstItem.Remove(item);
@@ -126,9 +129,36 @@ namespace WebApplication
 
             PedidoRepositorio realizarPedido = new PedidoRepositorio();
 
-            foreach (var pedidoRealizar in lstPedido)
+            MailMessage message = null;
+            IsEmail enviarConfPedido = new IsEmail();
+            GeoCodificacao g = new GeoCodificacao();
+
+            StringBuilder strBody;
+
+            foreach (var pedidoRealizar in lstPedido.ToList())
             {
+                strBody = new StringBuilder();
+                strBody.AppendLine("Olá Vendedor(a)!");
+                strBody.AppendLine("Tudo bom?");
+                strBody.AppendLine("");
+                strBody.AppendLine("O usuário "+comprador.Nome+", acabou de confirar um pedido...");
+                strBody.AppendLine("");
+                strBody.AppendLine("DADOS DO CLIENTE");
+                strBody.AppendLine("E-mail: "+comprador.Email);
+                strBody.AppendLine("Telefone: "+comprador.Telefone);
+                strBody.AppendLine("Endereço: "+ g.ObterEndereco(comprador));
+                strBody.AppendLine("");
+                strBody.AppendLine("Entre em contato com o seu cliente, para finalizar o pecesso de venda.");
+                strBody.AppendLine("");
+                strBody.AppendLine("Unimarket Brasil");
+                strBody.AppendLine("http://unimarket.academico.trilema.com.br");
+
+                message = new MailMessage("unimarketbrasil@gmail.com", pedidoRealizar.Vendedor.Email);
+                message.Subject = "Unimarket Brasil - Confirmação de Pedido";
+                message.Body = strBody.ToString();
+
                 realizarPedido.RealizarPedido(pedidoRealizar);
+                enviarConfPedido.Enviar(message);
             }
             Session["carrinho"] = null;
 
