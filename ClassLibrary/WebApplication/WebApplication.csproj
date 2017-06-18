@@ -67,14 +67,14 @@
     <Content Include="Content\bootstrap-fileinput.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.cerulean.css" />
+    <Content Include="Content\bootstrap.cerulean.min.css" />
     <Content Include="Content\bootstrap.cosmo.css" />
     <Content Include="Content\bootstrap.cosmo.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.united.css" />
     <Content Include="Content\bootstrap.united.min.css" />
-    <Content Include="Content\bootstrap.yeti.css" />
-    <Content Include="Content\bootstrap.yeti.min.css" />
     <Content Include="Content\GridPager.css" />
     <Content Include="Documentos\Criptografia.js" />
     <Content Include="Documentos\Querys\Criacao do banco UnimarketDB.sql" />
