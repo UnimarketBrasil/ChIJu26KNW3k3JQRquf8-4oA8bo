@@ -57,7 +57,7 @@
                         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 form-group">
                             <label for="<%=txtValorUnitario.ClientID%>">Valor Unitário</label>
                             <div class="input-group">
-                                <asp:TextBox runat="server" ID="txtValorUnitario" onchange="formataValor(this,event); calc_total();" onKeyUp="calc_total(); formataValor(this,event);" CssClass="form-control" placeholder="Valor Unitário" required="true"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txtValorUnitario" onchange="calc_total(); formataValor();" onKeyUp="calc_total(); formataValor();" CssClass="form-control" required="true" MaxLength="14"></asp:TextBox>
                             </div>
                         </div>
                     </div>

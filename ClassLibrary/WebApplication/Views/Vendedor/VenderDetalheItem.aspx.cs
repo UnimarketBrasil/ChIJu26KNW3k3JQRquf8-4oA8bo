@@ -15,6 +15,7 @@ namespace WebApplication
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            dvMsg.Visible = false;
             //Verifica se o usuario está logado
             if (Session["sistema"] == null)
                 Response.Redirect("~/Views/SistemaLogin.aspx");

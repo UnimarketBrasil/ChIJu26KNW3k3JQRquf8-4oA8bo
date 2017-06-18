@@ -292,12 +292,21 @@ namespace WebApplication
                 u.Numero = Convert.ToInt32(txtNumero.Text);
                 u.AreaAtuacao = Convert.ToDouble(dpArea.SelectedValue);
 
+                int idtpousuario;
+
+                int.TryParse(Request.QueryString["TipoUsuario"], out idtpousuario);
+
                 UsuarioRepositorio atulizarCadastro = new UsuarioRepositorio();
                 if (atulizarCadastro.AtualizarUsuario(u))
                 {
                     dvMsg.Visible = true;
                     dvMsg.Attributes["class"] = "alert alert-success alert-dismissible";
                     lbMsg.Text = "Cadastro atualizado com sucesso!";
+
+                    if (idtpousuario.Equals(2))
+                    {
+                        Response.Redirect("~/Views/SistemaAtualizarCadastro.aspx?TipoUsuario=2");
+                    }
                 }
                 else
                 {
