@@ -274,7 +274,6 @@ namespace WebApplication
                     }
                 }
 
-
                 try
                 {
                     Usuario uEndereco = (Usuario)Session["latlog"];
@@ -298,7 +297,7 @@ namespace WebApplication
                 {
                     dvMsg.Visible = true;
                     dvMsg.Attributes["class"] = "alert alert-success alert-dismissible";
-                    lbMsg.Text = "Da!";
+                    lbMsg.Text = "Cadastro atualizado com sucesso!";
                 }
                 else
                 {
@@ -307,9 +306,6 @@ namespace WebApplication
                     lbMsg.Text = "Não foi possível atender sua solicitação.";
                 }
             }
-
-
-
         }
     }
 }

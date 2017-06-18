@@ -35,10 +35,6 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-xs-3 form-group">
-                                    <asp:Label runat="server" Text="Data de Nascimento:"></asp:Label>
-                                    <asp:Label runat="server" ID="lbDtNasc" CssClass="form-control"></asp:Label>
-                                </div>
                                 <div class="col-xs-4 form-group">
                                     <asp:Label runat="server" Text="Genero:"></asp:Label>
                                     <asp:Label runat="server" ID="lbGenero" CssClass="form-control"></asp:Label>
@@ -109,12 +105,6 @@
                                     </li>
                                 </ul>
                             </div>
-                        </div>
-                        <div class="row">
-                            Histórioco de mensagens:
-                        </div>
-                        <div class="row">
-                            SubUsuários::
                         </div>
                     </div>
                 </div>

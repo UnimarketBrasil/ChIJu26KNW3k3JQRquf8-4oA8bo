@@ -9,17 +9,6 @@
                 <label class="h2 col-sm-2"><strong>MEUS ITENS</strong></label><a onclick="ajudaModal.show('MEUS ITENS',4);" class='col-sm-1 btn btn-info btn-sm glyphicon glyphicon-question-sign small'>AJUDA</a>
             </div>
             <hr />
-            <div class="row fade active in" id="produtos">
-                <div class="form-group">
-                    <a href="VenderDetalheItem.aspx" draggable="false" class="col-lg-2 col-md-2 col-sm-2 col-xs-3 btn btn-success"><strong>+</strong>Novo Item</a>
-                    <div class="col-lg-7 col-lg-offset-2 col-md-7 col-md-offset-2 col-sm-7 col-sm-offset-2 col-xs-6">
-                        <input type="text" class="form-control" id="inputproduto" placeholder="Código ou Nome do Item">
-                    </div>
-                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-                        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-                    </div>
-                </div>
-            </div>
             <p>&nbsp;</p>
             <div class="row table-responsive">
                 <asp:GridView ID="grdDetalheVendedor" OnPageIndexChanging="grdDetalheVendedor_PageIndexChanging" CssClass="table table-hover table-striped" GridLines="None" runat="server" AutoGenerateColumns="false" AllowPaging="True">
