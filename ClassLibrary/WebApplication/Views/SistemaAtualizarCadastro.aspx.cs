@@ -201,7 +201,7 @@ namespace WebApplication
                 u.MetodoPagamento = new List<MetodoPagamento>();
                 MetodoPagamento m = null;
 
-                foreach (var i in cbMetodosPagamento.Items<ListItem>())
+                foreach (var i in cbMetodosPagamento.Items.Cast<ListItem>())
                 {
                     m = new MetodoPagamento();
                     m.Id = Convert.ToInt32(i.Value);

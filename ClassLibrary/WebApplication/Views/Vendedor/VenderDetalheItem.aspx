@@ -11,7 +11,7 @@
         </div>
         <div class="panel panel-default">
             <div id="dvHeadNovo" runat="server" class="panel-heading">
-                <h4>Novo Item<a onclick="ajudaModal.show('NOVO ITEM',5);" class='glyphicon glyphicon-question-sign small' style="color:#2780e3"></a></h4>
+                <h4>Novo Item<a onclick="ajudaModal.show('NOVO ITEM',5);" class='glyphicon glyphicon-question-sign small' style="color: #2780e3"></a></h4>
             </div>
             <div id="dvHeadAlterar" runat="server" class="panel-heading">
                 <h4>Alterar Item</h4>
@@ -51,13 +51,13 @@
                         <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 form-group">
                             <label for="<%=txtQuantidade.ClientID %>">Quantidade</label>
                             <div class="input-group">
-                                <asp:TextBox runat="server" ID="txtQuantidade" onKeyUp="calc_total(this, event);" TextMode="Number" MaxLength="1" CssClass="form-control" placeholder="Quantidade" required="true"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txtQuantidade" onKeyUp="calc_total();" onchange="calc_total();" TextMode="Number" MaxLength="1" CssClass="form-control" placeholder="Quantidade" required="true"></asp:TextBox>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 form-group">
                             <label for="<%=txtValorUnitario.ClientID%>">Valor Unitário</label>
                             <div class="input-group">
-                                <asp:TextBox runat="server" ID="txtValorUnitario" onchange="formataValor(this,event);"  onKeyUp="calc_total(this, event); formataValor(this,event);" CssClass="form-control" placeholder="Valor Unitário" required="true"></asp:TextBox>
+                                <asp:TextBox runat="server" ID="txtValorUnitario" onchange="formataValor(this,event); calc_total();" onKeyUp="calc_total(); formataValor(this,event);" CssClass="form-control" placeholder="Valor Unitário" required="true"></asp:TextBox>
                             </div>
                         </div>
                     </div>
@@ -108,13 +108,20 @@
     </div>
     <script type="text/javascript">
         function calc_total() {
+            var resultadoF=0;
             var qtd = parseInt(document.getElementById('<% Response.Write(txtQuantidade.ClientID); %>').value);
-            var preco = parseFloat(document.getElementById('<% Response.Write(txtValorUnitario.ClientID); %>'));
-            var tot = (qtd * preco);
-            tot = tot.toFixed(2);
-            tot = tot.replace(".", ",");
-            document.getElementById('<% Response.Write(lbValorTotal.ClientID);%>').innerHTML = tot;
+            var preco = document.getElementById('<% Response.Write(txtValorUnitario.ClientID); %>').value;
+
+            if ((document.getElementById('<%Response.Write(txtQuantidade.ClientID);%>').value != "") && (document.getElementById('<%Response.Write(txtValorUnitario.ClientID);%>').value != "")) {
+                preco = preco.replace(",", ".");
+                resultadoF = (preco * qtd);
+                document.getElementById('<%Response.Write(lbValorTotal.ClientID);%>').innerHTML = (resultadoF).toFixed(2);
+            }
+            else {
+                document.getElementById('<%Response.Write(lbValorTotal.ClientID);%>').innerHTML = "";
+            }
         }
+        
     </script>
     <script>
         function chamaModal() {
