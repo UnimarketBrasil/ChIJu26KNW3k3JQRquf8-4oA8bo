@@ -134,7 +134,7 @@
 
                     if (xmlhttp.response == 'E-mail enviado com sucesso') {
                         document.getElementById('<% Response.Write(ldMsgEnvio.ClientID);%>').className = "label label-success";
-                        $("#txtDuvida").val('');
+                        document.getElementById('<% Response.Write(txtDuvida.ClientID);%>').value = "";
                     }
                 }
             }

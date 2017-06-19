@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -112,9 +114,35 @@ namespace WebApplication
         {
             int id = int.Parse(e.CommandArgument.ToString());
 
+            Usuario u = (Usuario)Session["sistema"];
+            Pedido p = new Pedido();
+            p.Id = id;
+            p.Vendedor = new Usuario();
+            p.Vendedor.Id = u.Id;
+
             PedidoRepositorio finalizarPedido = new PedidoRepositorio();
 
+            p = finalizarPedido.CarregarPedidoVendedor(p);
+
+            MailMessage message = null;
+            IsEmail enviarConfPedido = new IsEmail();
+
+            StringBuilder strBody;
+
+            strBody = new StringBuilder();
+            strBody.AppendLine("Olá");
+            strBody.AppendLine("");
+            strBody.AppendLine("Gostaríamos de informar que seu pedido n° " + p.Codigo + " foi finalizado.");
+            strBody.AppendLine("");
+            strBody.AppendLine("Unimarket Brasil");
+            strBody.AppendLine("http://unimarket.academico.trilema.com.br");
+
+            message = new MailMessage("unimarketbrasil@gmail.com", p.Comprador.Email);
+            message.Subject = "Unimarket Brasil - Atualização de Status de Pedido";
+            message.Body = strBody.ToString();
+
             finalizarPedido.FinalizarPedido(id);
+            enviarConfPedido.Enviar(message);
 
             Response.Redirect(Request.RawUrl);
         }
@@ -123,9 +151,35 @@ namespace WebApplication
         {
             int id = int.Parse(e.CommandArgument.ToString());
 
+            Usuario u = (Usuario)Session["sistema"];
+            Pedido p = new Pedido();
+            p.Id = id;
+            p.Vendedor = new Usuario();
+            p.Vendedor.Id = u.Id;
+
             PedidoRepositorio cancelarPedido = new PedidoRepositorio();
 
+            p = cancelarPedido.CarregarPedidoVendedor(p);
+
+            MailMessage message = null;
+            IsEmail enviarConfPedido = new IsEmail();
+
+            StringBuilder strBody;
+
+            strBody = new StringBuilder();
+            strBody.AppendLine("Olá");
+            strBody.AppendLine("");
+            strBody.AppendLine("Gostaríamos de informar que seu pedido n° " + p.Codigo + " foi cancelado.");
+            strBody.AppendLine("");
+            strBody.AppendLine("Unimarket Brasil");
+            strBody.AppendLine("http://unimarket.academico.trilema.com.br");
+
+            message = new MailMessage("unimarketbrasil@gmail.com", p.Comprador.Email);
+            message.Subject = "Unimarket Brasil - Atualização de Status de Pedido";
+            message.Body = strBody.ToString();
+
             cancelarPedido.CancelarPedido(id);
+            enviarConfPedido.Enviar(message);
 
             Response.Redirect(Request.RawUrl);
         }

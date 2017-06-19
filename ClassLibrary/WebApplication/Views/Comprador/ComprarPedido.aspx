@@ -3,7 +3,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <h2><strong>MEUS PEDIDOS</strong><a onclick="ajudaModal.show('MEUS PEDIDOS',6);" class='glyphicon glyphicon-question-sign small' style="color: #2780e3"></a></h2>
+    <div class="row">
+        <label class="h2 col-sm-3"><strong>MEUS PEDIDOS</strong></label><a onclick="ajudaModal.show('MEUS PEDIDOS',6);" class='col-sm-1 btn btn-info btn-sm glyphicon glyphicon-question-sign small'>AJUDA</a>
+    </div>
     <hr />
     <form runat="server" class="table-responsive">
         <div class="row container-fluid">
@@ -32,7 +34,7 @@
                     <asp:BoundField DataField="Valor" HeaderText="Valor" ItemStyle-CssClass="col-sm-2" />
                     <asp:TemplateField ItemStyle-CssClass="col-sm-2">
                         <ItemTemplate>
-                            <asp:LinkButton ID="detalhePedido" CssClass="btn btn-primary btn-xs" runat="server" PostBackUrl='<%# Page.ResolveUrl("~/Views/Comprador/DetalhePedido.aspx?idPedido=") + DataBinder.Eval(Container.DataItem, "Id" )%>'  Text="Detalhes" />
+                            <asp:LinkButton ID="detalhePedido" CssClass="btn btn-primary btn-xs" runat="server" PostBackUrl='<%# Page.ResolveUrl("~/Views/Comprador/DetalhePedido.aspx?idPedido=") + DataBinder.Eval(Container.DataItem, "Id" )%>' Text="Detalhes" />
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField ItemStyle-CssClass="col-sm-1">
