@@ -83,7 +83,7 @@ namespace WebApplication
             txtNome.Text = txtNome.Text.Replace(">", "");
             item.Nome = txtNome.Text;
             item.Descricao = txtDescricao.InnerText;
-            item.ValorUnitario = Convert.ToDouble(txtValorUnitario.Text);
+            item.ValorUnitario = Math.Round(Convert.ToDouble(txtValorUnitario.Text), 2);
             item.Quantidade = Convert.ToInt64(txtQuantidade.Text);
 
             item.Categoria = new Categoria(Convert.ToInt32(dpCategoria.SelectedValue));
