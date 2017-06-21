@@ -218,8 +218,8 @@ namespace ClassLibrary.Repositorio
                         pedido.StatusPedido = new StatusPedido();
                         pedido.StatusPedido.Nome = Convert.ToString(Dr["Status"]);
 
-                        Dr.Close();
-                    }
+                        }
+                    Dr.Close();
                 }
 
                 using (Cmd = new SqlCommand("CarregarItemPedido", Con))
@@ -298,6 +298,8 @@ namespace ClassLibrary.Repositorio
                             pedidoList.Add(pedido);
                         }
                     }
+
+                    Dr.Close();
 
                     return pedidoList;
                 }

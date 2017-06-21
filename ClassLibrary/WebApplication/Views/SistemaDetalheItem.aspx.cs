@@ -212,7 +212,7 @@ namespace WebApplication
             strBody.AppendLine("Descrição do item: " + lbDescricao);
             strBody.AppendLine("Link do item:" + urlItem);
             strBody.AppendLine("");
-            strBody.AppendLine("MINHA DÚVIDAS:");
+            strBody.AppendLine("MINHA DÚVIDA:");
             strBody.AppendLine(txtDuvida.Value);
             strBody.AppendLine("Unimarket Brasil");
             strBody.AppendLine("http://unimarket.academico.trilema.com.br");

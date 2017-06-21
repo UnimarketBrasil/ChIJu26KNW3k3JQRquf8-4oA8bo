@@ -78,6 +78,8 @@ namespace WebApplication
                 string IdPedido = e.CommandArgument.ToString();
                 Pedido pedido = new Pedido();
                 pedido.Id = Convert.ToInt32(IdPedido);
+                pedido.Comprador = new Usuario();
+                pedido.Vendedor = new Usuario();
                 PedidoRepositorio p = new PedidoRepositorio();
                 pedido = p.CarregarPedidoVendedor(pedido); //Perrengue
                 MemoryStream m = new MemoryStream();

@@ -12,10 +12,10 @@ create procedure MecanismoDeBusca(
 	@LongitudeComprador float
 	)
 as begin
-	select Item.Id, Item.Nome,Item.ValorUnitario, dbo.CalculoDistancia( Usuario.Latitude, Usuario.Longitude, @LatitudeComprador, @LongitudeComprador) as Vendedor,
+	select Item.Id, Item.Nome, Item.ValorUnitario, (dbo.CalculoDistancia( Usuario.Latitude, Usuario.Longitude, @LatitudeComprador, @LongitudeComprador)) as Vendedor,
 	Usuario.Id as IdVendendor from Item
 	inner join Usuario on Usuario.Id = Item.IdUsuario
-	where((dbo.CalculoDistancia( Usuario.Latitude, Usuario.Longitude, @LatitudeComprador, @LongitudeComprador) < Usuario.AreaAtuacao) and (Item.Desabilitado = 'false') and (Item.Quantidade > 0) and (Item.Nome like '%'+@Pesquisa+'%') and (Usuario.Id <> @IdComprador))
+	where((Item.Desabilitado = 'false') and (Item.Quantidade > 0) and (Item.Nome like '%'+@Pesquisa+'%') and (Usuario.Id <> @IdComprador))
 	
 end
 go
