@@ -45,11 +45,6 @@
                             <asp:Button ID="btcancelar" CssClass="btn btn-danger btn-xs" runat="server" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "Id")%>' OnCommand="btcancelar_Command" Text="Cancelar" />
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField ItemStyle-CssClass="col-sm-1">
-                        <ItemTemplate>
-                            <asp:LinkButton ID="pdfPedido" CssClass="btn btn-info btn-xs" OnCommand="pdfPedido_Command" runat="server" CommandName="Pedido" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "Id")%>' Text="PDF"></asp:LinkButton>
-                        </ItemTemplate>
-                    </asp:TemplateField>
                 </Columns>
                 <PagerSettings Mode="Numeric" Position="TopAndBottom" PageButtonCount="5" />
                 <PagerStyle HorizontalAlign="Right" Font-Size="Medium" CssClass="GridPager" />

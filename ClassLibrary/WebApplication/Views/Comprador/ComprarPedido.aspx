@@ -37,11 +37,6 @@
                             <asp:LinkButton ID="detalhePedido" CssClass="btn btn-primary btn-xs" runat="server" PostBackUrl='<%# Page.ResolveUrl("~/Views/Comprador/DetalhePedido.aspx?idPedido=") + DataBinder.Eval(Container.DataItem, "Id" )%>' Text="Detalhes" />
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField ItemStyle-CssClass="col-sm-1">
-                        <ItemTemplate>
-                            <asp:LinkButton ID="pdfPedido" CssClass="btn btn-info btn-xs" runat="server" PostBackUrl='<%# Page.ResolveUrl("~/Views/SistemaDetalheItem.aspx")%>' Text="PDF" />
-                        </ItemTemplate>
-                    </asp:TemplateField>
                 </Columns>
                 <PagerSettings Mode="Numeric" Position="TopAndBottom" PageButtonCount="5" />
                 <PagerStyle HorizontalAlign="Right" Font-Size="Medium" CssClass="GridPager" />
