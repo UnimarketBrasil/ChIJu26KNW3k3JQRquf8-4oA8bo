@@ -101,10 +101,9 @@
         <footer class="modal-foote">
             <div class="center-block">
                 <hr />
-                <a href="#" class="fa fa-facebook-official w3-hover-opacity"></a>
-                <a href="#" class="fa fa-instagram w3-hover-opacity"></a>
-                <a href="#" class="fa fa-twitter w3-hover-opacity"></a>
-                <a href="#" class="fa fa-linkedin w3-hover-opacity"></a>
+                <a href="https://www.facebook.com/Unimarket-Brasil-124714274785407/" target="_blank" class="fa fa-facebook-official w3-hover-opacity"></a>
+                <a href="https://www.instagram.com/unimarketunimarket/" target="_blank" class="fa fa-instagram w3-hover-opacity"></a>
+                <a href="https://twitter.com/UnimarketBrasil" target="_blank" class="fa fa-twitter w3-hover-opacity"></a>
                 <p><%: DateTime.Now.Year %> - Unimarket Brasil</p>
             </div>
         </footer>
