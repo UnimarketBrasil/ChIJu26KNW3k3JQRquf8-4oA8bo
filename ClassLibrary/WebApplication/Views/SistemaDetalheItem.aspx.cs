@@ -214,6 +214,8 @@ namespace WebApplication
             strBody.AppendLine("");
             strBody.AppendLine("MINHA DÚVIDA:");
             strBody.AppendLine(txtDuvida.Value);
+            strBody.AppendLine("");
+            strBody.AppendLine("Entre em contato através do e-mail ou telefone da pessoa.");
             strBody.AppendLine("Unimarket Brasil");
             strBody.AppendLine("http://unimarket.academico.trilema.com.br");
 
