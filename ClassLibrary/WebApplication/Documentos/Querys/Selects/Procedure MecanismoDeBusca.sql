@@ -6,17 +6,16 @@ if OBJECT_ID('MecanismoDeBuscaCategoria') is not null
 drop procedure MecanismoDeBuscaCategoria
 go
 create procedure MecanismoDeBusca(
-	@Pesquisa varchar(50),
+@Pesquisa varchar(50),
 	@IdComprador int,
 	@LatitudeComprador float,
 	@LongitudeComprador float
 	)
 as begin
-	select Item.Id, Item.Nome, Item.ValorUnitario, (dbo.CalculoDistancia( Usuario.Latitude, Usuario.Longitude, @LatitudeComprador, @LongitudeComprador)) as Vendedor,
+	select Item.Id, Item.Nome,Item.ValorUnitario, Usuario.Nome as Vendedor,
 	Usuario.Id as IdVendendor from Item
 	inner join Usuario on Usuario.Id = Item.IdUsuario
-	where((Item.Desabilitado = 'false') and (Item.Quantidade > 0) and (Item.Nome like '%'+@Pesquisa+'%') and (Usuario.Id <> @IdComprador))
-	
+	where((dbo.CalculoDistancia( Usuario.Latitude, Usuario.Longitude, @LatitudeComprador, @LongitudeComprador) < Usuario.AreaAtuacao) and (Item.Desabilitado = 'false') and (Item.Quantidade > 0) and (Item.Nome like '%'+@Pesquisa+'%') and (Usuario.Id <> @IdComprador))
 end
 go
 create procedure MecanismoDeBuscaCategoria(
