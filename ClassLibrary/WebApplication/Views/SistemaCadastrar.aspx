@@ -14,7 +14,7 @@
             <div class="col-md-6">
                 <form class="form-horizontal" runat="server">
                     <div class="form-group">
-                        <label for="<%=txtEmailEtapa1.ClientID%>"" class="col-lg-2 control-label">Email</label>
+                        <label for="<%=txtEmailEtapa1.ClientID%>"" class="col-lg-2 control-label">Email*</label>
                         <div class="col-lg-10">
                             <asp:TextBox ID="txtEmailEtapa1" CssClass="form-control" runat="server" AutoCompleteType="Email" TextMode="Email" placeholder="Email" required="true"></asp:TextBox>
                         </div>
@@ -37,7 +37,7 @@
                         <form id="form1" class="form-horizontal" runat="server">
                             <!--Ativida Principal-->
                             <div class="form-group">
-                                <label class="col-lg-2 control-label">Atividade principal</label>
+                                <label class="col-lg-2 control-label">Atividade principal*</label>
                                 <div class="btn-group col-lg-5" data-toggle="buttons">
                                     <label id="lbComprar" runat="server" onclick="areAtuacaoDisplay('c');" class="btn btn-default">
                                         <input type="radio" name="rdAtividade" id="rdComprar" runat="server" value="2" required="required"/>
@@ -55,7 +55,7 @@
                             </div>
                             <!--Selecionar Tipo Pessoa-->
                             <fieldset class="form-group">
-                                <label for="<% =dpTipoPessoa.ClientID%>"" class="col-lg-2 control-label">Tipo Pessoa</label>
+                                <label for="<% =dpTipoPessoa.ClientID%>"" class="col-lg-2 control-label">Tipo Pessoa*</label>
                                 <div class="col-lg-10">
                                     <asp:DropDownList CssClass="form-control" ID="dpTipoPessoa" AutoPostBack="true" OnSelectedIndexChanged="dpTipoPessoa_SelectedIndexChanged" runat="server">
                                         <asp:ListItem Text="Física" Value="1" />
@@ -67,7 +67,7 @@
                             <div id="dvPessoaJuridica" runat="server">
                                 <asp:ScriptManager ID="ScriptManager" runat="server"></asp:ScriptManager>
                                 <div class="form-group">
-                                    <label for="<% =txtCnpj.ClientID%>"" class="col-lg-2 control-label">CNPJ</label>
+                                    <label for="<% =txtCnpj.ClientID%>"" class="col-lg-2 control-label">CNPJ*</label>
                                     <div class="col-lg-10">
                                         <asp:TextBox ID="txtCnpj" runat="server" CssClass="form-control" placeholder="CNPJ" OnKeyUp="formataCNPJ(this,event);" onchange="formataCNPJ(this,event);" required="true" MaxLength="18"></asp:TextBox>
                                     </div>
@@ -82,25 +82,25 @@
                             <!--Pessoa Fisica-->
                             <div id="dvPessoaFisica" runat="server">
                                 <div class="form-group">
-                                    <label for="<% =txtCpf.ClientID %>"" class="col-lg-2 control-label">CPF</label>
+                                    <label for="<% =txtCpf.ClientID %>"" class="col-lg-2 control-label">CPF*</label>
                                     <div class="col-lg-10">
                                         <asp:TextBox ID="txtCpf" runat="server" CssClass="form-control" placeholder="CPF" OnKeyUp="formataCPF(this,event);" onchange="formataCPF(this,event);" MaxLength="14" required="true"></asp:TextBox>  
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="<% =txtNome.ClientID %>"" class="col-lg-2 control-label">Nome</label>
+                                    <label for="<% =txtNome.ClientID %>"" class="col-lg-2 control-label">Nome*</label>
                                     <div class="col-lg-10">
                                         <asp:TextBox ID="txtNome" runat="server" CssClass="form-control" placeholder="Nome" required="true"></asp:TextBox>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="<% =txtSobrenome.ClientID %>"" class="col-lg-2 control-label">Sobrenome</label>
+                                    <label for="<% =txtSobrenome.ClientID %>"" class="col-lg-2 control-label">Sobrenome*</label>
                                     <div class="col-lg-10">
                                         <asp:TextBox ID="txtSobrenome" runat="server" CssClass="form-control" placeholder="Sobrenome" required="true"></asp:TextBox>
                                     </div>
                                 </div>                                
                                 <div class="form-group">
-                                    <label for="<% =dpGenero.ClientID %>"" class="col-lg-2 control-label">Genero</label>
+                                    <label for="<% =dpGenero.ClientID %>"" class="col-lg-2 control-label">Genero*</label>
                                     <div class="col-lg-10">
                                         <asp:DropDownList CssClass="form-control" ID="dpGenero" runat="server">
                                             <asp:ListItem Text="Masculino" Value="1" />
@@ -112,26 +112,26 @@
                             </div>
                             <!--Email / Tel / Senha / Robô / Botão -->
                             <div class="form-group">
-                                <label for="<% =txtEmailEtapa2.ClientID %>"" class="col-lg-2 control-label">Email</label>
+                                <label for="<% =txtEmailEtapa2.ClientID %>"" class="col-lg-2 control-label">Email*</label>
                                 <div class="col-lg-10">
                                     <asp:TextBox ID="txtEmailEtapa2" TextMode="Email" runat="server" CssClass="form-control" placeholder="Email" required="true"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="<% =txtTel.ClientID %>"" class="col-lg-2 control-label">Telefone</label>
+                                <label for="<% =txtTel.ClientID %>"" class="col-lg-2 control-label">Telefone*</label>
                                 <div class="col-lg-10">
                                     <asp:TextBox ID="txtTel" runat="server" onkeyup="formataTelefone(this,event);" onchange="formataTelefone(this,event);" style="text-align:left" MaxLength="15" CssClass="form-control" placeholder="Telefone" required="true"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="<% =txtSenha.ClientID %>"" class="col-lg-2 control-label">Senha</label>
+                                <label for="<% =txtSenha.ClientID %>"" class="col-lg-2 control-label">Senha*</label>
                                 <div class="col-lg-10">
                                     <asp:TextBox ID="txtSenha" runat="server" CssClass="form-control" TextMode="Password" placeholder="Senha" required="true"></asp:TextBox>
                                     <asp:RegularExpressionValidator Display="Dynamic" ControlToValidate="txtSenha" ID="txtSenhaRegular" ValidationExpression="^[\s\S]{8,20}$" runat="server" ErrorMessage="A senha deve conter de 8 a 20 dígitos."></asp:RegularExpressionValidator>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="<% =txtEndereco.ClientID %>" class="col-lg-2 control-label">Endereço</label>
+                                <label for="<% =txtEndereco.ClientID %>" class="col-lg-2 control-label">Endereço*</label>
                                 <div class="col-lg-4">
                                     <asp:TextBox ID="txtEndereco" runat="server" CssClass="form-control" OnKeyUp="formataCEP(this,event);" onchange="formataCEP(this,event);" placeholder="CEP" required="true" MaxLength="9"  data-toggle="tooltip" title="Informe o CEP do seu endereço, número e clique na lupa. Vamos te localizar!"></asp:TextBox>
                                 </div>
@@ -157,7 +157,7 @@
                                 </div>
                             </div>
                             <div id="dvAreaAtuacao" class="form-group" runat="server">
-                                <label for="<% =dpArea.ClientID %>"" class="col-lg-2 control-label">Área de atuação</label>
+                                <label for="<% =dpArea.ClientID %>"" class="col-lg-2 control-label">Área de atuação*</label>
                                 <div class="col-lg-9">
                                     <asp:DropDownList CssClass="form-control" ID="dpArea" runat="server">
                                         <asp:ListItem Text="5 km" Value="5" />
